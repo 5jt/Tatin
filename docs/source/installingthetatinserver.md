@@ -1,9 +1,8 @@
-[parm]:title             = 'Tatin: Server Installtion'
-[parm]:leanpubExtensions = 1
-[parm]:toc               = 2 3 4 5 6
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Server Installtion'
+description: ''
+keywords: 
+---
 # Installing and Updating the Tatin Server
 
 ## Introduction
@@ -157,7 +156,7 @@ Note that in case you want your Tatin server to serve requests from the Internet
 
 Such a server can deal with attacks and has also all sorts of security measures built into it, so it's much safer to run Tatin behind it.
 
-There is a separate document available that discusses how to do this: [Run Dyalog behind Apache](./RunDyalogBehindApache.html "RunDyalogBehindApache.html").
+There is a separate document available that discusses how to do this: [Run Dyalog behind Apache](rundyalogbehindapache.md).
 
 In case you hide the Tatin Server behind, say, an Apache server on the same machine there might be no need to use encryption (https).
 
@@ -191,7 +190,7 @@ Most errors that could occur (bugs in Tatin etc.) are trapped and will return a 
 In such an event you are most likely interested in the server being restarted automatically.
 
 
-### Windows 
+### Windows
 
 Under Windows you have two options:
 
@@ -210,7 +209,7 @@ If you want to run the Tatin server as a Windows Service you can put the workspa
 Under Linux, you are advised to run the Tatin Server in a Docker image. 
 
 
-### Docker: required amendments 
+### Docker: required amendments
 
 #### The file `Dockerfile`
 

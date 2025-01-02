@@ -1,11 +1,8 @@
-[parm]:title             = 'Tatin & GitHub'
-[parm]:toc               = 3
-[parm]:leanpubExtensions = 1
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
-
-
+---
+title: 'Tatin & GitHub'
+description: ''
+keywords: 
+---
 # Tatin & GitHub
 
 

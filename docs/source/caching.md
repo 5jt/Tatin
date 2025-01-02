@@ -1,15 +1,12 @@
-[parm]:title             = 'Tatin: Caching'
-[parm]:toc               = 3
-[parm]:leanpubExtensions = 1
-[parm]:numberHeaders     = 2 3 4 5 6
+---
+title: 'Tatin: Caching'
+description: ''
+keywords: 
+---
+# Caching in Tatin
 
 
-
-
-# Caching in Tatin 
-
-
-## Background 
+## Background
 
 When a Tatin package and its dependencies are installed or loaded, it seems to be a good idea to save those packages in a machine-specific cache because obviously when the package is requested again, be it by the same user but for a different purpose or a different user, downloading should be avoided because it's already saved on the machine.
 

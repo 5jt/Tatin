@@ -1,11 +1,8 @@
-[parm]:title             = 'Tatin: Usage Data'
-[parm]:toc               = 3
-[parm]:leanpubExtensions = 1
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
-
-
+---
+title: 'Tatin: Usage Data'
+description: ''
+keywords: 
+---
 # Usage Data
 
 ## Overview
@@ -38,11 +35,11 @@ For example, in January 2023 it would create a file `usage-data-2022`, and it wo
 ## How to retrieve the data
 
 
-### Web interface 
+### Web interface
 
 A [Tatin server offers a page](https://tatin.dev/v1/usage-data "Link to the principal Tatin server`s Usage Data page") dedicated to the usage data. The page shows some of the data and also offers links for downloading the data.
 
-### User command 
+### User command
 
 There is a command `]Tatin.UsageData` available for listing and downloading usage data.
 

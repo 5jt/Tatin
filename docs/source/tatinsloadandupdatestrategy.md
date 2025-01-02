@@ -1,12 +1,11 @@
-[parm]:leanpubExtensions = 1
-[parm]:title             = 'Tatin: Load & Update'
-[parm]:toc               = 2 3
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Load & Update'
+description: ''
+keywords: 
+---
 # Tatin's Load and Update Strategy
 
-Before you read this document, you have to have a good understanding of what Semantic Versioning is. If that's the case then carry-on reading, otherwise please read [SemanticVersioning](./SemanticVersioning.html) first.
+Before you read this document, you have to have a good understanding of what Semantic Versioning is. If that's the case then carry-on reading, otherwise please read [SemanticVersioning](semanticversioning.md) first.
 
 ## The Strategy Problem
 
@@ -210,7 +209,7 @@ This method will make sure that it removes not only the package in question, but
 
 Clearly, there is a danger that you remove too much when you attempt to do this manually.
 
-#### Implicit downgrading 
+#### Implicit downgrading
 
 There might be a situation when removing a principal package implies a downgrade.
 

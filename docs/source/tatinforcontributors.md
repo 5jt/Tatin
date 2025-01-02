@@ -1,10 +1,8 @@
-[parm]:leanpubExtensions = 1
-[parm]:title             = 'Tatin for Contributors'
-[parm]:toc               = 2 3 4
-[parm]:numberHeaders     = 2 3 4 5
-
-
-
+---
+title: 'Tatin for Contributors'
+description: ''
+keywords: 
+---
 # Tatin for Contributors
 
 ## Scope of this document

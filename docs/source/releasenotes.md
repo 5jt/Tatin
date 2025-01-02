@@ -1,10 +1,8 @@
-[parm]:title             = 'Tatin: Release Notes'
-[parm]:toc               = 2 2
-[parm]:leanpubExtensions = 1
-
-
-
-
+---
+title: 'Tatin: Release Notes'
+description: ''
+keywords: 
+---
 # Release Notes
 
 Tatin release notes contain information regarding actions that need to be executed before a new version can be used, or outstandingly important pieces of information.

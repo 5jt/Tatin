@@ -1,11 +1,8 @@
-[parm]:title             = 'Tatin: User Setting'
-[parm]:toc               = 3
-[parm]:leanpubExtensions = 1
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
-
-
+---
+title: 'Tatin: User Setting'
+description: ''
+keywords: 
+---
 # Tatin User Settings
 
 ## Introduction
@@ -146,7 +143,7 @@ In most scenarios, you will probably be happy with having just one user settings
 
 You may however want to have your own Tatin Registries, for example for private projects.
 
-##  Adding and removing Registries
+## Adding and removing Registries
 
 You can manipulate the `MyUserSettings` instance via its methods.
 
@@ -349,7 +346,7 @@ This has only an impact locally in a scenario mentioned above, and that's why th
 
 [^JSON5]: Tatin uses [JSON5](https://json5.org/ "Link to the JSON5 web site") rather than JSON.
 
-[^init]: Tatin will be initialized either explicitly or as a side effect when the first Tatin user command is issued. See ["Installing and updating the Tatin Client"](./InstallingAndUpdatingTheTatinClient.html "InstallingAndUpdatingTheTatinClient.html") for details.
+[^init]: Tatin will be initialized either explicitly or as a side effect when the first Tatin user command is issued. See ["Installing and updating the Tatin Client"](installingandupdatingthetatinclient.md) for details.
 
 
 

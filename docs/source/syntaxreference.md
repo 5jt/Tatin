@@ -1,9 +1,8 @@
-[parm]:title             = 'Tatin: Syntax Reference'
-[parm]:toc               = 2 3 
-[parm]:leanpubExtensions = 1
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Syntax Reference'
+description: ''
+keywords: 
+---
 # Tatin Syntax Reference
 
 ## User Commands
@@ -514,7 +513,7 @@ Returns one of "None", "Any", "JustBetas":
 * "Any" means any package can be deleted                                                    
 * "JustBetas" means that only beta versions can be deleted                                
 
-### GetDependencyTree    
+### GetDependencyTree
 
 ```
 tree←{append} GetDependencyTree x
@@ -569,7 +568,7 @@ The user settings rule:
 * The function returns the standard path for caching which depends on the operating system
 
 
-### GetUserHomeFolder    
+### GetUserHomeFolder
 
 ```
 path←{aplVersion} GetUserHomeFolder append
@@ -716,7 +715,7 @@ r←{verbose} GetNoCachingFlag url
   * `[;2]` URLs of all licenses
 
 
-### ListPackages         
+### ListPackages
 
 ```
 mat←{parms} ListPackages uri
@@ -821,7 +820,7 @@ In case the last published version of a package carries a flag `deprecated` in i
 To list just deprecated packages use `ListDepreciated`.
 
 
-### ListRegistries       
+### ListRegistries
 
 ```
 r←ListRegistries type
@@ -851,7 +850,7 @@ Notes:
 * When a Tatin Server is questioned by `ListRegistries` but does not respond, an error is thrown.
 
 
-### ListTags             
+### ListTags
 
 ```
 list←{parms} ListTags y
@@ -868,7 +867,7 @@ By default all tags of all packages are returned as a two-column matrix:
 
 Optionally `⍺` can be specified. Must be a namespace that might contain a variable `tags` which may specify one or more tags (simple comma-separated text vector). If that is the case only the tags shared by the packages that carry all of the specified tags will be returned.
 
-### ListVersions         
+### ListVersions
 
 ```
 mat←{dateFlag} ListVersions url
@@ -987,7 +986,7 @@ Returns the number of principal packages loaded.
 Note that the package ID(s) might use any case, meaning that if the package's name is `foo-Goo-1.2.3` then you might as well spell it `foo-GOO-1.2.3` or `FOO-goo-1.2.3`: it would not make a difference 
 
 
-### Ping                 
+### Ping
 
 ```
 bool←Ping url
@@ -995,7 +994,7 @@ bool←Ping url
 
 Establishes whether the host is up and running with very little overhead. If `url` (can also be an alias) points to a folder a 1 is returned if that folder exists, otherwise 0.
 
-### PublishPackage       
+### PublishPackage
 
 ```
 {(statusCode errMsg zipFilename)}←{dependencies} PublishPackage (source registry)
@@ -1127,7 +1126,7 @@ though the package and any dependencies were already successfully removed from b
 file and the build list.
 
 
-### Version              
+### Version
 
 ```
 r←Version

@@ -1,9 +1,8 @@
-[parm]:leanpubExtensions = 1
-[parm]:title             = 'Tatin: SemVers'
-[parm]:toc               = 2 3
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: SemVers'
+description: ''
+keywords: 
+---
 # Tatin and Semantic Versioning
 
 Tatin is based on the concept of Semantic Versioning (SemVer), so before we go into any details, we first need to understand SemVer. 
@@ -119,7 +118,7 @@ Before the introduction of the rules of Semantic Versioning, everybody assigned 
 
 With the rules of Semantic Versioning in place, if everybody involved acts accordingly and sensibly, updating should be much safer. 
 
-However, things can get pretty complicated even with Semantic Versioning; see the [TatinsLoadAndUpdateStrategy](TatinsLoadAndUpdateStrategy.html "Link to the HTML document").
+However, things can get pretty complicated even with Semantic Versioning; see the [TatinsLoadAndUpdateStrategy](tatinsloadandupdatestrategy.md).
 
 Semantic versioning came into being via this website:
 

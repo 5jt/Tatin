@@ -1,9 +1,8 @@
-[parm]:title             = 'Tatin: Intro'
-[parm]:leanpubExtensions = 1
-[parm]:toc               = 2 3
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Intro'
+description: ''
+keywords: 
+---
 # Introduction
 
 ## What is Tatin?
@@ -90,12 +89,12 @@ That is particularly important on https://tatin.dev because any package that was
 
 ## Now what?!
 
-Now is the time to read [First Steps with Tatin](./FirstStepsWithTatin.html "FirstStepsWithTatin.html")
+Now is the time to read [First Steps with Tatin](firststepswithtatin.md)
 
 
 A> ### Semantic versioning and Minimal Version Selection
 A>
-A> We suggest that you make yourself familiar with the concepts of [Semantic Versioning](https://semver.org/ "External link, opened in a new Tab" {target="_blank"}) and [Minimum Version Selection](https://research.swtch.com/vgo-mvs "External link, opened in a new Tab" {target="_blank"}), and how exactly these concepts are implemented in Tatin by reading the document [Tatin's load- and update strategy](./TatinsLoadAndUpdateStrategy.html "Opens the document TatinsLoadAndUpdateStrategy.html").
+A> We suggest that you make yourself familiar with the concepts of [Semantic Versioning](https://semver.org/ "External link, opened in a new Tab" {target="_blank"}) and [Minimum Version Selection](https://research.swtch.com/vgo-mvs "External link, opened in a new Tab" {target="_blank"}), and how exactly these concepts are implemented in Tatin by reading the document [Tatin's load- and update strategy](tatinsloadandupdatestrategy.md).
 
 
 

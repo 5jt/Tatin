@@ -1,7 +1,8 @@
-[parm]:leanpubExtensions = 1
-[parm]:title             = 'Tatin & Apache'
-[parm]:numberHeaders     = 2 3 4 5 6
-
+---
+title: 'Tatin & Apache'
+description: ''
+keywords: 
+---
 # Run Dyalog behind Apache
 
 With Dyalog's Conga, [Rumba](https://github.com/aplteam/RumbaLean "Link to the project on GitHub") or [Plodder ](https://github.com/aplteam/Plodder  "Link to the project on GitHub") you might well decide to serve HTTP requests with an application written in Dyalog  APL.

@@ -1,15 +1,12 @@
-[parm]:title             = 'Tatin: OneDrive'
-[parm]:toc               = 3
-[parm]:leanpubExtensions = 1
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
-
-
+---
+title: 'Tatin: OneDrive'
+description: ''
+keywords: 
+---
 # Tatin and OneDrive
 
 
-## Background 
+## Background
 
 OneDrive is cloud storage offered by Microsoft for backing up some of your personal folders. 
 

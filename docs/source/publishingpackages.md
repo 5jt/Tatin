@@ -1,10 +1,8 @@
-[parm]:title             = 'Tatin: Publishing Pkgs'
-[parm]:leanpubExtensions = 1
-[parm]:toc               = 2 3 4
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
-
+---
+title: 'Tatin: Publishing Pkgs'
+description: ''
+keywords: 
+---
 # Publishing Packages
 
 
@@ -110,7 +108,7 @@ Notes:
 
 #### Where are API keys saved?
 
-##### Client 
+##### Client
 
 API keys are saved in the user settings file. The quickest and yet safe way to edit that file is via the user command:
 
@@ -122,7 +120,7 @@ API keys are saved in the user settings file. The quickest and yet safe way to e
 
 Credentials are saved in the file "Credentials.csv" in the Registry's home folder.
 
-#### Credentials for your own Tatin Server 
+#### Credentials for your own Tatin Server
 
 If you run your own Tatin Server, we suggest that you create a UUID and use that as an API key. 
 
@@ -202,7 +200,7 @@ This means:
 * For any group name but `<group1>` and `<group2>` you must specify the API key "hash3" was generated from
 
 
-##### Editing the file "Credentials.csv" 
+##### Editing the file "Credentials.csv"
 
 There is one reason why you might need to change the file `Credentials.csv`: when a group name must be deleted for some reason.
 
@@ -229,7 +227,7 @@ Tatin calls the former "source" and the latter "assets".
 
 The file `apl-package.json` must exist in order to make a folder a package.
 
-What is required and how to create and change a package configuration file is discussed in the document [PackageConfiguration](./PackageConfiguration.html ).
+What is required and how to create and change a package configuration file is discussed in the document [PackageConfiguration](packageconfiguration.md).
 
 
 #### The dependency file

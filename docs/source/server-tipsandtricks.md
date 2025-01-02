@@ -1,9 +1,8 @@
-[parm]:title             = 'Tatin: Server Tips'
-[parm]:leanpubExtensions = 1
-[parm]:toc               = 2 3
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Server Tips'
+description: ''
+keywords: 
+---
 # Server: Tips and tricks
 
 Once you've installed a server there are a couple of things that need to be taken care of.
@@ -151,7 +150,7 @@ Also, make `⎕TRAP` a local variable in `OnRequest`.
 
 ## Misc
 
-### Special REST commands 
+### Special REST commands
 
 A Tatin server can offer several special REST commands only useful for a developer when testing Tatin. They should never be available on a production server.
 

@@ -1,14 +1,13 @@
-[parm]:title             = 'Tatin: First steps'
-[parm]:leanpubExtensions = 1
-[parm]:toc               = 2 3 4
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: First steps'
+description: ''
+keywords: 
+---
 # First steps with the Tatin Client
 
-Before you start reading this document you should have read the document [Introduction.html](./Introduction.html).
+Before you start reading this document you should have read the document [Introduction](introduction.md).
 
-I> Note that you should know what [Semantic Versioning](./SemanticVersioning.html) is all about.
+I> Note that you should know what [Semantic Versioning](semanticversioning.md) is all about.
 
 In this document, additional information, that you might or might not be interested in at this stage, is presented in boxes. You might well skip over them till later.
 
@@ -127,7 +126,7 @@ We are now ready to identify that package by executing `ListPackages` with the `
 
 Note that because packages which share the same group and name but have different major version numbers are considered different packages, the tally of the major version numbers is part of the list.
 
-I> If you wonder why that is, then please read the document discussing [Semantic Versioning](./SemanticVersioning.html).
+I> If you wonder why that is, then please read the document discussing [Semantic Versioning](semanticversioning.md).
 
 
 ## Consuming packages

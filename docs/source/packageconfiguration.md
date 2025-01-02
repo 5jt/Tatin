@@ -1,12 +1,11 @@
-[parm]:leanpubExtensions = 1
-[parm]:title             = 'Tatin: Package Configuration'
-[parm]:toc               = 2 3 4
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Package Configuration'
+description: ''
+keywords: 
+---
 # Tatin's Package Configuration File
 
-## Overview 
+## Overview
 
 Every package has a configuration file: that's one of the things that make it a package. It defines all that is required to consume the package and to announce its existence to the world.
 
@@ -448,7 +447,7 @@ Examples of valid version numbers are:
 
 The optional build number, separated by the `+` sign, is ignored by Tatin.
 
-For details see the [Tatin and Semantic Versioning](./SemanticVersioning.html "SemanticVersioning.html") document. 
+For details see the [Tatin and Semantic Versioning](semanticversioning.md) document. 
 
 #### APL System variables: ⎕IO and ⎕ML {#SysVars}
 

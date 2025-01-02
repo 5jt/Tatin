@@ -1,9 +1,8 @@
-[parm]:leanpubExtensions = 1
-[parm]:title             = 'Tatin: Installing & Updating'
-[parm]:toc               = 2 3
-[parm]:numberHeaders     = 2 3 4 5 6
-
-
+---
+title: 'Tatin: Installing & Updating'
+description: ''
+keywords: 
+---
 # Installing and Updating the Tatin Client
 
 ## Introduction
