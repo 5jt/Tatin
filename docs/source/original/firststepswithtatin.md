@@ -1,72 +1,28 @@
 ---
-title: 'Get started with Tatin'
+title: 'Tatin: First steps'
 description: ''
-keywords: apl, tatin, tutorial
+keywords: 
 ---
-# Get started with Tatin
+# First steps with the Tatin Client
 
+Before you start reading this document you should have read the document [Introduction](introduction.md).
 
-## Install
+I> Note that you should know what [Semantic Versioning](semanticversioning.md) is all about.
 
-=== "Dyalog 19.0"
+In this document, additional information, that you might or might not be interested in at this stage, is presented in boxes. You might well skip over them till later.
 
-    Tatin is already installed, but needs to be activated.
+## Where we start from
 
-        ]Activate Tatin
+We assume that you have the Tatin client installed and ready for use. That means that this command gives you a list with all Tatin user commands available to you:
 
-=== "Dyalog 18.2"
+```
+      ]tatin -?
+```
 
-    :fontawesome-solid-download:
-    Download the latest release of the Tatin client from <https://github.com/aplteam/Tatin/releases>
+## What Registries are available
 
-    Unzip the file and move the directory `Tatin/` to the installation folder:
+After a fresh installation you might wonder what Registries are available to you.
 
-    === "Version-specific"
-
-        These file paths are specific to Version 18.2:
-
-        :fontawesome-brands-linux:
-        Linux
-        ```
-        /home/<⎕AN>/dyalog.182U<bit>.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-apple:
-        macOS
-        ```
-        /Users/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-windows:
-        Windows
-        ```
-        C:\Users\<⎕AN>\Documents\Dyalog APL[-64] 18.2 Unicode Files\SessionExtensions\CiderTatin
-        ```
-
-    === "Version-agnostic"
-
-        These file paths make Tatin available to all Dyalog versions:
-
-        :fontawesome-brands-linux:
-        Linux
-        ```
-        /home/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-apple:
-        macOS
-        ```
-        /Users/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-windows:
-        Windows
-        ```
-        C:\Users\<⎕AN>\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
-        ```
-
-
-
-## Look for registries
-
-
-Initially Tatin knows only the principal and test Tatin registries.
 
 ```
       ]tatin.ListRegistries
@@ -76,90 +32,289 @@ tatin      https://tatin.dev/         0      100          0           ***
 test-tatin https://test.tatin.dev/    0        0          0           ***
 ```
 
-When you want to start using other Tatin registries, remote or on your local machine, edit the [user settings](tatinusersettings.md). 
+At this point Tatin only knows about the principal Tatin Registry and the Tatin test Registry. If you wish to access other Registries on the Internet or your company's Intranet, or you want to host and publish packages locally (in all likelihood your own ones), then you must change the user settings. 
+
+All these topics --- and related ones --- are discussed in a separate document: "TatinUserSettings.html". Here we try to keep things simple.
 
 
+## Looking around
 
-## Look for packages
+### Listing packages
 
-List all the packages on the principal registry.
+You may list _all_ packages managed by Tatin's principal Registry with this command:
 
 ```
-      ]TATIN.ListPackages
- Registry: https://tatin.dev              ≢ 60 
- Group & Name                 # major versions 
- ------------                 ---------------- 
- abrudz-sort                                 1 
- aplteam-ADOC                                1 
- aplteam-APLGit2                             1 
- aplteam-APLGUI                              1 
- aplteam-APLProcess                          1 
+      ]tatin.ListPackages [tatin]
+ Group & Name             ≢ Major versions
+ -----------------------  ----------------
+ aplteam-APLTreeUtils2                   1 
+ aplteam-CodeCoverage                    2 
+ aplteam-Compare                         1 
+ aplteam-CompareSimple                   3 
  ...
 ```
-Each package is identifed by a name and group name.
-The listing shows the number of major versions of the package.
 
-You can restrict the listing to a single group.
+The square brackets around "tatin" declare that string to be an alias. Without the square brackets Tatin would assume the argument to be either a local path or a URL like `https://localhost/my_tatin_server`
 
-    ]TATIN.ListPackages -group=davin
+I> Note that because `[tatin]` is the principal Tatin Registry you might well omit `[tatin]`: without an argument the command --- like some others --- would act on the principal Registry anyway.
 
-Each package is tagged.
+If you specify a `?` instead of `[tatin]` then Tatin will present a list with all known Registries to you for selecting the right one:
+
 ```
-      ]TATIN.ListPackages -tag=markdown
- Registry: https://tatin.dev               ≢ 4 
- Group & Name                 # major versions 
- ------------                 ---------------- 
- aplteam-Laguntza                            2 
- aplteam-MarkAPL                             3 
+]listPackages ? 
+--- Select Tatin Registry -----------------------------------------------------
+   1.  [local]               https://localhost/       
+   2.  [tatin]               https://tatin.dev/       
+   3.  [tatin-test]          https://test.tatin.dev/  
+
+Select one item (q=quit) :
 ```
 
-## Install packages
+A> ### Local and remote Registries
+A>
+A> The Tatin client can access packages that are managed by a Tatin Server, but also Registries that are locally available (read: not managed by a server). 
+A> In order to address a local Registry you would just provide the path to it.
+A>
+A> Of course features like listing just the packages that carry a specific tag are only available when a Registry is managed by a Tatin server.
 
-Suppose you want to use the `MarkAPL` package in an application you are developing, which we will call a project. 
-Suppose the project lives in `/Foo`.
+### Searching by tag(s)
 
-Install the package as part of the Foo project.
-```    
-      ]TATIN.InstallPackages MarkAPL /Foo/packages
+`]tatin.ListPackages` will return a list with _all_ packages available in the given Registry, aggregated by major version number. Now that can be a pretty long list. It might therefore be a good idea to tell something about what you are looking for in order to make the server shrink the list.
 
-Sure you want to create and install into
-/Foo/packages ? (Y/n) Y
- Installed into /Foo/packages:
-  aplteam-MarkAPL-13.1.0                                                                
- In order to load all dependecies (including newly installed ones) into the WS execute:
-       ]Tatin.LoadDependencies "/Foo/packages"
+* If you happen to know the group name, you may specify `-group=whatever`: then only packages of the group "whatever" are listed
+* Every package is tagged with keywords
+
+  You may specify one or more tags, for example `-tag=smtp,email`
+
+A> ### Searching for tags: the strategy
+A>
+A> 1. First Tatin tries to find 100%-matches
+A> 1. In case there is no match, Tatin tries to find it _somewhere_ (`⍷`)
+A> 1. In case there is still no match a fuzzy search is performed
+A> 
+A> The fuzzy search would find "installer" when you enter "intaller" and "datetime" when you enter "dadetime". It has limits, but in practice it works quite well unless the tags are very short: typing "AY" when you meant "AI" would not work.
+A>
+A> Notes:
+A> * The strategy outlined above is applied on each tag independently.
+A> * Searching for multiple tags would mean that only packages would qualify that carry a hit for _all of them_.
+A> * Searching for tags is an action that is carried out by a Tatin Server. That means that specifying `-tags=` makes sense only in HTTP requests: only then is there a server on the other side that can process the request.
+A> * This feature's sole purpose is to overcome typos; it should not be used deliberately --- as a shortcut for example --- since the result may be incorrect.
+
+Let's assume you need a tool for converting [Markdown](https://en.wikipedia.org/wiki/Markdown "Link to the Wikipedia") into HTML, and that the package should run on all platforms.
+
+The user command `ListTags` takes one or more tags and returns a list of tags that were also found in the packages that carried the specified tags:
+
+
 ```
-`MarkAPL` specifies neither group nor version number.
-The name is unique on the principal registry; the latest version is installed by default.
+            ]Tatin.ListTags [tatin] -tags=marckdown
+ converter
+ help 
+ markdown  
+```
 
-The `/Foo/packages` folder has been created and contains:
+Note that although we misspelled "markdown" as "marckdown" it was still identified correctly. 
 
-    apl-buildlist.json
-    apl-dependencies.txt
-    aplteam-APLTreeUtils2-1.4.0
-    aplteam-CommTools-1.8.1
-    aplteam-FilesAndDirs-5.8.0
-    aplteam-MarkAPL-13.1.0
-    aplteam-OS-3.1.1
+We are now ready to identify that package by executing `ListPackages` with the `-tags` option:
 
-(You might see different version numbers.)
+```
+           ]tatin.ListPackages [tatin] -tags=markdown
+ Group & Name     ≢ major versions
+ ---------------  ---------------- 
+ aplteam-MarkAPL                 1
+
+```
+
+Note that because packages which share the same group and name but have different major version numbers are considered different packages, the tally of the major version numbers is part of the list.
+
+I> If you wonder why that is, then please read the document discussing [Semantic Versioning](semanticversioning.md).
 
 
-## Load packages
+## Consuming packages
 
-MarkAPL has been installed in the project.
-Now to get it into the active workspace.
+### Installing packages
 
-MarkAPL is one (the only one) of the dependencies of Foo.
+Imagine you want to use the `MarkAPL` package in an application you are currently working on, which we will call a project. Let's also assume that this project is named "Foo" and lives in `/Foo/`.
+
+The first step is to install the package as part of the project "Foo":
+
+```
+      ]tatin.InstallPackages [tatin]/MarkAPL /Foo/packages
+```
+
+Notes:
+
+* `[tatin]` tells the Tatin client to load `MarkAPL` from the server the alias `tatin` is pointing to: https://tatin.dev
+* The `/` between `[tatin]` and `MarkAPL` is optional
+* `MarkAPL` specifies neither a group nor a version number
+  * If the name `MarkAPL` is used within more than just one group the operation will fail
+  * Because no version information was provided at all, the very latest version will be installed
+
+#### What got installed?
+
+Once you executed the above statement, the `packages/` sub directory carries these files:
+
+```
+apl-buildlist.json
+apl-dependencies.txt
+aplteam-APLTreeUtils2-1.1.1
+aplteam-FilesAndDirs-5.0.1
+aplteam-MarkAPL-11.0.1
+aplteam-OS-3.0.1
+```
+
+Note that you might see different version numbers.
+
+* The folder `aplteam-MarkAPL-11.0.1` contains the `MarkAPL` package
+* The file `apl-dependencies.txt` contains just one line: `aplteam-MarkAPL-11.0.1`
+
+  That's because your project "Foo" depends so far on just one package, `MarkAPL`
+
+* The file `apl-buildlist.json` carries the build list
+
+
+#### The build list
+
+The build list will be used to get all required packages into the workspace. This is how the build list looks like so far:
+
+```
+{
+  packageID: [
+    "aplteam-MarkAPL-11.0.1",
+    "aplteam-OS-3.0.1",
+    "aplteam-FilesAndDirs-5.0.1",
+    "aplteam-APLTreeUtils2-1.1.1",
+  ],
+  principal: [
+    1,
+    0,
+    0,
+    0,
+  ],
+  url: [
+    "https://tatin.dev/",
+    "https://tatin.dev/",
+    "https://tatin.dev/",
+    "https://tatin.dev/",
+   ],
+}
+```
+
+Notes:
+
+* There is one package that has `principal` set to 1: `MarkAPL`. That's because we have explicitly asked for it
+* All other packages got installed because `MarkAPL` depends on them, either directly or indirectly
+* The URL points to where the packages were loaded from
+
+#### How does a package look like on disk?
+
+To answer this question we need to look into the directory `/Foo/packages/aplteam-MarkAPL-11.0.1`:
+
+```
+apl-dependencies.txt
+apl-package.json
+aplteam-MarkAPL-11.0.1/Files
+MarkAPL.aplc
+```
+
+Again `apl-dependencies.txt` lists all dependencies, this time all the packages `MarkAPL` depends on.
+
+The file `apl-package.json` describes the `MarkAPL` package:
+
+```
+{
+  api: "MarkAPL",
+  assets: "Files",
+  date: 20210725.153851,
+  description: "Converts Markdown to HTML5",
+  documentation: "",
+  group: "aplteam",
+  project_url: "https://github.com/aplteam/MarkAPL",
+  io: 1,
+  maintainer: "kai@aplteam.com",
+  minimumAplVersion: "18.2",
+  lx: "",
+  ml: 1,
+  name: "MarkAPL",
+  os_lin: 1,
+  os_mac: 1,
+  os_win: 1,
+  source: "MarkAPL.aplc",
+  tags: "markdown,converter",
+  uri: "https://tatin.dev/",
+  version: "11.0.1+232",
+}
+```
+
+Note that `MarkAPL` is a class. If you would leave `api` empty then when `MarkAPL` is loaded into `#` you would need to call the `Version` function with:
+
+```
+#.MarkAPL.MarkAPL.Version
+```
+
+By defining `MarkAPL` as the api this suffices:
+
+```
+#.MarkAPL.Version
+```
+
+The `api` parameter is discussed in detail in the "PackageConfiguration" document.
+
+#### Files assets
+
+Note that the file `apl-package.json` specifies `assets: "Files"`. That means that there are assets, and that they can be found in the `Files/` sub directory.
+
+In case of `MarkAPL` these are a bunch of CSS and HTML files:
+
+```
+BlackOnWhite_print.css       
+BlackOnWhite_screen.css
+Dark_screen.css
+Dark_print.css
+LeanPubExtensions.html
+MarkAPL.html
+MarkAPL_CheatSheet.html
+MarkAPL_for_Programmers.html
+MarkAPL_print.css
+MarkAPL_screen.css
+QuickIntro.html
+Styles.html
+```
+
+Of course it could be anything required by the package.
+
+A> ### Regarding Assets
+A>
+A> Note that assets are to be consumed, meaning that a package _**must not**_ write to the assets folder.
+
+
+#### Tatin and Cider
+
+If the project manager [Cider](https://github.com/aplteam/cider) is installed you may take advantage of it:
+
+If you are going to install packages into a project managed by Cider, then you may specify a Cider alias in order to identify the first part of the install path.
+
+* If the selected Cider project has only one Tatin folder defined in its config file, then that one is taken
+
+* If there are multiple Tatin folders defined, the user is questioned which one she wants to install into
+
+It is also possible to specify the package folder explicitly:
+
+```
+]Tatin.InstallPackages [tatin]<pkg-name> [<cider-alias/]/my-path
+```
+
+### Getting a package into the workspace
+
+From the perspective of the application "Foo" all packages are dependencies. Therefore one must issue this command:
+
 ```
       ]tatin.LoadDependencies /Foo/packages #.Foo
 #._tatin.aplteam_MarkAPL_11_0_1 
 ```
 
-!!! tip "Tatin is taciturn"
-
-    Tatin works quietly by default.
-    Use the `-verbose` flag if you need to see more of what is going on when packages are loaded. 
+I> By default Tatin does no jabber when going about its business, but by specifying the `-verbose` flag you can change this: if specified you will see a number of messages printed to the session in order to keep you informed about the progress of loading the packages. 
+I>
+I> At the very least the command prints to the session the name of the namespace into which the package was actually loaded. 
 
 We can use `MarkAPL` by referring to it as `#.Foo.MarkAPL` because Tatin has also established a reference in `#.Foo` named `MarkAPL` that points to the real package:
 

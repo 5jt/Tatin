@@ -3,9 +3,6 @@ title: 'Tatin ReadMe'
 description: ''
 keywords: 
 ---
-
-⍝ Note that the document "Documentation Center" is offered on Tatin's home page is dynamically generated from this page. The <h1> tag will then become an <h2> tag. That's why what normally would be an <h2> tag is an <h3> tag in this document.
-
 Tatin Documentation Center
 ==========================
 
