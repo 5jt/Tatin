@@ -6,11 +6,14 @@ keywords: apl, tatin, tutorial
 # Get started with Tatin
 
 
+!!! abstract "Install, load and use a Tatin package"
+
+
 ## Install
 
 === "Dyalog 19.0"
 
-    Tatin is already installed, but needs to be activated.
+    Tatin is already installed. Activate it.
 
         ]Activate Tatin
 
@@ -25,42 +28,33 @@ keywords: apl, tatin, tutorial
 
         These file paths are specific to Version 18.2:
 
-        :fontawesome-brands-linux:
-        Linux
-        ```
-        /home/<⎕AN>/dyalog.182U<bit>.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-apple:
-        macOS
-        ```
-        /Users/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-windows:
-        Windows
-        ```
-        C:\Users\<⎕AN>\Documents\Dyalog APL[-64] 18.2 Unicode Files\SessionExtensions\CiderTatin
-        ```
+        === ":fontawesome-brands-linux: Linux"
+
+                /home/<⎕AN>/dyalog.182U<bit>.files/SessionExtensions/CiderTatin
+
+        === ":fontawesome-brands-apple: macOS"
+
+                /Users/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin
+
+        === ":fontawesome-brands-windows: Windows"
+
+                C:\Users\<⎕AN>\Documents\Dyalog APL[-64] 18.2 Unicode Files\SessionExtensions\CiderTatin
 
     === "Version-agnostic"
 
         These file paths make Tatin available to all Dyalog versions:
 
-        :fontawesome-brands-linux:
-        Linux
-        ```
-        /home/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-apple:
-        macOS
-        ```
-        /Users/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-        ```
-        :fontawesome-brands-windows:
-        Windows
-        ```
-        C:\Users\<⎕AN>\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
-        ```
+        === ":fontawesome-brands-linux: Linux"
 
+                /home/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
+
+        === ":fontawesome-brands-apple: macOS"
+
+                /Users/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
+
+        === ":fontawesome-brands-windows: Windows"
+
+                C:\Users\<⎕AN>\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
 
 
 ## Look for registries
@@ -69,7 +63,7 @@ keywords: apl, tatin, tutorial
 Initially Tatin knows only the principal and test Tatin registries.
 
 ```
-      ]tatin.ListRegistries
+      ]TATIN.ListRegistries
 Alias      URL                     Port Priority No caching Proxy API-key
 ---------- ----------------------- ---- -------- ---------- ----- -------
 tatin      https://tatin.dev/         0      100          0           ***
@@ -99,12 +93,24 @@ List all the packages on the principal registry.
 Each package is identifed by a name and group name.
 The listing shows the number of major versions of the package.
 
+:fontawesome-solid-arrow-up-right-from-square: [Semantic versioning](https://semver.org)
+
 You can restrict the listing to a single group.
 
     ]TATIN.ListPackages -group=davin
 
-Each package is tagged.
+Packages are tagged.
 ```
+      ]TATIN.ListTags
+ All tags from https://tatin.dev 
+ ------------------------------- 
+  data                           
+  grid                           
+  import                         
+  page                           
+  read                           
+  ...
+
       ]TATIN.ListPackages -tag=markdown
  Registry: https://tatin.dev               ≢ 4 
  Group & Name                 # major versions 
@@ -148,7 +154,7 @@ The `/Foo/packages` folder has been created and contains:
 ## Load packages
 
 MarkAPL has been installed in the project.
-Now to get it into the active workspace.
+Now load it into the active workspace.
 
 MarkAPL is one (the only one) of the dependencies of Foo.
 ```
@@ -161,6 +167,48 @@ MarkAPL is one (the only one) of the dependencies of Foo.
     Tatin works quietly by default.
     Use the `-verbose` flag if you need to see more of what is going on when packages are loaded. 
 
+
+## Documentation
+
+We now have `#.Foo.MarkAPL` loaded – but how do we use it?
+
+!!! tip "The ADoc convention lets Tatin packages include their own documentation."
+
+```
+      ]ADoc #.Foo.MarkAPL
+]Open /private/tmp/sjt_114214886.html
+Watch your browser
+```
+Executing the `]Open` user command pops a browser window.
+```
+      ]Open /private/tmp/sjt_114214886.html
+```
+
+![MarkAPL documentation](img/markapl-documentation.png)
+
+
+## Test
+
+Test an example from the documentation.
+```apl
+      MyMarkdown←'# MarkAPL' 'All about **_MarkAPL_**'
+      (html ns)←#.Foo.MarkAPL.Markdown2HTML MyMarkdown
+      ↑html
+<div class="h_tag">                                       
+<a href="#markapl" id="markapl" class="autoheader_anchor">
+<h1 data-id="MarkAPL">MarkAPL</h1>                        
+</a>                                                      
+</div>                                                    
+<p>All about <strong><em>MarkAPL</em></strong></p>        
+      ns
+#._tatin.aplteam_MarkAPL_13_1_0.[Namespace]
+```
+**Congratulations** You have installed a Tatin package in your project, loaded it into your active workspace, and confirmed you can use it.
+
+
+
+
+<!-- FIXME move elsewhere
 We can use `MarkAPL` by referring to it as `#.Foo.MarkAPL` because Tatin has also established a reference in `#.Foo` named `MarkAPL` that points to the real package:
 
 
@@ -469,11 +517,4 @@ Note that `LX` does not exist in case no such function is defined, or the functi
 
 Character vector that holds the address of a Tatin server the package was loaded from, or the full name of a ZIP file.
 
-
-
-
-
-
-
-
-
+ -->

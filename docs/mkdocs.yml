@@ -7,12 +7,11 @@ docs_dir: source
 nav:
   - Revised:
     - About Tatin: index.md
-    - Get started: firststepswithtatin.md
+    - Get started: get-started.md
     - Caching: caching.md
     - Github: github.md
     - Installing the client: installingandupdatingthetatinclient.md
     - Installing the server: installingthetatinserver.md
-    # - Introduction: introduction.md
     - Package configuration: packageconfiguration.md
     - Publishing packages: publishingpackages.md
     - Release notes: releasenotes.md
@@ -50,8 +49,8 @@ theme:
   custom_dir: overrides
   favicon: 'img/favicon.ico'
   logo:  'img/tatin-logo.svg'
-  # icon:
-  #   logo: dyalog/cider-logo
+  icon:
+    logo:  'img/tatin-logo.svg'
   name: material
   font:
       text: Be Vietnam Pro
@@ -69,8 +68,8 @@ theme:
 extra:
   version_maj: 0
   version_majmin: 0.112
-  version:
-    provider: mike
+  # version:
+  #   provider: mike
 
 extra_css:
   - style/main.css
