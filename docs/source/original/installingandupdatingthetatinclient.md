@@ -38,44 +38,45 @@ In order to activate Tatin, execute
 
 and follow the instructions.
 
-!> ### Activating, deactivating, resetting, updating
-=> #### Activating
-=> Activating means to copy Tatin (and possibly Cider) from the Dyalog installation directory's sub folder `Experimental\CiderTatin\` to either a version specific folder (the default) or a version agnostic folder in your home directory, and to instruct the user command framework to scan the chosen directory for user commands.
-=> 
-=> Which folder that is exactly depends on the operating system:
-=> 
-=> ```
-=> ⍝⍝⍝ Version specific
-=> 
-=> ⍝ Windows
-=> <HOME>\Documents\Dyalog APL-64 19.0 Unicode Files
-=> 
-=> ⍝ Others
-=> <HOME>/dyalog.190U64.files
-=> 
-=> ⍝⍝⍝ Version agnostic
-=> 
-=> ⍝ Windows
-=> <HOME>\Documents\Dyalog APL Files
-=> 
-=> ⍝ Others
-=> <HOME>/dyalog.files
-=> 
-=> ```
-=> #### Deactivating
-=> Deactivating means to remove Tatin (and possibly Cider) from that folder. It has its own user command:
-=> 
-=> ```
-=> ]Deactivate [all|cider|tatin] [-versionagnostic]
-=> ```
-=> #### Resetting
-=> Resetting means to replace the current version by the one the installation originally came with.
-=> 
-=> This can be useful when you have updated Tatin with `]UpdateTatin` and then find the new version to be buggy.
-=> #### Updating
-=> Updating means that the version that is currently available is updated to the latest version available from GitHub.
-=> 
-=> This can be achieved with the user command `]UpdateTatin`.
+### Activating, deactivating, resetting, updating
+
+#### Activating
+Activating means to copy Tatin (and possibly Cider) from the Dyalog installation directory's sub folder `Experimental\CiderTatin\` to either a version specific folder (the default) or a version agnostic folder in your home directory, and to instruct the user command framework to scan the chosen directory for user commands.
+
+Which folder that is exactly depends on the operating system:
+
+```
+⍝⍝⍝ Version specific
+
+⍝ Windows
+<HOME>\Documents\Dyalog APL-64 19.0 Unicode Files
+
+⍝ Others
+<HOME>/dyalog.190U64.files
+
+⍝⍝⍝ Version agnostic
+
+⍝ Windows
+<HOME>\Documents\Dyalog APL Files
+
+⍝ Others
+<HOME>/dyalog.files
+
+```
+#### Deactivating
+Deactivating means to remove Tatin (and possibly Cider) from that folder. It has its own user command:
+
+```
+]Deactivate [all|cider|tatin] [-versionagnostic]
+```
+#### Resetting
+Resetting means to replace the current version by the one the installation originally came with.
+
+This can be useful when you have updated Tatin with `]UpdateTatin` and then find the new version to be buggy.
+#### Updating
+Updating means that the version that is currently available is updated to the latest version available from GitHub.
+
+This can be achieved with the user command `]UpdateTatin`.
 
 
 ### 18.2
@@ -87,37 +88,37 @@ Instructions:
 2. Unzipping the file will produce a subdirectory named `Tatin/` that you should then place in the appropriate installation folder discussed in a second
 
 
-!> ### What is the correct installation folder?
-=> Tatin must be installed into one of these folders dependening on your OS:
-=> 
-=> Windows:
-=> ```
-=> C:\Users\<⎕AN>\Documents\Dyalog APL[-64] <version> Unicode Files\SessionExtensions\CiderTatin
-=> ```
-=> 
-=> Linux:
-=> ```
-=> /home/<⎕AN>/dyalog.<version>U<bit>.files/SessionExtensions/CiderTatin
-=> ```
-=> 
-=> Mac OS:
-=> ```
-=> /Users/<⎕AN>/dyalog.<version>U<bit>.files/SessionExtensions/CiderTatin
-=> ```
-=> However, these folders are version specific. Instead you might consider installing them into a version
-=> agnostic folder in order to make Tatin available to several versions of Dyalog at the same time.
-=> 
-=> For that install into one of these folders:
-=> ```
-=> ⍝ Windows
-=> C:\Users\<⎕AN>\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
-=> 
-=> ⍝ Linux
-=> /home/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-=> 
-=> ⍝ Mac OS
-=> /Users/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-=> ```
+### What is the correct installation folder?
+Tatin must be installed into one of these folders dependening on your OS:
+
+Windows:
+```
+C:\Users\<⎕AN>\Documents\Dyalog APL[-64] <version> Unicode Files\SessionExtensions\CiderTatin
+```
+
+Linux:
+```
+/home/<⎕AN>/dyalog.<version>U<bit>.files/SessionExtensions/CiderTatin
+```
+
+Mac OS:
+```
+/Users/<⎕AN>/dyalog.<version>U<bit>.files/SessionExtensions/CiderTatin
+```
+However, these folders are version specific. Instead you might consider installing them into a version
+agnostic folder in order to make Tatin available to several versions of Dyalog at the same time.
+
+For that install into one of these folders:
+```
+⍝ Windows
+C:\Users\<⎕AN>\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
+
+⍝ Linux
+/home/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
+
+⍝ Mac OS
+/Users/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
+```
 
 As a result you should see something like this:
 
@@ -138,17 +139,17 @@ Though Tatin's user command script etc. is now in place, Dyalog does not know ab
 Execute one of the following commands:
 
 !> ### Windows 
-=> ```
-=> ]SALT.Settings cmddir ",C:\Users\<⎕AN>\Documents\Dyalog APL-64 18.2 Unicode Files\SessionExtensions\CiderTatin" -p
+```
+]SALT.Settings cmddir ",C:\Users\<⎕AN>\Documents\Dyalog APL-64 18.2 Unicode Files\SessionExtensions\CiderTatin" -p
   
 !> ### Linux
-=> ```
-=> ]SALT.Settings cmddir ",/home/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin -p
+```
+]SALT.Settings cmddir ",/home/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin -p
 
 !> ###  Mac OS
-=> ```
-=> ]SALT.Settings cmddir ",/Users/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin" -p
-=> ```
+```
+]SALT.Settings cmddir ",/Users/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin" -p
+```
 
 Notes: 
 
@@ -199,19 +200,19 @@ Where to find the `MyUCMDs/` folder depends on your operating system:
 
 Note that only on Windows is the folder created as part of the installation routine. On other platforms you must create the folder yourself.
 
-A> ### How does `setup.dyalog` work?
-A>
-A> Whenever an instance of Dyalog is fired up, it checks whether such a script exists. If that is the case it checks whether there is a function `Setup` in the script. 
-A>
-A> If there is such a function then it is expected to be monadic; it will be executed automatically as part of the instantiating process of Dyalog APL.
-A>
-A> This can be used for many things like...
-A>
-A> * making changes to the session
-A> * specifying function keys 
-A> * loading stuff into `⎕SE`
-A> 
-A> In version 19.0 the `Run.aplf` function offers a better way to achieve that, rendering `setup.dyalog` superfluous.
+### How does `setup.dyalog` work?
+
+Whenever an instance of Dyalog is fired up, it checks whether such a script exists. If that is the case it checks whether there is a function `Setup` in the script. 
+
+If there is such a function then it is expected to be monadic; it will be executed automatically as part of the instantiating process of Dyalog APL.
+
+This can be used for many things like...
+
+* making changes to the session
+* specifying function keys 
+* loading stuff into `⎕SE`
+
+In version 19.0 the `Run.aplf` function offers a better way to achieve that, rendering `setup.dyalog` superfluous.
 
 ### There is no such script yet
 
@@ -346,12 +347,15 @@ There is always the possibility that the update process is itself buggy. Calling
 
 
 
-!> 18.2 
-=> The easiest way to recover it by uninstalling and then installing Tatin again.
-!> 19.0 and later
-=> 1. Execute `]DeActivate tatin` --- that removes Tatin
-=> 2. Execute `]Activate tatin` --- that brings back the version of Tatin that your installation originally came with
-=> 3. Execute `]Tatin.UpdateTatin` --- that will try to update to the latest version
+=== "18.2 "
+
+    The easiest way to recover it by uninstalling and then installing Tatin again.
+
+=== "19.0 and later"
+
+    1. Execute `]DeActivate tatin` --- that removes Tatin
+    2. Execute `]Activate tatin` --- that brings back the version of Tatin that your installation originally came with
+    3. Execute `]Tatin.UpdateTatin` --- that will try to update to the latest version
 
 
 
