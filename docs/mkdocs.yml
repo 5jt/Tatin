@@ -8,6 +8,7 @@ nav:
   - Revised:
     - About Tatin: index.md
     - Get started: get-started.md
+    - User commands: user-commands.md
     - Caching: caching.md
     - Github: github.md
     - Installing the client: installingandupdatingthetatinclient.md
