@@ -248,7 +248,7 @@ If you want batch tests to stop in case of a problem, you must specify the optio
 
 1. Check `#.Tatin.Registry.Version` for being correct
 2. Check `#.Tatin.Registry.History` for being correct
-3. Check the document `docs/ReleaseNotes.md` for being correct
+3. Check the document `docs/source/release-notes.md` for being correct
 4. Ask Cider how to "Make" a new version with `]Cider.Make`
 
 It will tell you to execute:

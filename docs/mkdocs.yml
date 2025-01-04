@@ -14,7 +14,6 @@ nav:
     - Installing the server: installingthetatinserver.md
     - Package configuration: packageconfiguration.md
     - Publishing packages: publishingpackages.md
-    - Release notes: releasenotes.md
     - Run Dyalog behind Apache: rundyalogbehindapache.md
     - Semantic versioning: semanticversioning.md
     - Server tips and tricks: server-tipsandtricks.md
@@ -24,6 +23,7 @@ nav:
     - Load and update strategy: tatinsloadandupdatestrategy.md
     - User settings: tatinusersettings.md
     - Usage data: usagedata.md
+    - Release notes: release-notes.md
   - Original:
     - Home: original/_readme.md
     - Caching: original/caching.md
