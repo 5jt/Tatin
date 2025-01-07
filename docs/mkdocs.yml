@@ -9,22 +9,28 @@ nav:
     - About Tatin: index.md
     - Get started: get-started.md
     - User commands: user-commands.md
-    - Caching: caching.md
-    - Github: github.md
-    - Installing the client: installingandupdatingthetatinclient.md
-    - Installing the server: installingthetatinserver.md
-    - Package configuration: packageconfiguration.md
-    - Publishing packages: publishingpackages.md
-    - Run Dyalog behind Apache: rundyalogbehindapache.md
-    - Semantic versioning: semanticversioning.md
-    - Server tips and tricks: server-tipsandtricks.md
-    - Syntax reference: syntaxreference.md
-    - Tatin and OneDrive: tatinandonedrive.md
-    - Tatin for contributors: tatinforcontributors.md
-    - Load and update strategy: tatinsloadandupdatestrategy.md
-    - User settings: tatinusersettings.md
-    - Usage data: usagedata.md
+    - API functions: api.md
+    - (User settings): tatinusersettings.md
+    - (Caching): caching.md
+    - (Installing the client): installingandupdatingthetatinclient.md
+    - (Tatin and OneDrive): tatinandonedrive.md
+    - (Load and update strategy): tatinsloadandupdatestrategy.md
+    - Updating Tatin: update-tatin.md
+    - Glossary: glossary.md
     - Release notes: release-notes.md
+    - Publish packages:
+      - (Package configuration): packageconfiguration.md
+      - (Public interface): public-interface.md
+      - (Publishing packages): publishingpackages.md
+      - (Versioning): versioning.md
+    - Host a registry:
+      - (Install the server): installingthetatinserver.md
+      - (Server tips and tricks): server-tipsandtricks.md
+      - (Run Dyalog behind Apache): rundyalogbehindapache.md
+      - (Usage data): usagedata.md
+    - Contribute to Tatin:
+      - (Tatin for contributors): tatinforcontributors.md
+      - (Github): github.md
   - Original:
     - Home: original/_readme.md
     - Caching: original/caching.md
