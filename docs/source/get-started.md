@@ -64,10 +64,10 @@ Initially Tatin knows only the principal and test Tatin registries.
 
 ```
       ]TATIN.ListRegistries
-Alias      URL                     Port Priority No caching Proxy API-key
----------- ----------------------- ---- -------- ---------- ----- -------
-tatin      https://tatin.dev/         0      100          0           ***
-test-tatin https://test.tatin.dev/    0        0          0           ***
+ Alias       URL                      ID                                    Port  Priority  No-Caching  Proxy 
+ ----------  -----------------------  ------------------------------------  ----  --------  ----------  ----- 
+ tatin       https://tatin.dev/       29fbeb21-c6a0-4691-b6b6-8a8dd15b896c     0       100           0        
+ tatin-test  https://test.tatin.dev/  2a282315-bfd6-4b15-8fe7-8c7126aa3e2e     0         0           0        
 ```
 
 When you want to start using other Tatin registries, remote or on your local machine, edit the [user settings](tatinusersettings.md). 
