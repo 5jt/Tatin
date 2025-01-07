@@ -122,7 +122,50 @@ However, things can get pretty complicated even with Semantic Versioning; see th
 
 Semantic versioning came into being via this website:
 
-[https://semver.org/](https://semver.org/ {target="_blank"})
+[https://semver.org/](https://semver.org/)
+
+<!-- 
+FIXME: incorporate
+
+    ??? detail "Version number is saved in the package configuration"
+
+        A package configuration file **must** contain a version number, but many developers want the version number also available in their code. 
+
+        `BuildPackage` is part of Tatin, so keeps the `version` information in the package configuration file. 
 
 
+!!! warning "In Version 0.117.0 the rules for bumping the build number changed."
 
+##### "version" starts with a "+"
+
+The "+" makes it a rule. It must come with three digits separated by dots. The digits may be just 0 or 1.
+
+The rules:
+
+
+**--- Changed in 0.117.0 ---**
+
+Such a rule has no impact on the build number: 
+
+* If the package config file has a build number as part of `version`, that build number is bumped
+* If the package config file has no build number nothing happens (starting with version 0.117.0)
+
+  However, in such a case you might want to force a build number into the package config file. This can be achieved by adding a trailing `+`, for example `+1.0.0+`. (Of course, you can also edit the config file and add `+0` at the end of `version`)
+
+  Either way you end up with a build number 1.
+
+**--- End of change ---**
+
+##### "version" does not start with a "+"
+
+**--- Changed in 0.117.0 ---**
+
+* If `version` is empty, then just the build number in the config file is bumped, if there is one.
+* If `version` is not empty but does not carry a build number, then it replaces the version information.
+
+  If the config file carries a build number , it is bumped.
+* If `version` is not empty and includes a build number, then it replaces the version information including the build number. That build number is then bumped.
+
+**--- End of change ---**
+
+ -->
