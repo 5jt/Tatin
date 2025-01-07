@@ -5,7 +5,7 @@ keywords:
 ---
 # Tatin's Load and Update Strategy
 
-Before you read this document, you have to have a good understanding of what Semantic Versioning is. If that's the case then carry-on reading, otherwise please read [SemanticVersioning](semanticversioning.md) first.
+To read this document, you need a good understanding of semantic versioning. See [Versioning](versioning.md).
 
 ## The Strategy Problem
 
