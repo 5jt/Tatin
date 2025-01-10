@@ -19,9 +19,10 @@ nav:
     - Glossary: glossary.md
     - Release notes: release-notes.md
     - Publish packages:
+      - (Publishing packages): publishing-packages.md
+      - User commands: user-commands-publish.md
       - (Package configuration): packageconfiguration.md
       - (Public interface): public-interface.md
-      - (Publishing packages): publishing-packages.md
       - (Versioning): versioning.md
     - Host a registry:
       - (Install the server): installingthetatinserver.md

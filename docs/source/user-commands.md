@@ -5,26 +5,23 @@ keywords: apl,dyalog,tatin,ui
 ---
 # User commands
 
-!!! abstract "User commands are Tatin’s user interface"
+!!! abstract "User commands for using Tatin packages"
 
-[BuildPackage](#build-package)             [ListTags](#list-tags)
-[Cache](#cache)                    [ListVersions](#list-versions)
-[CheckForLaterVersion](#check-for-later-version)     [LoadDependencies](#load-dependencies)
-[CopyRegistry](#copy-registry)             [LoadPackages](#load-packages)
-[CreatePackage](#create-package)            [LoadTatin](#load-tatin)
-[Debug](#debug)                    [Maintenance](#maintenance)
-[DeletePackages](#delete-packages)           [PackageConfig](#package-config)
-[DeprecatePackage](#deprecate-package)         [PackageDependencies](#package-dependencies)
-[Documentation](#documentation)            [Ping](#ping)
-[FindDependencies](#find-dependencies)         [PublishPackage](#publish-package)
-[GetDeletePolicy](#get-delete-policy)          [ReInstallDependencies](#reinstall-dependencies)
-[Init](#init)                     [UnInstallPackages](#uninstall-packages)
-[InstallPackages](#install-packages)          [UpdateTatin](#update-tatin)
-[ListDeprecated](#list-deprecated)           [UsageData](#usage-data)
-[ListLicenses](#list-licenses)             [UserSettings](#user-settings)
-[ListPackages](#list-packages)             [Version](#version)
-[ListRegistries](#list-registries)
+[Cache](#cache)                   [LoadDependencies](#load-dependencies)
+[CheckForLaterVersion](#check-for-later-version)    [LoadPackages](#load-packages)
+[Documentation](#documentation)           [LoadTatin](#load-tatin)
+[FindDependencies](#find-dependencies)        [Maintenance](#maintenance)
+[Init](#init)                    [PackageConfig](#package-config)
+[InstallPackages](#install-packages)         [PackageDependencies](#package-dependencies)
+[ListDeprecated](#list-deprecated)          [Ping](#ping)
+[ListLicenses](#list-licenses)            [ReInstallDependencies](#reinstall-dependencies)
+[ListPackages](#list-packages)            [UnInstallPackages](#uninstall-packages)
+[ListRegistries](#list-registries)          [UpdateTatin](#update-tatin)
+[ListTags](#list-tags)                [UserSettings](#user-settings)
+[ListVersions](#list-versions)            [Version](#version)
 {: .typewriter}
+
+(There are more [user commands for publishing packages](user-commands-publish.md).)
 
 User commands and their options are case-insensitive.
 They all have help built in, for example
@@ -81,33 +78,7 @@ patch | patch number
 
     When scanning registries, Tatin scans all registries listed in the [user settings](user-settings.md) with a priority above 0.
 
-
 ---
-## :fontawesome-solid-terminal: Build package
-
-    ]TATIN.BuildPackage [source] [target]
-
-Where `source` and `target` are paths to folders, write the contents of the former as a ZIP in the latter,
-bumping the build number unless the `version` option sets it.
-
-Folder `source` must contain a file `apl-package.json` defining the package.
-
-You can omit `source` and/or `target` if the source is a Cider project.
-
-The command asks you to confirm any assumptions.
-
----|---
-bump=         | Either `patch` or `minor` or `major`: bump that part of the version number, together with any build number. Affects both the package and its config file.
-dependencies= | Find dependencies in this subfolder of the project. (Rarely need to specify this: see [Publishing Packages](publishing-packages.md).)
-tatinVars=    | Update `TatinVars.CONFIG` in this namespace.
-version=      | <p>Set the version number in both the package project and the package to be created. You have two options e.g.</p><ul markdown><li>`-version=1.2.3-beta-2`</li><li markdown>`-version=1.2.3-beta-2+123`</li></ul><p>Both set the version. The former bumps the build number; the latter sets it.</p>
-
-Note that `bump=` and `version=` are mutually exclusive.
-
-:fontawesome-solid-code: API:
-[`BuildPackage`](api.md#build-package)
-
-
 
 ## :fontawesome-solid-terminal: Cache
 
@@ -161,139 +132,6 @@ To update to latest minor version use [`]Tatin.ReInstallDependencies`](#reinstal
 (New major versions need installing.)
 
 
-## :fontawesome-solid-terminal: Copy registry
-
-    ]TATIN.CopyRegistry [source] [target]
-
-Where
-
--   `source` is the URL or alias of a Tatin registry (defaults to `[tatin]`)
--   `target` is a path to a local folder (optional if `dry` flag set)
-
-copy non-deprecated packages from `source` to `target` if not already present.
-
--------|-------------------------------
-dependencies= | Flag: whether to copy dependencies, default 1. (Useful only for test cases.)
-dry    | List packages that would be copied, but copy nothing.
-force  | Overwrite existing packages.
-group= | Copy packages only from specified group, but also their dependencies.
-latest | Copy only the latest minor version of each major version.
-list=  | <p>One of</p><ul markdown><li>a comma-separated list of package IDs</li><li markdown>a file with package names, one per row, specified with the `file://` protocol</li><li markdown>a fully qualified variable name</li></ul><p>Specify all packages as group-name or group-name-major.</p>
-verbose= | <ol markdown><li>Print a detailed report for each package copied.</li><li>Print reports as the list is processed.</li></ol>
-
-??? example "Examples"
-
-    List packages that would be copied.
-
-        ]CopyRegistry [tatin] -dry
-        ]CopyRegistry -dry
-
-    Copy all packages from `[tatin]` if not already available.
-
-        ]CopyRegistry /path/2/Reg
-
-    Copy the latest minor versions of the highest major versions of packages from `[company-reg]`.
-
-        ]CopyRegistry [company-reg] /path/2/Reg -latest
-
-    Copy from `[tatin]` all packages of the group `aplteam`.
-
-        ]CopyRegistry /path/2/Reg group=aplteam -force
-
-    Copy from `[tatin]`, if not already available, packages listed in variable `#.MyVars`.
-
-        #.MyVars←'aplteam-FilesAndDirs,aplteam-APLTreeUtils2'
-        ]CopyRegistry /path/2/Reg -list=#.MyVars
-
-    Copy from `[tatin]` packages specified in variable `#.MyVars`
-
-        ]CopyRegistry /path/2/Reg -list=aplteam-FilesAndDirs-4 -force
-
-    Copy all packages specified in the file /myPkgs.txt if not already available
-
-        ]CopyRegistry /path/2/Reg -list=file=/myPkgs.txt
-
-:fontawesome-solid-code: API:
-[`CopyRegistry`](api.md#copy-registry)
-
-
-
-
-## :fontawesome-solid-terminal: Create package
-
-    ]TATIN.CreatePackage target
-
-Where `target` is a path to a folder, create a new Tatin package in it.
-
-The command is an alias: see [`]TATIN.PackageConfig -edit`](#package-config) for details.
-
-
-## :fontawesome-solid-terminal: Debug
-
-    ]TATIN.Debug [toggle]
-
-Where `toggle` is 0, 1, `on` or `off`, set Debug Mode on or off.
-
-If `toggle` is omitted, report current state.
-
-With Debug Mode on, Tatin leaves application errors untrapped so you can investigate them.
-(Error guards in dfns, errors when communicating via TCP/IP and similar errors are still trapped.)
-
-
-## :fontawesome-solid-terminal: Delete packages
-
-    ]Tatin.DeletePackages pattern
-
-Where `pattern` is
-
--   a registry URL or alias, followed by a package ID
--   a path to a folder containing a package (must contain a file `apl-package.json`) specified with the `file://` protocol
-
-delete one or more packages from the registry or folder, including deprecated packages.
-
-If the pattern matches multiple packages, ask which to delete.
-
-Example arguments:
-
-    https:/tatin.dev/grp-foo-1.0.0         ⍝ registry URL, package ID
-    [test-tatin]grp-foo-1.0.0              ⍝ registry alias, package ID
-    [test-tatin]foo-1.0.0                  ⍝ no group name
-    [test-tatin]foo-1                      ⍝ versions of foo with major=1
-    [test-tatin]foo                        ⍝ versions of foo
-    file:///path/2/Registry/grp-foo-1.0.0  ⍝ local package
-
-:fontawesome-solid-code: API:
-[`DeletePackages`](api.md#delete-packages)
-
-
-## :fontawesome-solid-terminal: Deprecate package
-
-    ]TATIN.DeprecatePackage pattern[majorversion] comment
-
-Where
-
--   `pattern` is a registry URL or alias followed by group and package names
-
--   `majorversion` (optional) is a major version number (omitted, defaults to all major versions)
-
--   `comment` is text explaining why the package is deprecated (remmeber to delimit with quotes)
-
-asks to confirm the action, then create
-(for each major version targeted)
-a new minor version with the `deprecated` property set.
-
-------|-------------------------
-force | Don’t ask for confirmation. (Useful mainly for tests.)
-
-Example: Deprecate on `[tatin]` all major versions of `grp-foo`:
-```
-]TATIN.DeprecatePackages [tatin]grp-foo "Use MarkAPL instead"
-```
-
-:fontawesome-solid-code: API:
-[`DeprecatePackage`](api.md#deprecate-package)
-
-
 ## :fontawesome-solid-terminal: Documentation
 
     ]TATIN.Documentation
@@ -331,30 +169,6 @@ verbose | Report the actual package folder(s) rather than the hosting folder.
 [`FindDependencies`](api.md#find-dependencies)
 
 
-## :fontawesome-solid-terminal: Get delete policy
-
-    ]TATIN.GetDeletePolicy [reg]
-
-Where (optional) `reg` is
-
--   a registry URL or alias
--   `*` (all known registries)
--   `?` (list them and ask me to choose)
-
-or if omitted, `[tatin]`,
-report the delete policy (`None`, `Any`, or `JustBetas`) of the server/s concerned
-and cache the result.
-
-Query a registry for its delete policy just once
-and then cache the result.
-
-------|----------------------------------------
-check | Ignore the cache: query the server and cache the response.
-
-:fontawesome-solid-code: API:
-[`GetDeletePolicy`](api.md#get-delete-policy)
-
-
 ## :fontawesome-solid-terminal: Init
 
     ]TATIN.Init [config]
@@ -376,7 +190,7 @@ Where
 
 -   `pkgs` is a comma-separated list: each item identifies a package as one of
 
-    -   a [search pattern](see #search-patterns) (optionally including a package alias)
+    -   a [search pattern](#search-patterns) (optionally including a package alias)
     -   `file://{path/to/folder}` or `file://{path/to/ZIP}`
 <!--    -   URL  FIXME Really? Or is this a registry URL in a search pattern? -->
 
@@ -605,7 +419,7 @@ Where
 
 -   `pkgs` is a comma-separated list: each item identifies a package as one of
 
-    -   a [search pattern](see #search-patterns) (optionally including a package alias)
+    -   a [search pattern](#search-patterns) (optionally including a package alias)
     -   `file://{path/to/folder}` or `file://{path/to/ZIP}`
 
 -   `ns` is the target namespace (defaults to the current namespace)
@@ -788,34 +602,6 @@ Questioning 1 Tatin Registry...
 
 
 
-## :fontawesome-solid-terminal: Publish package
-
-    ]TATIN.PublishPackage [source] [reg]
-
-Where
-
--   `source` is a path to a package folder, or a ZIP file (typically created by [BuildPackage](#build-package))
--   `reg` is a registry alias or URL, or `?` (ask me which known registry)
-
-publish the package to the registry if specified, otherwise to `[tatin]`.
-
-If `source` is not specified, look for open Cider projects.
-If you find one, use it; if multiple, ask me which.
-
-If the registry’s delete policy is `none`, ask me to confirm publication.
-
-The name of the resulting package is extracted from the ZIP file which therefore must conform
-to the Tatin rules.
-
---------------|-----------------------------------------------------------------
-dependencies= | Find dependencies in this project subfolder. (Rarely need to specify this: see [Publishing Packages](publishing-packages.md).)
-
-:fontawesome-solid-code: API:
-[`PublishPackage`](api.md#publish-package)
-
-
-
-
 ## :fontawesome-solid-terminal: Re-install dependencies
 
     ]TATIN.ReInstallDependencies [folder] [reg]
@@ -892,22 +678,6 @@ and install it into the folder it was started from.
 
     To use the updated version, close the current session
     and start a new one.
-
-
-
-## :fontawesome-solid-terminal: Usage data
-
-    ]TATIN.UsageData [reg] [ -download [-all] [-folder=] [-unzip] ]
-
-Where `reg` is a registry URL or alias
-(if omitted, ask me which)
-list the usage files available.
-
----------|-----------------------------------------------
-all      | Select all available.
-download | Ask me which usage files to download to a subfolder of my temp folder.
-folder=  | Download to this empty folder.
-unzip    | Unzip downloaded file/s and delete ZIPs.
 
 
 
