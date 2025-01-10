@@ -5,6 +5,8 @@ keywords:
 ---
 # User settings
 
+!!! abstract "User-settings govern your use of Tatin."
+
 
 Your Tatin user settings specify your ‘known registries’
 – the Tatin registries you want to use –
@@ -103,6 +105,29 @@ To save your current user settings to file:
 
     ⎕SE.Tatin.MyUserSettings.Save 1
 
+
+## Cache settings
+
+To reduce network operations, Tatin caches all packages by default, except
+
+-   beta versions
+-   packages from registries with an `Any` delete policy
+
+!!! tip "Best delete policies for remote Tatin registries are `None` or `BetasOnly`."
+
+Properties of `⎕SE.Tatin.MyUserSettings` control caching for all known registries.
+
+-----------|--------|----------------------------
+caching    | flag   | whether caching is enabled
+path2cache | string | path to cache folder; defaults according to OS
+
+The `noCaching` flag in `tatin-client.json` toggle caching for specific registries.
+
+Caching is most commonly disabled for local registries hosting packages being developed.
+
+
+:fontawesome-solid-terminal:
+[`]TATIN.Cache`](user-commands.md#cache)
 
 
 ## Keeping settings elsewhere
