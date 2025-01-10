@@ -5,6 +5,12 @@ keywords: apl, documentation, glossary, tatin
 ---
 # Glossary
 
+<style>
+    dt {
+        font-weight: bold;
+    }
+</style>
+
 !!! abstract "Some terms used in the Tatin documentation"
 
 full package ID
@@ -18,6 +24,18 @@ full package ID
 
 fully qualified namespace
 : A reference beginning with `#.` or `⎕SE.`
+
+known registries
+: Registries specified in your [user settings](user-settings.md)
+
+    !!! detail "Registry scans"
+
+        A registry scan searches known registries with a priority above zero,
+        in descending order of priority.
+
+package alias
+: A short name you can use locally as an alternative to a full package ID.
+    (Allows you to work with multiple versions of the same package.)
 
 package ID
 : A case-insensitive pattern for matching against full package names: the name of a package, possibly also including its group; major version number; major and minor version numbers; or major and minor version and patch numbers. Examples:
@@ -33,6 +51,10 @@ package ID
 
 parameter space
 : A namespace of variables representing parameters
+
+registry alias
+: A short name you can use locally as an alternative to its URL.
+<!-- FIXME Can I also use as an alternative to a path? -->
 
 string
 : A character vector, e.g. `'abc def'`

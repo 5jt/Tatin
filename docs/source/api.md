@@ -10,7 +10,7 @@ keywords: api, apl, dyalog, source, tatin
 The API functions are similar to the [user-commands](user-commands.md), but not identical.
 Not all have equivalent user commands.
 
-[BuildPackage](#build-package)              [InitPackageConfig](#init-package-config)
+[BuildPackage](#build-package)              [InitPackageConfig](#initpackage-config)
 [CheckForLaterVersion](#check-for-later-version)      [InstallPackages](#install-packages)
 [ClearCache](#clear-cache)                [ListDeprecated](#list-deprecated)
 [CopyRegistry](#copy-registry)              [ListCache](#list-cache)
@@ -848,9 +848,7 @@ Where `source` is
 
 ## :fontawesome-solid-code: Publish package
 
-```
-{rc emsg zfn}←{deps} PublishPackage (source registry)
-```
+    {fn}←{deps} PublishPackage (source registry)
 
 Where 
 
