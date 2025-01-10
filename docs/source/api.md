@@ -181,7 +181,7 @@ Required parameters are marked; others are optional.
 
 !!! warning "`CopyRegistry` was introduced with version 0.110.0"
 
-    Tatin registeries running on earlier versions will not respond to it.
+    Tatin registries running on earlier versions will not respond to it.
 
 
 ## :fontawesome-solid-code: Create API from CFG
