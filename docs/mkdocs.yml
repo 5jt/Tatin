@@ -10,7 +10,7 @@ nav:
     - Get started: get-started.md
     - User commands: user-commands.md
     - API functions: api.md
-    - (User settings): user-settings.md
+    - User settings: user-settings.md
     - (Caching): caching.md
     - (Installing the client): installingandupdatingthetatinclient.md
     - (Tatin and OneDrive): tatinandonedrive.md
