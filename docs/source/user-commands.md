@@ -794,7 +794,7 @@ Questioning 1 Tatin Registry...
 
 Where
 
--   `source` is a path to a package folder, or a ZIP file (typically created by [BuildPackage](build-package.md))
+-   `source` is a path to a package folder, or a ZIP file (typically created by [BuildPackage](#build-package))
 -   `reg` is a registry alias or URL, or `?` (ask me which known registry)
 
 publish the package to the registry if specified, otherwise to `[tatin]`.

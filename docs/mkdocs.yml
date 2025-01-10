@@ -21,7 +21,7 @@ nav:
     - Publish packages:
       - (Package configuration): packageconfiguration.md
       - (Public interface): public-interface.md
-      - (Publishing packages): publishingpackages.md
+      - (Publishing packages): publishing-packages.md
       - (Versioning): versioning.md
     - Host a registry:
       - (Install the server): installingthetatinserver.md
