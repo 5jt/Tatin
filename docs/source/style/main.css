@@ -84,17 +84,6 @@ pre + pre > code, hr + pre > code {
 .md-typeset a {
 	border-bottom: 1px dashed rgba(0,0,0,.3);
 }
-/* Syntax displays */
-.syntax {
-	border-radius: 10px;
-    color: var(--md-syntax-fg-color);
-    font-size: 1.2em;
-/*    font-weight: bold;*/
-    padding: .7720588235em 1.1764705882em;
-    padding-bottom: .8em!important;
-    font-family: APL;
-    line-height: 1.4;
-}
 
 .typewriter {
 	font-family: APL;
