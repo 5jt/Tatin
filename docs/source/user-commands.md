@@ -671,13 +671,51 @@ quiet   | Don’t report progress.
     ]TATIN.UpdateTatin
 
 If a later version of Tatin is available,
-download it from GitHub
-and install it into the folder it was started from.
+download it from GitHub,
+install it into the folder it was started from,
+and display the release notes in abrowser window.
 
 !!! warning "Does not update the current workspace"
 
     To use the updated version, close the current session
     and start a new one.
+
+In Dyalog 19.0 and later
+the command replaces the version installed in your home folder, 
+not the shipped version, which remains unchanged.
+
+
+> Debugging is the process of removing bugs from code, while programming is how you introduce them in the first place.
+
+??? tip "Troubleshooting"
+
+    If the update fails, calling it again rarely helps.
+
+    === "Dyalog 19.0+"
+
+        1. `]DeActivate tatin` to remove Tatin
+        2. `]Activate tatin` restores the version your installation was shipped with
+        3. `]Tatin.UpdateTatin` to update to the latest version
+
+    === "Dyalog 18.2"
+
+        Uninstall Tatin then install it again.
+
+??? detail "Tatin versions before 0.105.0"
+
+    <!-- Can we drop this section yet? -->
+
+    Versions before 0.105.0 might have been installed into one of these folders:
+
+    ```
+    C:\Users\<user>\Documents\MyUCMDs\     ⍝ Windows
+    /users/<user>/MyUCMDs/                 ⍝ Mac-OS
+    /home/<user>/MyUCMDs/                  ⍝ Linux
+    ```
+
+    If so, remove the folder `Tatin` from the `MyUCMDs/` folder and install Tatin (and, if installed, Cider) from scratch rather than updating it.
+
+    If you loaded Tatin into `⎕SE` with a script `setup.dyalog` you might need to amend it.
 
 
 
