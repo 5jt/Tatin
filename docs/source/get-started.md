@@ -19,42 +19,8 @@ keywords: apl, tatin, tutorial
 
 === "Dyalog 18.2"
 
-    :fontawesome-solid-download:
-    Download the latest release of the Tatin client from <https://github.com/aplteam/Tatin/releases>
+    See [Installing the client](install.md).
 
-    Unzip the file and move the directory `Tatin/` to the installation folder:
-
-    === "Version-specific"
-
-        These file paths are specific to Version 18.2:
-
-        === ":fontawesome-brands-linux: Linux"
-
-                /home/<⎕AN>/dyalog.182U<bit>.files/SessionExtensions/CiderTatin
-
-        === ":fontawesome-brands-apple: macOS"
-
-                /Users/<⎕AN>/dyalog.182U64.files/SessionExtensions/CiderTatin
-
-        === ":fontawesome-brands-windows: Windows"
-
-                C:\Users\<⎕AN>\Documents\Dyalog APL[-64] 18.2 Unicode Files\SessionExtensions\CiderTatin
-
-    === "Version-agnostic"
-
-        These file paths make Tatin available to all Dyalog versions:
-
-        === ":fontawesome-brands-linux: Linux"
-
-                /home/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-
-        === ":fontawesome-brands-apple: macOS"
-
-                /Users/<⎕AN>/dyalog.files/SessionExtensions/CiderTatin
-
-        === ":fontawesome-brands-windows: Windows"
-
-                C:\Users\<⎕AN>\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
 
 
 ## Look for registries

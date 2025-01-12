@@ -287,7 +287,7 @@ This has only an impact locally in a scenario mentioned above, and that's why th
 
 
 
-[^init]: Tatin is initialized either explicitly or as a side effect when the first Tatin user command is issued. See ["Installing and updating the Tatin Client"](installingandupdatingthetatinclient.md) for details.
+[^init]: Tatin is initialized either explicitly or as a side effect when the first Tatin user command is issued. <!-- See ["Installing and updating the Tatin Client"](installingandupdatingthetatinclient.md) for details. -->
 
 
 
