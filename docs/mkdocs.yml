@@ -12,7 +12,6 @@ nav:
     - API functions: api.md
     - User settings: user-settings.md
     - Install in Dyalog 18.2: install.md
-    - (Tatin and OneDrive): tatinandonedrive.md
     - (Load and update strategy): tatinsloadandupdatestrategy.md
     - Updating Tatin: update-tatin.md
     - Glossary: glossary.md
