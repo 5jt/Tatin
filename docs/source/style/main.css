@@ -84,6 +84,9 @@ pre + pre > code, hr + pre > code {
 .md-typeset a {
 	border-bottom: 2px dotted rgba(0,0,0,.3);
 }
+.md-typeset label a {
+	border-bottom: none;
+}
 
 .typewriter {
 	font-family: APL;
