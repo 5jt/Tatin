@@ -1,18 +1,19 @@
 ---
-title: 'Tatin: Installing & Updating'
-description: ''
-keywords: 
+title: 'Tatin: Installing and updating'
+description: 'Tatin is already installed in Dyalog 19.0 and better. How to install Tatin in Dyalog 18.2. How to update Tatin versions older than 0.105.0. How to update Tatin versions older than 0.114.0 with OneDrive in use.'
+keywords: apl,dyalog,install,packages,onedrive,requirements,tatin,versions
 ---
-# Install and update the client
+# Install and update older versions
 
 
-!!! abstract "How to install Tatin in Dyalog 18.2"
+!!! abstract "How to install Tatin in Dyalog 18.2 and update older versions"
 
     Tatin is already installed in Dyalog 19.0+.
     This article applies to Dyalog 18.2 only.
 
+## Install in Dyalog 18.2
 
-## :fontawesome-solid-list-check: Requirements
+### :fontawesome-solid-list-check: Requirements
 
 * Dyalog 18.2 **Unicode**
 * [Link](https://dyalog.github.io/link/4.0/) version 3.0.8 or better
@@ -20,7 +21,7 @@ keywords:
 `]Tatin.Init` checks the requirements are met.
 
 
-## :fontawesome-solid-download: Download
+### :fontawesome-solid-download: Download
 
 Download the latest release of the Tatin client.
 
@@ -30,7 +31,7 @@ Download the latest release of the Tatin client.
 Unzip the file and move folder `Tatin/` to the installation folder.
 
 
-## :fontawesome-solid-folder-open: Installation folder
+### :fontawesome-solid-folder-open: Installation folder
 
 The installation folder is at `<path>/SessionExtensions/CiderTatin`
 where `path` is:
@@ -55,7 +56,7 @@ where `path` is:
     ```
 
 
-## :fontawesome-solid-terminal: Connect user commands
+### :fontawesome-solid-terminal: Connect user commands
 
 Include the installation folder in SALT’s search path.
 
@@ -69,7 +70,7 @@ Test for inline help: in a new Dyalog session enter
     ]tatin -?
 
 
-## :fontawesome-solid-code: Expose the API
+### :fontawesome-solid-code: Expose the API
 
 Executing any Tatin command exposes the [API](api.md).
 
@@ -126,25 +127,25 @@ A Windows user `JohnDoe` who enables OneDrive changes his Documents folder:
     C:\Users\JohnDoe\Documents\             ⍝ from
     C:\Users\JohnDoe\OneDrive\Documents\    ⍝ to
 
-Dyalog keeps in his Documents folder such folders as
+The Dyalog [installation folder](#installation-folder) is (by default) in the Documents folder, e.g.
 
     Dyalog APL Files                  ⍝ version-agnostic
     Dyalog APL-64 19.0 Unicode Files  ⍝ version-specific
 
 Before version 0.114.0, Tatin read environment variable `USERPROFILE` to find the Documents folder.
-But `USERPROFILE` does not reflect use of OneDrive.
-An update of Tatin would seem to succeed but, not written to the OneDrive Documents folder,
+But `USERPROFILE` does not reflect use of OneDrive!
+An update of Tatin would apparently succeed but, written to the wrong Documents folder,
 would not appear in subsequent launches of Dyalog.
 
 Since version 0.114.0, Tatin uses the experimental I-beam `4070⌶0` to recognise a Documents folder in OneDrive.
 
-If you are using OneDrive and a version of Tatin older than 0.114.0
+If you are using OneDrive and a version of Tatin older than 0.114.0:
 
-1.  Determine your tatin-home: the relative path from your OneDrive Dcuments folder in which your Tatin files are kept, e.g.
+1.  Determine your Tatin home: the relative path from your OneDrive Documents folder in which your Tatin files are kept, i.e.
 
-        Dyalog APL-64 19.0 Unicode Files/SessionExtensions/CiderTatin
+        <dyalog-install-folder>/SessionExtensions/CiderTatin
 
-1.  Add to SALT’s `cmddir` the path
+1.  Add[^saltset] to SALT’s `cmddir` the path
 
         C:/Users/<⎕AN>/OneDrive/Documents/<tatin-home>
 
@@ -156,7 +157,7 @@ If you are using OneDrive and a version of Tatin older than 0.114.0
 
         C:/Users/JohnDoe/Documents/<tatin-home>
 
-Future updates will work as expected.
+Updates will then work as expected.
 
 ??? danger "Reverting to a version older than 0.114.0"
 
@@ -174,11 +175,14 @@ Remove Tatin and/or Cider from the installation folder:
     ]Deactivate [all|cider|tatin] [-versionagnostic]
 
 
-## :dyalog-cider-logo: Cider
+<!-- ## :dyalog-cider-logo: Cider -->
 
-Cider depends upon Tatin. If you use Cider:
+!!! tip "Cider depends upon Tatin"
 
--   Deactivate and remove it before Tatin
--   Re/Install Tatin before Cider.
+    If you use Cider:
+
+    -   Deactivate and remove it before Tatin
+    -   Re/Install Tatin before Cider.
 
 
+[^saltset]: See `]SALT.Settings -??` for help.

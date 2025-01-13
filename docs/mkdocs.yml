@@ -11,9 +11,8 @@ nav:
     - User commands: user-commands.md
     - API functions: api.md
     - User settings: user-settings.md
-    - Install in Dyalog 18.2: install.md
-    - (Load and update strategy): tatinsloadandupdatestrategy.md
-    - Updating Tatin: update-tatin.md
+    - Load and update strategy: load-and-update-strategy.md
+    - Older versions: install.md
     - Glossary: glossary.md
     - Release notes: release-notes.md
     - Publish packages:
