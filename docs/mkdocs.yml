@@ -16,6 +16,7 @@ nav:
     - Glossary: glossary.md
     - Release notes: release-notes.md
     - Publish packages:
+      - About publishing: about-publishing.md
       - (Publishing packages): publishing-packages.md
       - User commands: user-commands-publish.md
       - (Package configuration): packageconfiguration.md
