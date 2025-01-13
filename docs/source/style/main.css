@@ -84,6 +84,7 @@ pre + pre > code, hr + pre > code {
 .md-typeset a {
 	border-bottom: 2px dotted rgba(0,0,0,.3);
 }
+.md-typeset a.footnote-ref,
 .md-typeset label a {
 	border-bottom: none;
 }
