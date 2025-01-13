@@ -253,7 +253,7 @@ Two massive changes:
 
 -   The installation folder is not `MyUCMDs/` anymore. However, `]Tatin.UpdateTatin` of your old version cannot know about this, therefore you have to take action once in order to get Tatin into the right folder. 
 
-    See [Update Tatin](update-tatin.md) for details.
+    See [`]UpdateTatin`](user-commands.md#update-tatin) for details.
 
 -   In future `]Tatin.UpdateTatin` will use the new installation folder.
 

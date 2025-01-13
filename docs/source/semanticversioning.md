@@ -118,7 +118,7 @@ Before the introduction of the rules of Semantic Versioning, everybody assigned 
 
 With the rules of Semantic Versioning in place, if everybody involved acts accordingly and sensibly, updating should be much safer. 
 
-However, things can get pretty complicated even with Semantic Versioning; see the [TatinsLoadAndUpdateStrategy](tatinsloadandupdatestrategy.md).
+However, things can get pretty complicated even with Semantic Versioning; see the [Load and Update Strategy](load-and-update-strategy.md).
 
 Semantic versioning came into being via this website:
 

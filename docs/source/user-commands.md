@@ -673,7 +673,7 @@ quiet   | Don’t report progress.
 If a later version of Tatin is available,
 download it from GitHub,
 install it into the folder it was started from,
-and display the release notes in abrowser window.
+and display the release notes in a browser window.
 
 !!! warning "Does not update the current workspace"
 
