@@ -18,7 +18,7 @@ nav:
       - Older versions: older-versions.md
     - Publish:
       - About publishing: about-publishing.md
-      - (Publish packages): get-started-publishing.md
+      - Publish packages: publish-packages.md
       - User commands: user-commands-publish.md
       - (Package configuration): packageconfiguration.md
       - (Public interface): public-interface.md
