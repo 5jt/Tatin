@@ -85,7 +85,7 @@ Parameter space `parms` is typically created with [`CreateBuildParms`](#create-b
     -   An empty character vector
     -   A string that replaces `version` in the package config file
 
-    See [Versioning](versioning.md) for details.
+    See [Glossary](glossary.md) for details.
 
 
 ## :fontawesome-solid-code: Check for later version

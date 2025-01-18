@@ -19,7 +19,7 @@ keywords: apl, tatin, tutorial
 
 === "Dyalog 18.2"
 
-    See [Installing the client](install.md).
+    See [Older Versions](older-versions.md).
 
 
 
@@ -171,6 +171,23 @@ Test an example from the documentation.
 ```
 **Congratulations** You have installed a Tatin package in your project, loaded it into your active workspace, and confirmed you can use it.
 
+
+
+!!! warning inline end "Cider depends on Tatin"
+
+    If you use Cider:
+
+    -   Deactivate and remove it before Tatin
+    -   Re/Install Tatin before Cider.
+
+## :fontawesome-solid-trash-can: Deactivate
+
+To remove Tatin and/or Cider from the installation folder:
+
+    ]Deactivate [all|cider|tatin] [-versionagnostic]
+
+
+<!-- ## :dyalog-cider-logo: Cider -->
 
 
 

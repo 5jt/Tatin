@@ -447,7 +447,7 @@ Examples of valid version numbers are:
 
 The optional build number, separated by the `+` sign, is ignored by Tatin.
 
-See [Versioning](versioning.md) for details.
+See [Glossary](glossary.md) for details.
 
 #### APL System variables: ⎕IO and ⎕ML {#SysVars}
 

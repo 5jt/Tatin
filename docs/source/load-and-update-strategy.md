@@ -1,14 +1,21 @@
 ---
 title: 'Tatin: Load and Update'
-description: ''
-keywords: 
+description: 'How Tatin deals with conflicting requirements for package versions'
+keywords: apl,conflict,minimum version selection,tatin,requirements,strategy,version
 ---
 # Tatin’s load and update strategy
 
-!!! abstract "How Tatin implements semantic versioning when loading and updating packages"
+!!! abstract "How Tatin deals with conflicting requirements for package versions"
+
+As you incorporate packages and their dependencies into your application,
+you see different packages sometimes specify as dependencies different versions of the same package.
+As a package manager, Tatin has policies for resolving these conflicts.
+
+You can [get started](get-started.md) without grasping these policies,
+but they have important consequences you will eventually need to understand.
 
 
-## Minimum version selection
+## :fontawesome-solid-sitemap: Minimum version selection
 
 Suppose you need packages, `Foo` and `Goo`.
 Both rely on package `Zoo`; but while `Foo` requests `Zoo` 1.1.1,
@@ -26,14 +33,15 @@ There is also a later major version: 2.0.0.
 
 Version 2.0.0 is not an option, because it is considered a completely different package and so ignored.
 
-From [semantic versioning](versioning.md) we know `Goo` relies on features of `Zoo` new in version 1.2.0: `Goo` would crash on version 1.1.1, which doesn’t have them.
+From [semantic versioning](https://semver.org) we know `Goo` relies on features of `Zoo` new in version 1.2.0,
+and would break on version 1.1.1, which doesn’t have them.
 
-### Strategic options
+### Strategy options
 
 Several strategies are possible:
 
-1.  Load both versions of `Zoo` and let `Foo` use 1.1.1 and `Goo` 1.2.0.
-1.  Load `Zoo` version 1.2.0 and let `Zoo` and `Goo` both use that version.
+1.  Load both versions of `Zoo`: let `Foo` use 1.1.1 and `Goo` 1.2.0.
+1.  Load `Zoo` version 1.2.0 and let `Zoo` and `Goo` both use it.
 1.  Check the server, load the latest version available (1.3.0) and use that.
 
 Each of these options is used by different package managers in the wild.
@@ -49,17 +57,29 @@ But on reflection it looks much less appealing:
 1. Rerun your test cases; but this time they fail :fontawesome-solid-xmark:
 
 This situation arises if, between the first and second build, the author of a dependency releases a new version with bugs in it. The second build fetches it,
-producing a different outcome – even though you haven’t made any changes.
+producing a different outcome – _even though you haven’t made any changes._
 
 
 ### Tatin’s strategy
 
 As appealing as an automated update mechanism might seem, you’d want your builds to be 100% reproducible, right?
 
-So, when asked to load installed packages, Tatin will do exactly that: 
+So, when asked to load installed packages, Tatin will do exactly that:
 
 -   load the packages defined as required by the configuration files of the main packages `Foo` and `Goo`
--   **except** When a package is requested _more than once_, and with different minor and/or patch numbers, Tatin uses _the latest installed version_, which might or might not be the latest one available
+-   **except** when a package is requested _more than once_, and with different minor and/or patch numbers, Tatin uses _the latest installed version_ (which might or might not be the latest one available)
+
+!!! tip inline end "Updating dependencies"
+
+    Tatin does not update dependencies for you,
+    but helps you discover whether later packages are available.
+
+    :fontawesome-solid-terminal:
+    [`]CheckForLaterVersions`](user-commands.md#check-for-later-versions)<br>
+    :fontawesome-solid-terminal:
+    [`]ReInstallDependencies`](user-commands.md#reinstall-dependencies)<br>
+    :fontawesome-solid-code:
+    [`ReInstallDependencies`](api.md#reinstall-dependencies)
 
 In our example
 
@@ -69,35 +89,23 @@ In our example
 
 This means `Foo` will also use version 1.2.0 of `Zoo`.
 
-This strategy is called ["Minimal Version Selection"](https://research.swtch.com/vgo-mvs "Link to the paper defining it"). It guarantees that when you rebuild you get the same result, but it will grab the latest installed version.
+This strategy is called [Minimal Version Selection](https://research.swtch.com/vgo-mvs "Link to the paper defining it") (MVS).
+It guarantees that when you rebuild you get the same result, but it will grab the latest installed version.
 
 
-!!! tip "Updating dependencies"
-
-    Tatin does not update dependencies for you,
-    but helps you discover whether later packages are available.
-    
-    :fontawesome-solid-terminal:
-    [`]TATIN.CheckForLaterVersions`](user-commands.md#check-for-later-versions)<br>
-    :fontawesome-solid-terminal:
-    [`]TATIN.ReInstallDependencies -flag`](user-commands.md#reinstall-dependencies)<br>
-    :fontawesome-solid-code:
-    [`⎕SE.Tatin.ReInstallDependencies`](api.md#reinstall-dependencies)
-
-We will discuss this in a minute.
 
 ### Forcing updates
 
-Suppose a package of yours depends on someone else’s package `Foo`, which in turn depends on `Goo` 1.1.0 – and while using `Foo` you stumble over a bug in `Goo` 1.1.0.
+Suppose a package of yours depends on someone else’s package `Foo`, which in turn depends on `Goo` 1.1.0 – and while using `Foo` you discover `Goo` 1.1.0 has a bug.
 
-You write to the author of `Foo`, pointing out that `Goo` 1.1.1 is available and fixes that very bug, but the author does not reply, or tells you that she will produce and publish a new version in the two weeks you have to your deadline.
+You write to the author of `Foo`, saying `Goo` 1.1.1 is available and fixes that very bug, but you get no reply, and you have only two weeks to your deadline.
 
 **Solution**
 Create a package `Dummy` that does nothing, but declares a dependency on `Goo` 1.1.1.
-_Voila!_ Thanks to minimum version selection, everything works.
+_Voila!_ Thanks to MVS, everything works.
 
 
-## Loading dependencies
+## :fontawesome-solid-truck-ramp-box: Loading dependencies
 
 Imagine these packages all hosted by a Tatin server with alias `MyTatin`.
 
@@ -141,26 +149,30 @@ In this case not even the major number has been specified.
 You wanted `Foo` and `Goo` loaded into `#.MyPkgs`, and that's exactly what Tatin did.
 But where are the dependencies?
 
-Note `#.MyPkgs` just contains references to where the packages have been loaded into, the namespace `#._tatin`:
+!!! detail inline end "Where Tatin really keeps packages"
+
+    `#.MyPkgs` just contains references to where the packages have been loaded into, the namespace `#._tatin`.
+
+Looking under the covers:
 
           #._tatin.⎕NL 9
-    mygroup_Foo_1_0_0   
-    mygroup_Goo_2_1_3 
-    mygroup_Zoo_1_1_1 
+    mygroup_Foo_1_0_0
+    mygroup_Goo_2_1_3
+    mygroup_Zoo_1_1_1
     mygroup_Zoo_1_2_0
 
-Both versions of `Zoo` have been loaded. 
+Both versions of `Zoo` have been loaded.
 That’s because the two `Load` operations are independent, so minimal version selection cannot be applied.
 
 :fontawesome-solid-terminal:
-command [`]CheckForLaterVersion`](user-commands.md#check-for-later-version)<br>
-:fontawesome-solid-code: API
+[`]CheckForLaterVersion`](user-commands.md#check-for-later-version)<br>
+:fontawesome-solid-code:
 [`CheckForLaterVersion`](api.md#check-for-later-version)
 
 
-## Installing packages
+## :fontawesome-solid-truck-ramp-box: Installing packages
 
-To incorporate packages into an application, they must be installed. 
+To incorporate packages into an application, they must be installed.
 In the following example, we install two packages, `Foo` and `Goo`. Both require `Zoo`, so `Zoo` gets installed as a side effect.
 
 ```apl
@@ -201,12 +213,12 @@ Above, the first column flags the principal packages.
 -   The **build list** comprises not only the two principal packages but also the dependencies.
 
 
-## Loading installed packages
+## :fontawesome-solid-truck-ramp-box: Loading installed packages
 
 Loading packages puts them in your workspace;
 installing packages puts them in your file system.
 
-Loading _installed_ packages lets Tatin optimise what’s loaded.
+Loading _installed_ packages lets Tatin use MVS to optimise what it loads.
 
 ![Loading installed packages](img/load-packages.png)
 
@@ -231,7 +243,7 @@ rather than loading `Zoo` twice, Tatin loads only the latest **installed** versi
 Both `Foo` and `Goo` will use `Zoo` version 1.2.0.
 
 
-## Remove a principal package
+## :fontawesome-solid-trash-can: Remove a principal package
 
 Suppose you no longer need `Goo`.
 
@@ -243,11 +255,11 @@ This will remove not only the principal package, but any of its dependencies tha
     Tatin manages these dependency relations; don’t interfere.
 
 
-## Implicit downgrading
+## :fontawesome-solid-eraser: Implicit downgrading
 
 Removing a principal package might imply a downgrade.
 
-Consider, say, these packages (indentation defines dependency):
+Consider, say, these packages (dependencies indented):
 
     group-foo-1.0.0
       group-zoo-1.1.0
@@ -257,22 +269,22 @@ Consider, say, these packages (indentation defines dependency):
 Minimal version selection (MVS) means both `foo` and `boo` use `zoo` 1.1 when loaded.
 What happens if you remove `boo`?
 
-It could be argued:
+Either could be argued:
 
 1.  `zoo-1.1.0` should survive this and still be used
 1.  a package not required anywhere shouldn’t be used
 
 A full implementation of MVS requires (1).
-For the time being, Tatin uses (2) as a more pragmatic approach.
+For now, Tatin uses (2) as a more pragmatic approach.
 
 It is not obvious what is best here.
 Tatin’s strategy might change after feedback.
 
 
-## Add a package manually
+## :fontawesome-solid-hands-holding-circle: Add a package manually
 
 To add a package that has no dependencies you could
-just add it to the file `apl-dependencies.txt` 
+just add it to the file `apl-dependencies.txt`
 and copy the package over.
 
 That would not cause a problem.
@@ -282,9 +294,9 @@ performs some health checks, and if all is well, recreates the build list.
 (This is insurance against people manually introducing errors into `apl-dependencies.txt`)
 
 
-## Downgrade
+## :fontawesome-solid-calendar-xmark: Downgrade
 
-Sometimes you might need to downgrade, for example from a version you find buggy, to an older version known to be okay. 
+Sometimes you might need to downgrade, for example from a version you find buggy, to an older version known to be okay.
 
 Tatin does not offer help here; you need to do this yourself.
 

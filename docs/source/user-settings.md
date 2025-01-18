@@ -1,18 +1,18 @@
 ---
 title: 'Tatin User Settings'
-description: ''
-keywords:
+description: 'Settings govern your use of Tatin'
+keywords: apl,settings,tatin
 ---
 # User settings
 
-!!! abstract "User-settings govern your use of Tatin."
+!!! abstract "Settings govern your use of Tatin"
 
 
 Your Tatin user settings specify your ‘known registries’
 – the Tatin registries you want to use –
 and some other settings you might use if you publish packages yourself.
 
-When you launch Dyalog[^init], it reads your user-settings file
+When you launch Dyalog[^init], it reads your Tatin user-settings file
 
     tatin-client.json
 
@@ -74,27 +74,9 @@ license    | license you usually use to publish a package
 maintainer | email address of the maintainer of your packages
 source     | name of a folder in your package where all source files are stored
 
-??? tip "Comments in JSON5"
+!!! tip inline end ""
 
-    JSON5 accommodates two different types of comments:
-
-    block
-    : Everything between `/*` and `*/` is recognized as a comment, e.g.
-
-        ```
-        /*
-          This is a comment that...
-          stretches over several lines
-        */.
-        ```
-
-    line
-
-    : A line that starts with two slashes, e.g.
-
-        ```
-        // This is a comment line
-        ```
+    JSON5 allows [comments](https://spec.json5.org/#comments).
 
 Editing your user-settings file leaves your current user settings unchanged.
 To update them from the file:
@@ -121,7 +103,7 @@ Properties of `⎕SE.Tatin.MyUserSettings` control caching for all known registr
 caching    | flag   | whether caching is enabled
 path2cache | string | path to cache folder; defaults according to OS
 
-The `noCaching` flag in `tatin-client.json` toggle caching for specific registries.
+The `noCaching` flags in `tatin-client.json` toggle caching for specific registries.
 
 Caching is most commonly disabled for local registries hosting packages being developed.
 

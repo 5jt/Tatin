@@ -16,8 +16,11 @@ In the example, the application does not just *consume* Tatin packages.
 Its working parts, excluding the tests but including the dependencies, 
 are also published as a new Tatin package.
 
-As shown, one package may depend on other packages, and so on.
-Tatin, as package managers do, manages all this.
+As shown, one package may depend on another, and so on.
+Tatin manages these dependencies.
+
+The Tatin [Principal Registry](https://tatin.dev) hosts packages with minimal licence restrictions.
+You can also host a Tatin registry on your local machine or on a server.
 
 
 ## :dyalog-tatin-logo: Packages
@@ -46,13 +49,14 @@ FIXME Detail: move elsewhere
 
 ## :fontawesome-solid-sitemap: Versions and dependencies
 
-All things must change. 
+_All things must change._
 In general a package exists as a series of versions.
 
 A package that depends on another package usually depends on either a specific or a *minimum* version of it.
-Ugrading might require newer versions of packages on which it in turn depends.
+Upgrading might require newer versions of packages on which it in turn depends.
 
-Tatin silently manages all this for you.
+Tatin follows the [semantic versioning](glossary.md) conventions
+and silently [manages all this](load-and-update-strategy.md) for you.
 
 To support this work the Tatin registry never deletes a published package.
 You can *deprecate* a package or a version, but the server retains it for anyone who relies on it.
@@ -66,7 +70,7 @@ There are two ways to use Tatin.
 -   **API functions** such as `⎕SE.Tatin.ListRegistries` let you write DevOps scripts 
 
 
-## :fontawesome-solid-list: Requirements
+## :fontawesome-solid-list-check: Requirements
 
 * Dyalog Unicode Edition Version 18.2 or better. (Classic is not supported.)
 * [Link](https://dyalog.github.io/link/4.0/) Version 3.0.8 or better
@@ -74,9 +78,15 @@ There are two ways to use Tatin.
 * The Tatin registry runs on Windows (as a service or a Docker container) and on Linux (as a Docker container)[^macserve].
 
 
-## :fontawesome-solid-users: Community
+## :fontawesome-solid-scale-balanced: Licences
 
 Tatin is a community project.
+Packages hosted on the Principal Registry make the software available with minimal restrictions.
+
+
+
+## :fontawesome-solid-users: Community
+
 
 You can contribute to the Tatin ecosystem by reporting errors to the package source repositories, or submitting pull requests if you can see how to fix them.
 
@@ -85,18 +95,18 @@ Please also consider publishing what you can of your own work as Tatin packages.
 Besides the default community registry at [tatin.dev](https://tatin.dev) you can run your own Tatin registry either on a server or on your local machine.
 
 
-!!! tip "Get started with Cider?"
+## :dyalog-cider-logo: Cider and Tatin
 
-      [Cider](https://5jt.github.io/Cider) is the project manager for Dyalog APL.
+[Cider](https://5jt.github.io/Cider) is the project manager for Dyalog APL.
 
-      Like Tatin, it works with APL source files created and managed by [Link](https://dyalog.github.io/link/4.0/). 
+Like Tatin, it works with APL source files created and managed by [Link](https://dyalog.github.io/link/4.0/). 
 
-      Tatin is all you need in order to consume packages.
-      Cider extends Tatin with tools for managing versions and tests.
+Tatin is all you need in order to consume packages.
+Cider extends Tatin with tools for managing versions and tests.
 
-      If you foresee **publishing software** for others to use, 
-      either as Tatin packages or as an application or Web service, 
-      it might suit you to start with Cider and let it manage Tatin.
+If you foresee publishing software for others to use, 
+either as Tatin packages or as an application or Web service, 
+it might suit you to start with Cider and let it manage Tatin.
 
 
 [^wikipedia]: A [package manager](https://en.wikipedia.org/wiki/Package_manager) or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer in a consistent manner.

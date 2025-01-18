@@ -5,13 +5,13 @@ keywords: apl,development,licence,package,version,tatin,workflow
 ---
 # About publishing packages
 
-!!! abstract "Introduction to publishing and licensing Tatin packages, with a development workflow"
+!!! abstract "About publishing and licensing Tatin packages, with a development workflow"
 
 
-## Package identity
+## :fontawesome-solid-address-card: Package identity
 
 A full package ID uniquely identifes a package.
-It follows [semantic versioning](versioning.md) conventions
+It follows [semantic versioning](glossary.md) conventions
 and has four parts:
 
     group-name-version+buildnumber
@@ -22,7 +22,7 @@ and has four parts:
 A group might be
 
 -   the name of a company
--   your name, even just your first name, such as `davin`
+-   your name, even just your first name
 -   a term such as `aplteam` (but not that one)
 
 If you publish your package to the [Principal Registry](https://tatin.dev),
@@ -72,7 +72,7 @@ Their only use is to distinguish builds when the version number does not change.
 In most contexts build numbers need not be specified and Tatin does not display them.
 
 
-## Licenses
+## :fontawesome-solid-scale-balanced: Licences
 
 Tatin is a community resource and offers software with minimal licence restrictions.
 All licences on the Principal Registry give users great freedom.
@@ -93,7 +93,7 @@ you must give it a `license` property with an acceptable value.
 [`ListLicences`](api.md#list-licences)
 
 
-## API keys
+## :fontawesome-solid-key: API keys
 
 To publish a package (or delete or deprecate it)
 you need an API key[^apikey] for the registry.
@@ -142,7 +142,7 @@ The quickest and safest way to edit them is with the command.
 [`]TATIN.UserSettings -edit`](user-commands.md#user-settings)
 
 
-## Development workflow
+## :fontawesome-solid-code-branch: Development workflow
 
 Suppose you develop Tatin packages for your employer, company XYZ.
 

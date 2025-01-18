@@ -1,17 +1,17 @@
 ---
-title: 'Tatin: Installing and updating'
+title: 'Tatin: Older versions'
 description: 'Tatin is already installed in Dyalog 19.0 and better. How to install Tatin in Dyalog 18.2. How to update Tatin versions older than 0.105.0. How to update Tatin versions older than 0.114.0 with OneDrive in use.'
 keywords: apl,dyalog,install,packages,onedrive,requirements,tatin,versions
 ---
 # Install and update older versions
 
 
-!!! abstract "How to install Tatin in Dyalog 18.2 and update older versions"
+!!! abstract "How to install Tatin in Dyalog 18.2 and how to update older versions"
 
-    Tatin is already installed in Dyalog 19.0+.
-    This article applies to Dyalog 18.2 only.
 
-## Install in Dyalog 18.2
+## :dyalog-tatin-logo: Install in Dyalog 18.2
+
+Tatin is included in Dyalog 19.0; in Dyalog 18.2 it has to be installed.
 
 ### :fontawesome-solid-list-check: Requirements
 
@@ -56,7 +56,7 @@ where `path` is:
     ```
 
 
-### :fontawesome-solid-terminal: Connect user commands
+### :fontawesome-solid-plug: Connect user commands
 
 Include the installation folder in SALT’s search path.
 
@@ -166,23 +166,6 @@ Updates will then work as expected.
         ]activate -reset
 
     you also recreate the problem.
-
-
-## :fontawesome-solid-trash-can: Deactivate
-
-Remove Tatin and/or Cider from the installation folder:
-
-    ]Deactivate [all|cider|tatin] [-versionagnostic]
-
-
-<!-- ## :dyalog-cider-logo: Cider -->
-
-!!! tip "Cider depends upon Tatin"
-
-    If you use Cider:
-
-    -   Deactivate and remove it before Tatin
-    -   Re/Install Tatin before Cider.
 
 
 [^saltset]: See `]SALT.Settings -??` for help.

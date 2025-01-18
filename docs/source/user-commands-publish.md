@@ -33,7 +33,7 @@ The command asks you to confirm any assumptions.
 
 ---|---
 bump=         | Either `patch` or `minor` or `major`: bump that part of the version number, together with any build number. Affects both the package and its config file.
-dependencies= | Find dependencies in this subfolder of the project. (Rarely need to specify this: see [Publishing Packages](publishing-packages.md).)
+dependencies= | Find dependencies in this subfolder of the project. (Rarely need to specify this: see [Publishing Packages](get-started-publishing.md).)
 tatinVars=    | Update `TatinVars.CONFIG` in this namespace.
 version=      | <p>Set the version number in both the package project and the package to be created. You have two options e.g.</p><ul markdown><li>`-version=1.2.3-beta-2`</li><li markdown>`-version=1.2.3-beta-2+123`</li></ul><p>Both set the version. The former bumps the build number; the latter sets it.</p>
 
@@ -221,7 +221,7 @@ The name of the resulting package is extracted from the ZIP file which therefore
 to the Tatin rules.
 
 --------------|-----------------------------------------------------------------
-dependencies= | Find dependencies in this project subfolder. (Rarely need to specify this: see [Publishing Packages](publishing-packages.md).)
+dependencies= | Find dependencies in this project subfolder. (Rarely need to specify: see [Publish Packages](get-started-publishing.md).)
 
 :fontawesome-solid-code: API:
 [`PublishPackage`](api.md#publish-package)

@@ -5,7 +5,7 @@ keywords: apl,dyalog,tatin,ui
 ---
 # User commands
 
-!!! abstract "User commands for using Tatin packages"
+!!! abstract "User commands put Tatin packages at your fingertips"
 
 [Cache](#cache)                   [LoadDependencies](#load-dependencies)
 [CheckForLaterVersion](#check-for-later-version)    [LoadPackages](#load-packages)

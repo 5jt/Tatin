@@ -7,22 +7,24 @@ docs_dir: source
 nav:
   - Revised:
     - About Tatin: index.md
-    - Get started: get-started.md
-    - User commands: user-commands.md
-    - API functions: api.md
-    - User settings: user-settings.md
     - Load and update strategy: load-and-update-strategy.md
-    - Older versions: install.md
     - Glossary: glossary.md
     - Release notes: release-notes.md
-    - Publish packages:
+    - Use:
+      - Get started: get-started.md
+      - User commands: user-commands.md
+      - API functions: api.md
+      - Settings: user-settings.md
+      - Older versions: older-versions.md
+    - Publish:
       - About publishing: about-publishing.md
-      - (Publishing packages): publishing-packages.md
+      - (Publish packages): get-started-publishing.md
       - User commands: user-commands-publish.md
       - (Package configuration): packageconfiguration.md
       - (Public interface): public-interface.md
-      - (Versioning): versioning.md
-    - Host a registry:
+    - Host:
+      - About hosting: about-hosting.md
+      - (Credentials): server-credentials.md
       - (Install the server): installingthetatinserver.md
       - (Server tips and tricks): server-tipsandtricks.md
       - (Run Dyalog behind Apache): rundyalogbehindapache.md
