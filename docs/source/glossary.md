@@ -33,6 +33,13 @@ dependency
 : Contrary to normal usage, a dependency of a package `foo` is another package on which `foo` depends.
 
 
+flag
+: The meaning depends on context:
+
+    -   In the API or configuration, a boolean; a flag is ‘set’ with 1.
+    -   In the user commands, a parameter without a corresponding value: for example in `]TATIN.PackageConfig -edit`, the `edit` flag is set.
+
+
 full package ID
 : A package is uniquely identified by its full package ID: group, name, and **version**.
 
@@ -60,6 +67,13 @@ package alias
 : A short name you can use locally as an alternative to a full package ID.
     (Allows you to work with multiple versions of the same package.)
 
+package cache
+: A namespace that holds the contents of a package.
+
+    By convention there are two: `#._tatin` and `⎕SE._tatin`.
+    Both are referred to by objects in the workspace;
+    neither should be named in your code.
+
 package ID
 : A case-insensitive pattern for matching against full package names: the name of a package, possibly also including its group; major version number; major and minor version numbers; or major and minor version and patch numbers. Examples:
 
@@ -70,6 +84,14 @@ package ID
     'APLTEAM-MARKAPL-12.1'     ⍝ group-name-major-minor
     'MarkAPL-13.1.2'           ⍝ name-major-minor-patch
     'aplteam-MarkAPL-13.1.2'   ⍝ group-name-major-minor-patch
+    ```
+
+package space
+: The namespace in which the package is actually stored.
+
+    For example, if Tatin loads package MarkAPL 13.1.0, it creates a namespace `#.MarkAPL` containing references to the objects in MarkAPL’s API. Those references point to objects in the package space, where Tatin puts the actual MarkAPL objects, e.g.
+    ```
+    #._tatin.aplteam_MarkAPL_13_1_0
     ```
 
 parameter space

@@ -105,6 +105,29 @@ Create a package `Dummy` that does nothing, but declares a dependency on `Goo` 1
 _Voila!_ Thanks to MVS, everything works.
 
 
+### Comparing versions
+
+As long as the patch is a digit, precedence is easy to determine.
+
+Precedence is obvious for
+
+    group-name-1.0.0
+    group-name-1.1.0
+
+less so for
+
+    group-name-1.0.0-alpha
+    group-name-1.1.0-beta
+
+and cannot be determined with
+
+    group-name-1.0.0-TryFeature1
+    group-name-1.1.0-FixFor234
+
+Packages, once published, cannot be altered.
+So if the patch contains a text description, Tatin uses [publication date](package-configuration.md#read-only-settings) to determine the correct order.
+
+
 ## :fontawesome-solid-truck-ramp-box: Loading dependencies
 
 Imagine these packages all hosted by a Tatin server with alias `MyTatin`.

@@ -34,10 +34,15 @@ The command asks you to confirm any assumptions.
 ---|---
 bump=         | Either `patch` or `minor` or `major`: bump that part of the version number, together with any build number. Affects both the package and its config file.
 dependencies= | Find dependencies in this subfolder of the project. (Rarely need to specify this: see [Publishing Packages](publish-packages.md).)
-tatinVars=    | Update `TatinVars.CONFIG` in this namespace.
-version=      | <p>Set the version number in both the package project and the package to be created. You have two options e.g.</p><ul markdown><li>`-version=1.2.3-beta-2`</li><li markdown>`-version=1.2.3-beta-2+123`</li></ul><p>Both set the version. The former bumps the build number; the latter sets it.</p>
+projectspace= | Where the package contents are to be installed.
+version=      | Set the version number in both the package project and the package to be created.
 
 Note that `bump=` and `version=` are mutually exclusive.
+
+Until version 0.118.0 `projectspace` was `tatinVars`.
+
+Until version 0.117.0 you could set the build number by including it in the version.
+Now the build number gets bumped in all cases.
 
 :fontawesome-solid-code: API:
 [`BuildPackage`](api.md#build-package)
@@ -108,7 +113,7 @@ verbose= | <ol markdown><li>Print a detailed report for each package copied.</li
 
 Where `target` is a path to a folder, create a new Tatin package in it.
 
-The command is an alias: see [`]TATIN.PackageConfig -edit`](#package-config) for details.
+The command is a wrapper for [`]TATIN.PackageConfig -edit`](user-commands.md#package-config).
 
 
 ## :fontawesome-solid-terminal: Debug

@@ -37,7 +37,7 @@ Tatin calls the APL files _source_ and the others _assets_.
 
         ]TATIN.PackageConfig path/to/myproj -edit
 
-    The command prompts you for the essential [configuration parameters](packageconfiguration.md) and writes `myproj/apl-package.json`.
+    The command prompts you for the essential [configuration parameters](package-configuration.md) and writes `myproj/apl-package.json`.
 
 
     <!-- ## :fontawesome-solid-truck-ramp-box: Install dependencies -->
@@ -126,7 +126,7 @@ The package might look like this:
         LICENSE
         README
 
-The [package configuration](packageconfiguration.md) specifies
+The [package configuration](package-configuration.md) specifies
 
     source: "APLSource/MyUserCommand",
 
@@ -135,7 +135,7 @@ but also excludes script `MyUserCommand.dyalog`
 – which we need in the package root!
 
 So tell Tatin the package is a user command, and where to find its script.
-In the [package configuration](packageconfiguration.md):
+In the [package configuration](package-configuration.md):
 
     userCommandScript: "APLSource/MyUserCommand.dyalog",
 

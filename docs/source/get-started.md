@@ -192,48 +192,6 @@ To remove Tatin and/or Cider from the installation folder:
 
 
 <!-- FIXME move elsewhere
-We can use `MarkAPL` by referring to it as `#.Foo.MarkAPL` because Tatin has also established a reference in `#.Foo` named `MarkAPL` that points to the real package:
-
-
-```
-      #.Foo.MarkAPL
-#._tatin.aplteam_MarkAPL_11_0_1.MarkAPL
-```
-
-But how does `MarkAPL` find its assets? Tatin injects a namespace `TatinVars` into `#._tatin.aplteam_MarkAPL_11_0_1`, and that namespace carries several variables, among them these:
-
-* `HOME` carries the path to the directory the package was installed into, even if the package has no assets. This is different from what happens when the package is brought into the workspace with `LoadPackages`, see there.
-
-* `ASSETS` holds the path to the assets relative to `HOME`.
-
-  If there are not assets then `ASSETS` is an empty vector.
-
-I> Note that there is also a function [`GetFullPath2AssetsFolder`](#GetFullPath2AssetsFolder) available in `TatinVars`.
-
-```
-      #._tatin.aplteam_MarkAPL_11_0_1.TatinVars.HOME
-/Foo/packages/aplteam-APLTreeUtils2-1.1.1
-```
-
-That means that any `MarkAPL` function can refer to `HOME` with `##.TatinVars.HOME`.
-
-`TatinVars` holds more potentially important data; details are discussed at [Tatin Variables](#).
-
-What else lives in `#._tatin`?
-
-
-```
-      #._tatin.⎕nl 9
-aplteam_APLTreeUtils2_1_1_1
-aplteam_FilesAndDirs_5_0_1
-aplteam_MarkAPL_11_0_1
-aplteam_OS_3_0_1
-```
-
-All packages, whether principal ones or dependencies, are stored in `#._tatin`. For the principal packages a reference is injected into the target namespace, in our case `#.Foo`.
-
-Note that by naming convention packages are always loaded into either `#._tatin` or `⎕SE._tatin`.
-
 ### Installing several packages at once
 
 Note that `InstallPackages` accepts several package IDs, separated by commas:

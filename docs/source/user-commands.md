@@ -532,7 +532,7 @@ show | Show the leading comments of the selected functions.
 
 Where `source` is
 
--    a [search pattern](#search-patterns), ignore any command options, fetch and show the package config file
+-    a [search pattern](#search-patterns) including a registry alias or URL, ignore any command options, fetch and show the package config file
 -    a path to a package folder, show its config file `apl-package.json`, creating it if necessary
 
 If `source` is omitted,
@@ -543,6 +543,36 @@ If `source` is omitted,
 ---|---
 edit   | Let me edit the config (since version 0.104.0 Tatin updates the workspace with the new config).
 delete | Delete the config.
+
+??? example
+
+    ```
+          ]TATIN.PackageConfig [tatin]MarkAPL
+    {
+      api: "API",
+      assets: "Files/",
+      date: 20240926.1737,
+      description: "Converts Markdown to HTML5",
+      documentation: "",
+      files: "",
+      group: "aplteam",
+      io: 1,
+      license: "MIT",
+      lx: "",
+      maintainer: "kai@aplteam.com",
+      minimumAplVersion: "18.0",
+      ml: 1,
+      name: "MarkAPL",
+      os_lin: 1,
+      os_mac: 1,
+      os_win: 1,
+      project_url: "https://github.com/aplteam/MarkAPL",
+      source: "APLSource/MarkAPL",
+      tags: "markdown,converter",
+      userCommandScript: "",
+      version: "13.1.0+341",
+    }
+    ```
 
 
 
@@ -625,11 +655,19 @@ Either way, ask me to confirm the folder.
 If `reg` is not specified, scan known registries for the direct dependencies,
 but scan known registries anyway for further dependencies.
 
---------|---------------------------------
-dry     | Show what the command would do, but don’t do it.
-force   | Skip confirmations (useful for tests).
-nobetas | Ignore beta versions.
-update  | Install the latest version of each dependency.
+----------|---------------------------------
+dry       | Show what the command would do, but don’t do it.
+force     | Skip confirmations (useful for tests).
+nobetas   | Ignore beta versions.
+recursive | Re-install dependencies in all child folders.
+update    | Install the latest version of each dependency.
+
+The `recursive` option was introduced in version 0.118.0.
+With it you can re-install dependencies in all principal packages
+in (say) your UCMDs folder without prompts:
+```apl
+]ReinstallDependencies [MyUCMDs] -recursive -update -force
+```
 
 :fontawesome-solid-code: API:
 [`ReinstallDependencies`](api.md#reinstall-dependencies)
@@ -681,7 +719,7 @@ and display the release notes in a browser window.
     and start a new one.
 
 In Dyalog 19.0 and later
-the command replaces the version installed in your home folder, 
+the command replaces the version installed in your home folder,
 not the shipped version, which remains unchanged.
 
 

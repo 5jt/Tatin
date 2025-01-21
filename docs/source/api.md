@@ -32,16 +32,16 @@ Not all have equivalent user commands.
 
 Unlike user commands, API function names are case-sensitive.
 
-The Tatin API is in `⎕SE.Tatin`. 
+The Tatin API is in `⎕SE.Tatin`.
 Call an API function like this:
 
     ⎕SE.Tatin.BuildPackage parms
 
 ??? warning "API code cache"
 
-    The Tatin code package is loaded into `⎕SE._Tatin`, but the API is exposed via `⎕SE.Tatin`. 
+    The Tatin code package is loaded into `⎕SE._Tatin`, but the API is exposed via `⎕SE.Tatin`.
 
-    Do not call functions in `⎕SE._Tatin`. 
+    Do not call functions in `⎕SE._Tatin`.
 
 ---
 
@@ -58,7 +58,7 @@ Parameter space `parms` is typically created with [`CreateBuildParms`](#create-b
 `dependencyFolder`
 : Path to folder with packages the project depends on. Default is `''`.
 
-: Tatin searches the project for dependencies in (in order of precedence) 
+: Tatin searches the project for dependencies in (in order of precedence)
 
     1.  the folder specified in `dependencyFolder`
     1.  `cider.config` (for projects managed by Cider)
@@ -68,11 +68,15 @@ Parameter space `parms` is typically created with [`CreateBuildParms`](#create-b
 `projectPath`
 : Path to folder from which to create the package. (Required.)
 
+`projectspace`
+: Namespace that is to contain the package contents.
+
+    ??? warning "Until version 0.118.0 this was known as `tatinVars`"
+
+        Now, Tatin signals an error if it finds a `tatinVars` parameter.
+
 `targetPath`
 : Path to folder in which to write the ZIP file. Default is `''`: use `projectPath`.
-
-`tatinVars`
-: Reference to the `TatinVars` namespace of the package. Required if `TatinVars.CONFIG` in the workspace is to be updated with a build number. (Default `⍬`.)
 
 `version`
 
@@ -100,7 +104,7 @@ Scans all known registries (with priority >0) for later versions of the principa
     4 - Flag: whether later version is available
     5 - URL of latest version; empty if unchanged
 
-By default, only principal packages and minor and patch numbers are checked. 
+By default, only principal packages and minor and patch numbers are checked.
 Change this with optional left argument `flags`: the sum of the following. (Defaults to 0: do neither.)
 
     1 - List later major versions
@@ -113,7 +117,7 @@ Change this with optional left argument `flags`: the sum of the following. (Defa
 
 Clears the cache and returns ==FIXME==.
 
-If `url` is 
+If `url` is
 
 -   empty all subdirectories but `temp\` are removed
 -   not empty, only the given domain is removed from the cache
@@ -123,9 +127,9 @@ The cache is the folder [`GetPathToPackageCache`](#get-path-to-package-cache) po
 
 ## :fontawesome-solid-code: Copy registry
 
-    list←CopyRegistry parms 
+    list←CopyRegistry parms
 
-Copies packages from a managed Tatin registry to a local folder and returns 
+Copies packages from a managed Tatin registry to a local folder and returns
 ==as a list of strings the packages copied==
 
 !!! warning "Pause or stop any running local server while `CopyRegistry` is running."
@@ -145,7 +149,7 @@ Required parameters are marked; others are optional.
 `group=`
 : Restrict the packages to be copied to a particular group.
 
-    Dependencies will be copied as well, no matter which group they belong to.      
+    Dependencies will be copied as well, no matter which group they belong to.
 
 `latest`
 : Copy only the latest version of each major version of each non-deprecated package.
@@ -166,11 +170,11 @@ Required parameters are marked; others are optional.
 `noDeps`
 : Flag. If set, ignore dependencies. (Useful only for test cases.)
 
-`path` 
-: A local folder in which to write the packages. Required unless `dry` set. 
+`path`
+: A local folder in which to write the packages. Required unless `dry` set.
 
 `url`
-: URL of the Tatin registry from which to copy. Required unless `dry` set. 
+: URL of the Tatin registry from which to copy. Required unless `dry` set.
 
 `verbose=`
 : By default, prints the names of all packages copied to `⎕SE`. <!-- FIXME Prints to `⎕SE` or copies to `⎕SE`? -->
@@ -253,17 +257,17 @@ Specify `packages` as a string or list of strings, with each package and version
 
     <group-name>-<package-name>-<precise_version_number>
 
-A Tatin registry will delete packages only if its configured [Delete policy](#get-delete-policy) permits. 
+A Tatin registry will delete packages only if its configured [Delete policy](#get-delete-policy) permits.
 
 The principal Tatin server operates a `None` policy, meaning that you cannot delete anything from it.
 
 ??? info "Why can’t I delete a package from the Tatin server?"
 
-    The main design objective is to ensure a build that includes packages from the principal Tatin registries can always be reproduced in precisely the same way. 
+    The main design objective is to ensure a build that includes packages from the principal Tatin registries can always be reproduced in precisely the same way.
 
     If deleting a package is allowed – even when it is a beta version – then this cannot be guaranteed.
 
-    If you happen to publish a package and realize seconds later that you made a formidable mistake? 
+    If you happen to publish a package and realize seconds later that you made a formidable mistake?
     Increase the patch number, fix the problem and publish a new version: that’s the only way.
 
 
@@ -298,8 +302,8 @@ pkgList | string | a list of package names separated by commas
 verbose | flag | optional: whether to include more detail in the result; default 0
 depth | integer | optional: limit on recursive search
 
-then Tatin recursively scans the registry for the packages in `pkgList` and returns 
-a fully qualified list of all matches. 
+then Tatin recursively scans the registry for the packages in `pkgList` and returns
+a fully qualified list of all matches.
 <!-- FIXME as what? -->
 
 <!-- FIXME Get this to work, then include an example -->
@@ -311,12 +315,12 @@ If `verbose` is set the actual package folders are returned instead of the hosti
 
 Specify packages in `pkgList` partially or in full. Name is required but group and version can be omitted. You can specify a major version number, but minor and patch numbers are ignored if specified.
 
-The function scans `folder` recursively for a file `apl-dependencies.txt`. Folders containing such a file are searched for the packages listed in `pkgList`. 
+The function scans `folder` recursively for a file `apl-dependencies.txt`. Folders containing such a file are searched for the packages listed in `pkgList`.
 The search is not case-sensitive.
 
 !!! tip "Useful for discovering where packages are used."
 
-Set optional left argument `depth` to limit the number of levels searched. 
+Set optional left argument `depth` to limit the number of levels searched.
 A server sets this to 1 because it knows it only needs to search the child folders of the Registry folder, which greatly reduces the search time.
 
 You can use it similarly if you know exactly what is stored where.
@@ -365,7 +369,7 @@ col | contains
 This function requires the version number to be fully specified.
 
 !!! danger "The function accepts an optional left argument for INTERNAL use only."
-<!-- 
+<!--
 FIXME Why document if for internal use only?
 Note that the function accepts an optional left argument, but this should not be specified by a user: it is only used internally.
 
@@ -437,14 +441,20 @@ Where `folder` is a path to a folder, and (optional) `configParms` is a paramete
 
 If the folder exists and already contains a config file, Tatin signals an error.
 
-Optional left argument `configParms` is typically created with [`InitPackageConfig`](#initpackage-config).
+Optional left argument `configParms` is typically created with [`InitPackageConfig`](#initpackage-config)
+but can be made from scratch:
+```apl
+  parms←⎕NS''
+  parms.(group name version)←'aplteam' 'Foo' '1.0.0'
+  cfg←parms ⎕SE.Tatin.InitialisePackage 'path/to/folder'
+```
 
 
 ## :fontawesome-solid-code: InitPackage config
 
     cfg←{sourcePath}  InitPackageConfig parms
 
-Where 
+Where
 
 `parms`
 : is a an empty vector or a parameter space
@@ -462,26 +472,26 @@ The `source` parameter in the result is set by (in order of precedence)
 
 ```apl
       showParms ⎕SE.Tatin.InitPackageConfig ⍬
-api               :      
-assets            :      
-description       :      
-documentation     :      
-files             :      
-group             :      
-io                : 0    
-license           :      
-lx                :      
-maintainer        :      
-minimumAplVersion : 18.0 
-ml                : 0    
-name              :      
-os_lin            : 1    
-os_mac            : 1    
-os_win            : 1    
-project_url       :      
-source            :      
-tags              :      
-userCommandScript :      
+api               :
+assets            :
+description       :
+documentation     :
+files             :
+group             :
+io                : 0
+license           :
+lx                :
+maintainer        :
+minimumAplVersion : 18.0
+ml                : 0
+name              :
+os_lin            : 1
+os_mac            : 1
+os_win            : 1
+project_url       :
+source            :
+tags              :
+userCommandScript :
 version           : 0.1.0
 ```
 
@@ -490,7 +500,7 @@ version           : 0.1.0
 
     r←{noBetas} InstallPackages (identifiers targetFolder)
 
-Where 
+Where
 
 ---|---|---
 identifiers | string | comma-separated list of package identifiers
@@ -543,16 +553,16 @@ If the cache is empty the result is an empty list.
 
     list←{all} ListDeprecated source
 
-Where 
+Where
 
 -------|--------|---
 all    | flag   | optional: include all versions; default 0
 source | string | <p>is one of</p><ul markdown><li>an alias or URL for a Tatin registry</li><li markdown>path to an install folder (contains a file `apl-buildlist.json`)</li><li>alias, URL, or path to a Tatin registry and optionally a (possibly incomplete) package ID</li></ul>
 
-returns (as a 1-column matrix of strings) a list of deprecated packages. 
+returns (as a 1-column matrix of strings) a list of deprecated packages.
 
 Only the last published version of a major version number is included.
-Set the `all` flag to include all versions of any major version  marked as deprecated. 
+Set the `all` flag to include all versions of any major version  marked as deprecated.
 
 ```apl
       ⎕SE.Tatin.ListDeprecated '[tatin]'
@@ -574,10 +584,10 @@ The result is a list of strings – if `verbose` is set, a 2-column matrix of wh
 
 ```
       ⎕SE.Tatin.ListLicenses '[tatin]'
- Unlicense  CC0  0BSD  EPL  MIT  BSL  ISC  Apache  BSD-2  BSD-3 
+ Unlicense  CC0  0BSD  EPL  MIT  BSL  ISC  Apache  BSD-2  BSD-3
       1 ⎕SE.Tatin.ListLicenses 'https://tatin.dev'
- Unlicense  https://en.wikipedia.org/wiki/Unlicense                                                                                     
- CC0        https://en.wikipedia.org/wiki/Creative_Commons_license#Zero_/_public_domain                                                 
+ Unlicense  https://en.wikipedia.org/wiki/Unlicense
+ CC0        https://en.wikipedia.org/wiki/Creative_Commons_license#Zero_/_public_domain
  ...
 ```
 
@@ -586,7 +596,7 @@ The result is a list of strings – if `verbose` is set, a 2-column matrix of wh
 
     packages←{parms} ListPackages source
 
-Where 
+Where
 
 ---|---|---
 parms  | namespace | optional: parameter space
@@ -605,7 +615,7 @@ The result matrix has 2–4 columns:
 [3]    | if `parms.date` is set, publication date
 [3\|4] | if `parms.projectUrl` is set, the project URL
 
-Leaving aside any filters specified in `parms`, if `source` 
+Leaving aside any filters specified in `parms`, if `source`
 
 specifies a: | result lists:
 -------------|-----------------------------------------------
@@ -613,8 +623,8 @@ registry     | all packages, aggregated by major version
 package ID without a full version number | matching packages
 package name without a group name | matching packages
 
-<!-- 
-If `parms` is specified it must contain parameters `group`, `tags` and `aggregate`. 
+<!--
+If `parms` is specified it must contain parameters `group`, `tags` and `aggregate`.
 It may contain `date`, `since`, `project_url` and/or `userCommand`.
  -->
 
@@ -733,7 +743,7 @@ Examples:
     '[tatin-test]example-versions-1.0'
     '[tatin-test]example-versions-1.0.1' ⍝ same as previous
 
-In the first three cases known registries with a priority above zero are scanned. 
+In the first three cases known registries with a priority above zero are scanned.
 
 Result `mat` has a column with full package names.
 
@@ -759,7 +769,7 @@ with beta versions) then the publishing date is taken into account.
 
     {refs}←{options} LoadDependencies folder [target]
 
-Where 
+Where
 
 --------|-----------|-----------------------------
 options | 2 flags   | optional: default 0
@@ -777,7 +787,7 @@ The  flags in `options`:
 
 !!! detail "User commands"
 
-    Case-insensitive alias `'[MyUCMDs]'` denotes the special folder `MyUCMDs/`, whose location depends on the operating system. 
+    Case-insensitive alias `'[MyUCMDs]'` denotes the special folder `MyUCMDs/`, whose location depends on the operating system.
 
     So where a Tatin package has been installed as a user command (and perhaps bundled into the Dyalog runtime) you cannot use absolute paths for referring to assets.
 
@@ -796,7 +806,7 @@ The  flags in `options`:
 
     no←{noBetas} LoadPackages (identifiers targetSpace)
 
-Where 
+Where
 
 ---|---|---
 noBetas     | flag   | optional: ignore beta versions; default 0
@@ -805,7 +815,7 @@ targetSpace | ref    | fully-qualified namespace: target
 
 Tatin loads packages dynamically into the target space and returns the number of principal packages loaded.
 
-??? detail 
+??? detail
 
     Tatin actually loads the package into `[#|⎕SE]._tatin.{packageName}` and puts a reference to it in `targetSpace`.
 
@@ -850,14 +860,14 @@ Where `source` is
 
     {fn}←{deps} PublishPackage (source registry)
 
-Where 
+Where
 
 ---------|------------|-----------------------------------------
 deps     | parm space | optional: argument for `BuildPackage`
 source   | string     | folder from which to create the package
 registry | string     | registry to which to publish the package
 
-Tatin 
+Tatin
 
 1. Confirms no package has already been published to the registry under this name (case insensitive).
 1. If `source` is a folder, uses [`BuildPackage`](#build-package) to zip the package into a temp folder; `deps`, if specified, is passed as the argument.
@@ -875,7 +885,7 @@ zfn  | zip file name: empty if `source` is a ZIP file, otherwise name of the ZIP
 
 !!! detail "Delete policy"
 
-    The package is published no matter what the server’s delete policy is. 
+    The package is published no matter what the server’s delete policy is.
 
     That differs from the [user command](user-commands.md#publish-package), which asks you to confirm publication of a package that cannot then be deleted.
 
@@ -884,7 +894,7 @@ zfn  | zip file name: empty if `source` is a ZIP file, otherwise name of the ZIP
 
     {refs}←{parms} ReInstallDependencies deps folder [reg]
 
-Where 
+Where
 
 -------|------------|--------------
 parms  | parm space | optional: typically created by calling [`CreateReInstallParms`](#CreateReInstallParms)
@@ -892,12 +902,12 @@ deps   | ???        | ???
 folder | string     | target folder: contains `apl-dependencies.txt`
 reg    | string     | optional: registry alias or URL
 
-Tatin, in the target folder, 
+Tatin, in the target folder,
 
 1.  deletes file `apl-buildlist.json` and all directories
 2.  re-installs all files listed in `apl-dependencies.txt` (ignoring lines that start with a lamp `⍝`)
 
-and returns 
+and returns
 a list of references to the principal packages installed.
 <!-- FIXME Confirm -->
 
@@ -918,7 +928,7 @@ dry     | Report what the function would do but don’t do it
 
     For each dependency Tatin scans known registries, even if `reg` was specified.
 
-    Tatin queries every known registry with a priority above 0, highest priority number first. First hit wins. 
+    Tatin queries every known registry with a priority above 0, highest priority number first. First hit wins.
 
     If you installed a package from a Tatin registry and later removed that registry from your user settings, or set its priority to 0, then `ReInstallDependencies` will **not** scan it, despite knowing perfectly well where the package came from.
 
@@ -935,29 +945,29 @@ The `path` argument may optionally include the config file name `apl-package.jso
       path←'path/to/packages/aplteam-APLTreeUtils2-1.4.0'
       q←⎕SE.Tatin.ReadPackageConfigFile path
       showParms q
-api               : APLTreeUtils2                                                    
-assets            :                                                                  
-date              : 20240325.14                                                      
+api               : APLTreeUtils2
+assets            :
+date              : 20240325.14
 description       : General utilities required by most members of the APLTree library
-documentation     :                                                                  
-files             :                                                                  
-group             : aplteam                                                          
-io                : 1                                                                
-license           : MIT                                                              
-lx                :                                                                  
-maintainer        : kai@aplteam.com                                                  
-minimumAplVersion : 18.0                                                             
-ml                : 1                                                                
-name              : APLTreeUtils2                                                    
-os_lin            : 1                                                                
-os_mac            : 1                                                                
-os_win            : 1                                                                
-project_url       : https://github.com/aplteam/APLTreeUtils2                         
-source            : APLSource/APLTreeUtils2.aplc                                     
-tags              : tools,utilities                                                  
-uri               : https://tatin.dev/                                               
-userCommandScript :                                                                  
-version           : 1.4.0+78                                                         
+documentation     :
+files             :
+group             : aplteam
+io                : 1
+license           : MIT
+lx                :
+maintainer        : kai@aplteam.com
+minimumAplVersion : 18.0
+ml                : 1
+name              : APLTreeUtils2
+os_lin            : 1
+os_mac            : 1
+os_win            : 1
+project_url       : https://github.com/aplteam/APLTreeUtils2
+source            : APLSource/APLTreeUtils2.aplc
+tags              : tools,utilities
+uri               : https://tatin.dev/
+userCommandScript :
+version           : 1.4.0+78
 
 ```
 
@@ -972,13 +982,13 @@ packageID | string | a [full package ID](glossary.md) or an alias
 folder    | string | <p>either</p><ul markdown><li>path to a package folder with a Tatin dependency file<br>`apl-dependencies.txt`</li><li markdown>`'[MyUCMDs]'` (case-insensitive)</li></ul>
 
 Tatin attempts to un-install the package `packageID`
-and any of its dependencies 
+and any of its dependencies
 (that are neither principal packages nor required by other packages)
 and returns:
 
 -----|-----------------|--------------------------------
 list | strings | Fully qualified names of all removed packages. (Might include aliases.)
-emsg | string  | Error message, ideally empty. 
+emsg | string  | Error message, ideally empty.
 
 <!-- `[MyUCMDS]` would translate into `MyUCMDs/packages/`. -->
 
@@ -988,19 +998,19 @@ If `packageID` matches more than one package, Tatin signals an error
 
 If `packageID` is empty, Tatin attempts to clean up: remove any packages that are neither principal packages nor required by other packages
 
-<!-- 
+<!--
 FIXME relates only to user command?
 `folder` may be a subfolder of an open Cider project. Tatin works out the correct one; if there are multiple Cider projects open the user is questioned.
  -->
 
-<!-- 
+<!--
 FIXME Move to user-commands.md
 If a package was installed twice, once with an alias and once without, running `]UnInstallPackage` on either of them does not uninstall the package but removes just the reference to it. Only when the other one is uninstalled as well is the package actually removed.
  -->
 
-<!-- 
+<!--
 FIXME If this relates only to package dependencies why confirm
-      pkg is mentioned in the dependency file? 
+      pkg is mentioned in the dependency file?
       How else would it have been identified?
 
 To keep things simple Tatin performs the following steps:
@@ -1010,10 +1020,10 @@ To keep things simple Tatin performs the following steps:
 5. Removes all packages that are not mentioned in the build list anymore
  -->
 
-!!! danger "Deleting parent folders" 
+!!! danger "Deleting parent folders"
 
     Removing the folders hosting the packages might fail for all sorts of reasons,
-    even after successfully removing the package and any dependencies 
+    even after successfully removing the package and any dependencies
     from both the dependency file and the build list.
     <!-- FIXME Seems a bit vague. Must keep zombie folders indefinitely? -->
 

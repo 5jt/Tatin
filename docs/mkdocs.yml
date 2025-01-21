@@ -20,7 +20,7 @@ nav:
       - About publishing: about-publishing.md
       - Publish packages: publish-packages.md
       - User commands: user-commands-publish.md
-      - (Package configuration): packageconfiguration.md
+      - Package configuration: package-configuration.md
       - (Public interface): public-interface.md
     - Host:
       - About hosting: about-hosting.md
