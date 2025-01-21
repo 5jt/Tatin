@@ -314,7 +314,7 @@ date         | show publishing date and assume `-noaggr`
 project_url  | show the URL
 noaggr       | don’t aggregate
 
-!!! tip "Both / or \ work as path separators and trailing separators are optional."
+!!! tip "Both / or \\ work as path separators and trailing separators are optional."
 
 :fontawesome-solid-code: API:
 [`ListPackages`](api.md#list-packages)
