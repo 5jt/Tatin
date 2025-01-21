@@ -5,7 +5,7 @@ keywords: apl, dyalog, package
 ---
 # About Tatin
 
-!!! abstract "Tatin is the community cross-platform package manager[^wikipedia] and registry for Dyalog APL"
+!!! abstract "Tatin is the community cross-platform package manager for Dyalog APL"
 
 ![Tatin overview](img/tatin-overview.png)
 
@@ -58,8 +58,8 @@ Upgrading might require newer versions of packages on which it in turn depends.
 Tatin follows the [semantic versioning](glossary.md) conventions
 and silently [manages all this](load-and-update-strategy.md) for you.
 
-To support this work the Tatin registry never deletes a published package.
-You can *deprecate* a package or a version, but the server retains it for anyone who relies on it.
+To support this work the Principal Registry never deletes a published package.
+You can *deprecate* a package or a version, but the registry retains it for anyone who relies on it.
 
 
 ## :fontawesome-solid-laptop-code: Usage
@@ -109,6 +109,6 @@ either as Tatin packages or as an application or Web service,
 it might suit you to start with Cider and let it manage Tatin.
 
 
-[^wikipedia]: A [package manager](https://en.wikipedia.org/wiki/Package_manager) or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer in a consistent manner.
+[^wikipedia]: A [package manager](https://en.wikipedia.org/wiki/Package_manager) or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer in a consistent manner. — _Wikipedia_
 
 [^macserve]: The registry should also run under Docker on macOS but this has not been tested.

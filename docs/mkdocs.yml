@@ -5,53 +5,34 @@ repo_name: aplteam/Tatin
 docs_dir: source
 
 nav:
-  - Revised:
+  - Home:
     - About Tatin: index.md
     - Load and update strategy: load-and-update-strategy.md
     - Glossary: glossary.md
     - Release notes: release-notes.md
-    - Use:
-      - Get started: get-started.md
-      - User commands: user-commands.md
-      - API functions: api.md
-      - Settings: user-settings.md
-      - Older versions: older-versions.md
-    - Publish:
-      - About publishing: about-publishing.md
-      - Publish packages: publish-packages.md
-      - User commands: user-commands-publish.md
-      - Package configuration: package-configuration.md
-      - (Public interface): public-interface.md
-    - Host:
-      - About hosting: about-hosting.md
-      - (Credentials): server-credentials.md
-      - (Install the server): installingthetatinserver.md
-      - (Server tips and tricks): server-tipsandtricks.md
-      - (Run Dyalog behind Apache): rundyalogbehindapache.md
-      - (Usage data): usagedata.md
-    - Contribute to Tatin:
-      - (Tatin for contributors): tatinforcontributors.md
-      - (Github): github.md
-  - Original:
-    - Home: original/_readme.md
-    - Caching: original/caching.md
-    - First steps: original/firststepswithtatin.md
-    - Github: original/github.md
-    - Installing the client: original/installingandupdatingthetatinclient.md
-    - Installing the server: original/installingthetatinserver.md
-    - Introduction: original/introduction.md
-    - Package configuration: original/packageconfiguration.md
-    - Publishing packages: original/publishingpackages.md
-    - Release notes: original/releasenotes.md
-    - Run Dyalog behind Apache: original/rundyalogbehindapache.md
-    - Semantic versioning: original/semanticversioning.md
-    - Server tips and tricks: original/server-tipsandtricks.md
-    - Syntax reference: original/syntaxreference.md
-    - Tatin and OneDrive: original/tatinandonedrive.md
-    - Tatin for contributors: original/tatinforcontributors.md
-    - Load and update strategy: original/tatinsloadandupdatestrategy.md
-    - User settings: original/tatinusersettings.md
-    - Usage data: original/usagedata.md
+    - Previous version: 'https://tatin.dev/v1/documentation'
+  - Use:
+    - Get started: get-started.md
+    - User commands: user-commands.md
+    - API functions: api.md
+    - Settings: user-settings.md
+    - Older versions: older-versions.md
+  - Publish:
+    - About publishing: about-publishing.md
+    - Publish packages: publish-packages.md
+    - User commands: user-commands-publish.md
+    - Package configuration: package-configuration.md
+    - (Public interface): public-interface.md
+  - Host:
+    - About hosting: about-hosting.md
+    - (Credentials): server-credentials.md
+    - (Install the server): installingthetatinserver.md
+    - (Server tips and tricks): server-tipsandtricks.md
+    - (Run Dyalog behind Apache): rundyalogbehindapache.md
+    - (Usage data): usagedata.md
+  - Contribute:
+    - (Tatin for contributors): tatinforcontributors.md
+    - (Github): github.md
 
 theme:
   custom_dir: overrides
