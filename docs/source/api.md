@@ -14,7 +14,7 @@ Not all have equivalent user commands.
 [CheckForLaterVersion](#check-for-later-version)      [InstallPackages](#install-packages)
 [ClearCache](#clear-cache)                [ListDeprecated](#list-deprecated)
 [CopyRegistry](#copy-registry)              [ListCache](#list-cache)
-[CreateAPIfromCFG](#createapifromcfg)          [ListLicenses](#listlicenses)
+[CreateAPIfromCFG](#create-api-from-cfg)          [ListLicenses](#list-licenses)
 [CreateBuildParms](#create-build-parms)          [ListPackages](#list-packages)
 [CreateCopyRegistryParms](#create-copyregistry-parms)   [ListRegistries](#list-registries)
 [CreateReInstallParms](#create-reinstall-parms)      [ListTags](#list-tags)
@@ -190,24 +190,24 @@ Required parameters are marked; others are optional.
 
 ## :fontawesome-solid-code: Create API from CFG
 
-    {noOf}←{names} CreateAPIfromCFG (refTosourceNS cfg)
+    {noOf}←{names} CreateAPIfromCFG (source cfg)
 
 <!-- FIXME arguments and results -->
 
 Where
 
-`refToSourceNS`
-: is a reference to the source namespace of the package
+-------|-------------|------------
+source | _reference_ | namespace containing the package objects
+cfg    | ==_What?_== | package configuration
+names  | _strings_   | (optional) names of objects in the namespace to be exposed in the API
 
-`cfg`
-: is ==what== ?
+then Tatin creates an API space as a child of `source` (with cover functions for the package’s public interface) and returns as a shy result the number of objects exposed.
 
-`names`
-: (optional) is a list of names of objects in the namespace, as a ==comma-separated string or as a list of strings==
+If `names` is absent, the function looks for a constant `source.Public`.
 
-then Tatin creates cover functions in the API namespace for the package‘s public interface and returns ==the number of objects exposed.==
+!!! warning "Not for use with a scripted namespace."
 
-See [Public Interface](public-interface.md) for details.
+See [Public Interface](public-interface.md) for more.
 
 
 

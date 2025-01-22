@@ -28,6 +28,8 @@ build number
 
     (See examples of **full package ID**.)
 
+constant
+: A niladic function or a variable. (Same syntax, but the former is immutable.)
 
 dependency
 : Contrary to normal usage, a dependency of a package `foo` is another package on which `foo` depends.

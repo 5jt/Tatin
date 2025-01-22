@@ -5,115 +5,144 @@ keywords: api, apl, dyalog, interface, package, tatin
 ---
 # Public interface to a package
 
-!!! abstract "How to control which objects of a Tatin package are exposed as its public interface"
+!!! abstract "How to control which objects of a Tatin package are exposed to its users"
 
+<!-- 
+FIXME What?
 These cover functions are one-line dfns that call the function with the same name one level above. Because they are one-liners the Tracer will ignore them: it is not possible to trace into a one-line dfn. Most of the time this is a blessing, but sometimes it is a curse.
+ -->
+By default, the public interface of your package is all its _top-level objects_:
 
-By default the contents of the package becomes the public interface: `⎕NL 2 3 4 9`. However, if there is a function `Public` available, then this is expected to return a list of simple text vectors defining the public interface. `CreateAPIfromCFG` will use the result of `Public` if it finds one in the root of the given namespace.
+    ⎕NL 2 3 4 9
 
-Alternatively, you can pass a list of names as left argument to `CreateAPIfromCFG` - that would take precedence.
+!!! detail inline end ""
 
-It is possible to keep `names` very simple by specifying a single name, but it can also be complex and comprehend the names of functions, operators, variables, interfaces, classes and namespace, simple and scripted. It can also use dotted syntax to define names within namespaces, though only one level deep.
+    The API space serves as a filter:
+    referring to anything but the exposed names signals an error.
 
-!> ### Tips and hints
-=> You may call `CreateAPIfromCFG` when initialising a package after loading it (from a function that is executed by the package's `lx` parameter, see "Tatin's Package Configuration File" for details).
-=> 
-=> Alternatively, you may call it as part of the package creation process, making the API a permanent part of the package. 
+You can instead select objects to expose
+by specifying an **API space**: a namespace with references only to the exposed objects.
+Then when the package is loaded into the workspace, the contents go into the package cache,
+and its handle points to its API namespace.
 
-
-#### Typical scenarios
-
-1. The package consists of a single class or a single ordinary namespace
-
-1. The package consists of a single function or operator
-
-1. The package consists of several objects: a mixture of functions, operators, classes and/or namespaces
-
-A> ### Single functions 
-A>
-A> You _must not_ specify the name of a function (or an operator) as the API in any of these cases.
-A> 
-A> This restriction helps to avoid confusion, but there is also a technical issue: Tatin needs to establish references to the API, and although in Dyalog one can establish references (kind of) to monadic, ambivalent, and dyadic functions, this is not possible for neither operators nor niladic functions.
-
-
-##### A single namespace
-
-* If you don't specify `api` then the name of the namespace is the API. 
-
-  For example, if the package name is `pkgName` and the namespace's name (see the `source`  parameter) is `foo` and it has a function `Hello`, then you call `Hello` with:
-
-  `pkgName.foo.Hello`
-
-* If you do specify `api` by assigning an APL name to it, then it must be the name of the namespace. In that case, the _contents_ of the namespace becomes the API.
-
-  For example, if the package name is `pkgName` and the namespace's name is `foo` and it has a function `Hello`, then you specify `api` as `foo` and call `Hello` with:
-
-  `pkgName.Hello`
-
-
-##### A single scripted namespace
-
-If a package consists of a single scripted namespace then you cannot use the services of Tatin's `CreateAPIfromCFG` function. The reason is that this function tries to establish a sub-namespace (with a name defined by the package config parameter `api`) inside the target, and that works only with ordinary namespaces, but not with scripted namespaces.
-
-You could still create an API yourself, however. For example, if a package `Foo` consists of a scripted namspace that carries (say) about 20 variables, functions and operators of which only two should be accessible by a user (say `Encode` and `Decode`), then you could create this namespaces structure:
-
+For example, MarkAPL has an API space (called `API`) with references to its exposed functions.
+```apl
+      #.MarkAPL
+#._tatin.aplteam_MarkAPL_13_1_0.API
 ```
-#.Foo
-#.Foo.Core
+You can define an API space for your package, or Tatin can create one for you.
+The `api` setting in the package config tells Tatin how to use it.
+
+
+## Define an API space
+
+Suppose package APkg consists of a single scripted namespace `Core` with multiple variables, functions, and operators of which only `Encode` and `Decode` should be exposed
+– as `#.APkg.Encode` and `#.APkg.Decode`.
+
+In the `Core` script you could create this structure
+```
+#.APkg
+#.APkg.Core
   ... ⍝ vars, fns and oprs
-#.Foo.API
-#.Foo.API.Encode
-#.Foo.API.Decode  
+#.APkg.Core.API
+#.APkg.Core.API.Encode
+#.APkg.Core.API.Decode
+```
+with these definitions
+```apl
+API.Decode←{⍺ ##.Decode ⍵}
+API.Encode←{⍺ ##.Encode ⍵}
+```
+then have the config `api` setting specify `Core.API`.
+The two functions would be exposed as `#.APkg.Decode` and `#.APkg.Encode`
+– and nothing else would.
+<!-- FIXME Could you, though? -->
+
+Suppose you had reason _not_ to modify the `Core` script.
+Just include a second namespace in your package:
+```apl
+:Namespace API
+    Decode←{⍺ ##.Core.Decode ⍵}
+    Encode←{⍺ ##.Core.Encode ⍵}
+:EndNamespace
+```
+then have the config `api` setting specify `API`.
+The effect would be the same.
+
+An API can use multiple sources.
+Suppose you have a third namespace: `More`.
+```apl
+:Namespace API
+    Decode←{⍺ ##.Core.Decode ⍵}
+    Encode←{⍺ ##.More.Encode ⍵}
+:EndNamespace
 ```
 
-This is how `#.Foo.API.Decode` would look like:
 
-```
-Decode←{⍺ ##.JWTAPL.Decode ⍵}
-```
+## Create an API from the config
 
-And this is how `#.Foo.API.Encode` would look like:
+For many packages, Tatin can create the API space for you, at build or load time.
+Specify the API space in the `api` setting of the [package config](package-configuration#stadard-settings) and list what is to be exposed in it.
 
-```
-Encode←{⍺ ##.JWTAPL.Encode ⍵}
-```
+Function [`CreateAPIfromCFG`](api.md#create-api-from-cfg) creates the API space as a child of the source namespace and populates it with references to the exposed ojects.
 
-You just need to establish these functions yourself.
+!!! tip inline end ""
 
-You don't need a function `Public` here because that function's only purpose is to be called by `CreateAPIfromCFG` in order to establish a list of public objects. Here the job is done by you, therefore there is no need for `Public`.
+    You can substitute for this list (or override it) with an optional left argument.
 
-
-##### A single class
-
-* If you don't specify `api` then the name of the class is the API. 
-
-  For example, if the package name is `pkgName` and the class name is `foo` and it has a function `Hello`, then you call `Hello` with:
-
-  `pkgName.foo.Hello`
-
-* If you do specify `api` then it must be the name of the class. In that case, everything in the class with `:Access Public Shared` becomes the API.
-
-  For example, if the package name is `pkgName` and the class name is `foo` and it has a publicly shared function `Hello`, then you call `Hello` with:
-
-  `pkgName.Hello`
+It looks in the package for a constant `Public` that names the objects to expose.
+This list of strings can name functions, operators, variables, interfaces, classes and namespaces, both simple and scripted.
+The objects must all be children (or, with dot syntax, grandchildren) of a single source namespace.
 
 
-##### A single function or operator
+You can create the API by calling `CreateAPIfrom CFG`
 
-If the name of the package is `pkgName`, and the name of the function is `MyFns`, then it is called as `pkgName.MyFns`. The function may be niladic, monadic, ambivalent or dyadic.
-
-The same holds for an operator.
-
-In this particular case `api` _must not_ be defined (remain empty).
+-   at **load time** from a function specified as the package’s [`lx` setting](package-configuration.md#standard-settings)
+-   at **build time**, incorporating the API into the built package
 
 
-##### A mixture of several APL objects
+??? warning "If your source is a single scripted namespace, you cannot use `CreateAPIfromCFG`"
 
-* If `api` is not set then all top-level objects of the package become the API: functions, operators, namespaces, classes, interfaces.
+    The function cannot create a child space of a scripted namespace.
 
-* If `api` is set then it must point to one of the namespaces or classes, or a sub-namespace (using dotted syntax), or a class in a sub-namespace. Then just the objects in what `api` is pointing to become the API.
+    Instead, define an API space directly: see above.
+
+<!-- 
+You don’t need a function `Public` here.
+Its only purpose is to be called by `CreateAPIfromCFG` and here the job is done instead by you.
+ -->
+
+<!-- 
+FIXME Move down the page
+!!! warning "A function or operator cannot be the API"
+
+    If your package exposes just a single function or operator,
+    make its parent workspace the API space.
+
+    The restriction helps avoid confusion, but there is also a technical issue.
+    Tatin creates a reference to the API space.
+    Although in Dyalog APL one can (sort of) create references
+    to monadic, ambivalent, and dyadic functions,
+    it is not possible for operators or niladic functions.
+ -->
+
+## Some scenarios
+
+To expose from your package APkg (as e.g. `#.APkg.Hello`)
+
+object/s from                 | api   | CreateAPIfromConfig
+------------------------------|-------|--------------------------
+a single namespace `Foo`      | `Foo` | :fontawesome-solid-check:
+a single scripted namespace   | `API` | :fontawesome-solid-xmark:
+a single class `Foo`[^access] | `Foo` | :fontawesome-solid-xmark:
+multiple namespaces           | `API` | :fontawesome-solid-xmark:
+
+[^access]: In a class, use `:Field` and `:Access` declarations to expose objects.
 
 
+<!-- 
+FIXME This seems like a terrible idea.
+Why install in the workspace root and then access through a namespace?
 ##### Restricting what's "public"
 
 The user might want to expose only a subset of functions/operators of a namespace (classes have such an interface anyway: `:Public Shared`), and in that case, the user must not only specify `api`, but also structure her code accordingly.
@@ -154,3 +183,4 @@ To the outside world, only two functions are visible:
 
 Similarly, if `PkgName` consists of the two namespaces `Boo` and `Goo`, and `Run` and `CreateParmSpace` live in `Boo`, then you could also have a sub-namespace `Boo.API` that hosts `Run` and `CreateParmSpace`, and `api` would be `Boo.API`, while calls are still `PkgName.Run` and `PkgName.CreateParmSpace`.
 
+ -->
