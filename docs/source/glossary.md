@@ -99,6 +99,11 @@ package space
 parameter space
 : A namespace of variables representing parameters
 
+Plodder
+: A generalized HTTP server, used by Tatin, based on [Rumba](https://github.com/aplteam/RumbaLean) and Conga.
+
+    For details see https://github.com/aplteam/Plodder
+
 
 registry alias
 : A short name you can use locally as an alternative to its URL.

@@ -22,11 +22,11 @@ nav:
     - Publish packages: publish-packages.md
     - User commands: user-commands-publish.md
     - Package configuration: package-configuration.md
-    - (Public interface): public-interface.md
+    - Public interface: public-interface.md
   - Host:
-    - About hosting: about-hosting.md
+    - (About hosting): about-hosting.md
+    - Install: install-server.md
     - (Credentials): server-credentials.md
-    - (Install the server): installingthetatinserver.md
     - (Server tips and tricks): server-tipsandtricks.md
     - (Run Dyalog behind Apache): rundyalogbehindapache.md
     - (Usage data): usagedata.md
