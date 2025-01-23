@@ -28,12 +28,12 @@ Edit the configuration file `Server/server.ini`.
 Plodder INI files have unusual features.[^plodini]
 The most important are
 
--   **Typed data**: put text in quotes; anything else is numeric
--   You can define **local variables**
+-   **typed data**: put text in quotes; anything else is numeric
+-   you can define **local variables**
 
 
 
-When the Tatin Server loads the INI file it replaces `<INIFILE>` with the fully qualified path of the INI file.
+When the Tatin Server loads the INI file, it replaces `<INIFILE>` with the fully qualified path of the INI file.
 
 See :fontawesome-brands-github: [aplteam/Plodder](https://github.com/aplteam/Plodder) for INI file settings.
 Here are those you are likely to change for your Tatin server.
@@ -65,7 +65,7 @@ Recommended for public-facing servers.
 
     See [Run Dyalog behind Apache](rundyalogbehindapache.md).
 
-If you use a reverse proxy you might have no need for encryption (HTTPS) and certificates.
+If you use a reverse proxy, you might not need encryption (HTTPS) and certificates.
 
 
 ### `CONFIG`
@@ -92,7 +92,7 @@ Control how much information Tatin logs.
 
 --------------------------------|---------------------------
 Log                             | Flag: log at high level. Keep set.
-LogHTTP<br>LogConga<br>LogRumba | Flags: log at low level
+LogHTTP<br>LogConga<br>LogRumba | Flags: log at low level.
 WindowsEventLog                 | Flag: write to the Windows Event Log. (Recommended, but Windows only.)
 
 IP addresses are not logged at the high level.
@@ -118,7 +118,7 @@ The Latent Expression starts the server.
 
 Most foreseeable errors (bugs in Tatin etc.) are trapped
 and return a 500 (Internal Server Error) response
-but do not stop the server
+but do not stop the server.
 However, errors such as an aplcore or a WS FULL could bring the server down.
 
 !!! tip inline end "On Windows :fontawesome-brands-windows:"
@@ -163,12 +163,16 @@ might need adjusting to your taste.
 
 Change the `source` to the folder that hosts the Tatin server data.
 
+!!! detail inline end ""
+
+    Ports 80 and 443 respectively are the standard ports for HTTP and HTTPS.
+
 The server listens to port 9090, which the default configuration exposes.
 It is unsafe to remap this to ports 80 or 443 except on an isolated machine:
 run a public Tatin server on the Web [behind a webserver](rundyalogbehindapache.md) such as Apache or Nginx.
 
-The second port exposed in the script is used for connecting to the interpreter with Ride, if ever. 
-(The INI file sets whether the interpreter allows Ride or not.)
+The second port exposed in the script is for connecting to the interpreter with Ride,
+if permitted by the INI file.
 
 
 ## :fontawesome-brands-docker: Docker workflow
@@ -196,20 +200,20 @@ ReloadWS         | Reload the server workspace if you detect a new one.
 
 ## :fontawesome-solid-calendar-plus: Update the server
 
-Download the release ZIP from the [Releases](https://github.com/aplteam/Tatin/releases) page.
+Download the release ZIP from the [Releases](https://github.com/aplteam/Tatin/releases) page and unzip it.
 
 **Read the release note** before doing anything else.
 
 !!! warning "An update could require taking the server down for maintenance."
 
 
-A running server can monitor whether the workspace changes on disk after it started,
-and load it again.
+By defult, a running Tatin server watches the workspace on disk
+and reloads it if it changes.
 This makes for an easy update if no other action is required.
 
-The auto-update is active by default but can be switched off in the INI file with `[CONFIG]ReloadWS`.
+The automatic update can be switched off in the INI file with `[CONFIG]ReloadWS`.
 
-During the reload the server returns error messages.
+While reloading the workspace, the server returns error messages.
 Expect this to last 10 seconds or more, depending on the number of packages managed.
 
 
@@ -234,9 +238,10 @@ Often the subfolder `docs/` is to be replaced. (Contains the documentation.)
 
 ### Maintenance folder
 
-!!! danger "Never replace the folder `maintenance/`."
+!!! danger "Never replace the maintenance folder."
 
-    It documents changes made to the packages: you don’t want to lose this.
+    The folder `maintenance/` documents changes made to the packages:
+    you don’t want to lose this.
 
 If the new folder is not empty, copy its content over.
 Maintenance files can be used to carry out changes on all or some of the packages managed by the server, like adding a new property to the package config files of all packages.
