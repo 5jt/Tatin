@@ -18,20 +18,20 @@ nav:
     - Settings: user-settings.md
     - Older versions: older-versions.md
   - Publish:
-    - About publishing: about-publishing.md
+    - About publishing: publish.md
     - Publish packages: publish-packages.md
     - User commands: user-commands-publish.md
     - Package configuration: package-configuration.md
     - Public interface: public-interface.md
   - Host:
-    - (About hosting): about-hosting.md
+    - (About hosting): host.md
     - Install: install-server.md
     - (Credentials): server-credentials.md
     - (Server tips and tricks): server-tipsandtricks.md
     - (Run Dyalog behind Apache): rundyalogbehindapache.md
-    - (Usage data): usagedata.md
+    - User commands: user-commands-host.md
   - Contribute:
-    - (Tatin for contributors): tatinforcontributors.md
+    - (Tatin for contributors): contribute.md
     - (Github): github.md
 
 theme:

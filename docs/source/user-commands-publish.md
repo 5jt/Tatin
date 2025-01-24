@@ -8,16 +8,19 @@ keywords: apl,dyalog,host,publish,registry,tatin,ui
 !!! abstract "User commands for publishing Tatin packages"
 
 [BuildPackage](#build-package)       [DeprecatePackage](#deprecate-package)
-[CopyRegistry](#copy-registry)       [GetDeletePolicy](#get-delete-policy)
-[CreatePackage](#create-package)      [PublishPackage](#publish-package)
-[Debug](#debug)              [UsageData](#usage-data)
-[DeletePackages](#delete-packages)
+[CreatePackage](#create-package)      [GetDeletePolicy](#get-delete-policy)
+[Debug](#debug)              [PublishPackage](#publish-package)
+[DeletePackages](#delete-packages)     [UsageData](#usage-data)
 {: .typewriter}
 
-These further [user commands](user-commands.md) concern publishing packages.
+:fontawesome-solid-terminal:
+[User commands](user-commands.md)<br>
+:fontawesome-solid-terminal:
+[User commands for hosting](user-commands-host.md)
 
 
 ---
+
 ## :fontawesome-solid-terminal: Build package
 
     ]TATIN.BuildPackage [source] [target]
@@ -46,64 +49,6 @@ Now the build number gets bumped in all cases.
 
 :fontawesome-solid-code: API:
 [`BuildPackage`](api.md#build-package)
-
-
-
-## :fontawesome-solid-terminal: Copy registry
-
-    ]TATIN.CopyRegistry [source] [target]
-
-Where
-
--   `source` is the URL or alias of a Tatin registry (defaults to `[tatin]`)
--   `target` is a path to a local folder (optional if `dry` flag set)
-
-copy non-deprecated packages from `source` to `target` if not already present.
-
--------|-------------------------------
-dependencies= | Flag: whether to copy dependencies, default 1. (Useful only for test cases.)
-dry    | List packages that would be copied, but copy nothing.
-force  | Overwrite existing packages.
-group= | Copy packages only from specified group, but also their dependencies.
-latest | Copy only the latest minor version of each major version.
-list=  | <p>One of</p><ul markdown><li>a comma-separated list of package IDs</li><li markdown>a file with package names, one per row, specified with the `file://` protocol</li><li markdown>a fully qualified variable name</li></ul><p>Specify all packages as group-name or group-name-major.</p>
-verbose= | <ol markdown><li>Print a detailed report for each package copied.</li><li>Print reports as the list is processed.</li></ol>
-
-??? example "Examples"
-
-    List packages that would be copied.
-
-        ]CopyRegistry [tatin] -dry
-        ]CopyRegistry -dry
-
-    Copy all packages from `[tatin]` if not already available.
-
-        ]CopyRegistry /path/2/Reg
-
-    Copy the latest minor versions of the highest major versions of packages from `[company-reg]`.
-
-        ]CopyRegistry [company-reg] /path/2/Reg -latest
-
-    Copy from `[tatin]` all packages of the group `aplteam`.
-
-        ]CopyRegistry /path/2/Reg group=aplteam -force
-
-    Copy from `[tatin]`, if not already available, packages listed in variable `#.MyVars`.
-
-        #.MyVars←'aplteam-FilesAndDirs,aplteam-APLTreeUtils2'
-        ]CopyRegistry /path/2/Reg -list=#.MyVars
-
-    Copy from `[tatin]` packages specified in variable `#.MyVars`
-
-        ]CopyRegistry /path/2/Reg -list=aplteam-FilesAndDirs-4 -force
-
-    Copy all packages specified in the file /myPkgs.txt if not already available
-
-        ]CopyRegistry /path/2/Reg -list=file=/myPkgs.txt
-
-:fontawesome-solid-code: API:
-[`CopyRegistry`](api.md#copy-registry)
-
 
 
 
@@ -234,8 +179,6 @@ dependencies= | Find dependencies in this project subfolder. (Rarely need to spe
 [`PublishPackage`](api.md#publish-package)
 
 
-
-
 ## :fontawesome-solid-terminal: Usage data
 
     ]TATIN.UsageData [reg] [ -download [-all] [-folder=] [-unzip] ]
@@ -250,5 +193,32 @@ download | Ask me which usage files to download to a subfolder of my temp folder
 folder=  | Download to this empty folder.
 unzip    | Unzip downloaded file/s and delete ZIPs.
 
+!!! detail inline end "Package downloads"
+
+    A package request might be one person taking a quick look,
+    or several team members§ deploying the package in multiple projects,
+    with all but the first request served from the Tatin client cache.
+    No way to know.
+
+    Tatin’s test suite requests packages from both the Principal Registry and the Test server.
+    These requests are flagged as part of a test and ignored when the usage data is compiled.
 
 
+Each month, Tatin saves its request log as a CSV file,
+compresses it, makes it available for download as `usage-data-<YYYY>-<MM>.csv`,
+and deletes the previous usage file.
+For example, in May 2022 it saved `usage-data-2022-04` and deleted `usage-data-2022-03.csv`.
+
+So the filename `usage-data-2022-04` holds requests from 2022-01-01 to 2022-04-30 inclusive.
+
+Each January, Tatin collects the data from last year and saves it in a file `usage-data-<YYYY>.csv`.
+It also deletes any files `usage-data-<YYYY>-<MM>`.
+
+For example, in January 2023 it created a file `usage-data-2022`, and deleted all files `usage-data-2022-*`.
+
+:fontawesome-solid-desktop:
+A Tatin server [offers a page](https://tatin.dev/v1/usage-data "Link to the principal Tatin server`s Usage Data page") dedicated to the usage data.
+The page shows some of the data and provides links for downloading.
+
+:fontawesome-solid-code:
+There are no API functions available for retrieving usage data.

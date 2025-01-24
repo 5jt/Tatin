@@ -155,13 +155,13 @@ Developers might also run into one of two common scenarios:
 
 We discuss the two different scenarios one after the other.
 
-A> ### Creating a new version
-A>
-A> Creating a new version is discussed later in this document, but there are scenarios when you need to create a new version _before_ you execute the test cases.
-A>
-A> The reason for this is that one group of test cases executes user commands. If they are affected by anything you've changed then naturally you want the new version to be available in `⎕SE` for execution, but that is only possible if you create a new version first.
-A>
-A> For that reason one test checks whether the version number in the workspace and in `⎕SE` do match. If you are confident that this does not matter in your case you may just carry on. 
+### Creating a new version
+
+Creating a new version is discussed later in this document, but there are scenarios when you need to create a new version _before_ you execute the test cases.
+
+The reason for this is that one group of test cases executes user commands. If they are affected by anything you've changed then naturally you want the new version to be available in `⎕SE` for execution, but that is only possible if you create a new version first.
+
+For that reason one test checks whether the version number in the workspace and in `⎕SE` do match. If you are confident that this does not matter in your case you may just carry on. 
 
 ### Testing while developing
 
@@ -180,20 +180,20 @@ Note that by default the test cases use port 5001 for communication between the 
 
 When you run the test suite you will be asked whether you want to start a Tatin test server locally, and usually, you will answer with a "Yes!". (Windows only, elsewhere you must start the server yourself by starting a new instance of Dyalog and then copying over and executing the `)Load` statement that is provided as part of the client test suite. This means that at the moment you cannot run the test suite automatically --- batch mode --- on non-Windows platforms, a restriction that will soon be lifted.)
 
-A> ### Starting a Tatin test server "manually"
-A>
-A> There may be scenarios when you want to start a local Tatin test server yourself. For that execute the following steps:
-A> 
-A> 1. Instantiate Dyalog Unicode 18.2 or later
-A> 
-A> 2. Execute the following two statements:
-A> 
-A>    ```
-A>    ]Cider.OpenProject /path/to/Tatin
-A>    #.Tatin.TestCasesServer.RunTests
-A>    ```
-A> 
-A> If you change any code at this stage those changes will be written back to disk, so be careful.
+### Starting a Tatin test server "manually"
+
+There may be scenarios when you want to start a local Tatin test server yourself. For that execute the following steps:
+
+1. Instantiate Dyalog Unicode 18.2 or later
+
+2. Execute the following two statements:
+
+```
+]Cider.OpenProject /path/to/Tatin
+#.Tatin.TestCasesServer.RunTests
+```
+
+If you change any code at this stage those changes will be written back to disk, so be careful.
 
 The `RunTests` function performs these tasks:
 
@@ -217,21 +217,21 @@ The easiest way to achieve this is to execute this statement:
       T.QuitTests
 ```
 
-A> ### Execute the client test suite multiple times in parallel
-A>
-A> You might come up with the idea to start the client part of the tests multiple times in parallel to put some pressure on the Tatin Server.
-A>
-A> In general this is a good idea, but the client test suite is not suitable for this. For example, the tests that belong to the "Cache" group _must_ be executed one after the other, they rely on each other. Generally, this should be avoided, but here for technical reasons, it's a must. Running this group in parallel contradicts this, and is bound to fail.
+### Execute the client test suite multiple times in parallel
+
+You might come up with the idea to start the client part of the tests multiple times in parallel to put some pressure on the Tatin Server.
+
+In general this is a good idea, but the client test suite is not suitable for this. For example, the tests that belong to the "Cache" group _must_ be executed one after the other, they rely on each other. Generally, this should be avoided, but here for technical reasons, it's a must. Running this group in parallel contradicts this, and is bound to fail.
 
 #### Executing only particular tests
 
 The `Tester2` test framework is flexible and powerful; for example, you may execute only the tests that focus on the Tatin Client API. The names of those tests are `Test_API_<number>`.
 
-A> ### Why executing only a few tests?
-A>
-A> The full test suite is exhaustive. Also, caching is switched off (except when caching is tested of course). For these reasons executing the full test suite takes considerable time. Therefore you might be interested in executing only certain parts of the test suite. 
-A>
-A> The tests are grouped, and that is reflected by the names of the test functions. For example, the names `Test_API_001` and `Test_UserCommand_001` clearly state which group they belong to.
+### Why executing only a few tests?
+
+The full test suite is exhaustive. Also, caching is switched off (except when caching is tested of course). For these reasons executing the full test suite takes considerable time. Therefore you might be interested in executing only certain parts of the test suite. 
+
+The tests are grouped, and that is reflected by the names of the test functions. For example, the names `Test_API_001` and `Test_UserCommand_001` clearly state which group they belong to.
 
 If you are not interested in executing only some of the test cases then skip this and carry on with "[Tests as part of an automated build](#)".
 
@@ -402,10 +402,10 @@ Notes:
 * The build ID is always bumped when you create a new version.
 * The `Make` function will fire up two instances of Dyalog APL, one for creating the client version, one for creating the server version. The optional left argument, if 1,  prevents the interpreter from running the code straight away. 
 
-A> ### The `load` and `lx` command line parameters
-A> Despite the name of the left argument (`noQLX`) it is not associated with `⎕LX`: for this to work the command line parameters `load` and `lx` are invoked, and `-x` is added in case `noQLX` is 1, preventing the interpreter from executing the expression noted as `lx.` 
-A>
-A> If this looks unfamiliar to you: the options `lx` and `load` were introduced in 18.0.
+### The `load` and `lx` command line parameters
+Despite the name of the left argument (`noQLX`) it is not associated with `⎕LX`: for this to work the command line parameters `load` and `lx` are invoked, and `-x` is added in case `noQLX` is 1, preventing the interpreter from executing the expression noted as `lx.` 
+
+If this looks unfamiliar to you: the options `lx` and `load` were introduced in 18.0.
 
 The `Make` function performs the following steps:
 

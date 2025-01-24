@@ -10,18 +10,18 @@ keywords: apl,dyalog,tatin,ui
 [Cache](#cache)                   [LoadDependencies](#load-dependencies)
 [CheckForLaterVersion](#check-for-later-version)    [LoadPackages](#load-packages)
 [Documentation](#documentation)           [LoadTatin](#load-tatin)
-[FindDependencies](#find-dependencies)        [Maintenance](#maintenance)
-[Init](#init)                    [PackageConfig](#package-config)
-[InstallPackages](#install-packages)         [PackageDependencies](#package-dependencies)
-[ListDeprecated](#list-deprecated)          [Ping](#ping)
-[ListLicenses](#list-licenses)            [ReInstallDependencies](#reinstall-dependencies)
-[ListPackages](#list-packages)            [UnInstallPackages](#uninstall-packages)
-[ListRegistries](#list-registries)          [UpdateTatin](#update-tatin)
-[ListTags](#list-tags)                [UserSettings](#user-settings)
-[ListVersions](#list-versions)            [Version](#version)
+[FindDependencies](#find-dependencies)        [PackageConfig](#package-config)
+[Init](#init)                    [PackageDependencies](#package-dependencies)
+[InstallPackages](#install-packages)         [Ping](#ping)
+[ListDeprecated](#list-deprecated)          [ReInstallDependencies](#reinstall-dependencies)
+[ListLicenses](#list-licenses)            [UnInstallPackages](#uninstall-packages)
+[ListPackages](#list-packages)            [UpdateTatin](#update-tatin)
+[ListRegistries](#list-registries)          [UserSettings](#user-settings)
+[ListTags](#list-tags)                [Version](#version)
+[ListVersions](#list-versions)            
 {: .typewriter}
 
-(There are more [user commands for publishing packages](user-commands-publish.md).)
+There are more user commands for [publishing](user-commands-publish.md) and [hosting](user-commands-host.md).
 
 User commands and their options are case-insensitive.
 They all have help built in, for example
@@ -479,51 +479,6 @@ force     | Overwrite existing installation.
 permanent | Make any changes permanent. <!-- FIXME Changes to what? -->
 
 !!! detail "Makes the Tatin API available."
-
-
-## :fontawesome-solid-terminal: Maintenance
-
-    ]TATIN.Maintenance [path]
-
-Where `path` is a path to a folder containing one or more packages,
-ask me to select functions from the Maintenance Library,
-then apply them to the packages.
-
-Invoked with an option, the command displays information only
-and leaves the packages untouched.
-
------|--------------------------------------------------------
-dry  | Show what the command would do.
-info | Show more information about the command and its purpose.
-show | Show the leading comments of the selected functions.
-
-??? detail "More detail…"
-
-    The `Maintenance/` folder in the Tatin installation folder holds the Maintenance Library:
-    APLF files for functions that modify Tatin packages.
-
-    (Tatin servers have their own mechanism for updating packages.)
-
-    The command asks you to pick functions to apply from the Maintenance Library,
-    then searches recursively in the file path for package config files.
-    When it finds one, it applies the maintenance functions sequentially,
-    with the package config data as argument,
-    receiving the same as result, possibly modified,
-    which it writes back to the package, and also to the ZIP file.
-
-    Tatin does not record your use of the maintenance functions.
-
-    The name of a maintenance function follows a pattern: the date it was introduced,
-    and a short description of what it does
-
-    Some use cases:
-
-    -   inject new properties into package config files
-    -   remove deprecated properties from package config files
-    -   rename properties in package config files
-
-    Release notes tell you when a maintenance function is introduced,
-    and when, why, and for what to use it.
 
 
 ## :fontawesome-solid-terminal: Package config
