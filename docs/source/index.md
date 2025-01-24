@@ -87,12 +87,15 @@ Packages hosted on the Principal Registry make the software available with minim
 
 ## :fontawesome-solid-users: Community
 
+You can contribute to the [Principal Registry](https://tatin.dev): report errors (open issues in the package repositories), or submit pull requests if you can see how to fix them.
 
-You can contribute to the Tatin ecosystem by reporting errors to the package source repositories, or submitting pull requests if you can see how to fix them.
+Please also consider [publishing](publish.md) your own work as Tatin packages.
 
-Please also consider publishing what you can of your own work as Tatin packages.
+Besides the Principal Registry, you can [host your own Tatin registry](host.md).
 
-Besides the default community registry at [tatin.dev](https://tatin.dev) you can run your own Tatin registry either on a server or on your local machine.
+Tatin is a community project, hosted on GitHub.
+No one owns it.
+You are very welcome to [contribute](contribute.md) to it.
 
 
 ## :dyalog-cider-logo: Cider and Tatin
