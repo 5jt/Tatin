@@ -82,7 +82,7 @@ Suppose you have a third namespace: `More`.
 ## Create an API from the config
 
 For many packages, Tatin can create the API space for you, at build or load time.
-Specify the API space in the `api` setting of the [package config](package-configuration#stadard-settings) and list what is to be exposed in it.
+Specify the API space in the `api` setting of the [package config](package-configuration.md#standard-settings) and list what is to be exposed in it.
 
 Function [`CreateAPIfromCFG`](api.md#create-api-from-cfg) creates the API space as a child of the source namespace and populates it with references to the exposed ojects.
 

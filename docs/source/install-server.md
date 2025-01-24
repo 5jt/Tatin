@@ -51,21 +51,11 @@ or add a handler `OnHeader`, but that is pretty unusual.
 ### `CERTIFICATES`
 
 A certificate is required to use HTTPS.
-Recommended for public-facing servers.
+(Recommended for public-facing servers.)
 
-??? tip "On the Web, use reverse proxy to hide Tatin behind a Web server"
+!!! tip "On the Web, use a reverse proxy to hide Tatin behind a Web server"
 
-    If your Tatin registry is to accept requests from the Web,
-    consider using a [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy)
-    to hide it behind an industrial-strength Web server,
-    such as [Apache httpd](https://httpd.apache.org) or [Nginx](https://nginx.org).
-
-    Such servers can deal with attacks and have sophisticated security built into them.
-    It’s much safer to run Tatin behind one.
-
-    See [Run Dyalog behind Apache](rundyalogbehindapache.md).
-
-If you use a reverse proxy, you might not need encryption (HTTPS) and certificates.
+    If you use a [reverse proxy](secure-server.md#reverse-proxy), you might not need encryption (HTTPS) and certificates.
 
 
 ### `CONFIG`
@@ -84,6 +74,19 @@ Title | Browser window or tab title for HTML pages.
 ### `EMAIL`
 
 Your Tatin server can send alerts by email.
+
+### `LICENSE`
+
+Names of the licences (and URLs to their definitions) the server accepts.
+
+The INI section is optional.
+if absent, the website shows no _Licensing_ menu item, and the server accepts any license, including packages that lack a `license` property.
+
+By convention, `BuildPackage` copies any file `LICENSE` in the root of the project to the root of a package.
+This convention is independent of the INI file.
+
+The text on the server web page is defined in `Assets/snippets/Licensing.md`.
+
 
 
 ### `LOGGING`
@@ -169,7 +172,7 @@ Change the `source` to the folder that hosts the Tatin server data.
 
 The server listens to port 9090, which the default configuration exposes.
 It is unsafe to remap this to ports 80 or 443 except on an isolated machine:
-run a public Tatin server on the Web [behind a webserver](rundyalogbehindapache.md) such as Apache or Nginx.
+run a public Tatin server on the Web [behind a webserver](secure-server.md#reverse-proxy) such as Apache or Nginx.
 
 The second port exposed in the script is for connecting to the interpreter with Ride,
 if permitted by the INI file.
@@ -195,56 +198,6 @@ DisplayRequests  | Make Rumba display every request.
 LogHTTPToSession | Print HTTP requests to the session.
 TestFlag         | Accept extra commands as REST requests.
 ReloadWS         | Reload the server workspace if you detect a new one.
-
-
-
-## :fontawesome-solid-calendar-plus: Update the server
-
-Download the release ZIP from the [Releases](https://github.com/aplteam/Tatin/releases) page and unzip it.
-
-**Read the release note** before doing anything else.
-
-!!! warning "An update could require taking the server down for maintenance."
-
-
-By defult, a running Tatin server watches the workspace on disk
-and reloads it if it changes.
-This makes for an easy update if no other action is required.
-
-The automatic update can be switched off in the INI file with `[CONFIG]ReloadWS`.
-
-While reloading the workspace, the server returns error messages.
-Expect this to last 10 seconds or more, depending on the number of packages managed.
-
-
-### The INI file
-
-The update might add or remove settings in the INI file: consult the release note.
-
-If there are changes, follow instructions in the note.
-
-!!! danger "Do not replace the INI file."
-
-The server monitors the INI file for changes, and re-initialises if it finds them.
-Whether that works depends on the change: some settings are used at an early stage and cannot be changed later.
-Again, the release note will tell.
-
-
-### Assets
-
-The release note describes what action to take, if any.
-Often the subfolder `docs/` is to be replaced. (Contains the documentation.)
-
-
-### Maintenance folder
-
-!!! danger "Never replace the maintenance folder."
-
-    The folder `maintenance/` documents changes made to the packages:
-    you don’t want to lose this.
-
-If the new folder is not empty, copy its content over.
-Maintenance files can be used to carry out changes on all or some of the packages managed by the server, like adding a new property to the package config files of all packages.
 
 
 

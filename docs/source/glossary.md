@@ -59,11 +59,14 @@ full package ID
 fully qualified namespace
 : A reference beginning with `#.` or `⎕SE.`
 
-known registries
+Known Registries
 : Registries specified in your [user settings](user-settings.md)
 
     A registry scan searches known registries with a priority above zero,
     in descending order of priority.
+
+Maintenance Library
+: A child folder `Maintenance/` of the the Tatin server installation folder, containing [maintenance scripts](user-commands-host.md#maintenance).
 
 package alias
 : A short name you can use locally as an alternative to a full package ID.

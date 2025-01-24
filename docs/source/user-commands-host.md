@@ -91,32 +91,29 @@ dry  | Show what the command would do.
 info | Show more information about the command and its purpose.
 show | Show the leading comments of the selected functions.
 
-??? detail "More detail…"
 
-    The `Maintenance/` folder in the Tatin installation folder holds the Maintenance Library:
-    APLF files for functions that modify Tatin packages.
+The `Maintenance/` folder in the Tatin installation folder holds the Maintenance Library:
+APLF files for functions that modify Tatin packages.
 
-    (Tatin servers have their own mechanism for updating packages.)
+The command asks you to pick functions to apply from the Maintenance Library,
+then searches recursively in the file path for package config files.
+When it finds one, it applies the maintenance functions sequentially,
+with the package config data as argument,
+receiving the same as result, possibly modified,
+which it writes back to the package, and also to the ZIP file.
 
-    The command asks you to pick functions to apply from the Maintenance Library,
-    then searches recursively in the file path for package config files.
-    When it finds one, it applies the maintenance functions sequentially,
-    with the package config data as argument,
-    receiving the same as result, possibly modified,
-    which it writes back to the package, and also to the ZIP file.
 
-    Tatin does not record your use of the maintenance functions.
+The name of a maintenance function follows a pattern: the date it was introduced,
+and a short description of what it does.
+Tatin records your use of a maintenance function by appending the extension `.executed` to the APLF file’s name.
 
-    The name of a maintenance function follows a pattern: the date it was introduced,
-    and a short description of what it does
+Some use cases:
 
-    Some use cases:
+-   inject new properties into package config files
+-   remove deprecated properties from package config files
+-   rename properties in package config files
 
-    -   inject new properties into package config files
-    -   remove deprecated properties from package config files
-    -   rename properties in package config files
-
-    Release notes tell you when a maintenance function is introduced,
-    and when, why, and for what to use it.
+Release notes tell you when a maintenance function is introduced,
+and when, why, and for what to use it.
 
 

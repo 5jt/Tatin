@@ -196,7 +196,7 @@ unzip    | Unzip downloaded file/s and delete ZIPs.
 !!! detail inline end "Package downloads"
 
     A package request might be one person taking a quick look,
-    or several team members§ deploying the package in multiple projects,
+    or several team members deploying the package in multiple projects,
     with all but the first request served from the Tatin client cache.
     No way to know.
 

@@ -26,12 +26,12 @@ nav:
   - Host:
     - (About hosting): host.md
     - Install: install-server.md
-    - (Credentials): server-credentials.md
-    - (Server tips and tricks): server-tipsandtricks.md
-    - (Run Dyalog behind Apache): rundyalogbehindapache.md
+    - Security: secure-server.md
+    - (Maintenance): maintenance.md
     - User commands: user-commands-host.md
   - Contribute:
     - (Tatin for contributors): contribute.md
+    - Develop: develop.md
     - (Github): github.md
 
 theme:

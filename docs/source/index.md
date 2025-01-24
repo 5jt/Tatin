@@ -93,7 +93,7 @@ Please also consider [publishing](publish.md) your own work as Tatin packages.
 
 Besides the Principal Registry, you can [host your own Tatin registry](host.md).
 
-Tatin is a community project, hosted on GitHub.
+Tatin is itself a community project, hosted on GitHub.
 No one owns it.
 You are very welcome to [contribute](contribute.md) to it.
 

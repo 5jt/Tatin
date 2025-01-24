@@ -79,9 +79,7 @@ All licences on the Principal Registry give users great freedom.
 
 !!! info inline end ""
 
-    If you host a Tatin registry you can set your own licence policy.
-
-    See [Server Tips and Tricks](server-tipsandtricks.md).
+    If you host a Tatin registry you can [set your own licence policy](install-server.md#).
 
 To publish a package on the Principal Registry at [tatin.dev](https://tatin.dev)
 or on the [test server](https://test.tatin.dev)

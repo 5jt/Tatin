@@ -1,44 +1,4 @@
----
-title: 'Tatin: Server Tips'
-description: ''
-keywords: 
----
-# Server: Tips and tricks
-
-Once you've installed a server there are a couple of things that need to be taken care of.
-
-## Maintenance
-
-### Tags
-
-The most important thing is to watch tags. Tags can be very useful to find a package, but the problem is that package authors tend to use different tags for the same thing, use legal but different spelling (UK versus US) or invalid spelling, tags that make no sense like adding the group name or "dyalog" etc.
-
-That means that for tags to work there has to be a gatekeeper who is responsible for correcting/removing/adding tags.
-
-That gatekeeper needs to be able to execute code on the server, but only once. The idea is to correct problems in the package config files somehow.
-
-A> ### The package config file and the ZIP file 
-A>
-A> Note that changing the config file is enough: If the file got changed then Tatin will make sure that the new version is automatically also added to the ZIP file of the package, effectively overwriting the old version of the package file. 
-
-This can be achieved by uploading an `.aplf` text file (read: a function) into a folder that is defined in the INI file as `[CONFIG]MaintenancePath`.
-
-If one or more of such files are found by the Tatin Server while doing housekeeping, they are loaded into the server and executed. Once executed the files are renamed by adding an extension `.executed`.
-
-For example, if there is a file `RemoveDyalogFromTags.aplf` then it is loaded into an unnamed namespace and called with a right argument `G` (for "globals"). Once executed the file is then renamed to `RemoveDyalogFromTags.aplf.executed`.
-
-That makes sure the code is not executed again, but it is also useful for documenting what code was executed, and when.
-
-#### Crashing maintenance files
-
-Like any other program, a maintenance file may crash. If that happens the server carries out the following steps:
-
-1. Report it to the log file
-2. Send an email reporting the crash with details to the maintainer (if enabled in the INI file)
-3. Rename the file from `*.aplf` to `*.crashed` --- we don't want that function to be executed again
-
-
-## Developing
+# Developing
 
 If you want to make changes or add new features you need a good understanding of the basic design of Tatin.
 
@@ -103,22 +63,22 @@ However, when the server is started as part of the tests it is NOT opened as a C
 
 1. Run the function `#.Tatin.TestCasesServer.RunTests`
 
-!> ### A word of warning
-=> Opening Tatin as a project in two different workspaces, and then make changes to the code in both of them is of course dangerous!
-=>
-=> On Windows or when .NET is available you can limit the danger by doing this:
-=> 
-=> * Make sure that Link's `Notify` parameter is set to 1. That makes Link print to the session whenever it updates a file or the workspace, so you get some feedback on what is happening. Make sure you watch this!
-=> 
-=> * Make sure that you set Link's `watch` parameter to "both" in both workspaces. 
-=>
-=>   That ensure that when you change an APL object in on workspace, it will not only be written do disk but Link will also bring that change into the other workspace.
-=> 
-=> This is particularly important when you change code in the `Tatin.Registry` namespace, because that code is shared between the client and the server.
-=> 
-=> Taking these measure is important because the mechanism used by Dyalog works most of the time but not always (it's a .NET-problem!), so it is important to watch out for such problems.
-=> 
-=> On non-Windows platforms with no .NET available, `watch=both` is not an option at the time of writing (July 2024), so that is particularly dangerous.
+### A word of warning
+Opening Tatin as a project in two different workspaces, and then make changes to the code in both of them is of course dangerous!
+
+On Windows or when .NET is available you can limit the danger by doing this:
+
+* Make sure that Link's `Notify` parameter is set to 1. That makes Link print to the session whenever it updates a file or the workspace, so you get some feedback on what is happening. Make sure you watch this!
+
+* Make sure that you set Link's `watch` parameter to "both" in both workspaces. 
+
+ That ensure that when you change an APL object in on workspace, it will not only be written do disk but Link will also bring that change into the other workspace.
+
+This is particularly important when you change code in the `Tatin.Registry` namespace, because that code is shared between the client and the server.
+
+Taking these measure is important because the mechanism used by Dyalog works most of the time but not always (it's a .NET-problem!), so it is important to watch out for such problems.
+
+On non-Windows platforms with no .NET available, `watch=both` is not an option at the time of writing (July 2024), so that is particularly dangerous.
 
 If you just want to run the test server, close the project before executing `#.Tatin.TestCasesServer.RunTests`.
 
@@ -260,27 +220,4 @@ It will tell you to execute:
 The right argument is a batch flag: it tells the function whether a human is available (0) or not (1). If there is, progress is reported to `⎕SE`. Naturally the latter is used in  order to automatically create a new version.
 
 Note that if the batch flag is 0, the function will print a statement to the session which, when executed, will install the new version.
-
-### Licensing
-
-
-#### INI entries
-
-The names of the licenses as well as the URLs that are to be accepted by a server must be defined in the INI file of the server within the `[LICENSE]` section.
-
-Note that the INI section `[LICENSE]` _may_ exist, but it does not have to: if it does not, then no menu item "Licensing" will show in the main menu of the website, and the server will accept any license, including packages that do not even carry a property `license`.
-
-
-#### The menu item "Licensing"
-
-The text shown on the web page is defined in the document "Licensing.html" in the `html/` folder.
-
-#### A "LICENSE" file
-
-By convention a file named "LICENSE" when placed in the root of the project will be copied automatically to the root of a package when build by `BuildPackage`. This convention is independent from the INI file.
-
-
-
-
-
 
