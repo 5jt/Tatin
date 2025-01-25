@@ -24,10 +24,10 @@ nav:
     - Package configuration: package-configuration.md
     - Public interface: public-interface.md
   - Host:
-    - (About hosting): host.md
+    - About hosting: host.md
     - Install: install-server.md
     - Security: secure-server.md
-    - (Maintenance): maintenance.md
+    - Maintenance: maintenance.md
     - User commands: user-commands-host.md
   - Contribute:
     - (Tatin for contributors): contribute.md

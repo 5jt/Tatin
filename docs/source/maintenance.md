@@ -1,53 +1,68 @@
 ---
-title: 'Tatin: Server Tips'
-description: ''
-keywords: 
+title: 'Tatin: Server Maintenance'
+description: "Care and grooming of your Tatin server"
+keywords: 'apl, dyalog, maintenance, registry, server, tags, tatin'
 ---
-# Server: Tips and tricks
+# Maintain your server
 
-Once you've installed a server there are a couple of things that need to be taken care of.
+!!! abstract "Care and grooming of your Tatin server."
 
-## Maintenance
 
-### Tags
+## :fontawesome-solid-tag: Curate the tags
 
-The most important thing is to watch tags. Tags can be very useful to find a package, but the problem is that package authors tend to use different tags for the same thing, use legal but different spelling (UK versus US) or invalid spelling, tags that make no sense like adding the group name or "dyalog" etc.
+The most important maintenance job is to curate the tags.
 
-That means that for tags to work there has to be a gatekeeper who is responsible for correcting/removing/adding tags.
+Tags can be very useful for finding a package, but package authors may use different tags for the same thing, use legal but different spelling (UK versus US) or invalid spelling, or tags that make no sense, such as the group name or `dyalog` etc.
 
-That gatekeeper needs to be able to execute code on the server, but only once. The idea is to correct problems in the package config files somehow.
+To be useful, tags needs curating.
 
-### The package config file and the ZIP file
+A package’s tags are defined in its [configuration file](package-configuration).
+Merely changing the config file is enough: the server watches for such changes and adds the new config to the package ZIP, thus updating it.
 
-Note that changing the config file is enough: If the file got changed then Tatin will make sure that the new version is automatically also added to the ZIP file of the package, effectively overwriting the old version of the package file. 
+Create and run maintenance jobs to correct problems in the package config files.
 
-This can be achieved by uploading an `.aplf` text file (read: a function) into a folder that is defined in the INI file as `[CONFIG]MaintenancePath`.
 
-If one or more of such files are found by the Tatin Server while doing housekeeping, they are loaded into the server and executed. Once executed the files are renamed by adding an extension `.executed`.
+## :fontawesome-solid-folder: Maintenance jobs
 
-For example, if there is a file `RemoveDyalogFromTags.aplf` then it is loaded into an unnamed namespace and called with a right argument `G` (for "globals"). Once executed the file is then renamed to `RemoveDyalogFromTags.aplf.executed`.
+The [Maintenance Folder](glossary.md) holds maintenance jobs in the form of APL function files (APLFs).
+The downloaded server includes some examples.
 
-That makes sure the code is not executed again, but it is also useful for documenting what code was executed, and when.
+!!! detail inline end ""
 
-#### Crashing maintenance files
+    If a job crashes, the server
 
-Like any other program, a maintenance file may crash. If that happens the server carries out the following steps:
+    1.  reports it to the log file
+    1.  emails a report to the maintainer (see [config](install-server.md#email))
+    1.  renames the file from `*.aplf` to `*.crashed` to stop it being run again
 
-1. Report it to the log file
-2. Send an email reporting the crash with details to the maintainer (if enabled in the INI file)
-3. Rename the file from `*.aplf` to `*.crashed` --- we don't want that function to be executed again
+If the server finds APLFs in the Maintenance Folder during housekeeping, it loads and executes them.
+<!-- FIXME Is this ‘batch’ arrangement replaced by the user command? -->
+
+Once executed, a file is renamed by adding an extension `.executed`,
+so it is not run again.
+That also documents what jobs were executed, and when.
+
+For example, a file `RemoveDyalogFromTags.aplf` gets loaded into an unnamed namespace and called with a right argument `G` (for _globals_). <!-- FIXME not the config param space? -->
+Once executed, the file is renamed to `RemoveDyalogFromTags.aplf.executed`.
+
+:fontawesome-solid-terminal:
+User command:
+[`]Maintenance`](user-commands-host.md#maintenance)
+
+
 
 
 ## :fontawesome-solid-calendar-plus: Update the server
 
-Download the release ZIP from the [Releases](https://github.com/aplteam/Tatin/releases) page and unzip it.
-
-**Read the release note** before doing anything else.
-
-!!! warning "An update could require taking the server down for maintenance."
+Download the release ZIP from the [Releases](https://github.com/aplteam/Tatin/releases) page into a temporary folder and unzip it.
 
 
-By defult, a running Tatin server watches the workspace on disk
+!!! warning "Read the release note before doing anything else."
+
+    An update could require taking the server down for maintenance.
+
+
+By default, a running Tatin server watches the workspace on disk
 and reloads it if it changes.
 This makes for an easy update if no other action is required.
 
@@ -78,7 +93,7 @@ Often the subfolder `docs/` is to be replaced. (Contains the documentation.)
 
 ### Maintenance folder
 
-!!! danger "Never replace the maintenance folder."
+!!! danger "Never replace the Maintenance Folder"
 
     The folder `maintenance/` documents changes made to the packages:
     you don’t want to lose this.

@@ -92,20 +92,22 @@ info | Show more information about the command and its purpose.
 show | Show the leading comments of the selected functions.
 
 
-The `Maintenance/` folder in the Tatin installation folder holds the Maintenance Library:
+The `Maintenance/` folder in the Tatin installation folder holds maintenance jobs:
 APLF files for functions that modify Tatin packages.
 
-The command asks you to pick functions to apply from the Maintenance Library,
+The command asks you to pick jobs to run from the Maintenance Folder,
 then searches recursively in the file path for package config files.
 When it finds one, it applies the maintenance functions sequentially,
-with the package config data as argument,
+with the package config data as argument, <!-- FIXME Not 'G'? -->
 receiving the same as result, possibly modified,
 which it writes back to the package, and also to the ZIP file.
 
 
-The name of a maintenance function follows a pattern: the date it was introduced,
-and a short description of what it does.
-Tatin records your use of a maintenance function by appending the extension `.executed` to the APLF file’s name.
+The name of a maintenance function follows a pattern:
+==the date it was introduced==, and <!-- FIXME No longer true? -->
+a short description of what it does.
+Tatin records the run and prevents repetition,
+by appending the extension `.executed` to the APLF file’s name.
 
 Some use cases:
 
