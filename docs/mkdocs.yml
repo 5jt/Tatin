@@ -34,7 +34,7 @@ nav:
     - Develop: develop.md
     - Test: test.md
     - Create a new version: create-version.md
-    - (Github): github.md
+    - Github: github.md
 
 theme:
   custom_dir: overrides
