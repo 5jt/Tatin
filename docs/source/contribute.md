@@ -53,7 +53,7 @@ If you are new to Cider, spend some time playing with it before using it for ser
 
 2.  Launch Dyalog and open the project
 
-        ]Cider.OpenProject C:\Tatin
+        ]CIDER.OpenProject C:\Tatin
 
 Now you have a working version of Tatin on your machine and you can start contributing.
 

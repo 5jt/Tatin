@@ -91,7 +91,7 @@ When the Tatin test cases are executed, Tatin would ask you whether you want to 
 However, when the server is started as part of the tests it is NOT opened as a Cider project, and changes would not be tracked by Link.
 To link the running server code to its source files:
 
-1. Open the Tatin project with `]Cider.OpenProject` with the `watch` parameter set to `'both'`.
+1. Open the Tatin project with `]CIDER.OpenProject` with the `watch` parameter set to `'both'`.
 1. Run the function `#.Tatin.TestCasesServer.RunTests`
 
 

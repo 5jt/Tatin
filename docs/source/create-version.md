@@ -1,18 +1,20 @@
 ---
 title: 'Create new Tatin version'
-description: 'How to create a new version of Tatin.'
+description: 'This article is about what an administrator of the Tatin project on GitHub does after accepting a PR or finishing work on a branch.'
 keywords: 'apl, dyalog, github, profread, tatin, version'
 ---
 # Create a new version of Tatin
 
-!!! abstract "What an administrator of the Tatin project on GitHub does once she has accepted at least one PR or finished her work on a branch."
+!!! abstract "How to create a new version of Tatin."
 
 A contributor’s job is done once they have submitted a Pull Request (PR) on GitHub.
+
+This article is about what an administrator of the Tatin project on GitHub does after accepting a PR or finishing work on a branch.
 
 
 ## Check version, history and documentation
 
-!!! info "Versions comprehend both server and client, so the version number is always the same for both."
+!!! info "A version comprehends both server and client, so the version number is always the same for both."
 
 1. Check `#.Tatin.Registry.Version` is correct
 1. Check `#.Tatin.Registry.History` is correct
@@ -26,31 +28,37 @@ A function creates a single HTML file from all the Markdown documentation, makin
 Open that file with the word processor of your choice and use its spell-checking capabilities.
 
 
-## The `Make` function
+## Run the `Make` function
 
-<!-- FIXME Consider documenting this rather than referring to Cider’s meta-function. -->
-Ask Cider how to create a new version of Tatin:
-
-          ]Cider.Make
-    #.Tatin.#.Tatin.Admin.Make 0 ⍝ Execute this for creating a new version
+    #.Tatin.Admin.Make 0
 
 
-The `Make` function launches two instances of Dyalog, one for creating the client version, one for creating the server version.
+!!! tip inline end "Ask Cider"
+
+    You can ask Cider how to create a new version of Tatin:
+
+        ]CIDER.Make
+
+
+The `Make` function launches two instances of Dyalog, one for creating the client version, one for creating the server version:
 
 1.  runs `#.Tatin.Admin.MakeClient`
 1.  compiles the documentation from Markdown into HTML files and distributes them
 1.  runs `#.Tatin.Admin.MakeServer`
 
-**The arguments** to `Make` are both flags:
-
----|---
-right | Suppress user prompts: 1 is suitable for, say, a batch script.<br><br>If 0, `Make` will ask whether you want to try updating the packages Tatin itself depends on, and whether to copy the new version of the Tatin Client to the `MyUCMDs/` folder.
-left | (optional) Block the `load` and `lx` command-line options in instances of Dyalog started to create the Client and the Server, thus preventing the interpreter from immediately running the code, and allowing you to run the code in the Tracer. (Defaults to zero.)<br><br>Command-line options `lx` and `load` were introduced in 18.0.
-
 !!! info "The build ID is always bumped when you create a new version."
 
 
-## Distribution files
+### Arguments
+
+The arguments to `Make` are both flags:
+
+------|---
+right | Suppress user prompts: 1 is suitable for, say, a batch script.<br><br>If 0, `Make` will ask whether you want to try updating the packages Tatin itself depends on, and whether to copy the new version of the Tatin Client to the `MyUCMDs/` folder.
+left  | (optional) Block the `load` and `lx` command-line options in instances of Dyalog started to create the Client and the Server, thus preventing the interpreter from immediately running the code, and allowing you to run the code in the Tracer. (Defaults to zero.)
+
+
+### Distribution files
 
 The `Dist/` folder gets replaced.
 It contains the ZIPs to be released on GitHub;
