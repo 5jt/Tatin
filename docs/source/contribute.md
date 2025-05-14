@@ -12,7 +12,7 @@ keywords: 'apl, contribute, dyalog, github, tatin'
 
 
 
-## Requirements
+## :fontawesome-solid-list-check: Requirements
 
 To work on Tatin you need
 
@@ -35,7 +35,7 @@ You can _develop_ on any operating system, but _building a new version_ is curre
 <!-- This restriction is likely to be lifted in a later version. -->
 
 
-## Managed by Cider
+## :dyalog-cider-logo: Managed by Cider
 
 Tatin is managed by the [Cider project management tool](https://github.com/aplteam/cider).
 If you are new to Cider, spend some time playing with it before using it for serious work. (Thirty minutes should suffice.)
@@ -47,7 +47,7 @@ If you are new to Cider, spend some time playing with it before using it for ser
     That said, you are not required to build a new version before submitting a pull request, so you might get away without Cider, but using Cider is certainly recommended.
 
 
-## Get started
+## :fontawesome-solid-circle-play: Get started
 
 1.  On GitHub make your own fork of [Tatin](https://github.com/aplteam/cider) and clone it to your local machine, say at `C:\Tatin`.
 
@@ -62,7 +62,7 @@ Now you have a working version of Tatin on your machine and you can start contri
     Every function, operator, class, interface or namespace script changed in `#.Tatin` is automatically saved to disk by Link.
 
 
-## Code
+## :fontawesome-solid-code: Code
 
 To modify the source code:
 
@@ -81,7 +81,7 @@ To modify the source code:
 If your changes pass the tests, push `123-fix-foo-bar` to your fork, and submit a pull request.
 
 
-## Documentation
+## :fontawesome-solid-book-open: Documentation
 
 If you find parts of this guide confusing, outdated, unclear or missing bits and pieces, change it.
 That might well be your first valuable contribution.
@@ -89,7 +89,7 @@ That might well be your first valuable contribution.
 A minor edit to the documentation does not require its own issue and branch; it can be made in the `main` branch.
 
 
-## Submit your changes
+## :fontawesome-solid-upload: Submit your changes
 
 When you have improved the documentation, fixed a bug, or added a feature, create a pull request (PR).
 The project team will check your contribution.

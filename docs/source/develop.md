@@ -3,7 +3,7 @@
 !!! abstract "To make changes or add new features you need a good understanding of the basic design of Tatin."
 
 
-## Tatin code
+## :fontawesome-solid-code: Tatin code
 
 Four ordinary namespaces contain the Tatin code.
 
@@ -14,7 +14,7 @@ Four ordinary namespaces contain the Tatin code.
 `Server`   | The code to run a Tatin Server
 
 
-## Dependencies
+## :fontawesome-solid-sitemap: Dependencies
 
 -----------|---
 [`Plodder`](https://github.com/aplteam/Plodder) | A fully-fledged HTTP server based on Rumba and Conga
@@ -23,7 +23,7 @@ Four ordinary namespaces contain the Tatin code.
 These two packages are used by, but do not form part of, the Tatin project.
 
 
-## Server handlers
+## :fontawesome-solid-reply: Server handlers
 
 The main server handlers are:
 
@@ -39,7 +39,7 @@ The main server handlers are:
 These call the Tatin functions that perform the real actions.
 
 
-## Server certificates
+## :fontawesome-solid-certificate: Server certificates
 
 The Tatin server comes with test certificates.
 
@@ -49,7 +49,7 @@ Check the folder `TestServer/Server/Assets/Runtime/Certificates`.
 
 
 
-## Set the DEVELOPMENT flag
+## :fontawesome-solid-person-digging: Set the DEVELOPMENT flag
 
 By default, code for user commands and API calls is stored and executed in `⎕SE` – but
 
@@ -75,7 +75,7 @@ Can this be right? Cider will ask if you want the flag set, but only if the flag
  -->
 
 
-## Developing with a running server
+## :fontawesome-solid-server: Developing with a running server
 
 You could run a Tatin server as an open Cider project
 and investigate what the code in the running server is doing, with Link saving any changes and additions you make.
@@ -95,7 +95,7 @@ To link the running server code to its source files:
 1. Run the function `#.Tatin.TestCasesServer.RunTests`
 
 
-## Opening Tatin as a project in two workspaces
+## :fontawesome-solid-clone: Opening Tatin as a project in two workspaces
 
 In developing Tatin it is natural to have two Dyalog instances running: one each for the client and server code.
 
@@ -124,7 +124,7 @@ If you just want to run the test server, close the project before executing
     #.Tatin.TestCasesServer.RunTests
 
 
-## Error trapping
+## :fontawesome-solid-bug: Trapping errors
 
 Error trapping is active, so if you change a function and inject a typo, it will trigger error trapping when the code gets executed.
 
@@ -139,7 +139,7 @@ To avoid locking horns with error trapping, you could put into `OnRequest`
 Also, make `⎕TRAP` a local variable in `OnRequest`.
 
 
-## Updating Tatin’s own dependencies
+## :fontawesome-solid-chart-diagram: Updating Tatin’s own dependencies
 
 Tatin depends on a couple of Tatin packages, but it cannot be used to load them – the classic bootstrap problem.
 
@@ -150,7 +150,7 @@ To update a package installed in the `packages/` folder, bring it into the `APLS
 
 
 
-## Special REST commands
+## :fontawesome-solid-terminal: Special REST commands
 
 A Tatin server can support several special REST commands for developing and testing.
 

@@ -17,19 +17,30 @@ Only the basics are covered here.
 `]ADOC #.Tatin.Tester2` (reference)
 
 
-## Run the full test suite
-
-
-1.  **Open Tatin** in a new instance of Dyalog.
+1.  **Open** Tatin in a new instance of Dyalog.
 
         ]CIDER.OpenProject /path/to/Tatin
 
-1.  **Run the tests.**
+1.  **Prepare** the test framework.
+
+        #.Tatin.TestCases.Prepare
+
+    This initializes Tatin as a client and prepares for creating a code-coverage report.
+    It also creates a number of references needed by the tests.
+
+    It changes the current directory, establishes all required references and instantiates the `Tester2` class as `T`.
+
+    You need call `Prepare` only once.
+
+
+1.  **Run** the tests.
+
+
+## :fontawesome-solid-play: Run the full test suite
 
         #.Tatin.TestCases.RunTests
 
-This prepares the test framework and then runs all the tests in Debug mode,
-so if something goes wrong the framework will stop and you can investigate right away,
+This runs all the tests in Debug mode, so if something goes wrong the framework will stop and you can investigate right away,
 
 You will be asked if you want to copy the test data to a temporary folder in preparation.
 The usual answer is Yes.
@@ -60,26 +71,15 @@ The usual answer is Yes.
     -   Calls the `T.Run` function to run all the test cases, including those that communicate with a locally running Tatin test server and the principal Tatin server available at <https://tatin.dev>
 
 
-## Run selected tests
+## :fontawesome-solid-circle-play: Run selected tests
 
 Executing the full test suite takes considerable time.
 Also, caching is switched off (except when caching itself is tested).
 You will often want to run only parts of the test suite.
 
-The tests are grouped, and the grouping reflected in the names of the test functions,
+The tests are grouped, with the grouping reflected in the names of the test functions,
 for example, `Test_API_001` and `Test_UserCommand_001`.
 
-
-### Prepare
-
-    #.Tatin.TestCases.Prepare
-
-This initializes Tatin as a client and prepares for creating a code-coverage report.
-It also creates a number of references needed by the tests.
-
-This changes the current directory, establishes all required references and instantiates the `Tester2` class as `T`.
-
-You need call `Prepare` only once.
 
 
 ### Choose tests
@@ -119,7 +119,7 @@ The first example below runs the `Test_UC_600` function, and so on.
 Depending on which test cases you select, you might not need test data, or even a running test server,
 
 
-## Run batch tests
+## :fontawesome-solid-list-check: Run batch tests
 
 Batch tests do not require user interaction.
 
@@ -133,17 +133,17 @@ The 1 required as right argument is a protection against accidental calls.
 <!-- FIXME Eh? -->
 
 
-## Abort a test run
+## :fontawesome-solid-eject: Abort a test run
 
 You might need to abort the test suite, for example if a test reveals a severe bug that makes running the remaining tests pointless.
 
 Resist the temptation to use `)reset`; instead make the test suite clean up after itself:
 
-    T.QuitTests
+    #.Tatin.TestCases.T.QuitTests
 
 
 
-## Debug mode
+## :fontawesome-solid-bug: Debug mode
 
 Errors are trapped by default: if a test case fails or crashes, the test framework carries on.
 
@@ -175,7 +175,7 @@ If you also want to run the test server, independently from the test suite, prep
  -->
 
 
-## A new version for testing
+## :fontawesome-solid-code-pull-request: A new version for testing
 
 In a normal workflow you create a new version of Tatin only _after_ passing all the tests.
 
@@ -187,7 +187,7 @@ If your code changes affect the commands, then you need the changed code in `⎕
 For this reason, a test checks that the version number in the workspace and in `⎕SE` match.
 
 
-## Automated builds
+## :fontawesome-solid-gears: Automated builds
 
 You can run batch tests as part of an automated build process;
 start the test suite either from APL or from the command line.
@@ -201,30 +201,30 @@ The test suite itself starts (and shuts down) a Tatin server; Debug mode is off.
 
 The function ignores the few test cases that require human interaction
 
-`RunBatchTests` checks the command line that launched Dyalog:
+`RunBatchTests` checks the command line that launched Dyalog to see if `OFF2=1` was specified
+then, after the last test case
 
--   If `OFF2=1` was specified line then `⎕OFF` is executed after the last test case.
+----------|-------------------------
+specified | If all tests passed, executes `⎕OFF`; otherwise `⎕OFF 123`.<br><br>The calling environment can see whether all the tests were passed or not.
+not       | A message is printed to the session, indicating success or failure.
 
-    If one or more tests failed then `⎕OFF 123` is executed, allowing the calling environment to see whether the test suite was executed successfully in its entirety or not.
+!!! warning
 
--   If `OFF2=1` was not specified a message is printed to the session, indicating success or failure.
-
-Note that `OFF=1` would also work, but would kill Plodder, the underlying HTTP server used by Tatin.
-That might be too early: for example, you could not then get a code coverage report.
+    `OFF=1` in the command line would also work, but would kill Plodder, the underlying HTTP server used by Tatin.
+    That might be too early: for example, you could not then get a code coverage report.
 
 
 ### Running tests from the command line
 
 The Tatin root directory contains shell scripts that run the batch tests.
 
----------------|-------------
-`RunTests.bat` | Windows
-`RunTests.sh`  | Linux, macOS
+    RunTests.bat // Windows
+    RunTests.sh  // Linux, macOS
 
 
 These are templates: check their contents, you might need to make amendments.
 
-## Notes
+## :fontawesome-solid-comments: Notes
 
 ### Port 5001
 
