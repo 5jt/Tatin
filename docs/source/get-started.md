@@ -99,7 +99,7 @@ Sure you want to create and install into
  Installed into /Foo/packages:
   aplteam-MarkAPL-13.1.0
  In order to load all dependecies (including newly installed ones) into the WS execute:
-       ]Tatin.LoadDependencies "/Foo/packages"
+       ]TATIN.LoadDependencies "/Foo/packages"
 ```
 `MarkAPL` specifies neither group nor version number.
 The name is unique on the principal registry; the latest version is installed by default.
@@ -328,7 +328,7 @@ A> Note that Tatin does not only scan all known Registries with a priority great
 
 Every piece of software will become obsolete one day. Packages are no exception. If a package is not needed anymore, or is obsolete because there is a better one available, it's time to mark it as deprecated.
 
-This can be done with the user command `]Tatin.DeprecatePackage`. In short what the user command does is to publish the latest version available yet as a new version with an increased minor version number and an injected flag `deprecated←1`
+This can be done with the user command `]TATIN.DeprecatePackage`. In short what the user command does is to publish the latest version available yet as a new version with an increased minor version number and an injected flag `deprecated←1`
 
 A> ### Deleting versus deprecating packages
 A>
@@ -348,14 +348,14 @@ aplteam-Foo-1.1.1
 Executing:
 
 ```
-]Tatin.DeprecatePackage https://your-Registry/aplteam-Foo-1
+]TATIN.DeprecatePackage https://your-Registry/aplteam-Foo-1
 ```
 
 will publish a new version `aplteam-Foo-1.2.0` which is almost identical with version 1.1.1 except that it has two additional properties in its config file: `deprecated` with the value 1 and `deprecate_comment` which carries the comment in case you've specified one with `-comment=`; this should be used to explain why a package got marked as deprecated, so it will be something along the lines of "See package Foo-Boo".
 
-From now on both the "Packages" web page and `]Tatin.ListPackages` won't list these four packages anymore.
+From now on both the "Packages" web page and `]TATIN.ListPackages` won't list these four packages anymore.
 
-Note that `]Tatin.ListDeprecated` is designed to list just the deprecated packages. If you want the list to include also the earlier versions --- which are now sort of hidden by 1.2.0 --- then you need to specify the `-all` flag.
+Note that `]TATIN.ListDeprecated` is designed to list just the deprecated packages. If you want the list to include also the earlier versions --- which are now sort of hidden by 1.2.0 --- then you need to specify the `-all` flag.
 
 With `-all` a matrix with two columns rather than one is returned, with the second column carrying an asterisk for those packages that actually  do carry `deprecated←1` in their config file. That would be at least the very last one.
 
@@ -368,13 +368,13 @@ Note however that this is only true when you ask explicitly for the last package
 In our example that would be:
 
 ```
-]Tatin.LoadPackages https://your-registry/aplteam-Foo-1
+]TATIN.LoadPackages https://your-registry/aplteam-Foo-1
 ```
 
 This statement:
 
 ```
-]Tatin.LoadPackages https://your-registry/aplteam-Foo
+]TATIN.LoadPackages https://your-registry/aplteam-Foo
 ```
 
 would yield the same result, but only because there is just one major version anyway.

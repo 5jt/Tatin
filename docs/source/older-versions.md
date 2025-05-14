@@ -18,7 +18,7 @@ Tatin is included in Dyalog 19.0; in Dyalog 18.2 it has to be installed.
 * Dyalog 18.2 **Unicode**
 * [Link](https://dyalog.github.io/link/4.0/) version 3.0.8 or better
 
-`]Tatin.Init` checks the requirements are met.
+`]TATIN.Init` checks the requirements are met.
 
 
 ### :fontawesome-solid-download: Download

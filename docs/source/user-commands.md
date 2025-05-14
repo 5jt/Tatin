@@ -128,7 +128,7 @@ Reports registries not scanned because their priority is 0.
 dependencies | Include dependencies
 major        | Include later major versions
 
-To update to latest minor version use [`]Tatin.ReInstallDependencies`](#reinstall-dependencies).
+To update to latest minor version use [`]TATIN.ReInstallDependencies`](#reinstall-dependencies).
 (New major versions need installing.)
 
 
@@ -576,11 +576,11 @@ Questioning 1 Tatin Registry...
 
 ??? example "Examples"
 
-        ]Tatin.Ping
-        ]Tatin.Ping ?
-        ]Tatin.Ping [tatin]
-        ]Tatin.Ping https://tatin.dev
-        ]Tatin.Ping http://tatin.dev   ⍝ This won't work
+        ]TATIN.Ping
+        ]TATIN.Ping ?
+        ]TATIN.Ping [tatin]
+        ]TATIN.Ping https://tatin.dev
+        ]TATIN.Ping http://tatin.dev   ⍝ This won't work
 
 :fontawesome-solid-code: API:
 [`Ping`](api.md#ping)
@@ -688,7 +688,7 @@ not the shipped version, which remains unchanged.
 
         1. `]DeActivate tatin` to remove Tatin
         2. `]Activate tatin` restores the version your installation was shipped with
-        3. `]Tatin.UpdateTatin` to update to the latest version
+        3. `]TATIN.UpdateTatin` to update to the latest version
 
     === "Dyalog 18.2"
 

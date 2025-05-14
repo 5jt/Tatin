@@ -229,7 +229,7 @@ No action required
 
 2023-10-07
 
-Most importantly, a bug fix in `]Tatin.CiderUpdate`
+Most importantly, a bug fix in `]TATIN.CiderUpdate`
 
 ## Version 0.102.0
 
@@ -251,11 +251,11 @@ Two massive changes:
 
 -   This version is only compatible with Cider 0.36.0 or later
 
--   The installation folder is not `MyUCMDs/` anymore. However, `]Tatin.UpdateTatin` of your old version cannot know about this, therefore you have to take action once in order to get Tatin into the right folder. 
+-   The installation folder is not `MyUCMDs/` anymore. However, `]TATIN.UpdateTatin` of your old version cannot know about this, therefore you have to take action once in order to get Tatin into the right folder. 
 
     See [`]UpdateTatin`](user-commands.md#update-tatin) for details.
 
--   In future `]Tatin.UpdateTatin` will use the new installation folder.
+-   In future `]TATIN.UpdateTatin` will use the new installation folder.
 
 ## Version 0.100.2
 

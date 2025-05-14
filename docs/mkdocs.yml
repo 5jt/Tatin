@@ -30,8 +30,10 @@ nav:
     - Maintenance: maintenance.md
     - User commands: user-commands-host.md
   - Contribute:
-    - (Tatin for contributors): contribute.md
+    - About contributing: contribute.md
     - Develop: develop.md
+    - Test: test.md
+    - Create a new version: create-version.md
     - (Github): github.md
 
 theme:

@@ -75,7 +75,7 @@ With Debug Mode on, Tatin leaves application errors untrapped so you can investi
 
 ## :fontawesome-solid-terminal: Delete packages
 
-    ]Tatin.DeletePackages pattern
+    ]TATIN.DeletePackages pattern
 
 Where `pattern` is
 

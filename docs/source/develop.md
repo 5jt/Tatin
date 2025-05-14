@@ -1,223 +1,164 @@
 # Developing
 
-If you want to make changes or add new features you need a good understanding of the basic design of Tatin.
+!!! abstract "To make changes or add new features you need a good understanding of the basic design of Tatin."
 
 
-### Structure
+## Tatin code
 
-#### Main namespaces
+Four ordinary namespaces contain the Tatin code.
 
-Four ordinary namespaces contain all the Tatin code:
-
-`Admin`
-
-: Contains helpers useful to administrate Tatin, for example creating a new version, performing maintenance tasks etc.
-
-`Client`
-
-Contains the code executed on the Client side of Tatin.
-
-`Server`
-
-Contains the code to run a Tatin Server
- 
-`Registry`
-
-Contains all code that is shared by a Tatin client and a Tatin server.
-
-#### Other stuff
-
-There are some more ordinary namespaces that are used by Tatin
-
-`Plodder`
-
-: A fully-fledged HTTP server that is based on Rumba and Conga
-
-: For details see <https://github.com/aplteam/Plodder>
-
-`RumbaLean`
-
-: An implementation of HTTP 1.1 in APL
-
-: For details see <https://github.com/aplteam/RumbaLean>
-
-These two are not part of the Tatin project.
+-----------|---
+`Admin`    | Helpers useful to administrate Tatin, for example creating a new version, performing maintenance tasks etc.
+`Client`   | The code executed on the Client side of Tatin.
+`Registry` | All code shared by a Tatin client and a Tatin server.
+`Server`   | The code to run a Tatin Server
 
 
-### Version
+## Dependencies
 
-Note that by design new versions always comprehend both the server and the client, so the version number is always the same for both.
+-----------|---
+[`Plodder`](https://github.com/aplteam/Plodder) | A fully-fledged HTTP server based on Rumba and Conga
+[`RumbaLean`](https://github.com/aplteam/RumbaLean) | An implementation of HTTP 1.1 in APL
+
+These two packages are used by, but do not form part of, the Tatin project.
 
 
-### Developing with a running server
+## Server handlers
 
-You might want to run a server while Tatin is an open Cider project. The running server allows you to investigate what the code is doing, and at the same time, any changes and additions would be tracked by Link.
+The main server handlers are:
 
-You might even want to run the server in one workspace as an opened Cider project and at the same time run the test cases in another workspace, also as an opened Cider project. Of course you need to be very careful because otherwise you might loose code.
-
-Let's assume that you want to run the Tatin server that is part of the Tatin project. When the Tatin test cases are executed, Tatin would ask you whether you want to start the server automatically -- that is the server we are talking about, **not** https://test.tatin.dev.
-
-However, when the server is started as part of the tests it is NOT opened as a Cider project, and changes would not be tracked by Link. If you want that then execute the following steps instead:
-
-1. Open the Tatin project with `]Cider.OpenProject` with the `watch` parameter set to "both".
-
-1. Run the function `#.Tatin.TestCasesServer.RunTests`
-
-### A word of warning
-Opening Tatin as a project in two different workspaces, and then make changes to the code in both of them is of course dangerous!
-
-On Windows or when .NET is available you can limit the danger by doing this:
-
-* Make sure that Link's `Notify` parameter is set to 1. That makes Link print to the session whenever it updates a file or the workspace, so you get some feedback on what is happening. Make sure you watch this!
-
-* Make sure that you set Link's `watch` parameter to "both" in both workspaces. 
-
- That ensure that when you change an APL object in on workspace, it will not only be written do disk but Link will also bring that change into the other workspace.
-
-This is particularly important when you change code in the `Tatin.Registry` namespace, because that code is shared between the client and the server.
-
-Taking these measure is important because the mechanism used by Dyalog works most of the time but not always (it's a .NET-problem!), so it is important to watch out for such problems.
-
-On non-Windows platforms with no .NET available, `watch=both` is not an option at the time of writing (July 2024), so that is particularly dangerous.
-
-If you just want to run the test server, close the project before executing `#.Tatin.TestCasesServer.RunTests`.
-
-The main handlers are:
-
-  * `#.Tatin.Server.OnRequest`
-  * `#.Tatin.Server.OnHouseKeeping`
+    #.Tatin.Server.OnRequest
+    #.Tatin.Server.OnHouseKeeping
 
 `OnRequest` will eventually call one of these:
 
-  * `Handle_GET`
-  * `Handle_PUT_And_POST`
-  * `Handle_Delete`
+    Handle_GET
+    Handle_PUT_And_POST
+    Handle_Delete
 
-These will call the Tatin functions that perform the real actions.
+These call the Tatin functions that perform the real actions.
 
-#### Error trapping
 
-Keep in mind that error trapping is active, so when you change a function and inject a typo this will trigger error trapping  once your code gets executed.
+## Server certificates
 
-If there is any danger of you locking horns with error trapping, consider putting this into `OnRequest`:
+The Tatin server comes with test certificates.
 
-`⎕TRAP←0 'S'  ⍝TODO⍝`   
+GitHub prohibits downloading certificates, so the certificate files have an additional extension `.RemoveMe` which needs, well… removing.
+
+Check the folder `TestServer/Server/Assets/Runtime/Certificates`.
+
+
+
+## Set the DEVELOPMENT flag
+
+By default, code for user commands and API calls is stored and executed in `⎕SE` – but
+
+!!! danger "Link does not save changes to code in `⎕SE`."
+
+This stumbling block was addressed in version 0.106.0
+with the `⎕SE._Tatin.DEVELOPMENT` variable.
+Now, when Cider opens the Tatin project it asks:
+
+    Set DEVELOPMENT←1 in ⎕SE._Tatin?
+    (Allows executing user command code in # rather than ⎕SE)
+    (Y/n)
+
+Setting the flag tells Tatin to execute user commands and API calls using the code in `#`, where Link will save any changes you make.
+
+If the flag is not set Cider <!-- won’t ask the question, and  --> will execute code in `⎕SE` as usual.
+
+If the flag is already set to zero, Cider will not ask if you want to change it.
+
+<!-- 
+FIXME
+Can this be right? Cider will ask if you want the flag set, but only if the flag is already set?
+ -->
+
+
+## Developing with a running server
+
+You could run a Tatin server as an open Cider project
+and investigate what the code in the running server is doing, with Link saving any changes and additions you make.
+
+You might even want to run the server in one workspace as an opened Cider project, while running the test cases in another workspace, also as an opened Cider project.
+
+You would need to be very careful lest you lose code. (See warning box below.)
+
+Suppose you want to run the Tatin server that is part of the Tatin project.
+When the Tatin test cases are executed, Tatin would ask you whether you want to start this server automatically.
+(Not `https://test.tatin.dev`.)
+
+However, when the server is started as part of the tests it is NOT opened as a Cider project, and changes would not be tracked by Link.
+To link the running server code to its source files:
+
+1. Open the Tatin project with `]Cider.OpenProject` with the `watch` parameter set to `'both'`.
+1. Run the function `#.Tatin.TestCasesServer.RunTests`
+
+
+## Opening Tatin as a project in two workspaces
+
+In developing Tatin it is natural to have two Dyalog instances running: one each for the client and server code.
+
+The test server must be run in its own instance: you cannot run both the client and the server in the same workspace.
+
+!!! danger "Opening Tatin as a project in two different workspaces, and changing code in both is dangerous!"
+
+With .NET you can limit the danger:
+
+-   Set Link’s `Notify` parameter to 1. That makes Link print to the session whenever it updates a file or the workspace, so you get some feedback on what is happening. Ensure you watch this!
+-   Set Link’s `watch` parameter to `'both'` in both workspaces.
+
+!!! warning inline end "Without .NET"
+
+    On non-Windows platforms with no .NET available, `watch=both` is not an option, so that is particularly dangerous.
+
+Then when you change an APL object in one workspace, it will not only be written to disk: Link will **also** bring that change into the other workspace.
+
+This is particularly important when you change code in the `Tatin.Registry` namespace, because that code is shared between the client and the server.
+
+**Watching Link’s reports in the session**
+is important: the .NET mechanism used by Dyalog works _most of the time_ but not always, so it is important to watch for problems.
+
+If you just want to run the test server, close the project before executing
+
+    #.Tatin.TestCasesServer.RunTests
+
+
+## Error trapping
+
+Error trapping is active, so if you change a function and inject a typo, it will trigger error trapping when the code gets executed.
+
+!!! tip inline end "`⍝TODO⍝` reminders"
+
+    `⍝TODO⍝` is a reminder that won’t go unnoticed: a test case detects and reports these markers and reports them.
+
+To avoid locking horns with error trapping, you could put into `OnRequest`
+
+    ⎕TRAP←0 'S'  ⍝TODO⍝
 
 Also, make `⎕TRAP` a local variable in `OnRequest`.
 
-`⍝TODO⍝` is a reminder that won't go unnoticed: there is a test case that will detect these markers and report them, so it's pretty hard to forget them.
+
+## Updating Tatin’s own dependencies
+
+Tatin depends on a couple of Tatin packages, but it cannot be used to load them – the classic bootstrap problem.
+
+To update a package installed in the `packages/` folder, bring it into the `APLSource/` folder by other means:
+
+-   A **single class or namespace script** can simply be copied over; for example, the `Tester2` class.
+-   An **ordinary namespace** needs to be copied over as a folder; for example, `CommTools`.
 
 
-## Misc
 
-### Special REST commands
+## Special REST commands
 
-A Tatin server can offer several special REST commands only useful for a developer when testing Tatin. They should never be available on a production server.
+A Tatin server can support several special REST commands for developing and testing.
 
-Whether these commands would be carried out is decided by the INI entry `[CONFIG]SpecialCommands`.
+These commands are enabled (or not) by the INI entry `[CONFIG]SpecialCommands`.
+They should never be supported on a production server.
 
-One of the commands will return an HTML page with all available commands. We use this as an example.
+For example, one command returns an HTML page with all the available commands: navigate to `https://localhost:5001/v1/list-commands`.
 
-In a Browser enter this URL:
+The other commands do not return HTML but trigger actions.
 
-```
-https://localhost:5001/v1/list-commands
-```
-
-Note that with the exception `list-commands`, these commands do not return HTML, they rather trigger actions.
-
-
-### Executing the Tatin test suite
-
-The test framework used is very powerful, and offers lots of options. Naturally only the basics are covered here. 
-
-For more information refer to <https://github.com/aplteam/Tester2>
-
-#### Execute the complete test suite
-
-This can be achieved by executing:
-
-```
-#.Tatin.TestCases.RunTests
-```
-
-This prepares the test framework and then executes all tests in debug mode, meaning that in case something goes wrong, the framework will stop and you can investigate right away,
-
-You will be asked whether you want to copy the test data to a temp folder in preperation.
-
-On Windows you will also be asked whether you want to start a test server. Usually you will answer both questions with "yes". On Non-Windows platforms you will be asked to start the server yourself before carrying on.
-
-#### Execute particular tests or group(s) of tests
-
-Sometimes it makes sense to execute not all but a small subset of test cases. In this case you might not need test data, or a running test server, depending on that test cases you are about to execute.
-
-This can be achieved as well; first you need to excute:
-
-```
-#.Tatin.TestCases.Prepare
-```
-
-This initializes Tatin as a client and prepares for creating a code-coverage report. It also creates a number of references needed by the tests.
-
-You only need to call `Prepare` once.
-
-In a second step you can excute one or more tests. A couple of examples:
-
-Execute one particular test of the `UC` group:
-
-```
-#.Tatin.TestCases.T.RunThese 'UC' 600
-```
-
-Execute several tests of the `UC` group:
-
-```
-#.Tatin.TestCases.T.RunThese 'UC' (600 601 602)
-
-```
-
-Execute all tests belonging to the `UC` group:
-
-```
-#.Tatin.TestCases.T.RunThese 'UC'
-```
-
-#### Execute just batch tests
-
-A small number of tests require a user that can be asked to perform actions, like closing an edit window. 
-
-Sometimes you might want to execute only tests that do not require a human in front of the monitor. These are called batch tests.
-
-These tests can be executed by executing:
-
-```
-#.Tatin.TestCases.RunBatchTests 1
-```
-
-The 1 required as right argument is just a safety net against accidental calls.
-
-By default error trapping is in place: in case a test case fails or crashes, this is covered, and the test framework carries on. 
-
-If you want batch tests to stop in case of a problem, you must specify the optional `debug` flag as left argument:
-
-```
-1 #.Tatin.TestCases.RunBatchTests 1
-```
-
-### Creating a new version
-
-1. Check `#.Tatin.Registry.Version` for being correct
-2. Check `#.Tatin.Registry.History` for being correct
-3. Check the document `docs/source/release-notes.md` for being correct
-4. Ask Cider how to "Make" a new version with `]Cider.Make`
-
-It will tell you to execute:
-
-```
-#.Tatin.Admin.Make 0
-```
-
-The right argument is a batch flag: it tells the function whether a human is available (0) or not (1). If there is, progress is reported to `⎕SE`. Naturally the latter is used in  order to automatically create a new version.
-
-Note that if the batch flag is 0, the function will print a statement to the session which, when executed, will install the new version.
 
