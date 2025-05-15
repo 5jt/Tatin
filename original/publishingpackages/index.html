@@ -1,0 +1,1852 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin: Publishing Pkgs - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style/main.css">
+    
+      <link rel="stylesheet" href="../../style/extra.css">
+    
+      <link rel="stylesheet" href="../../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#publishing-packages" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin: Publishing Pkgs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#licensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licensing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Licensing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httpstatindev" class="md-nav__link">
+    <span class="md-ellipsis">
+      https://tatin.dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#your-own-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Your own server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groups-names-and-version-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groups, names and version numbers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Groups, names and version numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      The name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-version-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      The version number
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precondition-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precondition: API key
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Precondition: API key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-principal-tatin-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      The principal Tatin Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credentials-for-the-tatin-test-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentials for the Tatin Test Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-are-api-keys-saved" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where are API keys saved?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where are API keys saved?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credentials-for-your-own-tatin-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentials for your own Tatin Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Credentials for your own Tatin Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#editing-the-file-credentialscsv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editing the file "Credentials.csv"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-structure-a-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to structure a package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-package-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The package configuration file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-dependency-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The dependency file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final step
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-command-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      User command packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleting packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development strategies
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="publishing-packages">Publishing Packages</h1>
+<h2 id="licensing">Licensing</h2>
+<h3 id="httpstatindev">https://tatin.dev</h3>
+<p>If you want to publish packages to the Principal Tatin server (<a href="https://tatin.dev">https://tatin.dev</a>) then your package <em>must carry</em> a property <code>license</code>, and its value  must be one of the licenses listed on the web page. All licenses that will be accepted offer a great deal of freedom to a user of a package: there are almost no restrictions.</p>
+<p>Note that the same holds true for the test server (<a href="https://test.tatin.dev">https://test.tatin.dev</a>)</p>
+<h3 id="your-own-server">Your own server</h3>
+<p>If you want to run your own server then you can do whatever you like, of course. The document  "Server --- Tips and Tricks" offers details.</p>
+<h2 id="groups-names-and-version-numbers">Groups, names and version numbers</h2>
+<p>A package ID consists of at least three parts:</p>
+<ul>
+<li>A group name</li>
+<li>A package name</li>
+<li>A version number</li>
+</ul>
+<p>Optionally such an ID may also comprehend a build number that is separated from the version number by a plus (<code>+</code>).</p>
+<h3 id="the-group">The Group</h3>
+<p>A group can be anything really:</p>
+<ul>
+<li>If you act on behalf of a company it might be the name of that company, like "Dyalog"</li>
+<li>If you are a freelancer it might be your name, or just your first name, like "davin"</li>
+<li>It might be a term used to indicate something, anything, like "aplteam"</li>
+</ul>
+<p>Once you have chosen a group name, and published a package with that group name to the <a href="https://tatin.dev" title="Link to tatin.dev">principal Tatin Registry</a>, you are advised to create a "home page" for that group. Use that for anything useful like background, motivation, contact details, whatever.</p>
+<p>When a group is listed in a browser, the name of a group is converted into a link to that home page.</p>
+<p>Of course, group-related home pages do not always make sense, therefore by default they are not active; see <code>GroupHomePages</code> in the INI file.</p>
+<h3 id="the-name">The name</h3>
+<p>The name should give the user an idea of what a package might do. Group+name must be unique, but you might well use a name that is already used under a different group name, though this is not recommended.</p>
+<h3 id="the-version-number">The version number</h3>
+<p>The version number must consist of three parts separated by dots:</p>
+<ul>
+<li>The major version number: the "1" in <strong>1</strong>.2.3</li>
+<li>The minor version number: the "2" in 1.<strong>2</strong>.3</li>
+<li>The patch number: the "3" in 1.2.<strong>3</strong></li>
+</ul>
+<p>Optionally additional information might be added. Examples are:</p>
+<ul>
+<li>1.2.3-beta-1</li>
+<li>1.2.3-fix-for-the-foo-problem</li>
+<li>1.2.3-issue-234</li>
+</ul>
+<p>There is one restriction: a <code>+</code> cannot be part of the name of a beta version. The reason for that is that finally a build number might be added to a version number, and a build number is separated from the rest of the version number by a plus (<code>+</code>) character. Examples:</p>
+<ul>
+<li>1.2.3+453</li>
+<li>1.2.3-beta-1+911</li>
+</ul>
+<p><del>Build numbers are mostly not shown by Tatin.</del></p>
+<p>Build numbers are ignored by Tatin. Their sole purpose is to tell two different builds apart when the version number has not changed.</p>
+<h2 id="precondition-api-key">Precondition: API key</h2>
+<p>Whether you want to publish to the principal Tatin server at <a href="https://tatin.dev">https://tatin.dev</a> or your own Tatin Server or a Tatin Server that someone in your company runs, first you need an API key. "API key" is just a fancy expression for a password that is used by an application.</p>
+<p>API keys are required for publishing --- and possibly deleting --- packages, but not for consuming them.</p>
+<p>They are saved in the user settings --- for details see the document "Tatin User Settings".</p>
+<h3 id="the-server">The Server</h3>
+<h4 id="the-principal-tatin-server">The principal Tatin Server</h4>
+<p>If you want to publish on <code>https://tatin.dev</code> you need to ask <a href="mailto:info@tatin.dev">info@tatin.dev</a> for an API key.</p>
+<p>You must provide these pieces of information:</p>
+<ul>
+<li>Your desired group name (case insensitive)</li>
+<li>Your real name</li>
+<li>If it's connected to a company, the company's name</li>
+<li>Email address (if different from the one you are using to send the email)</li>
+</ul>
+<p>!&gt; ### First step after receiving an API key
+=&gt; After having received an API key you must first create a home page for your group name on the server. Only then can you start publishing packages.</p>
+<h4 id="credentials-for-the-tatin-test-server">Credentials for the Tatin Test Server</h4>
+<p>The Tatin Test Server publishes an API key on its website; it's "Tatin-Test-API-Key". It allows you to publish anything you want, including any group name except a few reserved group names: "aplteam" and "dyalog".</p>
+<p>Notes:</p>
+<ul>
+<li>Be aware that the Tatin Test Server is reset now and then, so whatever you publish will disappear sooner or later</li>
+<li>You cannot publish anything under the group names "aplteam" and "dyalog"</li>
+</ul>
+<h4 id="where-are-api-keys-saved">Where are API keys saved?</h4>
+<h5 id="client">Client</h5>
+<p>API keys are saved in the user settings file. The quickest and yet safe way to edit that file is via the user command:</p>
+<div class="highlight"><pre><span></span><code>      ]TatIN.UserSettings -edit      
+</code></pre></div>
+<h5 id="server">Server</h5>
+<p>Credentials are saved in the file "Credentials.csv" in the Registry's home folder.</p>
+<h4 id="credentials-for-your-own-tatin-server">Credentials for your own Tatin Server</h4>
+<p>If you run your own Tatin Server, we suggest that you create a UUID and use that as an API key. </p>
+<p>For an API key to be accepted by a Tatin Server, it must be added to a file <code>Credentials.txt</code> in the Registry's root directory. </p>
+<p>Make sure that you specify it as either</p>
+<div class="highlight"><pre><span></span><code>&lt;group-name&gt;,&lt;api-key&gt;
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>*,&lt;api-key&gt;
+</code></pre></div>
+<p>If the server finds such a file it will perform the following actions:</p>
+<ul>
+<li>Take the data and convert it to a different format</li>
+<li>Delete rows from <code>Credential.csv</code> that share a group name with <code>Credentials.txt</code></li>
+<li>Create a Salt for every API key in <code>Credentials.txt</code></li>
+<li>Convert every API-key and its Salt into a hash and add them together with the according group name to <code>Credentials.csv</code></li>
+<li>Delete the file <code>Credentials.txt</code></li>
+</ul>
+<p>The format of the file <code>Credentials.csv</code> is:</p>
+<div class="highlight"><pre><span></span><code>&lt;group-name&gt;,&lt;api-key-hash&gt;,&lt;salt&gt;
+*,&lt;api-key-hash&gt;,&lt;salt&gt;
+*
+</code></pre></div>
+<ul>
+<li>In the first case, anybody who provides the API key the hash was produced from can publish packages for that group.</li>
+<li>In the second case, the password the hash was created from is a kind of master password: it allows the creation of packages with <em>any</em> group name, except any group that was already handled by then of course.</li>
+<li>The third case means that no API key is required for any (remaining) group(s).</li>
+</ul>
+<p>The different scenarios can be mixed:</p>
+<div class="highlight"><pre><span></span><code>group1,&lt;hash1,&lt;salt1&gt;
+group2,&lt;hash2,&lt;salt2&gt;
+*,{hash3&gt;,&lt;salt3&gt;
+</code></pre></div>
+<p>This means that one can only publish packages with the group name...</p>
+<ul>
+<li><code>&lt;group1&gt;</code> by using the API key "hash1" was generated from...</li>
+<li><code>&lt;group2&gt;</code> by using the API key "hash2" was generated from...</li>
+</ul>
+<p>and anything else by using the API key "hash3" was created from.</p>
+<p>Note that <code>*</code> or<code>*,</code> or <code>*=</code> all mean that no API key is required. On its own, it's the same as having no credentials file, but it can be useful together with other group names:</p>
+<div class="highlight"><pre><span></span><code>&lt;group1&gt;,&lt;hash1&gt;
+&lt;group2&gt;,&lt;hash2&gt;
+*
+</code></pre></div>
+<p>This is interpreted as "require API keys for the groups <code>&lt;group1&gt;</code> and <code>&lt;group2&gt;</code> but allow anything else without an API key".</p>
+<p>Finally, you can allow anybody to publish packages under a particular group name without providing an API key:</p>
+<div class="highlight"><pre><span></span><code>&lt;group1&gt;,&lt;hash1&gt;,&lt;email-address&gt;
+&lt;group2&gt;,
+*,&lt;hash3&gt;
+</code></pre></div>
+<p>This means:</p>
+<ul>
+<li>
+<p>In order to publish anything to the group "group1" you must provide the API key "hash1" was generated from</p>
+</li>
+<li>
+<p>You may publish packages to the group "group2" without an API key </p>
+</li>
+<li>
+<p>For any group name but <code>&lt;group1&gt;</code> and <code>&lt;group2&gt;</code> you must specify the API key "hash3" was generated from</p>
+</li>
+</ul>
+<h5 id="editing-the-file-credentialscsv">Editing the file "Credentials.csv"</h5>
+<p>There is one reason why you might need to change the file <code>Credentials.csv</code>: when a group name must be deleted for some reason.</p>
+<p>If a new group needs to be added, or a new API key needs to be assigned to an existing group, you must create a file <code>Credentials.txt</code>, see above.</p>
+<h5 id="comments">Comments</h5>
+<p>The files <code>Credentials.txt</code> as well as <code>Credentials.csv</code> both allow comment lines: any line that has a <code>;</code> as the very first character is regarded a comment.</p>
+<h2 id="publishing">Publishing</h2>
+<h3 id="preparing">Preparing</h3>
+<h4 id="how-to-structure-a-package">How to structure a package</h4>
+<p>A Tatin package requires all source code (functions, operators, classes, interfaces and namespace scripts) to be separated from other files (like CSS files, EXEs, DLLs etc.).</p>
+<p>Tatin calls the former "source" and the latter "assets". </p>
+<h4 id="the-package-configuration-file">The package configuration file</h4>
+<p>The file <code>apl-package.json</code> must exist in order to make a folder a package.</p>
+<p>What is required and how to create and change a package configuration file is discussed in the document <a href="../packageconfiguration/">PackageConfiguration</a>.</p>
+<h4 id="the-dependency-file">The dependency file</h4>
+<p>The file <code>apl-dependencies.txt</code> is only required when a package depends on other packages.</p>
+<p>Dependencies may by installed in a package project in different ways:</p>
+<ul>
+<li>
+<p>By default Tatin assumes a subfolder <code>packages/</code> to save dependencies.</p>
+</li>
+<li>
+<p>If you manage a package project with Cider, then Tatin will check the properties <code>dependencies.tatin</code> and <code>dependencies_dev.tatin</code>: if one of them or both define a folder then it will be taken</p>
+</li>
+<li>
+<p>If you do not use Cider and prefer a subfolder not named <code>packages/</code> for any dependencies, then you must specify them explicitly:</p>
+</li>
+<li>
+<p>The user command <code>]Tatin.PublishPackage</code> has a modifier for this: <code>-dependencies=</code></p>
+</li>
+<li>The API function <code>PublishPackage</code> can be fed with an optional left argument for this</li>
+</ul>
+<p>I&gt; In case you specify a dependency that has not (yet) been published, then this has no consequences: the server will not reject such a package. 
+I&gt;
+I&gt; That might come as a surprise, but there is a reason for this: when a bunch of packages is published then there might well be mutual or worse circular dependencies. Insisting on dependencies already being published would not work then.</p>
+<p>Usually, you will specify just a full package ID as a dependency. If you wish you may also specify either a URL following the http[s]:// protocol or a zip file following the file:// protocol. The latter is always a temporary solution, however. </p>
+<p>Notes:</p>
+<ul>
+<li>Specifying a dependency with the file:// protocol means that you won't be able to publish that package to a Tatin server because it would for obvious reasons be rejected with "400 --- bad request".</li>
+</ul>
+<p>That is good enough a reason to use this with care. Only when messing around with packages on your local machine that are not designed to be published on a Tatin server may this be used.</p>
+<ul>
+<li>
+<p>Using the http[s]:// protocol defeats Tatin's scan strategy: normally when a dependency is required Tatin will scan all defined Registries by their priority, unless the http[s]:// protocol is used. Again this should be used with care.</p>
+</li>
+<li>
+<p>When a package is published to a Tatin Registry, any protocols (file:// or http:// or https://) are removed: the dependency is defined just by the package name. </p>
+</li>
+</ul>
+<p>When such a package is installed or loaded, Tatin will interrogate all Registries in its search path, with the first hit winning the day.</p>
+<h3 id="final-step">Final step</h3>
+<p>Once the preparation is done the final step is easy. Specify the folder hosting the package:</p>
+<div class="highlight"><pre><span></span><code>]TATIN.PublishPackage /path2package [tatin]
+</code></pre></div>
+<p>The folder may or may not carry a trailing slash (<code>/</code>).</p>
+<p>This would attempt to publish the package found in <code>path2package/</code> to the principal Tatin Server. (In fact, <code>[tatin]</code> is optional: without a second argument the principal Registry would be assumed anyway)</p>
+<p>You can also build a new version by calling <code>]TATIN.BuildPackage</code> (or its aquivalent, the API-function <code>BuildPackage</code>) and specify the resulting ZIP file as an argument to <code>PublishPackage</code>:</p>
+<div class="highlight"><pre><span></span><code>]TATIN.PublishPackage /path2package/group-name-1.2.3.zip [tatin]
+</code></pre></div>
+<p>When a path to a package project is provided rather than a ZIP file then <code>]PublishProject</code> would create the ZIP file itself.</p>
+<p>Note that both <code>]PublishPackage</code> as well as <code>]BuildPackage</code> assume that if the package about to be published depends on other packages these packages will be installed in a subfolder <code>packages/</code>.</p>
+<p>However, if the project is managed by Cider then Tatin investigates the Cider config file. Cider has two properties <code>dependencies.tatin</code> and <code>dependencies_dev.tatin</code> designed to hold the folder with package dependencies, and if one of them is not empty then Tatin would use it, or question the user if both are set and not empty.</p>
+<p>If you do not use Cider but want to establish a non-default subfolder (read: not named <code>packages/</code>) as the one holding package dependencies then you must specify the subfolder with the <code>-dependencies=</code> flag.</p>
+<h3 id="user-command-packages">User command packages</h3>
+<p>Packages that are user commands are a special case. Here is why:</p>
+<p>User commands must have a user command script --- that's what makes them a user command. They can simply be installed as Tatin packages and the job is done. But there is a problem.</p>
+<p>The package might look like this:</p>
+<div class="highlight"><pre><span></span><code>MyUserCommand/
+    APLSource/
+        MyUserCommand/        ⍝ Contains the code
+        TestData/
+        TestCases/
+        MyUserCommand.dyalog  ⍝ The user command script
+    packages/
+        ...
+    packages_dev/
+        ...
+    apl-package.json
+    cider.config
+    LICENSE
+    README
+</code></pre></div>
+<p>The package configuration parameter <code>source</code> will then read <code>APLSource/MyUserCommand</code> because we don't want <code>TestData/</code> and <code>TestCases/</code> to be part of the installed package.</p>
+<p>But that would mean that the script <code>MyUserCommand.dyalog</code> would not be installed either, so there is a problem: the script would not make it when the packages are installed. Also, the user command script should live in the root of the package's installation folder, not in a sub folder.</p>
+<p>That's why Tatin needs to know that the package is a user command, and where to find its script. This does the trick:</p>
+<div class="highlight"><pre><span></span><code>userCommandScript: &quot;APLSource/MyUserCommand.dyalog&quot;,
+</code></pre></div>
+<p>The fact that the parameter exists and is not empty tells Tatin that it is a user command, and the path allows Tatin to first install everything as usual and then move the script to the root of the package installation folder.</p>
+<p>The installed package will then consist of:</p>
+<ul>
+<li>A folder for the <code>MyUserCommand</code> package </li>
+<li>Folders for all dependencies </li>
+<li>A file <code>apl-buildlist.json</code></li>
+<li>A file <code>apl-dependencies.txt</code></li>
+<li>The user command script: <code>MyUserCommand.dyalog</code></li>
+</ul>
+<p>Note that by definition a package must contain some code. If a user command is implemented as a single script file, which is possible and perfectly fine with simple user commands, this would not be the case. For this reason, it is advisable to separate the user command as such (with the necessary <code>Run</code>, <code>List</code> and <code>Help</code> functions) from the "business logic" that does the real work.</p>
+<p>The latter one would remain in the package, fulfilling the requirement.</p>
+<h2 id="deleting-packages">Deleting packages</h2>
+<p>Whether you can delete a package once it was published depends on the policy the server operates:</p>
+<ul>
+<li>"Any": You may delete any package</li>
+<li>"JustBetas": You may delete only beta versions</li>
+<li>"None": You cannot delete any packages at all</li>
+</ul>
+<p>Note that anything that carries something that is not a digit after the second dot in the version number and before the build separator "<code>+</code>" qualifies as a beta version.</p>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code>apltree-Foo-1.0.0                 ⍝ Not a beta
+apltree-Foo-1.0.0+123             ⍝ Not a beta
+apltree-Foo-1.0.0-alpha-1         ⍝ A beta
+apltree-Foo-1.0.0-alpha-1+123     ⍝ A beta
+</code></pre></div>
+<p>You can find out which policy the server operates in two ways:</p>
+<ul>
+<li>Execute this user command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>]Tatin.GetDeletePolicy [tatin]
+None
+</code></pre></div>
+<p>Or visit its website, for example, <a href="https://tatin.dev">https://tatin.dev</a>: at the bottom of the home page the server mentions the "delete" policy it operates.</p>
+<h2 id="development-strategies">Development strategies</h2>
+<p>Let's imagine that you are supposed to develop Tatin packages for your employer, the company "XYZ".</p>
+<ul>
+<li>You run a Tatin server on your local machine, known by the alias <code>[my]</code>.</li>
+</ul>
+<p>This is just for you, nobody else. The purpose of this server is to publish packages to it at a very early stage.</p>
+<p>It has the highest priority of all Registries, ensuring that in case a package lives on several Registries it is found on <code>[my]</code> first.</p>
+<ul>
+<li>Your team runs a Tatin Server on the Intranet of your company. It carries the alias <code>[my-team]</code>.</li>
+</ul>
+<p>This is used to publish beta versions that your team might want to use. This has the second-highest priority.</p>
+<ul>
+<li>
+<p>Your company also runs a Tatin Server used for productive packages.</p>
+</li>
+<li>
+<p>Your packages may depend on packages published on Tatin's principal server, known as <code>[tatin]</code>.</p>
+</li>
+</ul>
+<p>Of the four Registries, this one should have the lowest priority.</p>
+<ul>
+<li>You might also have the test Registry defined in your user settings, but with a priority of <code>0</code> so that it will be ignored when Registries are scanned for packages, but you could still use it.</li>
+</ul>
+<p>You can now develop a package <code>Foo</code> and publish it on <code>[my]</code>, probably several times until it is stable.</p>
+<p>You would then publish it on <code>[my-team]</code>. At the same time, you would either delete the package from <code>[my]</code> or, if you want the Registry <code>[my]</code> to be ignored altogether, set its priority to zero.</p>
+<p>When all is good the beta is promoted to an official release and published to the Tatin company server. At the same time, the package will most likely be deleted from the Team server.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

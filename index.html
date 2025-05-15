@@ -1,0 +1,1782 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tatin is the community cross-platform package manager and registry for Dyalog APL">
+      
+      
+      
+      
+      
+        <link rel="next" href="load-and-update-strategy/">
+      
+      
+      <link rel="icon" href="img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>About Tatin - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="style/main.css">
+    
+      <link rel="stylesheet" href="style/extra.css">
+    
+      <link rel="stylesheet" href="style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#about-tatin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              About Tatin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versions-and-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versions and dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cider-and-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cider and Tatin
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versions-and-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versions and dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Licences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cider-and-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cider and Tatin
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="about-tatin">About Tatin</h1>
+<div class="admonition abstract">
+<p class="admonition-title">Tatin is the community cross-platform package manager for Dyalog APL</p>
+</div>
+<p><img alt="Tatin overview" src="img/tatin-overview.png" /></p>
+<p>The diagram illustrates an APL application defined in <a href="https://dyalog.github.io/link/4.0/">Linked</a> text files, and held on a GitHub repository.
+It depends on APL libraries in the form of Tatin packages imported from a Tatin repository.</p>
+<p>In the example, the application does not just <em>consume</em> Tatin packages.
+Its working parts, excluding the tests but including the dependencies, 
+are also published as a new Tatin package.</p>
+<p>As shown, one package may depend on another, and so on.
+Tatin manages these dependencies.</p>
+<p>The Tatin <a href="https://tatin.dev">Principal Registry</a> hosts packages with minimal licence restrictions.
+You can also host a Tatin registry on your local machine or on a server.</p>
+<h2 id="packages"><span class="twemoji"><?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="589pt" height="592pt" viewBox="0 0 589 592" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<g id="#fd732cff">
+<path fill="#fd732c" opacity="1.00" d=" M 260.50 1.69 C 291.54 -0.59 323.01 -0.05 353.59 6.18 C 392.16 13.50 429.08 29.24 461.20 51.82 C 492.52 73.99 519.98 101.75 541.30 133.70 C 562.93 166.34 577.32 203.63 583.78 242.23 C 587.86 266.52 589.09 291.28 587.78 315.87 C 586.09 356.84 576.79 397.77 558.59 434.62 C 541.74 468.70 517.21 498.74 487.98 522.95 C 461.79 544.91 431.55 562.02 399.23 573.15 C 355.34 588.38 308.23 593.09 262.01 590.05 C 220.45 587.18 179.19 575.88 142.98 555.04 C 110.52 536.54 82.43 510.89 59.62 481.40 C 41.93 458.25 27.86 432.34 18.15 404.86 C 8.93 378.84 3.59 351.52 1.45 324.02 C -0.28 296.60 -0.01 268.91 4.45 241.75 C 9.89 205.59 22.27 170.43 41.00 139.01 C 71.20 88.68 116.35 46.63 170.65 23.63 C 199.12 11.37 229.71 4.55 260.50 1.69 M 233.86 94.86 C 187.27 111.37 146.76 142.54 115.69 180.66 C 115.14 181.39 114.63 182.15 114.15 182.93 C 118.99 186.21 124.35 188.64 129.44 191.50 C 163.82 209.27 199.58 225.26 237.57 233.46 C 240.21 234.01 242.86 234.61 245.57 234.68 C 249.17 208.22 251.81 181.63 254.32 155.04 C 255.69 145.17 254.29 135.25 253.53 125.40 C 252.33 113.63 251.29 101.84 249.62 90.13 C 244.15 90.86 239.08 93.18 233.86 94.86 M 344.42 93.11 C 343.58 110.49 341.34 127.77 339.27 145.04 C 338.00 158.10 337.38 171.20 336.53 184.28 C 335.78 202.03 336.54 219.87 339.23 237.44 C 372.31 235.60 404.68 224.97 433.22 208.27 C 445.39 200.78 457.49 192.87 467.83 182.97 C 465.51 178.55 461.98 174.94 458.91 171.05 C 430.04 136.37 391.22 110.92 349.46 94.43 C 347.83 93.82 346.14 93.36 344.42 93.11 M 87.21 265.08 C 85.93 269.62 85.62 274.35 84.97 279.00 C 82.97 296.33 81.92 313.95 84.70 331.26 C 89.42 361.98 104.46 390.26 123.66 414.36 C 125.62 416.70 127.29 419.44 129.95 421.05 C 139.20 415.19 147.50 407.92 156.07 401.12 C 180.95 380.37 204.48 357.22 221.35 329.34 C 223.70 325.10 226.47 320.99 227.79 316.28 C 224.09 313.43 219.73 311.60 215.62 309.42 C 202.44 302.65 188.61 297.25 174.64 292.35 C 146.60 282.45 117.91 274.55 89.62 265.44 C 89.02 265.35 87.81 265.17 87.21 265.08 M 469.40 276.40 C 445.51 284.60 421.81 293.31 398.17 302.20 C 387.11 306.50 375.80 310.21 365.02 315.15 C 369.03 321.89 374.41 327.69 379.06 333.99 C 403.39 364.72 429.14 394.43 457.48 421.54 C 458.45 422.41 459.51 423.20 460.71 423.76 C 474.61 407.72 486.73 389.95 495.49 370.55 C 503.36 353.18 507.71 334.09 506.92 314.97 C 506.20 298.86 503.72 282.73 498.86 267.34 C 488.87 269.71 479.17 273.26 469.40 276.40 M 283.10 385.09 C 254.84 415.16 226.25 444.92 198.24 475.23 C 195.98 477.66 193.44 479.92 191.77 482.84 C 195.70 486.01 200.47 487.87 204.94 490.13 C 225.60 500.04 248.04 506.08 270.81 508.41 C 289.09 510.20 307.65 510.12 325.75 506.77 C 344.41 503.61 362.51 497.60 379.69 489.72 C 383.31 488.01 387.11 486.53 390.32 484.07 C 373.75 463.41 357.88 442.17 342.12 420.88 C 329.69 404.22 315.51 388.77 299.34 375.68 C 298.00 374.64 296.60 373.67 295.06 372.99 C 290.41 376.29 287.21 381.19 283.10 385.09 Z" />
+</g>
+<g id="#ffe341ff">
+<path fill="#ffe341" opacity="1.00" d=" M 233.86 94.86 C 239.08 93.18 244.15 90.86 249.62 90.13 C 251.29 101.84 252.33 113.63 253.53 125.40 C 254.29 135.25 255.69 145.17 254.32 155.04 C 251.81 181.63 249.17 208.22 245.57 234.68 C 242.86 234.61 240.21 234.01 237.57 233.46 C 199.58 225.26 163.82 209.27 129.44 191.50 C 124.35 188.64 118.99 186.21 114.15 182.93 C 114.63 182.15 115.14 181.39 115.69 180.66 C 146.76 142.54 187.27 111.37 233.86 94.86 Z" />
+<path fill="#ffe341" opacity="1.00" d=" M 344.42 93.11 C 346.14 93.36 347.83 93.82 349.46 94.43 C 391.22 110.92 430.04 136.37 458.91 171.05 C 461.98 174.94 465.51 178.55 467.83 182.97 C 457.49 192.87 445.39 200.78 433.22 208.27 C 404.68 224.97 372.31 235.60 339.23 237.44 C 336.54 219.87 335.78 202.03 336.53 184.28 C 337.38 171.20 338.00 158.10 339.27 145.04 C 341.34 127.77 343.58 110.49 344.42 93.11 Z" />
+<path fill="#ffe341" opacity="1.00" d=" M 87.21 265.08 C 87.81 265.17 89.02 265.35 89.62 265.44 C 117.91 274.55 146.60 282.45 174.64 292.35 C 188.61 297.25 202.44 302.65 215.62 309.42 C 219.73 311.60 224.09 313.43 227.79 316.28 C 226.47 320.99 223.70 325.10 221.35 329.34 C 204.48 357.22 180.95 380.37 156.07 401.12 C 147.50 407.92 139.20 415.19 129.95 421.05 C 127.29 419.44 125.62 416.70 123.66 414.36 C 104.46 390.26 89.42 361.98 84.70 331.26 C 81.92 313.95 82.97 296.33 84.97 279.00 C 85.62 274.35 85.93 269.62 87.21 265.08 Z" />
+<path fill="#ffe341" opacity="1.00" d=" M 469.40 276.40 C 479.17 273.26 488.87 269.71 498.86 267.34 C 503.72 282.73 506.20 298.86 506.92 314.97 C 507.71 334.09 503.36 353.18 495.49 370.55 C 486.73 389.95 474.61 407.72 460.71 423.76 C 459.51 423.20 458.45 422.41 457.48 421.54 C 429.14 394.43 403.39 364.72 379.06 333.99 C 374.41 327.69 369.03 321.89 365.02 315.15 C 375.80 310.21 387.11 306.50 398.17 302.20 C 421.81 293.31 445.51 284.60 469.40 276.40 Z" />
+<path fill="#ffe341" opacity="1.00" d=" M 283.10 385.09 C 287.21 381.19 290.41 376.29 295.06 372.99 C 296.60 373.67 298.00 374.64 299.34 375.68 C 315.51 388.77 329.69 404.22 342.12 420.88 C 357.88 442.17 373.75 463.41 390.32 484.07 C 387.11 486.53 383.31 488.01 379.69 489.72 C 362.51 497.60 344.41 503.61 325.75 506.77 C 307.65 510.12 289.09 510.20 270.81 508.41 C 248.04 506.08 225.60 500.04 204.94 490.13 C 200.47 487.87 195.70 486.01 191.77 482.84 C 193.44 479.92 195.98 477.66 198.24 475.23 C 226.25 444.92 254.84 415.16 283.10 385.09 Z" />
+</g>
+</svg>
+</span> Packages</h2>
+<p>A package should serve a particular, limited task, for example converting Markdown files into HTML. </p>
+<p>It may be as simple as a single source file, or multiple folders and source files. </p>
+<p>It may include other assets:
+CSS files, BAT files, icons, images, config files, documentation, DLLs, etc.</p>
+<p>It may depend on other packages: Tatin manages the dependencies behind the scenes.</p>
+<!-- 
+FIXME Detail: move elsewhere
+??? warning "A file for each object"
+
+    Tatin requires its source files to carry exactly one APL object each: a function, operator, array, class, interface, or a namespace.
+
+    Dyalog APL supports multiple APL objects in a single text file; Tatin does not.
+    Nor is it compatible with SALT, although the extension `.dyalog` is supported.
+ -->
+
+<div class="admonition detail">
+<p class="admonition-title">Tatin package licences impose few restrictions on your use of the software.</p>
+</div>
+<h2 id="versions-and-dependencies"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M208 80c0-26.5 21.5-48 48-48h64c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-8v40h152c30.9 0 56 25.1 56 56v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-64c-26.5 0-48-21.5-48-48v-64c0-26.5 21.5-48 48-48h8v-32c0-4.4-3.6-8-8-8H312v40h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-64c-26.5 0-48-21.5-48-48v-64c0-26.5 21.5-48 48-48h8v-40H112c-4.4 0-8 3.6-8 8v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48v-64c0-26.5 21.5-48 48-48h8v-32c0-30.9 25.1-56 56-56h152v-40h-8c-26.5 0-48-21.5-48-48z"/></svg></span> Versions and dependencies</h2>
+<p><em>All things must change.</em>
+In general a package exists as a series of versions.</p>
+<p>A package that depends on another package usually depends on either a specific or a <em>minimum</em> version of it.
+Upgrading might require newer versions of packages on which it in turn depends.</p>
+<p>Tatin follows the <a href="glossary/">semantic versioning</a> conventions
+and silently <a href="load-and-update-strategy/">manages all this</a> for you.</p>
+<p>To support this work the Principal Registry never deletes a published package.
+You can <em>deprecate</em> a package or a version, but the registry retains it for anyone who relies on it.</p>
+<h2 id="usage"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256h-64V96H128v256H64zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2M281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg></span> Usage</h2>
+<p>There are two ways to use Tatin.</p>
+<ul>
+<li><strong>User commands</strong> such as <code>]TATIN.ListRegistries</code> put Tatin at your fingertips</li>
+<li><strong>API functions</strong> such as <code>⎕SE.Tatin.ListRegistries</code> let you write DevOps scripts </li>
+</ul>
+<h2 id="requirements"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113c-9.3-9.4-9.3-24.6 0-34s24.6-9.4 33.9 0L63 101.1l55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L63 261.2l55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32m0 160c0-17.7 14.3-32 32-32h224c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32m-64 160c0-17.7 14.3-32 32-32h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32M48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96"/></svg></span> Requirements</h2>
+<ul>
+<li>Dyalog Unicode Edition Version 18.2 or better. (Classic is not supported.)</li>
+<li><a href="https://dyalog.github.io/link/4.0/">Link</a> Version 3.0.8 or better</li>
+<li>The Tatin client runs on Windows, Linux, macOS and Raspberry Pi.</li>
+<li>The Tatin registry runs on Windows (as a service or a Docker container) and on Linux (as a Docker container)<sup id="fnref:macserve"><a class="footnote-ref" href="#fn:macserve">2</a></sup>.</li>
+</ul>
+<h2 id="licences"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 32h128c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448h160c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32h160V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32h128c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32m55.6 288h144.9L512 195.8zm72.4 96c-62.9 0-115.2-34-126-78.9-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8L631.3 305c5.7 9.8 9.3 21.1 6.7 32.1C627.2 382 574.9 416 512 416M126.8 195.8 54.4 320h144.9zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8L246.2 305c5.7 9.8 9.3 21.1 6.7 32.1C242 382 189.7 416 126.8 416S11.7 382 .9 337.1"/></svg></span> Licences</h2>
+<p>Tatin is a community project.
+Packages hosted on the Principal Registry make the software available with minimal restrictions.</p>
+<h2 id="community"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M144 0a80 80 0 1 1 0 160 80 80 0 1 1 0-160m368 0a80 80 0 1 1 0 160 80 80 0 1 1 0-160M0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7-1.3 7.2-1.9 14.7-1.9 22.3 0 38.2 16.8 72.5 43.3 96H21.3C9.6 320 0 310.4 0 298.7M405.3 320h-.7c26.6-23.5 43.3-57.8 43.3-96 0-7.6-.7-15-1.9-22.3 13.6-6.3 28.7-9.7 44.6-9.7h42.7c58.9 0 106.7 47.8 106.7 106.7 0 11.8-9.6 21.3-21.3 21.3H405.4zM224 224a96 96 0 1 1 192 0 96 96 0 1 1-192 0m-96 261.3c0-73.6 59.7-133.3 133.3-133.3h117.3c73.7 0 133.4 59.7 133.4 133.3 0 14.7-11.9 26.7-26.7 26.7H154.6c-14.7 0-26.7-11.9-26.7-26.7z"/></svg></span> Community</h2>
+<p>You can contribute to the <a href="https://tatin.dev">Principal Registry</a>: report errors (open issues in the package repositories), or submit pull requests if you can see how to fix them.</p>
+<p>Please also consider <a href="publish/">publishing</a> your own work as Tatin packages.</p>
+<p>Besides the Principal Registry, you can <a href="host/">host your own Tatin registry</a>.</p>
+<p>Tatin is itself a community project, hosted on GitHub.
+No one owns it.
+You are very welcome to <a href="contribute/">contribute</a> to it.</p>
+<h2 id="cider-and-tatin"><span class="twemoji"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100%" viewBox="0 0 742 742" enable-background="new 0 0 742 742" xml:space="preserve">
+<path fill="#1E4D70" opacity="1.000000" stroke="none"
+	d="
+M211.000000,743.000000
+	C155.645767,743.000000 100.291542,743.000000 44.549442,742.586670
+	C40.908974,741.450806 37.673203,740.639038 34.400730,740.021973
+	C23.315050,737.932068 13.243767,734.513428 7.904326,723.153992
+	C6.313135,719.768799 3.339963,717.033203 1.000002,714.000000
+	C1.000000,633.979126 1.000000,553.958191 1.429546,473.535339
+	C2.239268,470.955353 2.951356,468.777527 2.952199,466.599396
+	C3.004928,330.357544 2.985685,194.115631 3.042036,57.873756
+	C3.044768,51.269005 3.007406,44.550434 4.129002,38.082607
+	C6.824409,22.539194 12.913345,9.056641 29.047792,2.823560
+	C29.528309,2.637926 29.689779,1.626440 30.000000,1.000000
+	C92.354225,1.000000 154.708450,1.000000 217.402039,1.362949
+	C218.554504,2.182867 219.341675,2.695544 220.184784,3.088043
+	C227.238907,6.371995 232.347427,11.506129 234.892593,18.919167
+	C238.337662,28.953217 239.022964,39.340553 236.802277,49.602379
+	C234.751114,59.080734 230.971573,68.167145 220.910065,71.854507
+	C215.770096,73.738205 210.042053,74.834518 204.571198,74.867645
+	C164.106873,75.112694 123.640358,75.000366 83.174538,75.000389
+	C81.246307,75.000389 79.318085,75.000389 76.877197,75.000389
+	C76.877197,90.342125 76.877197,104.966530 76.905647,120.001045
+	C76.920044,274.608521 76.902870,428.805878 76.894806,583.003235
+	C76.893364,610.645203 76.929497,638.287109 77.232925,666.248535
+	C78.663284,666.711487 79.808922,666.979736 80.954704,666.980408
+	C121.256493,667.002136 161.558304,667.006653 201.860062,666.966858
+	C203.305649,666.965454 204.750763,666.492676 206.601349,666.215454
+	C208.964203,666.496216 210.921875,667.068054 212.879364,667.067444
+	C320.828125,667.035645 428.776855,666.955872 537.210571,666.920044
+	C578.929260,666.972351 620.162903,666.997314 661.396484,666.953796
+	C662.942810,666.952148 664.488403,666.284790 666.033081,665.979736
+	C666.031738,666.031738 665.927673,666.034363 666.247314,665.754028
+	C666.710693,664.328186 666.979614,663.182739 666.980286,662.037231
+	C667.002136,622.071350 667.006653,582.105469 666.966858,542.139648
+	C666.965454,540.694092 666.492615,539.249146 666.215515,537.398682
+	C666.497070,534.370789 667.059387,531.748901 667.067688,529.125366
+	C667.138245,506.812805 667.110901,484.499908 667.107605,462.187134
+	C667.091064,348.791870 667.072937,235.396591 667.034424,121.533005
+	C667.013550,105.831566 667.013550,90.598442 667.013550,75.000366
+	C664.284363,75.000366 662.312561,75.000366 660.340759,75.000366
+	C622.739258,75.000359 585.137634,75.038612 547.536316,74.956520
+	C542.269348,74.945023 536.983337,74.535309 531.741577,73.976799
+	C518.744202,72.591896 511.083069,65.474625 507.933075,52.642509
+	C505.775055,43.851311 505.356628,35.042336 507.126251,26.217676
+	C509.115082,16.299862 513.464844,7.882858 523.213135,3.288073
+	C523.994629,2.919722 524.412903,1.780814 525.000000,0.999996
+	C587.354248,1.000000 649.708435,1.000000 712.408936,1.370598
+	C715.651855,3.148179 718.773132,4.225123 721.407837,6.017299
+	C735.383606,15.523819 740.777039,29.955856 740.813110,45.720272
+	C741.134277,185.969223 740.999756,326.219208 741.002747,466.468903
+	C741.002747,468.133881 740.875000,469.827911 741.153687,471.448761
+	C741.257629,472.053741 742.355408,472.487946 743.000000,473.000000
+	C743.000000,548.354248 743.000000,623.708435 742.587158,699.450073
+	C741.448120,703.103821 740.617737,706.351013 740.014587,709.639832
+	C737.820374,721.604553 733.445129,732.095764 721.093567,736.903259
+	C717.473511,738.312317 713.556213,738.946228 709.798340,740.016602
+	C706.515320,740.951782 703.264832,742.001160 700.000000,743.000000
+	C624.979126,743.000000 549.958191,743.000000 474.535309,742.570435
+	C472.124054,741.760620 470.115051,741.049011 468.105560,741.047668
+	C384.411530,740.992004 300.717468,740.999756 217.023392,741.002869
+	C215.526596,741.002930 213.992096,740.859375 212.550659,741.153198
+	C211.933914,741.278931 211.511002,742.355469 211.000000,743.000000
+z"/>
+<path fill="#E7D6AF" opacity="1.000000" stroke="none"
+	d="
+M76.905647,120.001045
+	C81.245384,119.060646 85.625214,117.995621 89.979782,118.090492
+	C111.498360,118.559349 133.019577,119.125381 154.520996,120.081581
+	C167.307190,120.650200 180.049637,122.140610 192.827988,122.964851
+	C205.837967,123.804047 218.891312,125.161201 231.883133,124.792664
+	C248.432236,124.323219 264.938843,122.350739 281.463318,121.020676
+	C285.553467,120.691460 289.636261,120.161499 293.732117,120.033112
+	C307.159271,119.612244 320.615723,118.666641 334.014587,119.165993
+	C351.557098,119.819763 369.061188,121.588272 386.570770,123.012856
+	C397.180969,123.876114 407.773041,124.968010 418.368011,126.010727
+	C424.552338,126.619370 430.716370,127.450981 436.907013,127.975914
+	C449.894806,129.077225 462.015808,125.679337 474.004333,121.047150
+	C484.533600,116.978813 495.570679,115.097908 506.920410,114.965202
+	C524.011658,114.765373 541.110046,113.819603 558.186951,114.149117
+	C574.277771,114.459618 590.348328,115.955910 606.420654,117.037567
+	C614.276611,117.566277 622.109375,118.437515 629.964905,118.976395
+	C641.125549,119.742012 652.298706,120.325302 663.462341,121.050835
+	C664.386902,121.110924 665.279663,121.661079 666.621216,121.992432
+	C667.072937,235.396591 667.091064,348.791870 667.107605,462.187134
+	C667.110901,484.499908 667.138245,506.812805 667.067688,529.125366
+	C667.059387,531.748901 666.497070,534.370789 666.115417,537.881958
+	C666.002075,581.191772 665.964905,623.613037 665.927673,666.034363
+	C665.927673,666.034363 666.031738,666.031738 665.561707,666.010010
+	C624.190918,665.992188 583.290100,665.984375 542.389404,666.037354
+	C540.501099,666.039795 538.613525,666.587341 536.725586,666.880981
+	C428.776855,666.955872 320.828125,667.035645 212.879364,667.067444
+	C210.921875,667.068054 208.964203,666.496216 206.118103,666.115356
+	C162.469162,666.002563 119.708717,665.965820 76.948280,665.929077
+	C76.929497,638.287109 76.893364,610.645203 76.894806,583.003235
+	C76.902870,428.805878 76.920044,274.608521 76.905647,120.001045
+M501.526215,223.995316
+	C500.552246,224.205231 499.581665,224.432800 498.603790,224.622559
+	C441.880524,235.628906 390.331085,286.521240 385.756622,349.815521
+	C381.781952,404.810791 396.655914,452.372101 438.736542,489.855072
+	C462.569946,511.084503 490.404846,522.347900 522.214111,522.890869
+	C552.363342,523.405518 582.528320,523.040649 612.686279,522.987610
+	C632.267883,522.953186 642.161682,514.052002 644.416199,494.648529
+	C646.345947,478.039398 640.454468,465.043579 626.386841,457.828217
+	C619.986145,454.545197 612.670593,451.806030 605.596497,451.313751
+	C586.193420,449.963593 566.685547,450.203125 547.244812,449.276855
+	C536.474304,448.763672 525.617920,447.907837 515.039856,445.926788
+	C489.118195,441.072205 471.953552,425.893005 465.257233,400.121918
+	C460.450134,381.621490 459.799194,362.719666 465.537842,344.380798
+	C468.205597,335.855438 472.611115,327.376099 478.094269,320.326874
+	C492.122589,302.291901 512.445435,294.747589 534.144897,292.239471
+	C552.404480,290.128937 570.972473,290.488007 589.410950,290.189301
+	C603.077332,289.967834 616.722717,290.087708 629.695618,284.934052
+	C637.248169,281.933655 643.591736,277.214813 646.123413,269.263672
+	C650.004761,257.073883 648.523682,245.104904 641.718628,234.276337
+	C635.190369,223.888046 624.579773,221.087219 613.114319,221.037262
+	C585.622742,220.917480 558.127014,220.758728 530.639893,221.130875
+	C521.208069,221.258575 511.796967,222.916977 501.526215,223.995316
+M127.814240,221.136032
+	C115.424400,222.093185 105.173851,226.703705 99.691406,238.578690
+	C96.124550,246.304520 95.282608,254.660049 96.258873,263.042877
+	C97.313080,272.094971 102.213684,278.665436 110.312721,282.971710
+	C120.154373,288.204590 130.810043,289.778290 141.693405,289.942444
+	C157.163437,290.175873 172.647079,289.699463 188.111237,290.080658
+	C208.284500,290.577942 227.852112,294.199951 245.715408,304.175903
+	C259.180969,311.695801 269.451782,322.321106 275.074829,336.913727
+	C283.481598,358.730499 283.198059,380.980103 276.755371,403.044067
+	C270.880035,423.165039 257.873535,436.951416 237.451416,443.403137
+	C218.748749,449.311615 199.549042,450.441528 180.217758,449.566254
+	C164.351196,448.847839 148.571304,449.563751 133.032288,452.253906
+	C113.015999,455.719269 101.484016,466.853210 99.875877,484.218903
+	C99.206001,491.452606 100.292976,499.259613 102.417999,506.247284
+	C105.780556,517.304382 116.331116,522.952148 130.861038,522.982788
+	C160.684006,523.045532 190.507446,523.065491 220.330048,522.943237
+	C225.803040,522.920776 231.324554,522.481140 236.735916,521.657471
+	C274.481628,515.912292 303.575378,495.986969 326.370972,466.152252
+	C348.318817,437.427124 357.609985,404.485443 358.007050,368.701141
+	C358.333740,339.260529 352.503082,311.320618 335.602539,286.802185
+	C306.519257,244.609726 265.994781,222.435715 214.715134,221.142975
+	C186.078262,220.421036 157.406967,221.064651 127.814240,221.136032
+z"/>
+<path fill="#3A362C" opacity="1.000000" stroke="none"
+	d="
+M77.232925,666.248535
+	C119.708717,665.965820 162.469162,666.002563 205.712860,666.139404
+	C204.750763,666.492676 203.305649,666.965454 201.860062,666.966858
+	C161.558304,667.006653 121.256493,667.002136 80.954704,666.980408
+	C79.808922,666.979736 78.663284,666.711487 77.232925,666.248535
+z"/>
+<path fill="#3A362C" opacity="1.000000" stroke="none"
+	d="
+M537.210571,666.920044
+	C538.613525,666.587341 540.501099,666.039795 542.389404,666.037354
+	C583.290100,665.984375 624.190918,665.992188 665.562988,665.958008
+	C664.488403,666.284790 662.942810,666.952148 661.396484,666.953796
+	C620.162903,666.997314 578.929260,666.972351 537.210571,666.920044
+z"/>
+<path fill="#3A362C" opacity="1.000000" stroke="none"
+	d="
+M666.247314,665.754028
+	C665.964905,623.613037 666.002075,581.191772 666.139404,538.287170
+	C666.492615,539.249146 666.965454,540.694092 666.966858,542.139648
+	C667.006653,582.105469 667.002136,622.071350 666.980286,662.037231
+	C666.979614,663.182739 666.710693,664.328186 666.247314,665.754028
+z"/>
+<path fill="#ED7F01" opacity="1.000000" stroke="none"
+	d="
+M501.951294,223.935699
+	C511.796967,222.916977 521.208069,221.258575 530.639893,221.130875
+	C558.127014,220.758728 585.622742,220.917480 613.114319,221.037262
+	C624.579773,221.087219 635.190369,223.888046 641.718628,234.276337
+	C648.523682,245.104904 650.004761,257.073883 646.123413,269.263672
+	C643.591736,277.214813 637.248169,281.933655 629.695618,284.934052
+	C616.722717,290.087708 603.077332,289.967834 589.410950,290.189301
+	C570.972473,290.488007 552.404480,290.128937 534.144897,292.239471
+	C512.445435,294.747589 492.122589,302.291901 478.094269,320.326874
+	C472.611115,327.376099 468.205597,335.855438 465.537842,344.380798
+	C459.799194,362.719666 460.450134,381.621490 465.257233,400.121918
+	C471.953552,425.893005 489.118195,441.072205 515.039856,445.926788
+	C525.617920,447.907837 536.474304,448.763672 547.244812,449.276855
+	C566.685547,450.203125 586.193420,449.963593 605.596497,451.313751
+	C612.670593,451.806030 619.986145,454.545197 626.386841,457.828217
+	C640.454468,465.043579 646.345947,478.039398 644.416199,494.648529
+	C642.161682,514.052002 632.267883,522.953186 612.686279,522.987610
+	C582.528320,523.040649 552.363342,523.405518 522.214111,522.890869
+	C490.404846,522.347900 462.569946,511.084503 438.736542,489.855072
+	C396.655914,452.372101 381.781952,404.810791 385.756622,349.815521
+	C390.331085,286.521240 441.880524,235.628906 498.603790,224.622559
+	C499.581665,224.432800 500.552246,224.205231 501.951294,223.935699
+z"/>
+<path fill="#ED7F01" opacity="1.000000" stroke="none"
+	d="
+M128.282715,221.114471
+	C157.406967,221.064651 186.078262,220.421036 214.715134,221.142975
+	C265.994781,222.435715 306.519257,244.609726 335.602539,286.802185
+	C352.503082,311.320618 358.333740,339.260529 358.007050,368.701141
+	C357.609985,404.485443 348.318817,437.427124 326.370972,466.152252
+	C303.575378,495.986969 274.481628,515.912292 236.735916,521.657471
+	C231.324554,522.481140 225.803040,522.920776 220.330048,522.943237
+	C190.507446,523.065491 160.684006,523.045532 130.861038,522.982788
+	C116.331116,522.952148 105.780556,517.304382 102.417999,506.247284
+	C100.292976,499.259613 99.206001,491.452606 99.875877,484.218903
+	C101.484016,466.853210 113.015999,455.719269 133.032288,452.253906
+	C148.571304,449.563751 164.351196,448.847839 180.217758,449.566254
+	C199.549042,450.441528 218.748749,449.311615 237.451416,443.403137
+	C257.873535,436.951416 270.880035,423.165039 276.755371,403.044067
+	C283.198059,380.980103 283.481598,358.730499 275.074829,336.913727
+	C269.451782,322.321106 259.180969,311.695801 245.715408,304.175903
+	C227.852112,294.199951 208.284500,290.577942 188.111237,290.080658
+	C172.647079,289.699463 157.163437,290.175873 141.693405,289.942444
+	C130.810043,289.778290 120.154373,288.204590 110.312721,282.971710
+	C102.213684,278.665436 97.313080,272.094971 96.258873,263.042877
+	C95.282608,254.660049 96.124550,246.304520 99.691406,238.578690
+	C105.173851,226.703705 115.424400,222.093185 128.282715,221.114471
+z"/>
+</svg></span> Cider and Tatin</h2>
+<p><a href="https://5jt.github.io/Cider">Cider</a> is the project manager for Dyalog APL.</p>
+<p>Like Tatin, it works with APL source files created and managed by <a href="https://dyalog.github.io/link/4.0/">Link</a>. </p>
+<p>Tatin is all you need in order to consume packages.
+Cider extends Tatin with tools for managing versions and tests.</p>
+<p>If you foresee publishing software for others to use, 
+either as Tatin packages or as an application or Web service, 
+it might suit you to start with Cider and let it manage Tatin.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:wikipedia">
+<p>A <a href="https://en.wikipedia.org/wiki/Package_manager">package manager</a> or package-management system is a collection of software tools that automates the process of installing, upgrading, configuring, and removing computer programs for a computer in a consistent manner. — <em>Wikipedia</em>&#160;<a class="footnote-backref" href="#fnref:wikipedia" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:macserve">
+<p>The registry should also run under Docker on macOS but this has not been tested.&#160;<a class="footnote-backref" href="#fnref:macserve" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

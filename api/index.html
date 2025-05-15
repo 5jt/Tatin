@@ -1,0 +1,3115 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete reference to the Tatin API, which lets you call the Dyalog APL package manager from your own code.">
+      
+      
+      
+      
+        <link rel="prev" href="../user-commands/">
+      
+      
+        <link rel="next" href="../user-settings/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin API reference - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../style/main.css">
+    
+      <link rel="stylesheet" href="../style/extra.css">
+    
+      <link rel="stylesheet" href="../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin API reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-for-later-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check for later version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clear cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy registry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-api-from-cfg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create API from CFG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-build-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create build parms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-copyregistry-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create CopyRegistry parms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-reinstall-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create ReInstall parms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecate-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecate package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-delete-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get delete policy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-dependency-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get dependency tree
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-nocaching-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get NoCaching flag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-path-to-package-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get path to package cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-user-home-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get user home folder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialise-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialise package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initpackage-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      InitPackage config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      List cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      List deprecated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-licenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      List licenses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      List packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      List registries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      List tags
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publish package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinstall-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reinstall dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-package-config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read package config file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-for-later-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check for later version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clear cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy registry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-api-from-cfg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create API from CFG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-build-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create build parms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-copyregistry-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create CopyRegistry parms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-reinstall-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create ReInstall parms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecate-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecate package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Find dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-delete-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get delete policy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-dependency-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get dependency tree
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-nocaching-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get NoCaching flag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-path-to-package-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get path to package cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-user-home-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get user home folder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialise-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialise package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initpackage-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      InitPackage config
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      List cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      List deprecated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-licenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      List licenses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      List packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      List registries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      List tags
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publish-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publish package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinstall-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reinstall dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-package-config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read package config file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-functions">API functions</h1>
+<div class="admonition abstract">
+<p class="admonition-title">With the Tatin API you can write DevOps scripts in APL.</p>
+</div>
+<p>The API functions are similar to the <a href="../user-commands/">user-commands</a>, but not identical.
+Not all have equivalent user commands.</p>
+<p class="typewriter"><a href="#build-package">BuildPackage</a>              <a href="#initpackage-config">InitPackageConfig</a>
+<a href="#check-for-later-version">CheckForLaterVersion</a>      <a href="#install-packages">InstallPackages</a>
+<a href="#clear-cache">ClearCache</a>                <a href="#list-deprecated">ListDeprecated</a>
+<a href="#copy-registry">CopyRegistry</a>              <a href="#list-cache">ListCache</a>
+<a href="#create-api-from-cfg">CreateAPIfromCFG</a>          <a href="#list-licenses">ListLicenses</a>
+<a href="#create-build-parms">CreateBuildParms</a>          <a href="#list-packages">ListPackages</a>
+<a href="#create-copyregistry-parms">CreateCopyRegistryParms</a>   <a href="#list-registries">ListRegistries</a>
+<a href="#create-reinstall-parms">CreateReInstallParms</a>      <a href="#list-tags">ListTags</a>
+<a href="#delete-packages">DeletePackages</a>            <a href="#list-versions">ListVersions</a>
+<a href="#deprecate-package">DeprecatePackage</a>          <a href="#load-dependencies">LoadDependencies</a>
+<a href="#find-dependencies">FindDependencies</a>          <a href="#load-packages">LoadPackages</a>
+<a href="#get-deletepolicy">GetDeletePolicy</a>           <a href="#ping">Ping</a>
+<a href="#get-dependency-tree">GetDependencyTree</a>         <a href="#publish-package">PublishPackage</a>
+<a href="#get-nocaching-flag">GetNoCachingFlag</a>          <a href="#reinstall-dependencies">ReInstallDependencies</a>
+<a href="#get-path-to-package-cache">GetPathToPackageCache</a>     <a href="#read-package-config-file">ReadPackageConfigFile</a>
+<a href="#get-user-home-folder">GetUserHomeFolder</a>         <a href="#uninstall-packages">UnInstallPackages</a>
+<a href="#initialise-package">InitialisePackage</a>         <a href="#version">Version</a></p>
+<p>Unlike user commands, API function names are case-sensitive.</p>
+<p>The Tatin API is in <code>⎕SE.Tatin</code>.
+Call an API function like this:</p>
+<pre><code>⎕SE.Tatin.BuildPackage parms
+</code></pre>
+<details class="warning">
+<summary>API code cache</summary>
+<p>The Tatin code package is loaded into <code>⎕SE._Tatin</code>, but the API is exposed via <code>⎕SE.Tatin</code>.</p>
+<p>Do not call functions in <code>⎕SE._Tatin</code>.</p>
+</details>
+<hr />
+<h2 id="build-package"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Build package</h2>
+<pre><code>zipFilename←BuildPackage parms
+</code></pre>
+<p>Zips all files required for a package into a file at <code>parms.targetPath</code> and returns its name.</p>
+<p>Parameter space <code>parms</code> is typically created with <a href="#create-build-parms"><code>CreateBuildParms</code></a> and specifies:</p>
+<dl>
+<dt><code>dependencyFolder</code></dt>
+<dd>Path to folder with packages the project depends on. Default is <code>''</code>.</dd>
+<dd>
+<p>Tatin searches the project for dependencies in (in order of precedence)</p>
+<ol>
+<li>the folder specified in <code>dependencyFolder</code></li>
+<li><code>cider.config</code> (for projects managed by Cider)</li>
+<li><code>packages/apl-dependencies.txt</code></li>
+<li><code>apl-dependencies.txt</code></li>
+</ol>
+</dd>
+<dt><code>projectPath</code></dt>
+<dd>Path to folder from which to create the package. (Required.)</dd>
+<dt><code>projectspace</code></dt>
+<dd>
+<p>Namespace that is to contain the package contents.</p>
+<details class="warning">
+<summary>Until version 0.118.0 this was known as <code>tatinVars</code></summary>
+<p>Now, Tatin signals an error if it finds a <code>tatinVars</code> parameter.</p>
+</details>
+</dd>
+<dt><code>targetPath</code></dt>
+<dd>Path to folder in which to write the ZIP file. Default is <code>''</code>: use <code>projectPath</code>.</dd>
+<dt><code>version</code></dt>
+<dd>
+<p>String. One of:</p>
+<ul>
+<li>A rule to modify the version number in the package config file:<ul>
+<li><code>'+0.0.1'</code> bumps the patch number</li>
+<li><code>'+0.1.0'</code> bumps the minor number and resets the patch number</li>
+<li><code>'+1.0.0'</code> bumps the major number and resets both the patch number and the minor number</li>
+</ul>
+</li>
+<li>An empty character vector</li>
+<li>A string that replaces <code>version</code> in the package config file</li>
+</ul>
+<p>See <a href="../glossary/">Glossary</a> for details.</p>
+</dd>
+</dl>
+<h2 id="check-for-later-version"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Check for later version</h2>
+<pre><code>r←{flags} CheckForLaterVersion path
+</code></pre>
+<p>Scans all known registries (with priority &gt;0) for later versions of the principal packages installed in <code>path</code> and returns a matrix with columns:</p>
+<pre><code>1 - Original package ID
+2 - Latest package ID
+3 - Original URL
+4 - Flag: whether later version is available
+5 - URL of latest version; empty if unchanged
+</code></pre>
+<p>By default, only principal packages and minor and patch numbers are checked.
+Change this with optional left argument <code>flags</code>: the sum of the following. (Defaults to 0: do neither.)</p>
+<pre><code>1 - List later major versions
+2 - Check package dependencies as well
+</code></pre>
+<h2 id="clear-cache"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Clear cache</h2>
+<pre><code>(rc report)←ClearCache url
+</code></pre>
+<p>Clears the cache and returns <mark>FIXME</mark>.</p>
+<p>If <code>url</code> is</p>
+<ul>
+<li>empty all subdirectories but <code>temp\</code> are removed</li>
+<li>not empty, only the given domain is removed from the cache</li>
+</ul>
+<p>The cache is the folder <a href="#get-path-to-package-cache"><code>GetPathToPackageCache</code></a> points to.</p>
+<h2 id="copy-registry"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Copy registry</h2>
+<pre><code>list←CopyRegistry parms
+</code></pre>
+<p>Copies packages from a managed Tatin registry to a local folder and returns
+<mark>as a list of strings the packages copied</mark></p>
+<div class="admonition warning">
+<p class="admonition-title">Pause or stop any running local server while <code>CopyRegistry</code> is running.</p>
+</div>
+<p>Argument <code>parms</code> is typically created with <a href="#create-copyregistry-parms">CreateCopyRegistryParms</a>, and then amended.
+Required parameters are marked; others are optional.</p>
+<dl>
+<dt><code>dry</code></dt>
+<dd>
+<p>List all packages the user command would copy without actually doing it.</p>
+<p>If set you may omit both URL (defaults to <code>[tatin]</code>) and <code>path</code>.</p>
+</dd>
+<dt><code>force</code></dt>
+<dd>Copy already available packages again.
+By default packages already saved in the target folder are not requested again.</dd>
+<dt><code>group=</code></dt>
+<dd>
+<p>Restrict the packages to be copied to a particular group.</p>
+<p>Dependencies will be copied as well, no matter which group they belong to.</p>
+</dd>
+<dt><code>latest</code></dt>
+<dd>
+<p>Copy only the latest version of each major version of each non-deprecated package.</p>
+<p>By default all packages are copied, even deprecated ones.</p>
+</dd>
+<dt><code>list=</code></dt>
+<dd>
+<p>Packages to copy, as one of</p>
+<ul>
+<li>
+<p>A comma-separated list of package names</p>
+</li>
+<li>
+<p>A file of package names, one per row, specified with the <code>file://</code> protocol</p>
+</li>
+<li>
+<p>A variable name, prefixed by either <code>#.</code> or <code>⎕SE.</code></p>
+</li>
+</ul>
+<p>Specify packages consistently: either <code>&lt;group&gt;-&lt;pkgName&gt;</code> or <code>&lt;group&gt;-&lt;pkgName&gt;-&lt;major&gt;</code></p>
+</dd>
+<dt><code>noDeps</code></dt>
+<dd>Flag. If set, ignore dependencies. (Useful only for test cases.)</dd>
+<dt><code>path</code></dt>
+<dd>A local folder in which to write the packages. Required unless <code>dry</code> set.</dd>
+<dt><code>url</code></dt>
+<dd>URL of the Tatin registry from which to copy. Required unless <code>dry</code> set.</dd>
+<dt><code>verbose=</code></dt>
+<dd>
+<p>By default, prints the names of all packages copied to <code>⎕SE</code>. <!-- FIXME Prints to <code>⎕SE</code> or copies to <code>⎕SE</code>? --></p>
+<p>1 – print a detailed report for all packages (<code>Fetched</code> indicates success)</p>
+<p>2 – print a message for every package as the list is processed</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title"><code>CopyRegistry</code> was introduced with version 0.110.0</p>
+<p>Tatin registries running on earlier versions will not respond to it.</p>
+</div>
+<h2 id="create-api-from-cfg"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Create API from CFG</h2>
+<pre><code>{noOf}←{names} CreateAPIfromCFG (source cfg)
+</code></pre>
+<!-- FIXME arguments and results -->
+
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>source</td>
+<td><em>reference</em></td>
+<td>namespace containing the package objects</td>
+</tr>
+<tr>
+<td>cfg</td>
+<td><mark><em>What?</em></mark></td>
+<td>package configuration</td>
+</tr>
+<tr>
+<td>names</td>
+<td><em>strings</em></td>
+<td>(optional) names of objects in the namespace to be exposed in the API</td>
+</tr>
+</tbody>
+</table>
+<p>then Tatin creates an API space as a child of <code>source</code> (with cover functions for the package’s public interface) and returns as a shy result the number of objects exposed.</p>
+<p>If <code>names</code> is absent, the function looks for a constant <code>source.Public</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Not for use with a scripted namespace.</p>
+</div>
+<p>See <a href="../public-interface/">Public Interface</a> for more.</p>
+<h2 id="create-build-parms"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Create build parms</h2>
+<pre><code>parms←CreateBuildParms projectPath
+</code></pre>
+<p>Creates a parameter space for <a href="#build-package"><code>BuildPackage</code></a> with parameters:</p>
+<div class="highlight"><pre><span></span><code>dependencyFolder
+projectPath
+targetPath
+tatinVars
+version
+</code></pre></div>
+<h2 id="create-copyregistry-parms"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Create CopyRegistry parms</h2>
+<pre><code>parms←CreateCopyRegistryParms y
+</code></pre>
+<p>Where <code>y</code> is either an empty vector or a parameter space,
+returns a parameter space for <a href="#copy-registry"><code>CopyRegistry</code></a>.</p>
+<h2 id="create-reinstall-parms"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Create ReInstall parms</h2>
+<pre><code>parms←CreateReInstallParms
+</code></pre>
+<p>Returns a parameter space with default parameters for the (optional) left argument of <a href="#reinstall-dependencies"><code>ReInstallDependencies</code></a>, in particular, <code>noBetas</code>, <code>update</code> and <code>dry</code>.</p>
+<h2 id="delete-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Delete packages</h2>
+<pre><code>(statusCode errMsg)←DeletePackages (regID packageIDs)
+</code></pre>
+<p>Deletes <code>packages</code> from Tatin registry <code>regID</code> and returns HTTP <code>statusCode</code> and <code>errMsg</code>, empty if successful.</p>
+<p>All packages specified are removed from the same registry.
+Specify <code>regID</code> as either</p>
+<ul>
+<li>a URL</li>
+<li>a Registry alias</li>
+<li>a Registry ID</li>
+</ul>
+<p>Specify <code>packages</code> as a string or list of strings, with each package and version precisely identified:</p>
+<pre><code>&lt;group-name&gt;-&lt;package-name&gt;-&lt;precise_version_number&gt;
+</code></pre>
+<p>A Tatin registry will delete packages only if its configured <a href="#get-delete-policy">Delete policy</a> permits.</p>
+<p>The principal Tatin server operates a <code>None</code> policy, meaning that you cannot delete anything from it.</p>
+<details class="info">
+<summary>Why can’t I delete a package from the Tatin server?</summary>
+<p>The main design objective is to ensure a build that includes packages from the principal Tatin registries can always be reproduced in precisely the same way.</p>
+<p>If deleting a package is allowed – even when it is a beta version – then this cannot be guaranteed.</p>
+<p>If you happen to publish a package and realize seconds later that you made a formidable mistake?
+Increase the patch number, fix the problem and publish a new version: that’s the only way.</p>
+</details>
+<h2 id="deprecate-package"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Deprecate package</h2>
+<pre><code>msg←DeprecatePackage (registry comment package)
+</code></pre>
+<p>Where</p>
+<ul>
+<li><code>registry</code> is a URL or alias</li>
+<li><code>comment</code> is a string, such as <code>See package xyz instead</code></li>
+<li><code>package</code> identifies a package with group name, package name, and (optionally) major version number</li>
+</ul>
+<p>marks the package on the registry as deprecated.</p>
+<p>If no major version number is provided, then <em>all</em> major versions of the package are deprecated.</p>
+<p>As the registry is defined, no scanning is done.</p>
+<h2 id="find-dependencies"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Find dependencies</h2>
+<pre><code>r←{depth} FindDependencies (target pkgList [verbose])
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>target</td>
+<td>string</td>
+<td><p>one of:</p><ul markdown><li>a Registry alias</li><li markdown><code>'[*]'</code> for all defined registries with a priority above 0</li><li>URL of a Tatin server</li><li>path to a folder where the packages of a registry are stored</li></ul></td>
+</tr>
+<tr>
+<td>pkgList</td>
+<td>string</td>
+<td>a list of package names separated by commas</td>
+</tr>
+<tr>
+<td>verbose</td>
+<td>flag</td>
+<td>optional: whether to include more detail in the result; default 0</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>integer</td>
+<td>optional: limit on recursive search</td>
+</tr>
+</tbody>
+</table>
+<p>then Tatin recursively scans the registry for the packages in <code>pkgList</code> and returns
+a fully qualified list of all matches.</p>
+<!-- FIXME as what? -->
+
+<!-- FIXME Get this to work, then include an example -->
+
+<p>By default only the folder containing a file <code>apl-dependencies.txt</code> with at least one of the defined packages is returned.</p>
+<!-- FIXME This implies the behaviour can be changed. How? -->
+
+<p>If <code>verbose</code> is set the actual package folders are returned instead of the hosting folder/s, revealing the precise version/s installed.</p>
+<p>Specify packages in <code>pkgList</code> partially or in full. Name is required but group and version can be omitted. You can specify a major version number, but minor and patch numbers are ignored if specified.</p>
+<p>The function scans <code>folder</code> recursively for a file <code>apl-dependencies.txt</code>. Folders containing such a file are searched for the packages listed in <code>pkgList</code>.
+The search is not case-sensitive.</p>
+<div class="admonition tip">
+<p class="admonition-title">Useful for discovering where packages are used.</p>
+</div>
+<p>Set optional left argument <code>depth</code> to limit the number of levels searched.
+A server sets this to 1 because it knows it only needs to search the child folders of the Registry folder, which greatly reduces the search time.</p>
+<p>You can use it similarly if you know exactly what is stored where.</p>
+<h2 id="get-delete-policy"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Get delete policy</h2>
+<pre><code>r←GetDeletePolicy server
+</code></pre>
+<p>Where <code>server</code> is the alias or URL of a Tatin server, returns its delete policy:</p>
+<table>
+<tbody>
+<tr>
+<td>None</td>
+<td>a published package cannot be deleted</td>
+</tr>
+<tr>
+<td>Any</td>
+<td>any package can be deleted</td>
+</tr>
+<tr>
+<td>JustBetas</td>
+<td>only beta versions can be deleted</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">GetDeletePolicy</span><span class="w"> </span><span class="s1">&#39;https://tatin.dev&#39;</span>
+<span class="nv">None</span>
+<span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">GetDeletePolicy</span><span class="w"> </span><span class="s1">&#39;[tatin]&#39;</span>
+<span class="nv">None</span>
+</code></pre></div>
+<h2 id="get-dependency-tree"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Get dependency tree</h2>
+<!-- tree←{append} GetDependencyTree x -->
+<pre><code>tree←GetDependencyTree pkg
+</code></pre>
+<p>Where <code>pkg</code> is one of:</p>
+<ul>
+<li>an HTTP request</li>
+<li>a folder containing a package, e.g.<br><code>file://C:\Temp\{group}-{name}-{major.minor.patch}\</code></li>
+<li>a path to a package in a local registry, e.g. <code>C:\MyReg\{packageID}</code></li>
+<li>a package ID (Tatin will search the registries defined in your config file)</li>
+</ul>
+<p>Tatin returns a dependency tree as a matrix:</p>
+<table>
+<thead>
+<tr>
+<th>col</th>
+<th>contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>flag: 1 – principal package; 0 – dependency</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ID of package that required the dependency</td>
+</tr>
+<tr>
+<td>3</td>
+<td>full package ID</td>
+</tr>
+<tr>
+<td>4</td>
+<td>full URL: either a local path (without protocol) or http(s)://...</td>
+</tr>
+</tbody>
+</table>
+<p>This function requires the version number to be fully specified.</p>
+<div class="admonition danger">
+<p class="admonition-title">The function accepts an optional left argument for INTERNAL use only.</p>
+</div>
+<!--
+FIXME Why document if for internal use only?
+Note that the function accepts an optional left argument, but this should not be specified by a user: it is only used internally.
+
+#### Optional left argument `append`
+
+The optional left argument defaults to 0, meaning a saved dependency tree is replaced. By passing a 1 as the left argument one can add to the saved dependency tree.
+ -->
+
+<h2 id="get-nocaching-flag"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Get NoCaching flag</h2>
+<pre><code>flag←GetNoCachingFlag registry
+</code></pre>
+<p>Where <code>registry</code> is a URI or alias, Tatin searches <code>MyUserSettings</code> for it.
+If found the value of the <code>noCaching</code> property is returned, otherwise 0.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">GetNoCachingFlag</span><span class="w"> </span><span class="s1">&#39;[tatin]&#39;</span><span class="w">  </span><span class="c1">⍝ actual</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">GetNoCachingFlag</span><span class="w"> </span><span class="s1">&#39;[fubar]&#39;</span><span class="w">  </span><span class="c1">⍝ default</span>
+<span class="m">0</span>
+</code></pre></div>
+<h2 id="get-path-to-package-cache"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Get path to package cache</h2>
+<pre><code>path←GetPathToPackageCache
+</code></pre>
+<p>Returns <code>MyUserSettings.path2cache</code> if not empty, otherwise the standard path for caching, according to the operating system.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">GetPathToPackageCache</span><span class="w">     </span><span class="c1">⍝ macOS</span>
+<span class="na">/</span><span class="nv">Applications</span><span class="na">/</span><span class="nv">Dyalog</span><span class="na">/</span><span class="nv">tatin</span><span class="o">-</span><span class="nv">package</span><span class="o">-</span><span class="nv">cache</span>
+</code></pre></div>
+<h2 id="get-user-home-folder"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Get user home folder</h2>
+<pre><code>path←{aplVersion} GetUserHomeFolder str
+</code></pre>
+<p>Returns the standard path for user-specific data, with string <code>str</code> appended.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="m0 93.7 183.6-25.3v177.4H0zm0 324.6 183.6 25.3V268.4H0zm203.8 28L448 480V268.4H203.8zm0-380.6v180.1H448V32z"/></svg></span> Windows</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7m-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4M420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7M223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8M183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1m-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3q-2.1-7.35 4.2-12.3m3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9m-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2m257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6M173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5"/></svg></span> Linux</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9m-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3"/></svg></span> macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre><code>C:\Users\%USERPROFILE%\AppData\Roaming\Tatin
+</code></pre>
+</div>
+<div class="tabbed-block">
+<pre><code>/home/{⎕AN}/Tatin
+</code></pre>
+</div>
+<div class="tabbed-block">
+<pre><code>/Users/{⎕AN}/Tatin
+</code></pre>
+</div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">GetUserHomeFolder</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="w">    </span><span class="c1">⍝ macOS</span>
+<span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">sjt</span><span class="na">/</span><span class="nv">Library</span><span class="na">/</span><span class="nv">Application</span><span class="w"> </span><span class="nv">Support</span><span class="na">/</span><span class="nv">Tatin</span><span class="na">/</span><span class="nv">foo</span>
+</code></pre></div>
+<p>Optional string <code>aplVersion</code> is used by test cases to simulate different versions of APL.</p>
+<h2 id="initialise-package"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Initialise package</h2>
+<pre><code>config←{configParms} InitialisePackage folder
+</code></pre>
+<p>Where <code>folder</code> is a path to a folder, and (optional) <code>configParms</code> is a parameter space, Tatin creates the folder if necessary and initializes it with a config file.</p>
+<p>If the folder exists and already contains a config file, Tatin signals an error.</p>
+<p>Optional left argument <code>configParms</code> is typically created with <a href="#initpackage-config"><code>InitPackageConfig</code></a>
+but can be made from scratch:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nv">parms</span><span class="kd">←</span><span class="nf">⎕NS</span><span class="s1">&#39;&#39;</span>
+<span class="w">  </span><span class="nv">parms</span><span class="na">.</span><span class="p">(</span><span class="nv">group</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">version</span><span class="p">)</span><span class="kd">←</span><span class="s1">&#39;aplteam&#39;</span><span class="w"> </span><span class="s1">&#39;Foo&#39;</span><span class="w"> </span><span class="s1">&#39;1.0.0&#39;</span>
+<span class="w">  </span><span class="nv">cfg</span><span class="kd">←</span><span class="nv">parms</span><span class="w"> </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">InitialisePackage</span><span class="w"> </span><span class="s1">&#39;path/to/folder&#39;</span>
+</code></pre></div></p>
+<h2 id="initpackage-config"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> InitPackage config</h2>
+<pre><code>cfg←{sourcePath}  InitPackageConfig parms
+</code></pre>
+<p>Where</p>
+<dl>
+<dt><code>parms</code></dt>
+<dd>is a an empty vector or a parameter space</dd>
+<dt><code>sourcePath</code></dt>
+<dd>(optional) is a path to the package source folder</dd>
+</dl>
+<p>Tatin returns a parameter space for <a href="#initialise-package"><code>InitialisePackage</code></a>.</p>
+<p>The <code>source</code> parameter in the result is set by (in order of precedence)</p>
+<ol>
+<li><code>sourcePath</code></li>
+<li><code>parms.source</code></li>
+<li>global default in <code>MyUserSettings</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">showParms</span><span class="w"> </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">InitPackageConfig</span><span class="w"> </span><span class="no">⍬</span>
+<span class="nv">api</span><span class="w">               </span><span class="bp">:</span>
+<span class="nv">assets</span><span class="w">            </span><span class="bp">:</span>
+<span class="nv">description</span><span class="w">       </span><span class="bp">:</span>
+<span class="nv">documentation</span><span class="w">     </span><span class="bp">:</span>
+<span class="nv">files</span><span class="w">             </span><span class="bp">:</span>
+<span class="nv">group</span><span class="w">             </span><span class="bp">:</span>
+<span class="nv">io</span><span class="w">                </span><span class="bp">:</span><span class="w"> </span><span class="m">0</span>
+<span class="nv">license</span><span class="w">           </span><span class="bp">:</span>
+<span class="nv">lx</span><span class="w">                </span><span class="bp">:</span>
+<span class="nv">maintainer</span><span class="w">        </span><span class="bp">:</span>
+<span class="nv">minimumAplVersion</span><span class="w"> </span><span class="bp">:</span><span class="w"> </span><span class="m">18.0</span>
+<span class="nv">ml</span><span class="w">                </span><span class="bp">:</span><span class="w"> </span><span class="m">0</span>
+<span class="nv">name</span><span class="w">              </span><span class="bp">:</span>
+<span class="nv">os_lin</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">os_mac</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">os_win</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">project_url</span><span class="w">       </span><span class="bp">:</span>
+<span class="nv">source</span><span class="w">            </span><span class="bp">:</span>
+<span class="nv">tags</span><span class="w">              </span><span class="bp">:</span>
+<span class="nv">userCommandScript</span><span class="w"> </span><span class="bp">:</span>
+<span class="nv">version</span><span class="w">           </span><span class="bp">:</span><span class="w"> </span><span class="m">0.1.0</span>
+</code></pre></div>
+<h2 id="install-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Install packages</h2>
+<pre><code>r←{noBetas} InstallPackages (identifiers targetFolder)
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>identifiers</td>
+<td>string</td>
+<td>comma-separated list of package identifiers</td>
+</tr>
+<tr>
+<td>noBetas</td>
+<td>flag</td>
+<td>whether to exclude beta versions; default 0</td>
+</tr>
+<tr>
+<td>targetFolder</td>
+<td>string</td>
+<td><code>'[MyUCMDs]'</code>, or <code>'[MyUCMDs]{pkgname}'</code>, or a path to a folder</td>
+</tr>
+</tbody>
+</table>
+<p>Tatin creates the target folder if necessary, installs the packages in it and returns (as a list of strings) the full names of the principal packages installed. The list length will be the number of packages specified as <code>identifiers</code>.</p>
+<p>A package identifier is case-insensitive and one of:</p>
+<ul>
+<li>an HTTP request for a package</li>
+<li>a ZIP file containing a package</li>
+<li>a folder containing a package, e.g. <code>file://C:\Temp\group-name-version\</code></li>
+<li>a path to a package in a registry, e.g. <code>[RegistryAlias]{group}-{name}-{major.minor.patch}</code> or <code>C:\MyReg\{group}-{name}-{major.minor.patch}</code></li>
+<li>a package ID that Tatin will search for in the registries specified in your config file</li>
+</ul>
+<p>If <code>targetFolder</code> is <code>'[MyUCMDs]'</code>, or <code>'[MyUCMDs]{pkgname}'</code> (case independent) it is replaced by the actual path to the <code>MyUCMDs/</code> folder followed by the name specified or, if none was specified, the name of the package.</p>
+<p>To install the latest version, omit minor+patch or even major+minor+patch.</p>
+<h2 id="list-cache"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List cache</h2>
+<pre><code>list←{fullpath} ListCache registry [principalFlag]
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>fullpath</td>
+<td>flag</td>
+<td>optional: report full paths; default 0</td>
+</tr>
+<tr>
+<td>principalFlag</td>
+<td>flag</td>
+<td>optional: default 0</td>
+</tr>
+<tr>
+<td>registry</td>
+<td>string</td>
+<td>empty, or a registry domain name or alias</td>
+</tr>
+</tbody>
+</table>
+<p>returns the contents of the Tatin package cache as a nested list with an item for each domain represented in the cache.</p>
+<!-- FIXME What does `principalFlag` do? -->
+
+<p>Each result item is a pair:</p>
+<ol>
+<li>URL of the domain</li>
+<li>package names as a list of strings: if <code>fullpath</code> is set then the full paths instead</li>
+</ol>
+<p>If the cache is empty the result is an empty list.</p>
+<!-- Refers to the `MyUserSettings` instance of the class `UserSettings`. -->
+
+<h2 id="list-deprecated"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List deprecated</h2>
+<pre><code>list←{all} ListDeprecated source
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>all</td>
+<td>flag</td>
+<td>optional: include all versions; default 0</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td><p>is one of</p><ul markdown><li>an alias or URL for a Tatin registry</li><li markdown>path to an install folder (contains a file <code>apl-buildlist.json</code>)</li><li>alias, URL, or path to a Tatin registry and optionally a (possibly incomplete) package ID</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>returns (as a 1-column matrix of strings) a list of deprecated packages.</p>
+<p>Only the last published version of a major version number is included.
+Set the <code>all</code> flag to include all versions of any major version  marked as deprecated.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">ListDeprecated</span><span class="w"> </span><span class="s1">&#39;[tatin]&#39;</span>
+<span class="err">┌────────────────┐</span>
+<span class="err">│</span><span class="nv">aplteam</span><span class="o">-</span><span class="nv">APLGit</span><span class="o">-</span><span class="m">0</span><span class="err">│</span>
+<span class="err">└────────────────┘</span>
+<span class="w">      </span><span class="o">⍴</span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">ListDeprecated</span><span class="w"> </span><span class="s1">&#39;https://tatin.dev&#39;</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<h2 id="list-licenses"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List licenses</h2>
+<pre><code>licences←{verbose} ListLicences registry
+</code></pre>
+<p>Where <code>registry</code> is the URL or alias of a Tatin server and <code>verbose</code> is a flag (default 0), returns a list of licences.</p>
+<p>The result is a list of strings – if <code>verbose</code> is set, a 2-column matrix of which the first column is licence names and the second their URLsThe result is a list of strings – if <code>verbose</code> is set, a 2-column matrix of which the first column is licence names and the second their URLs.</p>
+<div class="highlight"><pre><span></span><code>      ⎕SE.Tatin.ListLicenses &#39;[tatin]&#39;
+ Unlicense  CC0  0BSD  EPL  MIT  BSL  ISC  Apache  BSD-2  BSD-3
+      1 ⎕SE.Tatin.ListLicenses &#39;https://tatin.dev&#39;
+ Unlicense  https://en.wikipedia.org/wiki/Unlicense
+ CC0        https://en.wikipedia.org/wiki/Creative_Commons_license#Zero_/_public_domain
+ ...
+</code></pre></div>
+<h2 id="list-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List packages</h2>
+<pre><code>packages←{parms} ListPackages source
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>parms</td>
+<td>namespace</td>
+<td>optional: parameter space</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td><p>one of</p><ul markdown><li>alias or URL of a Tatin registry or folder</li><li markdown>path to an install folder containg a file <code>apl-buildlist.json</code></li><li>path to a registry and optionally a (possibly incomplete) package ID</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>returns (as a matrix) a list of packages.</p>
+<p>The result matrix lists all packages at the source except those where the last package of a major version has been deprecated.
+(See <a href="#list-deprecated"><code>ListDeprecated</code></a>).</p>
+<p>The result matrix has 2–4 columns:</p>
+<table>
+<tbody>
+<tr>
+<td>1</td>
+<td>package ID</td>
+</tr>
+<tr>
+<td>2</td>
+<td>if <code>source</code> is a folder, a <code>'*'</code> flags principal packages<br><br>if <code>source</code> is a registry, the number of major versions</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>if <code>parms.date</code> is set, publication date</td>
+</tr>
+<tr>
+<td>[3|4]</td>
+<td>if <code>parms.projectUrl</code> is set, the project URL</td>
+</tr>
+</tbody>
+</table>
+<p>Leaving aside any filters specified in <code>parms</code>, if <code>source</code></p>
+<table>
+<thead>
+<tr>
+<th>specifies a:</th>
+<th>result lists:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>registry</td>
+<td>all packages, aggregated by major version</td>
+</tr>
+<tr>
+<td>package ID without a full version number</td>
+<td>matching packages</td>
+</tr>
+<tr>
+<td>package name without a group name</td>
+<td>matching packages</td>
+</tr>
+</tbody>
+</table>
+<!--
+If `parms` is specified it must contain parameters `group`, `tags` and `aggregate`.
+It may contain `date`, `since`, `project_url` and/or `userCommand`.
+ -->
+
+<p>Argument <code>parms</code> is optional; if specified, it must contain at least the first three parameters below.</p>
+<table>
+<tbody>
+<tr>
+<td><strong>aggregate</strong></td>
+<td>flag</td>
+<td>aggregate results by minor and patch numbers (default 1)</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td>string</td>
+<td>list only packages from this group</td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>string</td>
+<td>(comma separated, case-insensitive) list only packages with these tags</td>
+</tr>
+<tr>
+<td>date</td>
+<td>flag</td>
+<td>append a result column with publication dates</td>
+</tr>
+<tr>
+<td>packageID</td>
+<td>string</td>
+<td>package identifier: see below</td>
+</tr>
+<tr>
+<td>project_url</td>
+<td>flag</td>
+<td>append a result column with the project URL</td>
+</tr>
+<tr>
+<td>since</td>
+<td>int | string</td>
+<td>date as e.g. <code>20220601</code> or  <code>'2022-06-01'</code> or <code>'20220601'</code>: packages published earlier are ignored</td>
+</tr>
+<tr>
+<td>userCommand</td>
+<td>flag</td>
+<td>whether to list only packages that are user commands</td>
+</tr>
+</tbody>
+</table>
+<p>Parameter <code>aggregate</code> combines with any package ID in <code>source</code> to determine what packages get listed.</p>
+<table>
+<thead>
+<tr>
+<th>package ID</th>
+<th>aggregate</th>
+<th>column 1</th>
+<th>column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(empty)</td>
+<td>1</td>
+<td>all packages</td>
+<td># of major versions</td>
+</tr>
+<tr>
+<td>(empty)</td>
+<td>0</td>
+<td>all packages</td>
+<td><code>⍬</code></td>
+</tr>
+<tr>
+<td>{name}</td>
+<td>0</td>
+<td>packages that match name<br>(might belong to different groups)</td>
+<td># of major versions</td>
+</tr>
+<tr>
+<td>{group}-{name}</td>
+<td>0</td>
+<td>all versions of the package</td>
+<td># of major versions</td>
+</tr>
+<tr>
+<td>{group}-{name}</td>
+<td>1</td>
+<td>all major versions of that package</td>
+<td># of major versions</td>
+</tr>
+<tr>
+<td>{group}-{name}-{major}</td>
+<td>–</td>
+<td>all versions (minor and patch)</td>
+<td># of major versions</td>
+</tr>
+<tr>
+<td>{group}-{name}-{major}-{minor}</td>
+<td>–</td>
+<td>all patch versions of the package</td>
+<td>???</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⍴</span><span class="nv">r</span><span class="kd">←</span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">ListPackages</span><span class="w"> </span><span class="s1">&#39;[tatin]&#39;</span>
+<span class="m">58</span><span class="w"> </span><span class="m">2</span>
+<span class="w">      </span><span class="m">3</span><span class="o">↑</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="w"> </span><span class="nv">r</span>
+<span class="w"> </span><span class="nv">abrudz</span><span class="o">-</span><span class="nv">sort</span><span class="w">      </span><span class="m">1</span>
+<span class="w"> </span><span class="nv">aplteam</span><span class="o">-</span><span class="nv">ADOC</span><span class="w">     </span><span class="m">1</span>
+<span class="w"> </span><span class="nv">aplteam</span><span class="o">-</span><span class="nv">APLGit2</span><span class="w">  </span><span class="m">1</span>
+</code></pre></div>
+<h2 id="list-registries"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List registries</h2>
+<pre><code>registries←ListRegistries type
+</code></pre>
+<p>Where <code>type</code> is a flag or <code>⍬</code>, returns as a matrix all registries specified in your config file.</p>
+<p>Result <code>registries</code> has columns:</p>
+<pre><code> 1 – Alias
+ 2 – URL
+ 3 – ID
+ 4 – Port
+ 5 – Priority
+ 6 – No-caching flag
+ 7 – Proxy
+[8 – API key]
+</code></pre>
+<p>If <code>type</code> is set the result has an eighth column containing the API key.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">ListRegistries</span><span class="w"> </span><span class="no">⍬</span>
+<span class="w"> </span><span class="nv">tatin</span><span class="w">       </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">tatin</span><span class="na">.</span><span class="nv">dev</span><span class="na">/</span><span class="w">       </span><span class="m">29</span><span class="nv">fbeb21</span><span class="o">-</span><span class="nv">c6a0</span><span class="o">-</span><span class="m">4691</span><span class="o">-</span><span class="nv">b6b6</span><span class="o">-</span><span class="m">8</span><span class="nv">a</span><span class="w"> </span><span class="na">...</span>
+<span class="w"> </span><span class="nv">tatin</span><span class="o">-</span><span class="nv">test</span><span class="w">  </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">test</span><span class="na">.</span><span class="nv">tatin</span><span class="na">.</span><span class="nv">dev</span><span class="na">/</span><span class="w">  </span><span class="m">2</span><span class="nv">a282315</span><span class="o">-</span><span class="nv">bfd6</span><span class="o">-</span><span class="m">4</span><span class="nv">b15</span><span class="o">-</span><span class="m">8</span><span class="nv">fe7</span><span class="o">-</span><span class="m">8</span><span class="nv">c</span><span class="w"> </span><span class="na">...</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">The result of the API function and the user command differ.</p>
+</div>
+<p>If the registry does not respond, Tatin signals an error.</p>
+<h2 id="list-tags"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List tags</h2>
+<pre><code>list←{parms} ListTags registry
+</code></pre>
+<p>Where <code>registry</code> is the alias or URL of a registry, and <code>parms</code> is a parameter space, returns as a 2-column matrix all tags in use there:</p>
+<pre><code>1 – tag name
+2 – number of occurrences
+</code></pre>
+<p>If optional argument <code>parms</code> contains a list of tags (comma-separated string) as parameter <code>tags</code>, then the result lists only tags shared by packages that carry <strong>all</strong> the specified tags.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">p</span><span class="kd">←</span><span class="nf">⎕NS</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="nv">p</span><span class="na">.</span><span class="nv">tags</span><span class="kd">←</span><span class="s1">&#39;markdown&#39;</span>
+<span class="w">      </span><span class="nv">p</span><span class="w"> </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">ListTags</span><span class="w"> </span><span class="s1">&#39;[tatin]&#39;</span>
+<span class="w"> </span><span class="nv">converter</span><span class="w">  </span><span class="m">15</span>
+<span class="w"> </span><span class="nv">help</span><span class="w">        </span><span class="m">8</span>
+<span class="w"> </span><span class="nv">markdown</span><span class="w">   </span><span class="m">23</span>
+</code></pre></div>
+<h2 id="list-versions"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> List versions</h2>
+<pre><code>mat←{dateFlag} ListVersions pkg
+</code></pre>
+<p>Where (optional) <code>dateFlag</code> is a flag and <code>pkg</code> identifies a package, returns a list of all versions of the package.</p>
+<p>String <code>pkg</code> is case-insensitive and can be</p>
+<ul>
+<li>a package name</li>
+<li>a group name and a package name</li>
+<li>a URL pointing to a registry together with a package name</li>
+<li>a registry alias and a package name</li>
+<li>a local path to a registry together with a package name</li>
+</ul>
+<p>A package name can be just the name or the group and the name. Also, you can specify a major version number, or a major and a minor version number.</p>
+<p>(Specifying a patch number makes no sense; if specified, it is ignored.)</p>
+<p>Examples:</p>
+<pre><code>'example-versions'
+'example-versions-1'
+'example-versions-1.0'
+'[tatin-test]versions'
+'[tatin-test]example-versions'
+'[tatin-test]example-versions-1'
+'[tatin-test]example-versions-1.0'
+'[tatin-test]example-versions-1.0.1' ⍝ same as previous
+</code></pre>
+<p>In the first three cases known registries with a priority above zero are scanned.</p>
+<p>Result <code>mat</code> has a column with full package names.</p>
+<ul>
+<li>If <code>pkg</code> does not specify a registry, the first column is registry URLs.</li>
+<li>If <code>dateFlag</code> is set, a last column has publication dates.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>      1 ⎕SE.Tatin.ListVersions &#39;MarkAPL&#39;
+ https://tatin.dev/  aplteam-MarkAPL-11.0.0  20210427.09
+ https://tatin.dev/  aplteam-MarkAPL-11.0.1  20210725.15
+ https://tatin.dev/  aplteam-MarkAPL-11.0.2  20211012.07
+ https://tatin.dev/  aplteam-MarkAPL-11.0.3  20220509.17
+ ...
+
+      ⍴ ⎕SE.Tatin.ListVersions &#39;[tatin]MarkAPL&#39;
+15 1
+</code></pre></div>
+If version precedence cannot be established from the version numbers alone (often a problem
+with beta versions) then the publishing date is taken into account.</p>
+<h2 id="load-dependencies"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Load dependencies</h2>
+<pre><code>{refs}←{options} LoadDependencies folder [target]
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>options</td>
+<td>2 flags</td>
+<td>optional: default 0</td>
+</tr>
+<tr>
+<td>folder</td>
+<td>string</td>
+<td>path to package source folder, or <code>'[MyUCMDs]'</code></td>
+</tr>
+<tr>
+<td>target</td>
+<td>reference</td>
+<td>optional: target namespace</td>
+</tr>
+</tbody>
+</table>
+<p>Loads all packages into <code>target</code> according to a build list in <code>folder</code> and returns a list of references to the loaded packages. (Principal packages only, not dependencies.)</p>
+<p>If unspecified the <code>target</code> namespace defaults to <code>#</code>, unless <code>folder</code> is <code>'[MyUCMDs]'</code>, when it defaults to <code>⎕SE</code>.</p>
+<p>The  flags in <code>options</code>:</p>
+<ol>
+<li>Overwrite if the package is already loaded</li>
+<li>Make home relative. See details below.</li>
+</ol>
+<div class="admonition detail">
+<p class="admonition-title">User commands</p>
+<p>Case-insensitive alias <code>'[MyUCMDs]'</code> denotes the special folder <code>MyUCMDs/</code>, whose location depends on the operating system.</p>
+<p>So where a Tatin package has been installed as a user command (and perhaps bundled into the Dyalog runtime) you cannot use absolute paths for referring to assets.</p>
+<p>In that case the paths must be relative to <code>MyUCMDs/</code>.
+This is what the second <code>options</code> flag is for.</p>
+<p>The flag affects the result of <code>HOME</code> and <code>GetFullPath2AssetsFolder</code>. <!-- FIXME wossit? -->
+Rather than returning the full path, only the folder containing the packages, and its parent are returned, making it a relative path.</p>
+<p>Where no name is specified after <code>[MyUCMDs]</code> the subfolder is named after the package.</p>
+<p>To install multiple user-command packages, specify no name after <code>[MyUCMDs]</code> – otherwise Tatin signals an error.</p>
+</div>
+<h2 id="load-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Load packages</h2>
+<pre><code>no←{noBetas} LoadPackages (identifiers targetSpace)
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>noBetas</td>
+<td>flag</td>
+<td>optional: ignore beta versions; default 0</td>
+</tr>
+<tr>
+<td>identifiers</td>
+<td>string</td>
+<td>comma-separated list of packages</td>
+</tr>
+<tr>
+<td>targetSpace</td>
+<td>ref</td>
+<td>fully-qualified namespace: target</td>
+</tr>
+</tbody>
+</table>
+<p>Tatin loads packages dynamically into the target space and returns the number of principal packages loaded.</p>
+<details class="detail">
+<summary>Detail</summary>
+<p>Tatin actually loads the package into <code>[#|⎕SE]._tatin.{packageName}</code> and puts a reference to it in <code>targetSpace</code>.</p>
+<p>Also loads any dependencies into <code>[#|⎕SE]._tatin</code> but does <em>not</em> create references for them in <code>targetSpace</code>.</p>
+</details>
+<p>In <code>identifiers</code> specify a package as one of</p>
+<ul>
+<li>an HTTP request</li>
+<li>a ZIP file containing a package</li>
+<li>a folder containing a package, e.g. <code>'file://C:/Temp/group-name-version'</code></li>
+<li>a path to a package in a registry, e.g. <code>'[RegistryAlias]{packageID}'</code> or <code>'C:\MyReg\{packageID}'</code></li>
+<li>a <a href="../glossary/">package ID</a></li>
+</ul>
+<p>Where a package is specified as a package ID, Tatin searches the registries it knows with a priority above 0.
+The first hit wins.</p>
+<p>If the target space already exists but is not an ordinary namespace, Tatin signals an error.</p>
+<h2 id="ping"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Ping</h2>
+<pre><code>flag←Ping source
+</code></pre>
+<p>Where <code>source</code> is</p>
+<ul>
+<li>a registry alias or URL, <code>flag</code> is whether the host is up and running</li>
+<li>a folder, <code>flag</code> is whether it exists</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">Ping</span><span class="w"> </span><span class="s1">&#39;[tatin]&#39;</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">Ping</span><span class="w"> </span><span class="s1">&#39;https://tatin.dev&#39;</span>
+<span class="m">1</span>
+
+<span class="w">      </span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">Ping</span><span class="w"> </span><span class="s1">&#39;/Users/sjt/tmp/Foo&#39;</span>
+<span class="m">1</span>
+</code></pre></div>
+<h2 id="publish-package"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Publish package</h2>
+<pre><code>{fn}←{deps} PublishPackage (source registry)
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>deps</td>
+<td>parm space</td>
+<td>optional: argument for <code>BuildPackage</code></td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>folder from which to create the package</td>
+</tr>
+<tr>
+<td>registry</td>
+<td>string</td>
+<td>registry to which to publish the package</td>
+</tr>
+</tbody>
+</table>
+<p>Tatin</p>
+<ol>
+<li>Confirms no package has already been published to the registry under this name (case insensitive).</li>
+<li>If <code>source</code> is a folder, uses <a href="#build-package"><code>BuildPackage</code></a> to zip the package into a temp folder; <code>deps</code>, if specified, is passed as the argument.</li>
+<li>Moves the ZIP into the registry</li>
+<li>If the registry is local, updates its index</li>
+</ol>
+<!-- FIXME `deps` was described here as a left argument to `BuildPackage`; the function is monadic, so I have presumed it is the *right* argument. -->
+
+<p>and returns</p>
+<table>
+<tbody>
+<tr>
+<td>rc</td>
+<td>HTTP return code (whether the registry is remote or not)</td>
+</tr>
+<tr>
+<td>emsg</td>
+<td>error message: empty if <code>rc</code> is 200</td>
+</tr>
+<tr>
+<td>zfn</td>
+<td>zip file name: empty if <code>source</code> is a ZIP file, otherwise name of the ZIP file created</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition detail">
+<p class="admonition-title">Delete policy</p>
+<p>The package is published no matter what the server’s delete policy is.</p>
+<p>That differs from the <a href="../user-commands/#publish-package">user command</a>, which asks you to confirm publication of a package that cannot then be deleted.</p>
+</div>
+<h2 id="reinstall-dependencies"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Reinstall dependencies</h2>
+<pre><code>{refs}←{parms} ReInstallDependencies deps folder [reg]
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>parms</td>
+<td>parm space</td>
+<td>optional: typically created by calling <a href="#CreateReInstallParms"><code>CreateReInstallParms</code></a></td>
+</tr>
+<tr>
+<td>deps</td>
+<td>???</td>
+<td>???</td>
+</tr>
+<tr>
+<td>folder</td>
+<td>string</td>
+<td>target folder: contains <code>apl-dependencies.txt</code></td>
+</tr>
+<tr>
+<td>reg</td>
+<td>string</td>
+<td>optional: registry alias or URL</td>
+</tr>
+</tbody>
+</table>
+<p>Tatin, in the target folder,</p>
+<ol>
+<li>deletes file <code>apl-buildlist.json</code> and all directories</li>
+<li>re-installs all files listed in <code>apl-dependencies.txt</code> (ignoring lines that start with a lamp <code>⍝</code>)</li>
+</ol>
+<p>and returns
+a list of references to the principal packages installed.</p>
+<!-- FIXME Confirm -->
+
+<p>Packages originally installed from ZIP files are just re-installed from their ZIP files without further ado.</p>
+<p>If <code>reg</code> is omitted Tatin scans all known registries with a priority above <code>0</code>.
+(Packages with different major version numbers are considered as different packages.)</p>
+<p>Optional argument <code>parms</code> can specify three flags.
+All default to 0,</p>
+<table>
+<tbody>
+<tr>
+<td>noBetas</td>
+<td>Ignore beta versions</td>
+</tr>
+<tr>
+<td>update</td>
+<td>Update to a later version if available</td>
+</tr>
+<tr>
+<td>dry</td>
+<td>Report what the function would do but don’t do it</td>
+</tr>
+</tbody>
+</table>
+<details class="detail">
+<summary>Registry scans</summary>
+<p>For each dependency Tatin scans known registries, even if <code>reg</code> was specified.</p>
+<p>Tatin queries every known registry with a priority above 0, highest priority number first. First hit wins.</p>
+<p>If you installed a package from a Tatin registry and later removed that registry from your user settings, or set its priority to 0, then <code>ReInstallDependencies</code> will <strong>not</strong> scan it, despite knowing perfectly well where the package came from.</p>
+</details>
+<h2 id="read-package-config-file"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Read package config file</h2>
+<pre><code>cfg←ReadPackageConfigFile path
+</code></pre>
+<p>Where <code>path</code> is a path to a package Tatin returns its config file as a parameter namespace.</p>
+<p>The <code>path</code> argument may optionally include the config file name <code>apl-package.json</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">path</span><span class="kd">←</span><span class="s1">&#39;path/to/packages/aplteam-APLTreeUtils2-1.4.0&#39;</span>
+<span class="w">      </span><span class="nv">q</span><span class="kd">←</span><span class="nf">⎕SE</span><span class="na">.</span><span class="nv">Tatin</span><span class="na">.</span><span class="nv">ReadPackageConfigFile</span><span class="w"> </span><span class="nv">path</span>
+<span class="w">      </span><span class="nv">showParms</span><span class="w"> </span><span class="nv">q</span>
+<span class="nv">api</span><span class="w">               </span><span class="bp">:</span><span class="w"> </span><span class="nv">APLTreeUtils2</span>
+<span class="nv">assets</span><span class="w">            </span><span class="bp">:</span>
+<span class="nv">date</span><span class="w">              </span><span class="bp">:</span><span class="w"> </span><span class="m">20240325.14</span>
+<span class="nv">description</span><span class="w">       </span><span class="bp">:</span><span class="w"> </span><span class="nv">General</span><span class="w"> </span><span class="nv">utilities</span><span class="w"> </span><span class="nv">required</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">most</span><span class="w"> </span><span class="nv">members</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">APLTree</span><span class="w"> </span><span class="nv">library</span>
+<span class="nv">documentation</span><span class="w">     </span><span class="bp">:</span>
+<span class="nv">files</span><span class="w">             </span><span class="bp">:</span>
+<span class="nv">group</span><span class="w">             </span><span class="bp">:</span><span class="w"> </span><span class="nv">aplteam</span>
+<span class="nv">io</span><span class="w">                </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">license</span><span class="w">           </span><span class="bp">:</span><span class="w"> </span><span class="nv">MIT</span>
+<span class="nv">lx</span><span class="w">                </span><span class="bp">:</span>
+<span class="nv">maintainer</span><span class="w">        </span><span class="bp">:</span><span class="w"> </span><span class="nv">kai</span><span class="na">@</span><span class="nv">aplteam</span><span class="na">.</span><span class="nv">com</span>
+<span class="nv">minimumAplVersion</span><span class="w"> </span><span class="bp">:</span><span class="w"> </span><span class="m">18.0</span>
+<span class="nv">ml</span><span class="w">                </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">name</span><span class="w">              </span><span class="bp">:</span><span class="w"> </span><span class="nv">APLTreeUtils2</span>
+<span class="nv">os_lin</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">os_mac</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">os_win</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">project_url</span><span class="w">       </span><span class="bp">:</span><span class="w"> </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">github</span><span class="na">.</span><span class="nv">com</span><span class="na">/</span><span class="nv">aplteam</span><span class="na">/</span><span class="nv">APLTreeUtils2</span>
+<span class="nv">source</span><span class="w">            </span><span class="bp">:</span><span class="w"> </span><span class="nv">APLSource</span><span class="na">/</span><span class="nv">APLTreeUtils2</span><span class="na">.</span><span class="nv">aplc</span>
+<span class="nv">tags</span><span class="w">              </span><span class="bp">:</span><span class="w"> </span><span class="nv">tools</span><span class="o">,</span><span class="nv">utilities</span>
+<span class="nv">uri</span><span class="w">               </span><span class="bp">:</span><span class="w"> </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">tatin</span><span class="na">.</span><span class="nv">dev</span><span class="na">/</span>
+<span class="nv">userCommandScript</span><span class="w"> </span><span class="bp">:</span>
+<span class="nv">version</span><span class="w">           </span><span class="bp">:</span><span class="w"> </span><span class="m">1.4.0</span><span class="o">+</span><span class="m">78</span>
+</code></pre></div>
+<h2 id="uninstall-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Uninstall packages</h2>
+<pre><code>(list emsg)←UnInstallPackage (packageID folder)
+</code></pre>
+<p>Where</p>
+<table>
+<tbody>
+<tr>
+<td>packageID</td>
+<td>string</td>
+<td>a <a href="../glossary/">full package ID</a> or an alias</td>
+</tr>
+<tr>
+<td>folder</td>
+<td>string</td>
+<td><p>either</p><ul markdown><li>path to a package folder with a Tatin dependency file<br><code>apl-dependencies.txt</code></li><li markdown><code>'[MyUCMDs]'</code> (case-insensitive)</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>Tatin attempts to un-install the package <code>packageID</code>
+and any of its dependencies
+(that are neither principal packages nor required by other packages)
+and returns:</p>
+<table>
+<tbody>
+<tr>
+<td>list</td>
+<td>strings</td>
+<td>Fully qualified names of all removed packages. (Might include aliases.)</td>
+</tr>
+<tr>
+<td>emsg</td>
+<td>string</td>
+<td>Error message, ideally empty.</td>
+</tr>
+</tbody>
+</table>
+<!-- `[MyUCMDS]` would translate into `MyUCMDs/packages/`. -->
+
+<div class="admonition detail">
+<p class="admonition-title">If the package was installed with an alias then <code>packageID</code> must be its alias.</p>
+</div>
+<p>If <code>packageID</code> matches more than one package, Tatin signals an error</p>
+<p>If <code>packageID</code> is empty, Tatin attempts to clean up: remove any packages that are neither principal packages nor required by other packages</p>
+<!--
+FIXME relates only to user command?
+`folder` may be a subfolder of an open Cider project. Tatin works out the correct one; if there are multiple Cider projects open the user is questioned.
+ -->
+
+<!--
+FIXME Move to user-commands.md
+If a package was installed twice, once with an alias and once without, running `]UnInstallPackage` on either of them does not uninstall the package but removes just the reference to it. Only when the other one is uninstalled as well is the package actually removed.
+ -->
+
+<!--
+FIXME If this relates only to package dependencies why confirm
+      pkg is mentioned in the dependency file?
+      How else would it have been identified?
+
+To keep things simple Tatin performs the following steps:
+1. Checks whether the package ID is mentioned in the dependency file. If not an error is thrown
+3. Removes `packagedID` from the dependency file
+4. Re-compile the build list based on the new dependency file
+5. Removes all packages that are not mentioned in the build list anymore
+ -->
+
+<div class="admonition danger">
+<p class="admonition-title">Deleting parent folders</p>
+<p>Removing the folders hosting the packages might fail for all sorts of reasons,
+even after successfully removing the package and any dependencies
+from both the dependency file and the build list.
+<!-- FIXME Seems a bit vague. Must keep zombie folders indefinitely? --></p>
+</div>
+<h2 id="version"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> Version</h2>
+<pre><code>r←Version
+</code></pre>
+<p>Returns as strings Tatin’s name, version and date.</p>
+<div class="highlight"><pre><span></span><code>      ⎕SE.Tatin.Version
+┌─────┬────────────┬──────────┐
+│Tatin│0.112.1+1942│2024-08-16│
+└─────┴────────────┴──────────┘
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1835 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Your package’s configuration contains essential information about it.">
+      
+      
+      
+      
+        <link rel="prev" href="../user-commands-publish/">
+      
+      
+        <link rel="next" href="../public-interface/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin: Package Configuration - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../style/main.css">
+    
+      <link rel="stylesheet" href="../style/extra.css">
+    
+      <link rel="stylesheet" href="../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#package-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin: Package Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-only-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read-only settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      System variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-defined-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-defined variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package metadata
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#standard-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-only-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read-only settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      System variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-defined-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-defined variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package metadata
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="package-configuration">Package configuration</h1>
+<div class="admonition abstract">
+<p class="admonition-title">Your package’s configuration contains essential information about it.</p>
+</div>
+<p>Your package configuration is in file <code>apl-package.json</code> in the package root.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="err">api</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DotNetZip&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">asse</span><span class="kc">ts</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">descrip</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zipping and unzipping with .NET Core on all major platforms&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">docume</span><span class="kc">ntat</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">exclude</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">f</span><span class="err">iles</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">group</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aplteam&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">io</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="err">lice</span><span class="kc">nse</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">lx</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">mai</span><span class="kc">nta</span><span class="err">i</span><span class="kc">ner</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kai@aplteam.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">mi</span><span class="kc">n</span><span class="err">imumAplVersio</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;18.2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">ml</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DotNetZip&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">os_li</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="err">os_mac</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="err">os_wi</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="err">projec</span><span class="kc">t</span><span class="err">_url</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/aplteam/DotNetZip&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">source</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DotNetZip.aplc&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">ta</span><span class="err">gs</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zip-tools&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="kc">tat</span><span class="err">i</span><span class="kc">n</span><span class="err">_versio</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.103.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">userComma</span><span class="kc">n</span><span class="err">dScrip</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">versio</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.5.4&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition detail">
+<p class="admonition-title">Key <code>wx</code> was removed in Tatin version 0.61.0.</p>
+</div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M9.4 86.6c-12.5-12.5-12.5-32.7 0-45.2s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256zM256 416h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg></span>
+<a href="../user-commands-publish/#create-package"><code>]CreatePackage</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M9.4 86.6c-12.5-12.5-12.5-32.7 0-45.2s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256zM256 416h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg></span>
+<a href="../user-commands/#package-config"><code>]PackageConfig</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span>
+<a href="../api/#initialise-package"><code>InitialisePackage</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span>
+<a href="../api/#init-package-config"><code>InitPackageConfig</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span>
+<a href="../api/#read-package-config-file"><code>ReadPackageConfigFile</code></a></p>
+<h2 id="standard-settings">Standard settings</h2>
+<p>All the standard settings are optional except those marked required.</p>
+<p>A configuration setting or parameter is ‘set’ when a file key or parameter variable is defined with a non-empty string.</p>
+<dl>
+<dt><code>api</code></dt>
+<dd><em>String</em>. The name of a namespace that is to contain the <a href="../api/#create-api-from-cfg">public interface</a> to the package.
+(<code>'API'</code> is a good choice.)</dd>
+<dt><code>assets</code></dt>
+<dd>
+<p><em>String</em>. Path to a folder containing the package’s assets, relative to the package root.</p>
+<div class="admonition danger">
+<p class="admonition-title">Treat the assets folder as read-only: do not write to it from a package.</p>
+</div>
+<details class="warning">
+<summary>Tatin signals an error…</summary>
+<p>If</p>
+<ul>
+<li>the path contains a <code>:</code> or begins with <code>/</code>, <strong>unless</strong> the path begins with absolute path to the package root, when Tatin silently converts it to a relative path</li>
+<li>the path does not point to an existing folder</li>
+</ul>
+</details>
+<p>See also <code>files</code> and <a href="#package-metadata"><code>GetFullPath2AssetsFolder</code></a>.</p>
+<details class="tip">
+<summary>Access package assets from a class instance</summary>
+<p>If you need to access assets from an instance of a class in a package you can either:</p>
+<ol>
+<li>
+<p>Add to the class a function like this:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">∇</span><span class="w"> </span><span class="nv">r</span><span class="kd">←</span><span class="nv">GetAssetFolder</span>
+<span class="w">  </span><span class="nv">r</span><span class="kd">←</span><span class="c1">##.TatinVars.GetFullPath2AssetsFolder</span>
+<span class="bp">∇</span>
+</code></pre></div>
+</li>
+<li>
+<p>Use the expression <code>⊃⊃⎕CLASS ⎕THIS</code> to locate the class script, i.e.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="o">⊃⊃</span><span class="nf">⎕CLASS</span><span class="w"> </span><span class="nf">⎕THIS</span><span class="p">)</span><span class="na">.</span><span class="c1">##.TatinVars.GetFullPath2AssetsFolder</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
+<details class="tip">
+<summary>Access platform-dependent assets</summary>
+<p>There is no general solution for the problem of platform-dependent assets.
+One way to solve this is to use <a href="#lx"><code>lx</code></a>.</p>
+</details>
+</dd>
+<dt><code>deprecated</code></dt>
+<dd><em>Flag</em>. Whether the package is <a href="../user-commands-publish/#deprecate-package">deprecated</a>; default 0.</dd>
+<dt><code>deprecate_comment</code></dt>
+<dd><em>String</em>. Why the package was deprecated.</dd>
+<dt><code>description</code></dt>
+<dd><em>String</em>. <strong>Required</strong>. What the package does, or what problems it solves.</dd>
+<dt><code>documentation</code></dt>
+<dd>
+<p><em>String</em>. Either:</p>
+<ul>
+<li>URL of an online help resource, beginning <code>http://</code> or <code>https://</code></li>
+<li>local relative path to a file (or program) within the package, beginning <code>./</code></li>
+<li>pointer to a function or a variable in the package, beginning <code>⎕THIS.</code>, e.g. <code>⎕THIS.Admin.ShowHelp</code></li>
+</ul>
+</dd>
+<dt><code>exclude</code></dt>
+<dd>
+<p><em>Comma-delimited string.</em> Paths from <code>source</code> to file/s or directories to exclude from the package.</p>
+<details class="tip">
+<summary>Use cases</summary>
+<p>To publish your package both as a Tatin package and also on GitHub, consider how to specify <code>⎕IO</code> and <code>⎕ML</code>.</p>
+<p>Tatin packages allow these values to be set in the package config.</p>
+<p>For GitHub you can set them in the <code>APLSource/</code> folder as files <code>⎕IO.apla</code> and <code>⎕ML.apla</code>; Link will load and set them.</p>
+<p>The non-ANSI characters in the filenames make zipping and unzipping across platforms unreliable.
+Since the two files are not required by the Tatin package, they can be excluded from the build, which lets you avoid this.</p>
+<div class="highlight"><pre><span></span><code><span class="err">exclude</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;⎕IO.apla, ⎕ML.apla&quot;</span><span class="p">,</span>
+</code></pre></div>
+<!-- For better compatability this property is not injected into new packages but accepted as an optional parameter. This might be changed with version 1.0.0 of Tatin. -->
+</details>
+</dd>
+<dt><code>files</code></dt>
+<dd>
+<p><em>Comma-delimited string.</em> Files and/or folders to be moved into the package root, e.g. <code>ReadMe.txt</code>. (See also <a href="#assets"><code>assets</code></a>.)</p>
+<div class="admonition info">
+<p class="admonition-title">By convention, a file <code>LICENSE</code> in the project root is copied to the package root when the package is built.</p>
+</div>
+</dd>
+<dt><code>group</code></dt>
+<dd><em>String.</em> The group part of the <a href="../glossary/">full package ID</a>.
+You can specify a default in your <a href="../user-settings/">user settings</a>.</dd>
+<dt><code>io</code></dt>
+<dd><em>Integer.</em> Value to be assigned to <code>⎕IO</code>.</dd>
+<dt><code>license</code></dt>
+<dd><em>String.</em> Each Tatin registry <a href="../user-commands/#list-licences">publishes a list</a> of licences it accepts for packages it hosts.</dd>
+<dt><code>lx</code></dt>
+<dd>
+<p><em>String</em>. Name of a niladic or monadic function in the top-level namespace of the package (<em>not</em> in what might be defined as API!) or a shared method of a class.</p>
+<p>This will be executed by either <code>LoadPackages</code> or <code>LoadDependencies</code> <em>after</em> all dependencies have been loaded and all refs established, i.e. at a very late stage.
+You could use it</p>
+<ul>
+<li>to initialise a package on bringing it into the workspace</li>
+<li>to deal with platform-dependent assets</li>
+</ul>
+<p>If the function is monadic its argument is the file path to the package.
+(If the package is brought into the workspace by <code>LoadPackages</code> and has no assets,  the argument will be empty.)</p>
+<p>The function must return a result, which is assigned to <code>TatinVars.LX</code> inside the <a href="../glossary/">package space</a>.
+(Without an <code>lx</code> object there will be no <code>TatinVars.LX</code>.)</p>
+<details class="tip">
+<summary>Trapping errors</summary>
+<p>The <code>lx</code> function is executed under error trapping, and any error silently ignored.
+You have two alternatives to this:</p>
+<ol>
+<li>
+<p>Localise <code>⎕TRAP</code> to the <code>lx</code> function and set <code>⎕TRAP←0 'S'</code> to make any problem pop up straight away</p>
+</li>
+<li>
+<p>Put <code>:TRAP ⋄ :EndTrap</code> around the code in the <code>lx</code> function and deal with problems yourself, for example in the <code>:Else</code> branch.</p>
+</li>
+</ol>
+<p>The existence of <code>TatinVars.LX</code> indicates an <code>lx</code> function was executed successfully, even if it is empty.</p>
+</details>
+</dd>
+<dt><code>maintainer</code></dt>
+<dd>
+<p><em>String</em>. Email address for the package maintainer. Valid formats:</p>
+<div class="highlight"><pre><span></span><code>your name &lt;your.name@your-domain.com&gt;
+your.name &lt;your.name@your-domain.com&gt;
+your.name@your-domain.com
+</code></pre></div>
+<p>Any double quotes are removed.</p>
+<p>You can define a default value in the <a href="../user-settings/">user settings</a>.
+Otherwise, if <code>maintainer</code> is empty at publication time,
+the registry assigns the email address from the group’s home page if there is one.</p>
+</dd>
+<dt><code>minimumAplVersion</code></dt>
+<dd>
+<p><em>String</em>. Minimum APL version for the package.</p>
+<p>Tatin itself needs at least version 18.2, so this setting cannot be less.</p>
+</dd>
+<dt><code>ml</code></dt>
+<dd><em>Integer.</em> Value to be assigned to <code>⎕ML</code>.</dd>
+<dt><code>name</code></dt>
+<dd><em>String.</em> The name part of the <a href="../glossary/">full package ID</a>.</dd>
+<dt><code>os_lin</code></dt>
+<dd><em>Flag.</em> Whether the package runs under Linux.</dd>
+<dt><code>os_mac</code></dt>
+<dd><em>Flag.</em> Whether the package runs under macOS.</dd>
+<dt><code>os_win</code></dt>
+<dd><em>Flag.</em> Whether the package runs under Windows.</dd>
+<dt><code>project_url</code></dt>
+<dd><em>String.</em> URL to where the project is hosted, e.g.<pre><code>https://github.com/aplteam/MarkAPL
+</code></pre>
+</dd>
+<dt><code>source</code></dt>
+<dd>
+<div class="admonition detail inline end">Code file extensions:
+<div class="highlight"><pre><span></span><code>.aplc     ⍝ class
+.aplf     ⍝ function
+.apln     ⍝ namespace
+.aplo     ⍝ operator
+.dyalog   ⍝ SALT script
+</code></pre></div></div>
+</dd>
+<dd>
+<p><em>String.</em> <strong>Required</strong>. Path, relative to the package root, to a code file, or to a folder of code files.</p>
+<p>(Tatin ignores non-code files.)</p>
+<p>You can specify a default <code>source</code> in your <a href="../user-settings/">user settings</a>.</p>
+<details class="warning">
+<summary>Tatin does not guarantee compatibility with SALT</summary>
+<p>The <code>.dyalog</code> extension is still used by the user-command framework, so Tatin supports it: a user command might well be delivered as a Tatin package.</p>
+<p>Using the <code>.dyalog</code> extension outside this context is discouraged.</p>
+</details>
+<details class="detail">
+<summary>Cider and Tatin source properties</summary>
+<p>If you use Cider to manage your project, you see both Cider and Tatin configs have a <code>source</code> property. The Cider <code>source</code> refers to the Cider project, while the Tatin <code>source</code> refers to the package to be published.</p>
+<p>Suppose project Foo consists of a single class <code>Foo</code>:
+<div class="highlight"><pre><span></span><code>Foo/
+├── APLSource/
+│   ├── Admin/
+│   ├── Foo.aplc
+│   └── TestCases/
+├── README.md
+├── apl-package.json
+└── cider.config
+</code></pre></div>
+In <code>cider.config</code> the <code>source</code> is <code>APLSource</code>, because that’s where the code lives.</p>
+<p>In <code>apl-package.json</code> however, <code>source</code> is <code>APLSource/Foo.aplc</code>, because that is what goes in the package.</p>
+<p>A slightly more complex example, with a namespace that hosts several functions:
+<div class="highlight"><pre><span></span><code>Goo/
+├── APLSource/
+│   ├── Admin/
+│   ├── Foo.aplc
+│   ├── Goo/
+│   └── TestCases/
+├── README.md
+├── apl-package.json
+└── cider.config
+</code></pre></div>
+In this case, the package <code>source</code> package could be <code>APLSource/Goo</code>, because<code>Admin</code> and <code>TestCases</code> do not go in the package.</p>
+</details>
+</dd>
+<dt><code>tags</code></dt>
+<dd>
+<p><em>Comma-delimited string.</em> <strong>Required</strong>. A list of tags (keywords) to help searchers.</p>
+<details class="tip">
+<summary>Tags should relate only to the problems one can solve with the package.</summary>
+<p>Operating systems have their own properties (<code>os_lin</code>, <code>os_mac</code>, <code>os_win</code>) introduced with Tatin version 0.81.0.</p>
+<p>There is no point in adding tags like <code>dyalog</code> or <code>apl</code>…</p>
+<p>Admins of the Principal Registry might silently edit them to keep them consistent and meaningful.</p>
+</details>
+</dd>
+<dt><code>userCommandScript</code></dt>
+<dd><em>String.</em> Path, relative to the project root, of the user-command script. Identifies and required for <a href="../publish-packages/#user-command-packages">user-command packages</a>. (Introduced in Tatin version 0.86.0.)</dd>
+<dt><code>version</code></dt>
+<dd><em>String.</em> Version in the <a href="../glossary/">full package ID</a>.</dd>
+</dl>
+<h2 id="read-only-settings">Read-only settings</h2>
+<p>Set by Tatin:</p>
+<dl>
+<dt><code>date</code></dt>
+<dd><em>Float.</em> Date of publication, in the format <code>yyyymmdd.hhmmss</code>.</dd>
+<dt><code>tatin_version</code></dt>
+<dd><em>String.</em> Tatin version number (no build ID) by which the config data was created or changed.</dd>
+<dt><code>url</code></dt>
+<dd><em>String.</em> Source from which package was loaded or installed: URL or file path.</dd>
+</dl>
+<h2 id="system-variables">System variables</h2>
+<p>APL system variables <code>⎕IO</code> and <code>⎕ML</code> are local in each package.
+They require special treatment, because</p>
+<ul>
+<li>a package’s definitions might depend on them</li>
+<li>any subnamespaces inherit the values</li>
+</ul>
+<p>Before any code is loaded into a namespace created by <code>LoadPackages</code> or <code>LoadDependencies</code> Tatin sets these values as</p>
+<ol>
+<li>the <code>io</code> and <code>ml</code> settings in the package configuration; else</li>
+<li>the two Dyalog parameters (environment variables) <code>Default_IO</code> and <code>Default_ML</code>; else</li>
+<li>Dyalog’s default value: 1.</li>
+</ol>
+<details class="warning">
+<summary>Don’t set these values in array files</summary>
+<p>Although including array files <code>⎕IO.apla</code> or <code>⎕ML.apla</code> would cause Link to set the system variables correctly, zipping their file names can break publication.</p>
+<p>See <code>exclude</code> for detail.</p>
+</details>
+<h2 id="user-defined-variables">User-defined variables</h2>
+<p>You can set your own variables in a package configuration file.</p>
+<p>To avoid name conflicts, your variable names must begin with an underscore.
+(Tatin signals an error if it encounters a name it does not know, unless the name begins with an underscore.)</p>
+<h2 id="package-metadata">Package metadata</h2>
+<p>When Tatin loads a package, it writes its metadata into a namespace <code>TatinVars</code> within the package.</p>
+<p>For example, suppose Tatin has loaded packages Foo and Goo, and both depend on MarkAPL.</p>
+<p>In the workspace we find</p>
+<pre><code>#.Foo
+#.Foo.MarkAPL
+#.Foo.MarkAPL.APLTreeUtils2
+#.Foo.MarkAPL.CommTools
+#.Foo.MarkAPL.FilesAndDirs
+#.Goo
+#.Goo.MarkAPL
+...
+</code></pre>
+<p>These are refs to the package cache in <code>#._tatin</code>.
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">#.Foo.MarkAPL           ⍝ ref to API of cached package</span>
+<span class="c1">#._tatin.aplteam_MarkAPL_13_1_0.API</span>
+<span class="w">      </span><span class="c1">#._tatin.⎕NL 9          ⍝ content of package cache</span>
+<span class="nv">aplteam</span><span class="o">-</span><span class="nv">APLTreeUtils2</span><span class="o">-</span><span class="m">1.4.0</span>
+<span class="nv">aplteam</span><span class="o">-</span><span class="nv">CommTools</span><span class="o">-</span><span class="m">1.8.1</span>
+<span class="nv">aplteam</span><span class="o">-</span><span class="nv">FilesAndDirs</span><span class="o">-</span><span class="m">5.8.0</span>
+<span class="nv">aplteam_MarkAPL_13_1_0</span>
+<span class="nv">my_Foo_1_0_0</span>
+<span class="nv">my_Goo_1_1_0</span>
+</code></pre></div>
+Metadata ‘constants’ in <code>TatinVars</code> are niladic functions.
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">CS</span><span class="w"> </span><span class="c1">#._tatin.aplteam_MarkAPL_13_1_0</span>
+<span class="c1">#._tatin.aplteam_MarkAPL_13_1_0</span>
+<span class="w">      </span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">9</span><span class="w">                   </span><span class="c1">⍝ content of cached package</span>
+<span class="nv">API</span>
+<span class="nv">APLTreeUtils2</span>
+<span class="nv">CommTools</span>
+<span class="nv">FilesAndDirs</span>
+<span class="nv">LeanPubIcons</span>
+<span class="nv">MarkAPL</span>
+<span class="nv">TatinVars</span>
+<span class="w">      </span><span class="nv">TatinVars</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">3</span><span class="w">         </span><span class="c1">⍝ metadata &#39;constants&#39;</span>
+<span class="nv">ASSETS</span>
+<span class="nv">CONFIG</span>
+<span class="nv">DEPENDENCIES</span>
+<span class="nv">GetFullPath2AssetsFolder</span>
+<span class="nv">HOME</span>
+<span class="nv">ID</span>
+<span class="nv">URI</span>
+</code></pre></div></p>
+<p>So any package function can refer to its metadata
+– e.g. <code>HOME</code> as <code>##.TatinVars.HOME</code>.</p>
+<dl>
+<dt><code>ASSETS</code></dt>
+<dd><em>String.</em> Path to the assets, relative to <code>HOME</code> – empty if there are none.</dd>
+<dt><code>CONFIG</code></dt>
+<dd>
+<p><em>String.</em> Contents of <code>apl-package.json</code>.</p>
+<details class="tip">
+<summary>Convert to parameter space</summary>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">cfg</span><span class="kd">←</span><span class="p">(</span><span class="nf">⎕JSON</span><span class="w"> </span><span class="na">⍠</span><span class="w"> </span><span class="s1">&#39;Dialect&#39;</span><span class="w"> </span><span class="s1">&#39;JSON5&#39;</span><span class="p">)</span><span class="w"> </span><span class="nv">TatinVars</span><span class="na">.</span><span class="nv">CONFIG</span>
+<span class="w">      </span><span class="nv">cfg</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">2</span>
+<span class="nv">api</span>
+<span class="nv">assets</span>
+<span class="nv">date</span>
+<span class="nv">description</span>
+<span class="nv">documentation</span>
+<span class="nv">files</span>
+<span class="nv">group</span>
+<span class="nv">io</span>
+<span class="nv">license</span>
+<span class="nv">lx</span>
+<span class="nv">maintainer</span>
+<span class="nv">minimumAplVersion</span>
+<span class="nv">ml</span>
+<span class="nv">name</span>
+<span class="nv">os_lin</span>
+<span class="nv">os_mac</span>
+<span class="nv">os_win</span>
+<span class="nv">project_url</span>
+<span class="nv">source</span>
+<span class="nv">tags</span>
+<span class="nv">uri</span>
+<span class="nv">userCommandScript</span>
+<span class="nv">version</span>
+<span class="w">      </span><span class="nv">cfg</span><span class="na">.</span><span class="nv">name</span>
+<span class="nv">MarkAPL</span>
+</code></pre></div>
+</details>
+</dd>
+<dt><code>DEPENDENCIES</code></dt>
+<dd><em>Strings.</em> <a href="../glossary/">Full package IDs</a> of this package’s dependencies.</dd>
+<dt><code>GetFullPath2AssetsFolder</code></dt>
+<dd>
+<p><em>String.</em> Absolute path to the assets, relative to <code>HOME</code> – empty if there are none.</p>
+<p>If <code>HOME</code> is empty or does not exist on disk the result is <code>ASSETS</code></p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">#.MarkAPL</span>
+<span class="c1">#._tatin.aplteam_MarkAPL_13_1_0.API</span>
+<span class="w">      </span><span class="p">)</span><span class="nv">CS</span><span class="w"> </span><span class="c1">#._tatin.aplteam_MarkAPL_13_1_0</span>
+<span class="c1">#._tatin.aplteam_MarkAPL_13_1_0</span>
+<span class="w">      </span><span class="o">↑</span><span class="nv">TatinVars</span><span class="na">.</span><span class="p">(</span><span class="nv">HOME</span><span class="w"> </span><span class="nv">ASSETS</span><span class="w"> </span><span class="nv">GetFullPath2AssetsFolder</span><span class="p">)</span>
+<span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">sjt</span><span class="na">/</span><span class="nv">tmp</span><span class="na">/</span><span class="nv">Foo</span><span class="na">/</span><span class="nv">packages</span><span class="na">/</span><span class="nv">aplteam</span><span class="o">-</span><span class="nv">MarkAPL</span><span class="o">-</span><span class="m">13.1.0</span>
+<span class="nv">Files</span><span class="na">/</span>
+<span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">sjt</span><span class="na">/</span><span class="nv">tmp</span><span class="na">/</span><span class="nv">Foo</span><span class="na">/</span><span class="nv">packages</span><span class="na">/</span><span class="nv">aplteam</span><span class="o">-</span><span class="nv">MarkAPL</span><span class="o">-</span><span class="m">13.1.0</span><span class="na">/</span><span class="nv">Files</span><span class="na">/</span>
+</code></pre></div>
+</dd>
+<dt><code>HOME</code></dt>
+<dd>
+<p><em>String.</em> Path to the directory the package was installed into, even if the package has no assets.</p>
+<p>This differs when the package is imported with <a href="../user-commands/#load-packages"><code>LoadPackages</code></a>.</p>
+</dd>
+<dt><code>ID</code></dt>
+<dd><em>String.</em> Full package ID.</dd>
+<dt><code>URI</code></dt>
+<dd><em>String.</em> Source from which the package was loaded: URL or file path.</dd>
+</dl>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

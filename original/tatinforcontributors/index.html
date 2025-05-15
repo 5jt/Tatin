@@ -1,0 +1,1802 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin for Contributors - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style/main.css">
+    
+      <link rel="stylesheet" href="../../style/extra.css">
+    
+      <link rel="stylesheet" href="../../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tatin-for-contributors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin for Contributors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope-of-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scope of this document
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tatin-is-managed-by-cider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tatin is managed by Cider
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-work-on-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to work on Tatin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-either-the-client-or-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare either the Client or the Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prepare either the Client or the Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparing-the-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing the client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparing-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing the server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-tatin-packages-used-by-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating Tatin packages used by Tatin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-your-thing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do your thing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-case-working-on-user-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special case: working on user commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-the-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executing the test suite
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing the test suite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-while-developing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing while developing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing while developing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executing-all-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executing all tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quitting-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quitting tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-only-particular-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executing only particular tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-as-part-of-an-automated-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests as part of an automated build
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests as part of an automated build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-test-suite-from-apl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the test suite from APL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-test-suite-from-a-console-or-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the test suite from a console or terminal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-a-new-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to create a new version
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to create a new version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ov1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-document-for-proofreading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a document for proofreading
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tatin-for-contributors">Tatin for Contributors</h1>
+<h2 id="scope-of-this-document">Scope of this document</h2>
+<p>If you want to contribute to the <a href="https://github.com/aplteam/Tatin">Tatin project on GitHub</a> or make adjustments to Tatin for an in-house project, this document will help you.</p>
+<p>Tatin is published under the MIT license, so everybody is welcome to contribute to the code. It is not owned by anybody; it is rather a community project.</p>
+<p>This document also discusses how to execute the test suite and how to build a new version of Tatin.</p>
+<p>Note that this is not an introduction to how to contribute to a project that is hosted on GitHub. If you are not familiar with that then google "contribute to a GitHub project".</p>
+<h2 id="requirements">Requirements</h2>
+<p>To work on Tatin you need at least Dyalog 18.2 Unicode (it will never run in Classic).</p>
+<p>You need one of: </p>
+<ul>
+<li>Windows</li>
+<li>Linux</li>
+<li>Mac OS</li>
+</ul>
+<p>AIX is not supported. The PI is not officially supported but it will probably work anyway.</p>
+<p>You also need to have Git installed.</p>
+<p>While you can develop on any operating system, building a new version is currently only supported on Windows. This restriction is likely to be lifted in a later version.</p>
+<h2 id="tatin-is-managed-by-cider">Tatin is managed by Cider</h2>
+<p>Note that Tatin is managed by the <a href="https://github.com/aplteam/Cider">Cider project management tool</a>.
+If you are not familiar with Cider you are advised to spend some time playing with it before using it for serious work. 30 minutes should suffice.</p>
+<p>Though it is possible making changes or adding code to Tatin without Cider, using Cider makes it significantly easier. Also, the build process requires Cider.</p>
+<p>Having said this, you don't neccessarily need to build a new version for creating a pull request, so you might get away without Cider, but using Cider is certainly recommended.</p>
+<h2 id="how-to-work-on-tatin">How to work on Tatin</h2>
+<p>After downloading/forking Tatin from GitHub and saving it somewhere, say in <code>C:\Tatin</code>, you issue the command </p>
+<div class="highlight"><pre><span></span><code>]Cider.OpenProject C:\Tatin
+</code></pre></div>
+<p>and you are ready to go. </p>
+<p>Note that there is no need to save a workspace or anything: every function, operator, class, interface or namespace script changed in <code>#.Tatin</code> will automatically be saved to disk by <a href="https://github.com/dyalog/link">Link</a>.</p>
+<h2 id="prepare-either-the-client-or-the-server">Prepare either the Client or the Server</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Note that for running the test suite you only need to prepare the client. However, because  you might want to run the test server independently from the test suite, the required preparations for the server is discussed here as well.</p>
+<h3 id="preparing-the-client">Preparing the client</h3>
+<p>If you want to run any Tatin client code execute the function</p>
+<div class="highlight"><pre><span></span><code>#.Tatin.Admin.Initialize_Client
+</code></pre></div>
+<h3 id="preparing-the-server">Preparing the server</h3>
+<p>If you want to run the Tatin Server execute the function</p>
+<div class="highlight"><pre><span></span><code>#.Tatin.Admin.Initialize_Server
+</code></pre></div>
+<p>Note that you cannot run both the Client and the Server in the same workspace.</p>
+<p>GitHub does not allow downloading certificates, therefore you must take action in this respect. Tatin comes with test certificates, and in order to get around the GitHub restriction the certificates have an "additional extension" <code>.RemoveMe</code> which needs, well, removing.</p>
+<p>Check the folder <code>TestServer/Server/Assets/Runtime/Certificates</code></p>
+<h2 id="updating-tatin-packages-used-by-tatin">Updating Tatin packages used by Tatin</h2>
+<p>Although Tatin depends on a couple of Tatin packages, it cannot be used to load those packages; the common bootstrap problem.</p>
+<p>For that reason, the packages installed in the <code>packages/</code> folder a need to be brought into the <code>APLSource/</code> folder by other means:</p>
+<ul>
+<li>All packages that are single class or namespace scripts can simply by copied over; an example is the <code>Tester2</code> class.</li>
+<li>Packages that consist of an ordinary namespace need to be copied over as a folder; an example is <code>CommTools</code>.</li>
+</ul>
+<h2 id="do-your-thing">Do your thing</h2>
+<p>Now that you have a working version of Tatin on your machine, you can start contributing.</p>
+<p>If you find parts of this document confusing, outdated, unclear or missing bits and pieces: change it; that might well be your first valuable contribution.</p>
+<p>Whether you improved the documentation or fixed a bug or added a feature, at the end of the day you need to create a Pull Request (PR). That will make the people in charge of the Tatin project check your contribution. At the time of writing that is Kai Jaeger, but this might (and eventually will) change in the future of course.</p>
+<p>But before you can create a pull request you are supposed to run the tests to make sure that you did not break anything.</p>
+<h2 id="special-case-working-on-user-commands">Special case: working on user commands</h2>
+<p>When you work on user commands, by default the code is executed in <code>⎕SE</code> rather than <code>#</code>. This also means that changes are not saved automatically by Link. </p>
+<p>This is a major stumble stone, and therefore it was addressed with version 0.106.0: when the Tatin project is opened with Cider the user is asked:</p>
+<div class="highlight"><pre><span></span><code>Set DEVELOPMENT←1 in ⎕SE._Tatin? 
+(Allows executing user command code in # rather than ⎕SE) 
+(Y/n) 
+</code></pre></div>
+<p>The variable <code>⎕SE._Tatin.DEVELOPMENT←1</code> tells that the user wants to work on Tatin while calling code in <code>⎕SE</code>, and therefore Tatin makes sure that the code in <code>#</code> is executed rather than <code>⎕SE</code>. </p>
+<p>Note that if there is a variable <code>⎕SE._Tatin.DEVELOPMENT←0</code> Cider won't ask the question, and code is executed in <code>⎕SE</code>, as it is if there is no variable <code>⎕SE._Tatin.DEVELOPMENT</code> at all.</p>
+<h2 id="executing-the-test-suite">Executing the test suite</h2>
+<p>If you just want to execute all test cases before pushing your changes to GitHub then you may ask Cider how to do that:</p>
+<div class="highlight"><pre><span></span><code>      ]Cider.RunTests
+#.Tatin.#.Tatin.TestCases.RunTests ⍝ Execute this for running the test suite
+</code></pre></div>
+<p>Executing <code>RunTests</code> means that on Windows you will be asked whether a test server should be started. Usually, you will answer with a "Y", Meaning that the test suite will start another instance of Dyalog, and run a test server in that instance for you.</p>
+<p>On non-Windows platforms you will be be asked to start another instance of Dyalog, and you will be given a <code>)Load /path/2/test-server/RunTatinServer.dws</code> statement that you can copy over into that new instance and run it. This will load and run the server in a temporary directory.</p>
+<p>Developers might also run into one of two common scenarios: </p>
+<ol>
+<li>During development you might want to execute all tests or just a specific group (or groups) of tests. </li>
+</ol>
+<p>You are sitting in front of the monitor, and therefore tests can ask you to perform certain tasks, like closing an edit window etc.</p>
+<p>When a test fails then the test framework stops, and the developer can investigate on the spot.</p>
+<ol>
+<li>You might want to execute the test suite automatically (batch mode), meaning that the tests should not attempt to interact with a user. (That means that test cases that depend on a user won't be executed. Tatin has only a few test cases that fall into this category; more than 95% of the tests are batchable)</li>
+</ol>
+<p>This might be required by an automated build process.</p>
+<p>In this case, any errors are trapped, and you get just either a single line that reports success or failure in the session or <code>⎕OFF</code> is executed, either without a code (in case of success) or the return code 123, indicating failure to the calling environment.</p>
+<p>Note that a single failing test case is considered as "failure" of the whole test suite, though the test framework will continue to execute all remaining tests.</p>
+<p>We discuss the two different scenarios one after the other.</p>
+<p>A&gt; ### Creating a new version
+A&gt;
+A&gt; Creating a new version is discussed later in this document, but there are scenarios when you need to create a new version <em>before</em> you execute the test cases.
+A&gt;
+A&gt; The reason for this is that one group of test cases executes user commands. If they are affected by anything you've changed then naturally you want the new version to be available in <code>⎕SE</code> for execution, but that is only possible if you create a new version first.
+A&gt;
+A&gt; For that reason one test checks whether the version number in the workspace and in <code>⎕SE</code> do match. If you are confident that this does not matter in your case you may just carry on. </p>
+<h3 id="testing-while-developing">Testing while developing</h3>
+<h4 id="executing-all-tests">Executing all tests</h4>
+<p>It is recommended to start a fresh APL session and then load the Tatin project into the CLEAR WS before running any test cases.</p>
+<p>Use <code>]Cider.OpenProject</code> to do this. Once the project has been opened, you can ask Cider how to execute Tatin's test suite by entering:</p>
+<div class="highlight"><pre><span></span><code>      ]Cider.RunTests
+#.Tatin.#.Tatin.TestCases.RunTests ⍝ Execute this for running the test suite
+</code></pre></div>
+<p>Note that by default the test cases use port 5001 for communication between the client and the Test Server that is part of Tatin. Change the INI files for both server and client if that does not work for you.</p>
+<p>When you run the test suite you will be asked whether you want to start a Tatin test server locally, and usually, you will answer with a "Yes!". (Windows only, elsewhere you must start the server yourself by starting a new instance of Dyalog and then copying over and executing the <code>)Load</code> statement that is provided as part of the client test suite. This means that at the moment you cannot run the test suite automatically --- batch mode --- on non-Windows platforms, a restriction that will soon be lifted.)</p>
+<p>A&gt; ### Starting a Tatin test server "manually"
+A&gt;
+A&gt; There may be scenarios when you want to start a local Tatin test server yourself. For that execute the following steps:
+A&gt; 
+A&gt; 1. Instantiate Dyalog Unicode 18.2 or later
+A&gt; 
+A&gt; 2. Execute the following two statements:
+A&gt; 
+A&gt;    <code>A&gt;    ]Cider.OpenProject /path/to/Tatin
+A&gt;    #.Tatin.TestCasesServer.RunTests
+A&gt;</code>
+A&gt; 
+A&gt; If you change any code at this stage those changes will be written back to disk, so be careful.</p>
+<p>The <code>RunTests</code> function performs these tasks:</p>
+<ul>
+<li>Change the current directory</li>
+<li>Establish all required references</li>
+<li>Instantiate the <code>Tester2</code> class as <code>T</code> </li>
+<li>Start a local Tatin test server if the user confirms (Windows) this or make the user start a test server (other platforms)</li>
+<li>Call the <code>T.Run</code> function</li>
+</ul>
+<p>This will run all test cases, including those that communicate with a locally running Tatin test server and the principal Tatin server available at <a href="https://tatin.dev">https://tatin.dev</a></p>
+<h4 id="quitting-tests">Quitting tests</h4>
+<p>There are scenarios where you want to quit the test suite, for example when a test unearthed a severe bug that needs fixing straight away, before executing the remaining tests.</p>
+<p>It may be tempting to enter just <code>)reset</code>, but that is not how you should do this: you have to make sure that the test suite cleans up after itself. </p>
+<p>The easiest way to achieve this is to execute this statement:</p>
+<div class="highlight"><pre><span></span><code>      T.QuitTests
+</code></pre></div>
+<p>A&gt; ### Execute the client test suite multiple times in parallel
+A&gt;
+A&gt; You might come up with the idea to start the client part of the tests multiple times in parallel to put some pressure on the Tatin Server.
+A&gt;
+A&gt; In general this is a good idea, but the client test suite is not suitable for this. For example, the tests that belong to the "Cache" group <em>must</em> be executed one after the other, they rely on each other. Generally, this should be avoided, but here for technical reasons, it's a must. Running this group in parallel contradicts this, and is bound to fail.</p>
+<h4 id="executing-only-particular-tests">Executing only particular tests</h4>
+<p>The <code>Tester2</code> test framework is flexible and powerful; for example, you may execute only the tests that focus on the Tatin Client API. The names of those tests are <code>Test_API_&lt;number&gt;</code>.</p>
+<p>A&gt; ### Why executing only a few tests?
+A&gt;
+A&gt; The full test suite is exhaustive. Also, caching is switched off (except when caching is tested of course). For these reasons executing the full test suite takes considerable time. Therefore you might be interested in executing only certain parts of the test suite. 
+A&gt;
+A&gt; The tests are grouped, and that is reflected by the names of the test functions. For example, the names <code>Test_API_001</code> and <code>Test_UserCommand_001</code> clearly state which group they belong to.</p>
+<p>If you are not interested in executing only some of the test cases then skip this and carry on with "<a href="#">Tests as part of an automated build</a>".</p>
+<p>Before executing any test case call this function:</p>
+<div class="highlight"><pre><span></span><code>#.Tatin.TestCases.Prepare
+</code></pre></div>
+<p>This changes the current directory, establishes all required references and instantiates the <code>Tester2</code> class as <code>T</code>.</p>
+<p>You can now list the groups:</p>
+<div class="highlight"><pre><span></span><code>      T.ListGroups
+ Test_API             27   
+ Test_Build            1   
+ Test_Cache           10   
+ Test_CheckVersions    6   
+ Test_ClientConfig    19   
+ Test_Demo             9   
+ Test_HTTP             6   
+ Test_InstallAndLoad  24   
+ Test_InstallLatest   11   
+ Test_ListPkgs        22   
+ Test_ListRegistries   1   
+ Test_ListTags         6   
+ Test_ListVersions     8   
+ Test_Load            38   
+ Test_LoadBest         4   
+ Test_LX               5   
+ Test_Misc            19   
+ Test_Pack            19   
+ Test_PkgCfg           9   
+ Test_Publish         15   
+ Test_ReInstall        7   
+ Test_ScanRegistries   4   
+ Test_Server          63   
+ Test_Uninstall       15   
+ Test_UserCommands    42   
+ Test_ZZZ              4   
+</code></pre></div>
+<p>The number tells how many tests a group comprehends, so when you execute this command on your own machine, the numbers and rows will possibly be slightly different.</p>
+<p>You can also list all tests, say for the group <code>ScanRegistries</code>:</p>
+<div class="highlight"><pre><span></span><code>      T.ListTestFunctions &#39;Scan*&#39;
+ Test_ScanRegistries_002  Search for a specific package without specifying a Registry...
+ Test_ScanRegistries_003  Enforce a Registry scan after defining a non-existing Regis...
+ Test_ScanRegistries_004  Enforce a Registry scan after defining a non-existing Regis...
+ Test_ScanRegistries_005  Enforce a Registry scan. The first &quot;Registry&quot; returns HTML ...  
+</code></pre></div>
+<p>Notes:</p>
+<ul>
+<li>The wildcard character (<code>*</code>) can be used to identify a group</li>
+<li>The first comment line after any header lines is displayed</li>
+</ul>
+<p>You may specify <code>'view'</code> as the left argument to force the result of that function into a read-only <code>⎕ED</code> window.</p>
+<p>Let's assume that you want to execute all tests of the group <code>API</code>:</p>
+<div class="highlight"><pre><span></span><code>T.RunThese &#39;API&#39;
+</code></pre></div>
+<p>Or just the tests 8 and 20 of the group <code>API</code>:</p>
+<div class="highlight"><pre><span></span><code>T.RunThese &#39;API&#39; (8 20)
+</code></pre></div>
+<p>Or run the groups <code>API</code> and <code>Misc</code>:</p>
+<div class="highlight"><pre><span></span><code>T.RunThese &#39;API,Misc&#39;
+</code></pre></div>
+<p>Or run all tests but <code>UserCommand</code>:</p>
+<div class="highlight"><pre><span></span><code>T.RunThese &#39;~UserCommand&#39;
+</code></pre></div>
+<p>Last but not least you may specify a 1 as the left argument: this makes the test framework stop just before any particular test function is executed. This can be handy to hunt down a bug, or any unexpected behaviour.</p>
+<div class="highlight"><pre><span></span><code>1 T.RunThese &#39;API&#39;
+</code></pre></div>
+<p>The test framework offers many more options and features, refer to the documentation for exploring them: go to <a href="https://github.com/aplteam/Tester2">https://github.com/aplteam/Tester2</a> (full picture) or execute <code>]ADOC #.Tatin.Tester2</code> (reference).</p>
+<h3 id="tests-as-part-of-an-automated-build">Tests as part of an automated build</h3>
+<p>You may wish to execute the tests that do not require a human in front of the monitor as part of an automated build process.
+Tatin is prepared for this.</p>
+<p>You can start the test suite either from APL or from the command line.</p>
+<h4 id="running-the-test-suite-from-apl">Running the test suite from APL</h4>
+<p>Call this function:</p>
+<div class="highlight"><pre><span></span><code>#.Tatin.TestCases.RunBatchTests 1
+</code></pre></div>
+<p>The <code>1</code> provided as the right argument is just insurance against accidental calls.</p>
+<p>When running the test suite with the batch flag set, as <code>RunBatchTests</code> does, is fundamentally different in several respects:</p>
+<ul>
+<li>A Tatin server that listens (by default) on port 5001 is started (and is also shut down) by the test suite itself.</li>
+<li>By default all errors are trapped. </li>
+</ul>
+<p>If you need to track down a bug then you don't want this: in that case, pass a <code>1</code> as the left argument: this is treated as "debug" flag.</p>
+<p>Of course <code>RunBatchTests</code> does not execute any test cases that require a human in front of the monitor, but the number of such tests is small anyway.</p>
+<p><code>RunBatchTests</code> checks the command line:</p>
+<ul>
+<li>In case <code>OFF2=1</code> was specified on the command line then <code>⎕OFF</code> is executed after the last test case got executed.</li>
+</ul>
+<p>If one or more test cases failed then <code>⎕OFF 123</code> is executed. That allows the calling environment to check whether the test suite was executed successfully in its entirety or not.</p>
+<ul>
+<li>If <code>OFF2=1</code> was not specified a message is printed to the session, indicating success or failure.</li>
+</ul>
+<p>Note that <code>OFF=1</code> would kind of also work, but it would make Plodder <code>⎕OFF</code>, the underlying HTTP server used by Tatin. That might be too early. For example, you cannot get a code coverage report then.</p>
+<h4 id="running-the-test-suite-from-a-console-or-terminal">Running the test suite from a console or terminal</h4>
+<p>There are two scripts available in the Tatin root directory:</p>
+<ol>
+<li>
+<p><code>RunTests.bat</code> if you want to run the batch tests under Windows</p>
+</li>
+<li>
+<p><code>RunTests.sh</code> if you want to run the batch tests on a non-Windows platform</p>
+</li>
+</ol>
+<p>These are templates: check their contents, you might need to make amendments. </p>
+<h2 id="how-to-create-a-new-version">How to create a new version</h2>
+<h3 id="ov1">Overview</h3>
+<p>Usually, your job is done once you've created a Pull Request (PR). However, here we document what the administrator of the Tatin project on GitHub needs to do once she has accepted at least one PR or finished her work on a branch.</p>
+<p>You may ask Cider how to create a new version of Tatin:</p>
+<div class="highlight"><pre><span></span><code>      ]Cider.Make
+#.Tatin.#.Tatin.Admin.Make 0 ⍝ Execute this for creating a new version
+</code></pre></div>
+<p>Syntax:</p>
+<ul>
+<li>The right argument must be a Boolean:</li>
+<li><code>0</code> means that a human is sitting in front of the monitor and can be asked questions or perform actions</li>
+<li><code>1</code> means that no human is available; use this in case you want to create a new version automatically, for example from a batch script</li>
+<li>The optional left argument is a Boolean that defaults to <code>0</code>, see below for details.</li>
+</ul>
+<p>It would mean that the instances of Dyalog started to create the Client and the Server won't execute the <code>lx</code> command line parameter, allowing you to run the code in the Tracer.</p>
+<p>Notes:</p>
+<ul>
+<li>The build ID is always bumped when you create a new version.</li>
+<li>The <code>Make</code> function will fire up two instances of Dyalog APL, one for creating the client version, one for creating the server version. The optional left argument, if 1,  prevents the interpreter from running the code straight away. </li>
+</ul>
+<p>A&gt; ### The <code>load</code> and <code>lx</code> command line parameters
+A&gt; Despite the name of the left argument (<code>noQLX</code>) it is not associated with <code>⎕LX</code>: for this to work the command line parameters <code>load</code> and <code>lx</code> are invoked, and <code>-x</code> is added in case <code>noQLX</code> is 1, preventing the interpreter from executing the expression noted as <code>lx.</code> 
+A&gt;
+A&gt; If this looks unfamiliar to you: the options <code>lx</code> and <code>load</code> were introduced in 18.0.</p>
+<p>The <code>Make</code> function performs the following steps:</p>
+<ol>
+<li>
+<p>It runs <code>Tatin.Admin.MakeClient</code></p>
+</li>
+<li>
+<p>It compiles the documentation (markdown) to HTML files and distributes the files</p>
+</li>
+<li>
+<p>It runs <code>#.Tatin.Admin.MakeServer</code></p>
+</li>
+</ol>
+<p>If the right argument was a <code>0</code> then it will also ask you whether you want to attempt an update for all packages Tatin itself depends on, and it would also ask you whether the new version of the Tatin Client should be copied to the <code>MyUCMDs/</code> folder.</p>
+<p>In the process, the <code>Dist/</code> folder will be recreated from scratch. The <code>.zip</code> files in <code>Dist/</code> are to be released on GitHub. The <code>Dist/</code> folder will not appear on GitHub due to <code>.gitignore</code>.</p>
+<p>There will be three zip files:</p>
+<div class="highlight"><pre><span></span><code>Tatin-Client-{major}.{minor}.{patch}.zip
+Tatin-Documentation-{major}.{minor}.{patch}.zip
+Tatin-Server-{major}.{minor}.{patch}.zip
+</code></pre></div>
+<h2 id="creating-a-document-for-proofreading">Creating a document for proofreading</h2>
+<p>There is a function that creates a single HTML file from all the Tatin markdown documentation. That makes proofreading significantly easier:</p>
+<div class="highlight"><pre><span></span><code>      htmlFilename←#.Tatin.Admin.CreateProofReadDocument 1
+</code></pre></div>
+<p>Now open that file with the word processor of your choice and use its spell-checking capabilities.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

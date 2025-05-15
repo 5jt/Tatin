@@ -1,0 +1,1842 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How Tatin deals with conflicting requirements for package versions">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../glossary/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin: Load and Update - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../style/main.css">
+    
+      <link rel="stylesheet" href="../style/extra.css">
+    
+      <link rel="stylesheet" href="../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tatins-load-and-update-strategy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin: Load and Update
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-version-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum version selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum version selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tatins-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tatin’s strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forcing-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forcing updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing versions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loading dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-the-latest-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the latest version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-installed-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading installed packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-a-principal-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove a principal package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implicit-downgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implicit downgrading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-package-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a package manually
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downgrade
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-version-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum version selection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum version selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tatins-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tatin’s strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forcing-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forcing updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparing versions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loading dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-the-latest-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the latest version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-installed-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading installed packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-a-principal-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove a principal package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implicit-downgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implicit downgrading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-package-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add a package manually
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downgrade
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tatins-load-and-update-strategy">Tatin’s load and update strategy</h1>
+<div class="admonition abstract">
+<p class="admonition-title">How Tatin deals with conflicting requirements for package versions</p>
+</div>
+<p>As you incorporate packages and their dependencies into your application,
+you see different packages sometimes specify as dependencies different versions of the same package.
+As a package manager, Tatin has policies for resolving these conflicts.</p>
+<p>You can <a href="../get-started/">get started</a> without grasping these policies,
+but they have important consequences you will eventually need to understand.</p>
+<h2 id="minimum-version-selection"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M208 80c0-26.5 21.5-48 48-48h64c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-8v40h152c30.9 0 56 25.1 56 56v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-64c-26.5 0-48-21.5-48-48v-64c0-26.5 21.5-48 48-48h8v-32c0-4.4-3.6-8-8-8H312v40h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-64c-26.5 0-48-21.5-48-48v-64c0-26.5 21.5-48 48-48h8v-40H112c-4.4 0-8 3.6-8 8v32h8c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48v-64c0-26.5 21.5-48 48-48h8v-32c0-30.9 25.1-56 56-56h152v-40h-8c-26.5 0-48-21.5-48-48z"/></svg></span> Minimum version selection</h2>
+<p>Suppose you need packages, <code>Foo</code> and <code>Goo</code>.
+Both rely on package <code>Zoo</code>; but while <code>Foo</code> requests <code>Zoo</code> 1.1.1,
+<code>Goo</code> requires version 1.2.0.</p>
+<pre><code>         Zoo-1.0.0
+         Zoo-1.1.0
+Foo ---&gt; Zoo-1.1.1
+Goo ---&gt; Zoo-1.2.0
+         Zoo-1.3.0
+         Zoo-2.0.0
+</code></pre>
+<p>The best available version 1 of <code>Zoo</code> is 1.3.0.
+There is also a later major version: 2.0.0.</p>
+<p>Version 2.0.0 is not an option, because it is considered a completely different package and so ignored.</p>
+<p>From <a href="https://semver.org">semantic versioning</a> we know <code>Goo</code> relies on features of <code>Zoo</code> new in version 1.2.0,
+and would break on version 1.1.1, which doesn’t have them.</p>
+<h3 id="strategy-options">Strategy options</h3>
+<p>Several strategies are possible:</p>
+<ol>
+<li>Load both versions of <code>Zoo</code>: let <code>Foo</code> use 1.1.1 and <code>Goo</code> 1.2.0.</li>
+<li>Load <code>Zoo</code> version 1.2.0 and let <code>Zoo</code> and <code>Goo</code> both use it.</li>
+<li>Check the server, load the latest version available (1.3.0) and use that.</li>
+</ol>
+<p>Each of these options is used by different package managers in the wild.
+There is no consensus on what is best.</p>
+<p>Strategy (3) appeals to many programmers: you are always up-to-date, and you always get the latest fixes when you build your application. Great!</p>
+<p>But on reflection it looks much less appealing:</p>
+<ol>
+<li>Build your application, including updated dependencies</li>
+<li>Run your test cases; they all pass <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg></span></li>
+<li>Rebuild your application without changing <em>anything</em></li>
+<li>Rerun your test cases; but this time they fail <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256z"/></svg></span></li>
+</ol>
+<p>This situation arises if, between the first and second build, the author of a dependency releases a new version with bugs in it. The second build fetches it,
+producing a different outcome – <em>even though you haven’t made any changes.</em></p>
+<h3 id="tatins-strategy">Tatin’s strategy</h3>
+<p>As appealing as an automated update mechanism might seem, you’d want your builds to be 100% reproducible, right?</p>
+<p>So, when asked to load installed packages, Tatin will do exactly that:</p>
+<ul>
+<li>load the packages defined as required by the configuration files of the main packages <code>Foo</code> and <code>Goo</code></li>
+<li><strong>except</strong> when a package is requested <em>more than once</em>, and with different minor and/or patch numbers, Tatin uses <em>the latest installed version</em> (which might or might not be the latest one available)</li>
+</ul>
+<div class="admonition tip inline end">
+<p class="admonition-title">Updating dependencies</p>
+<p>Tatin does not update dependencies for you,
+but helps you discover whether later packages are available.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M9.4 86.6c-12.5-12.5-12.5-32.7 0-45.2s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256zM256 416h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg></span>
+<a href="../user-commands/#check-for-later-versions"><code>]CheckForLaterVersions</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M9.4 86.6c-12.5-12.5-12.5-32.7 0-45.2s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256zM256 416h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg></span>
+<a href="../user-commands/#reinstall-dependencies"><code>]ReInstallDependencies</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span>
+<a href="../api/#reinstall-dependencies"><code>ReInstallDependencies</code></a></p>
+</div>
+<p>In our example</p>
+<ul>
+<li><code>Zoo</code> is requested and installed twice</li>
+<li>Tatin loads 1.2.0 just once (because it is requested by <code>Goo</code>)</li>
+<li>1.3.0 is ignored because it is not requested and so not installed</li>
+</ul>
+<p>This means <code>Foo</code> will also use version 1.2.0 of <code>Zoo</code>.</p>
+<p>This strategy is called <a href="https://research.swtch.com/vgo-mvs" title="Link to the paper defining it">Minimal Version Selection</a> (MVS).
+It guarantees that when you rebuild you get the same result, but it will grab the latest installed version.</p>
+<h3 id="forcing-updates">Forcing updates</h3>
+<p>Suppose a package of yours depends on someone else’s package <code>Foo</code>, which in turn depends on <code>Goo</code> 1.1.0 – and while using <code>Foo</code> you discover <code>Goo</code> 1.1.0 has a bug.</p>
+<p>You write to the author of <code>Foo</code>, saying <code>Goo</code> 1.1.1 is available and fixes that very bug, but you get no reply, and you have only two weeks to your deadline.</p>
+<p><strong>Solution</strong>
+Create a package <code>Dummy</code> that does nothing, but declares a dependency on <code>Goo</code> 1.1.1.
+<em>Voila!</em> Thanks to MVS, everything works.</p>
+<h3 id="comparing-versions">Comparing versions</h3>
+<p>As long as the patch is a digit, precedence is easy to determine.</p>
+<p>Precedence is obvious for</p>
+<pre><code>group-name-1.0.0
+group-name-1.1.0
+</code></pre>
+<p>less so for</p>
+<pre><code>group-name-1.0.0-alpha
+group-name-1.1.0-beta
+</code></pre>
+<p>and cannot be determined with</p>
+<pre><code>group-name-1.0.0-TryFeature1
+group-name-1.1.0-FixFor234
+</code></pre>
+<p>Packages, once published, cannot be altered.
+So if the patch contains a text description, Tatin uses <a href="../package-configuration/#read-only-settings">publication date</a> to determine the correct order.</p>
+<h2 id="loading-dependencies"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M640 0v400c0 61.9-50.1 112-112 112-61 0-110.5-48.7-112-109.3L48.4 502.9c-17.1 4.6-34.6-5.4-39.3-22.5s5.4-34.6 22.5-39.3L352 353.8V64c0-35.3 28.7-64 64-64zm-64 400a48 48 0 1 0-96 0 48 48 0 1 0 96 0M23.1 207.7c-4.6-17.1 5.6-34.6 22.6-39.2l46.4-12.4 20.7 77.3c2.3 8.5 11.1 13.6 19.6 11.3l30.9-8.3c8.5-2.3 13.6-11.1 11.3-19.6l-20.7-77.3 46.4-12.4c17.1-4.6 34.6 5.6 39.2 22.6l41.4 154.5c4.6 17.1-5.6 34.6-22.6 39.2l-154.6 41.5c-17.1 4.6-34.6-5.6-39.2-22.6z"/></svg></span> Loading dependencies</h2>
+<p>Imagine these packages all hosted by a Tatin server with alias <code>MyTatin</code>.</p>
+<pre><code>mygroup-Foo-1.0.0 ---&gt; Zoo-1.1.1
+mygroup-Goo-2.1.0 ---&gt; Zoo-1.2.0
+                       Zoo-1.3.0
+</code></pre>
+<p>While <code>Foo</code> relies on <code>Zoo</code> 1.1.1, <code>Goo</code> needs <code>Zoo</code> 1.2.0.
+What does Tatin do about this?</p>
+<p>It depends on what you do.
+Let’s first load <code>Zoo</code> and <code>Goo</code> into the workspace, the usual way to inspect a package:</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">LoadPackages</span><span class="w"> </span><span class="sr">[</span><span class="nv">MyTatin</span><span class="sr">]</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Foo</span><span class="o">-</span><span class="m">1.0.0</span><span class="w"> </span><span class="c1">#.MyPkgs</span>
+<span class="c1">#.MyPkgs.Foo</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">LoadPackages</span><span class="w"> </span><span class="sr">[</span><span class="nv">MyTatin</span><span class="sr">]</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Goo</span><span class="o">-</span><span class="m">2.1.0</span><span class="w"> </span><span class="c1">#.MyPkgs</span>
+<span class="c1">#.MyPkgs.Goo</span>
+<span class="w">      </span><span class="c1">#.MyPkgs.⎕NL ⍳16</span>
+<span class="nv">Foo</span>
+<span class="nv">Goo</span>
+</code></pre></div>
+<h3 id="getting-the-latest-version">Getting the latest version</h3>
+<!-- FIXME What does Foo-1.3.0 depend on? -->
+<p>Suppose version 1.3.0 of <code>Foo</code> is the latest available with major number&nbsp;1,
+then this would have been sufficient:</p>
+<pre><code>]TATIN.LoadPackages [MyTatin]/mygroup-Foo-1 #.MyPkgs
+</code></pre>
+<p>Note neither the minor nor the patch number has been specified.</p>
+<p>Suppose version 2.1.0 of <code>Goo</code> is the very latest version available, and that’s the version you want to use,
+then this would have been sufficient:</p>
+<pre><code>]TATIN.LoadPackages [MyTatin]/mygroup-Goo #.MyPkgs
+</code></pre>
+<p>In this case not even the major number has been specified.</p>
+<p>You wanted <code>Foo</code> and <code>Goo</code> loaded into <code>#.MyPkgs</code>, and that's exactly what Tatin did.
+But where are the dependencies?</p>
+<div class="admonition detail inline end">
+<p class="admonition-title">Where Tatin really keeps packages</p>
+<p><code>#.MyPkgs</code> just contains references to where the packages have been loaded into, the namespace <code>#._tatin</code>.</p>
+</div>
+<p>Looking under the covers:</p>
+<pre><code>      #._tatin.⎕NL 9
+mygroup_Foo_1_0_0
+mygroup_Goo_2_1_3
+mygroup_Zoo_1_1_1
+mygroup_Zoo_1_2_0
+</code></pre>
+<p>Both versions of <code>Zoo</code> have been loaded.
+That’s because the two <code>Load</code> operations are independent, so minimal version selection cannot be applied.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M9.4 86.6c-12.5-12.5-12.5-32.7 0-45.2s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256zM256 416h288c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg></span>
+<a href="../user-commands/#check-for-later-version"><code>]CheckForLaterVersion</code></a><br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span>
+<a href="../api/#check-for-later-version"><code>CheckForLaterVersion</code></a></p>
+<h2 id="installing-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M640 0v400c0 61.9-50.1 112-112 112-61 0-110.5-48.7-112-109.3L48.4 502.9c-17.1 4.6-34.6-5.4-39.3-22.5s5.4-34.6 22.5-39.3L352 353.8V64c0-35.3 28.7-64 64-64zm-64 400a48 48 0 1 0-96 0 48 48 0 1 0 96 0M23.1 207.7c-4.6-17.1 5.6-34.6 22.6-39.2l46.4-12.4 20.7 77.3c2.3 8.5 11.1 13.6 19.6 11.3l30.9-8.3c8.5-2.3 13.6-11.1 11.3-19.6l-20.7-77.3 46.4-12.4c17.1-4.6 34.6 5.6 39.2 22.6l41.4 154.5c4.6 17.1-5.6 34.6-22.6 39.2l-154.6 41.5c-17.1 4.6-34.6-5.6-39.2-22.6z"/></svg></span> Installing packages</h2>
+<p>To incorporate packages into an application, they must be installed.
+In the following example, we install two packages, <code>Foo</code> and <code>Goo</code>. Both require <code>Zoo</code>, so <code>Zoo</code> gets installed as a side effect.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕NEXISTS</span><span class="w"> </span><span class="s1">&#39;/myPkgs&#39;</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">InstallPackages</span><span class="w"> </span><span class="sr">[</span><span class="nv">MyTatin</span><span class="sr">]</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Foo</span><span class="o">-</span><span class="m">1.0.0</span><span class="w"> </span><span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Foo</span><span class="o">-</span><span class="m">1.0.0</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">InstallPackages</span><span class="w"> </span><span class="sr">[</span><span class="nv">MyTatin</span><span class="sr">]</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Goo</span><span class="o">-</span><span class="m">2.1.0</span><span class="w"> </span><span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Goo</span><span class="o">-</span><span class="m">2.1.0</span>
+<span class="w">      </span><span class="o">⍪⊃</span><span class="nf">⎕NINFO</span><span class="w"> </span><span class="na">⍠</span><span class="w"> </span><span class="m">1</span><span class="o">⊢</span><span class="s1">&#39;/myPkgs/*&#39;</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">apl</span><span class="o">-</span><span class="nv">buildlist</span><span class="na">.</span><span class="nv">json</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">apl</span><span class="o">-</span><span class="nv">dependencies</span><span class="na">.</span><span class="nv">txt</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Foo</span><span class="o">-</span><span class="m">1.0.0</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Goo</span><span class="o">-</span><span class="m">2.1.0</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Zoo</span><span class="o">-</span><span class="m">1.1.1</span>
+<span class="na">/</span><span class="nv">myPkgs</span><span class="na">/</span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Zoo</span><span class="o">-</span><span class="m">1.2.0</span>
+</code></pre></div>
+<p>Compare the dependency file and the build list:</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊃</span><span class="nf">⎕NGET</span><span class="w"> </span><span class="s1">&#39;/myPkgs/apl-dependencies.txt&#39;</span><span class="w">    </span><span class="c1">⍝ dependency file</span>
+<span class="nv">mygroup</span><span class="o">-</span><span class="nv">Foo</span><span class="o">-</span><span class="m">1.0.0</span>
+<span class="nv">mygroup</span><span class="o">-</span><span class="nv">Goo</span><span class="o">-</span><span class="m">2.1.0</span>
+
+<span class="w">      </span><span class="nv">json</span><span class="kd">←</span><span class="o">⊃</span><span class="nf">⎕NGET</span><span class="s1">&#39;/myPkgs/apl-buildlist.json&#39;</span><span class="w">  </span><span class="c1">⍝ build list</span>
+<span class="w">      </span><span class="c1">#.q←⎕JSON ⍠ (&#39;Dialect&#39; &#39;JSON5&#39;) ⊢ json</span>
+<span class="w">      </span><span class="o">⍉↑</span><span class="c1">#.q.(principal packageID)</span>
+<span class="m">1</span><span class="w">  </span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Foo</span><span class="o">-</span><span class="m">1.0.0</span>
+<span class="m">0</span><span class="w">  </span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Zoo</span><span class="o">-</span><span class="m">1.1.1</span>
+<span class="m">1</span><span class="w">  </span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Goo</span><span class="o">-</span><span class="m">2.1.0</span>
+<span class="m">0</span><span class="w">  </span><span class="nv">mygroup</span><span class="o">-</span><span class="nv">Zoo</span><span class="o">-</span><span class="m">1.2.0</span>
+</code></pre></div>
+<p>Above, the first column flags the principal packages.</p>
+<ul>
+<li>The <strong>dependency file</strong> lists the principal packages installed.</li>
+<li>The <strong>build list</strong> comprises not only the two principal packages but also the dependencies.</li>
+</ul>
+<h2 id="loading-installed-packages"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M640 0v400c0 61.9-50.1 112-112 112-61 0-110.5-48.7-112-109.3L48.4 502.9c-17.1 4.6-34.6-5.4-39.3-22.5s5.4-34.6 22.5-39.3L352 353.8V64c0-35.3 28.7-64 64-64zm-64 400a48 48 0 1 0-96 0 48 48 0 1 0 96 0M23.1 207.7c-4.6-17.1 5.6-34.6 22.6-39.2l46.4-12.4 20.7 77.3c2.3 8.5 11.1 13.6 19.6 11.3l30.9-8.3c8.5-2.3 13.6-11.1 11.3-19.6l-20.7-77.3 46.4-12.4c17.1-4.6 34.6 5.6 39.2 22.6l41.4 154.5c4.6 17.1-5.6 34.6-22.6 39.2l-154.6 41.5c-17.1 4.6-34.6-5.6-39.2-22.6z"/></svg></span> Loading installed packages</h2>
+<p>Loading packages puts them in your workspace;
+installing packages puts them in your file system.</p>
+<p>Loading <em>installed</em> packages lets Tatin use MVS to optimise what it loads.</p>
+<p><img alt="Loading installed packages" src="../img/load-packages.png" /></p>
+<p>Load installed packages with command <a href="../user-commands/#load-dependencies"><code>]LoadDependencies</code></a>.
+Its argument is a folder with files <code>apl-dependencies.txt</code> and <code>apl-buildlist.json</code>,
+created when you installed your first package there.</p>
+<p>You can also specify a second argument: where to create the references pointing to the principal packages.<sup id="fnref:defaultns"><a class="footnote-ref" href="#fn:defaultns">1</a></sup></p>
+<div class="highlight"><pre><span></span><code>]TATIN.LoadDependencies /myPkgs/ #.Temp
+</code></pre></div>
+<p>If the command finds the dependency file is newer than the build list, it checks for inconsistencies: if none, it reconstructs the build list from scratch.</p>
+<p>Then it prunes the build list and loads the remaining packages.</p>
+<p>In our example the pruning eliminates <code>Zoo</code> 1.1.1:
+rather than loading <code>Zoo</code> twice, Tatin loads only the latest <strong>installed</strong> version.
+Both <code>Foo</code> and <code>Goo</code> will use <code>Zoo</code> version 1.2.0.</p>
+<h2 id="remove-a-principal-package"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0h120.4c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64s14.3-32 32-32h96zM32 128h384v320c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64zm96 64c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16m96 0c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16m96 0c-8.8 0-16 7.2-16 16v224c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16"/></svg></span> Remove a principal package</h2>
+<p>Suppose you no longer need <code>Goo</code>.</p>
+<p>To remove it, use either command <a href="../user-commands/#uninstall-package"><code>]UnInstallPackage</code></a> or API function <a href="../api/#uninstall-package"><code>UnInstallPackage</code></a>.
+This will remove not only the principal package, but any of its dependencies that are neither principal packages nor dependencies of other packages.</p>
+<details class="warning">
+<summary>Do not manually remove packages from your application’s packages folder.</summary>
+<p>Tatin manages these dependency relations; don’t interfere.</p>
+</details>
+<h2 id="implicit-downgrading"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M290.7 57.4 57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7l105.3.1h224c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9l130.7-130.7c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zm6.7 358.6H182.6l-80-80 124.7-124.7 137.4 137.4z"/></svg></span> Implicit downgrading</h2>
+<p>Removing a principal package might imply a downgrade.</p>
+<p>Consider, say, these packages (dependencies indented):</p>
+<pre><code>group-foo-1.0.0
+  group-zoo-1.1.0
+group-boo-1.0.0
+  group-zoo-1.0.0
+</code></pre>
+<p>Minimal version selection (MVS) means both <code>foo</code> and <code>boo</code> use <code>zoo</code> 1.1 when loaded.
+What happens if you remove <code>boo</code>?</p>
+<p>Either could be argued:</p>
+<ol>
+<li><code>zoo-1.1.0</code> should survive this and still be used</li>
+<li>a package not required anywhere shouldn’t be used</li>
+</ol>
+<p>A full implementation of MVS requires (1).
+For now, Tatin uses (2) as a more pragmatic approach.</p>
+<p>It is not obvious what is best here.
+Tatin’s strategy might change after feedback.</p>
+<h2 id="add-a-package-manually"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 0a128 128 0 1 1 0 256 128 128 0 1 1 0-256M40 64c22.1 0 40 17.9 40 40v160.2c0 17 6.7 33.3 18.7 45.3l51.1 51.1c8.3 8.3 21.3 9.6 31 3.1 12.9-8.6 14.7-26.9 3.7-37.8l-15.2-15.2-32-32c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l32 32 15.2 15.2 25.3 25.3c21 21 32.8 49.5 32.8 79.2V464c0 26.5-21.5 48-48 48h-66.7c-17 0-33.3-6.7-45.3-18.7l-99.8-99.9C10.1 375.4 0 351 0 325.5V104c0-22.1 17.9-40 40-40m560 0c22.1 0 40 17.9 40 40v221.5c0 25.5-10.1 49.9-28.1 67.9L512 493.3c-12 12-28.3 18.7-45.3 18.7H400c-26.5 0-48-21.5-48-48v-78.9c0-29.7 11.8-58.2 32.8-79.2l25.3-25.3 15.2-15.2 32-32c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-32 32-15.2 15.2c-11 11-9.2 29.2 3.7 37.8 9.7 6.5 22.7 5.2 31-3.1l51.1-51.1c12-12 18.7-28.3 18.7-45.3V104c0-22.1 17.9-40 40-40z"/></svg></span> Add a package manually</h2>
+<p>To add a package that has no dependencies you could
+just add it to the file <code>apl-dependencies.txt</code>
+and copy the package over.</p>
+<p>That would not cause a problem.
+When the <code>LoadDependencies</code> command is next issued,
+Tatin sees the file <code>apl-dependencies.txt</code> changed after <code>apl-buildlist.json</code> was last modified,
+performs some health checks, and if all is well, recreates the build list.
+(This is insurance against people manually introducing errors into <code>apl-dependencies.txt</code>)</p>
+<h2 id="downgrade"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32v32h128V32c0-17.7 14.3-32 32-32s32 14.3 32 32v32h48c26.5 0 48 21.5 48 48v48H0v-48c0-26.5 21.5-48 48-48h48V32c0-17.7 14.3-32 32-32M0 192h448v272c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48zm305 113c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47z"/></svg></span> Downgrade</h2>
+<p>Sometimes you might need to downgrade, for example from a version you find buggy, to an older version known to be okay.</p>
+<p>Tatin does not offer help here; you need to do this yourself.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:defaultns">
+<p>(Defaults to <code>#</code> if that is your current namespace. If you are, say, in <code>#.foo</code> then Tatin asks whether to install into <code>#</code> or <code>#.foo</code>.)&#160;<a class="footnote-backref" href="#fnref:defaultns" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1777 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin: Installing & Updating - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style/main.css">
+    
+      <link rel="stylesheet" href="../../style/extra.css">
+    
+      <link rel="stylesheet" href="../../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-and-updating-the-tatin-client" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin: Installing & Updating
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Tatin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Tatin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#190" class="md-nav__link">
+    <span class="md-ellipsis">
+      19.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-deactivating-resetting-updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activating, deactivating, resetting, updating
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Activating, deactivating, resetting, updating">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activating
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deactivating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deactivating
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resetting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resetting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182" class="md-nav__link">
+    <span class="md-ellipsis">
+      18.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-correct-installation-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the correct installation folder?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is the correct installation folder?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tell-dyalog-where-to-look-for-user-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tell Dyalog where to look for user commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initializing-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initializing Tatin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-setupdyalog-182" class="md-nav__link">
+    <span class="md-ellipsis">
+      On setup.dyalog (18.2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="On setup.dyalog (18.2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-setupdyalog-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does setup.dyalog work?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#there-is-no-such-script-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      There is no such script yet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#there-is-already-such-a-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      There is already such a script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-tatin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating Tatin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating Tatin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tatin-versions-before-01050" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tatin versions before 0.105.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tatin-version-01050-and-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tatin version 0.105.0 and later
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-updating-goes-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      When updating goes wrong
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="installing-and-updating-the-tatin-client">Installing and Updating the Tatin Client</h1>
+<h2 id="introduction">Introduction</h2>
+<p>You don't need to worry about installing Tatin if you use version 19.0 of Dyalog: In 19.0 Tatin just needs to be activated with the <code>]activate</code> user command.</p>
+<p>In 18.2 you need to install Tatin yourself.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>
+<p>Tatin needs a Unicode version of Dyalog</p>
+</li>
+<li>
+<p>Dyalog version 18.2 or better</p>
+</li>
+<li>
+<p>Link version 3.0.8 or better</p>
+</li>
+</ul>
+<p>Note that when you call <code>]Tatin.Init</code>, Tatin will check whether those requirements are met.</p>
+<h2 id="installing-tatin">Installing Tatin</h2>
+<h3 id="190">19.0</h3>
+<p>Strictly speaking it is not necessary to install Tatin for 19.0, because Tatin is part of a 19.0-installation. However, before it can be used it must be activated. That's because in 19.0 it is still experimental.</p>
+<p>Note that activating is available in 19.0 only. Activating is not supported in 18.2.</p>
+<p>In order to activate Tatin, execute</p>
+<div class="highlight"><pre><span></span><code>]Activate -??
+</code></pre></div>
+<p>and follow the instructions.</p>
+<h3 id="activating-deactivating-resetting-updating">Activating, deactivating, resetting, updating</h3>
+<h4 id="activating">Activating</h4>
+<p>Activating means to copy Tatin (and possibly Cider) from the Dyalog installation directory's sub folder <code>Experimental\CiderTatin\</code> to either a version specific folder (the default) or a version agnostic folder in your home directory, and to instruct the user command framework to scan the chosen directory for user commands.</p>
+<p>Which folder that is exactly depends on the operating system:</p>
+<div class="highlight"><pre><span></span><code>⍝⍝⍝ Version specific
+
+⍝ Windows
+&lt;HOME&gt;\Documents\Dyalog APL-64 19.0 Unicode Files
+
+⍝ Others
+&lt;HOME&gt;/dyalog.190U64.files
+
+⍝⍝⍝ Version agnostic
+
+⍝ Windows
+&lt;HOME&gt;\Documents\Dyalog APL Files
+
+⍝ Others
+&lt;HOME&gt;/dyalog.files
+</code></pre></div>
+<h4 id="deactivating">Deactivating</h4>
+<p>Deactivating means to remove Tatin (and possibly Cider) from that folder. It has its own user command:</p>
+<div class="highlight"><pre><span></span><code>]Deactivate [all|cider|tatin] [-versionagnostic]
+</code></pre></div>
+<h4 id="resetting">Resetting</h4>
+<p>Resetting means to replace the current version by the one the installation originally came with.</p>
+<p>This can be useful when you have updated Tatin with <code>]UpdateTatin</code> and then find the new version to be buggy.</p>
+<h4 id="updating">Updating</h4>
+<p>Updating means that the version that is currently available is updated to the latest version available from GitHub.</p>
+<p>This can be achieved with the user command <code>]UpdateTatin</code>.</p>
+<h3 id="182">18.2</h3>
+<p>Instructions:</p>
+<ol>
+<li>
+<p>Download the latest release of the Tatin client from <a href="https://github.com/aplteam/Tatin/releases">https://github.com/aplteam/Tatin/releases</a></p>
+</li>
+<li>
+<p>Unzipping the file will produce a subdirectory named <code>Tatin/</code> that you should then place in the appropriate installation folder discussed in a second</p>
+</li>
+</ol>
+<h3 id="what-is-the-correct-installation-folder">What is the correct installation folder?</h3>
+<p>Tatin must be installed into one of these folders dependening on your OS:</p>
+<p>Windows:
+<div class="highlight"><pre><span></span><code>C:\Users\&lt;⎕AN&gt;\Documents\Dyalog APL[-64] &lt;version&gt; Unicode Files\SessionExtensions\CiderTatin
+</code></pre></div></p>
+<p>Linux:
+<div class="highlight"><pre><span></span><code>/home/&lt;⎕AN&gt;/dyalog.&lt;version&gt;U&lt;bit&gt;.files/SessionExtensions/CiderTatin
+</code></pre></div></p>
+<p>Mac OS:
+<div class="highlight"><pre><span></span><code>/Users/&lt;⎕AN&gt;/dyalog.&lt;version&gt;U&lt;bit&gt;.files/SessionExtensions/CiderTatin
+</code></pre></div>
+However, these folders are version specific. Instead you might consider installing them into a version
+agnostic folder in order to make Tatin available to several versions of Dyalog at the same time.</p>
+<p>For that install into one of these folders:
+<div class="highlight"><pre><span></span><code>⍝ Windows
+C:\Users\&lt;⎕AN&gt;\Documents\Dyalog APL Files\SessionExtensions\CiderTatin
+
+⍝ Linux
+/home/&lt;⎕AN&gt;/dyalog.files/SessionExtensions/CiderTatin
+
+⍝ Mac OS
+/Users/&lt;⎕AN&gt;/dyalog.files/SessionExtensions/CiderTatin
+</code></pre></div></p>
+<p>As a result you should see something like this:</p>
+<div class="highlight"><pre><span></span><code>⍝ Windows
+...\Dyalog APL[-64] &lt;version&gt; Unicode Files\SessionExtensions\CiderTatin\Tatin
+
+⍝ Linux &amp; Mac OS
+.../dyalog.&lt;version&gt;&lt;bit&gt;.files/SessionExtensions/CiderTatin/Tatin
+</code></pre></div>
+<h4 id="tell-dyalog-where-to-look-for-user-commands">Tell Dyalog where to look for user commands</h4>
+<p>Though Tatin's user command script etc. is now in place, Dyalog does not know about it yet. To achieve that we have to add the folder to SALT's search path. This step needs to be carried out only once for version 18.2</p>
+<p>Execute one of the following commands:</p>
+<p>!&gt; ### Windows 
+<div class="highlight"><pre><span></span><code>]SALT.Settings cmddir &quot;,C:\Users\&lt;⎕AN&gt;\Documents\Dyalog APL-64 18.2 Unicode Files\SessionExtensions\CiderTatin&quot; -p
+
+!&gt; ### Linux
+</code></pre></div>
+]SALT.Settings cmddir ",/home/&lt;⎕AN&gt;/dyalog.182U64.files/SessionExtensions/CiderTatin -p</p>
+<p>!&gt; ###  Mac OS
+<div class="highlight"><pre><span></span><code>]SALT.Settings cmddir &quot;,/Users/&lt;⎕AN&gt;/dyalog.182U64.files/SessionExtensions/CiderTatin&quot; -p
+</code></pre></div></p>
+<p>Notes: </p>
+<ul>
+<li>Note the comma (<code>,</code>) in front of the path: it tells SALT to <em>add</em> the path, rather than using it as a replacement</li>
+<li>The <code>-p</code> stands for "permanent"; this makes sure your addition to the search path is permanent</li>
+<li>In case you installed Tatin into a version-agnostic folder you must specify that folder of course</li>
+</ul>
+<p>Any newly started instance of Dyalog now comes with the user command <code>]Tatin.*</code>.</p>
+<p>There is no point in having a function <code>Run.aplf</code> in place with 8.2: only in 19.0 did Dyalog add the feature that a function <code>Run.aplf</code> will be loaded and executed as part of Dyalog's bootstrapping procedure; in earlier versions such a function is not executed.</p>
+<p>As a side effect of executing any of the Tatin user commands the Tatin API will become available via <code>⎕SE.Tatin</code>.</p>
+<p>If you want the Tatin API to be available right from the start: this is discussed soon.</p>
+<h2 id="initializing-tatin">Initializing Tatin</h2>
+<p>Once installed, any suitable version of Dyalog will provide a list of the Tatin user commands once you enter:</p>
+<div class="highlight"><pre><span></span><code>      ]tatin -?
+</code></pre></div>
+<p>The script <code>Tatin.dyalog</code> is the interface between the Dyalog user command framework and the Tatin API.</p>
+<p>When any of the Tatin user commands is executed, it will check whether the API is already loaded --- that will be the case in 19.0 once Tatin is activated. If it's not available yet (18.2), it will be loaded.</p>
+<h2 id="on-setupdyalog-182">On <code>setup.dyalog</code> (18.2)</h2>
+<p>I&gt; This is 18.2 only because in later versions of Dyalog, Tatin's API will be available in <code>⎕SE</code> right from the start anyway.
+I&gt; 
+I&gt; You might want the Tatin API to be available right from the start in earlier versions of Dyalog as well, so that you can invoke any of the Tatin API functions without first executing a Tatin user command. 
+I&gt; 
+I&gt; What is the application for this? Well, you might want to have an automated build process available, for example.
+I&gt;
+I&gt; If you are not interested in this: skip it and carry on with <a href="#">Updating Tatin</a>.</p>
+<p>The way to achieve this goal requires the introduction or modification of a file <code>setup.dyalog</code> in your <code>MyUCMDs/</code> folder. </p>
+<p>Where to find the <code>MyUCMDs/</code> folder depends on your operating system:</p>
+<ul>
+<li>On Windows it's usually <code>C:\Users\{username}\Documents\</code></li>
+<li>On Linux (including the PI) it is <code>/home/{username}/</code></li>
+<li>On Mac OS it is <code>/Users/{username}/</code></li>
+</ul>
+<p>Note that only on Windows is the folder created as part of the installation routine. On other platforms you must create the folder yourself.</p>
+<h3 id="how-does-setupdyalog-work">How does <code>setup.dyalog</code> work?</h3>
+<p>Whenever an instance of Dyalog is fired up, it checks whether such a script exists. If that is the case it checks whether there is a function <code>Setup</code> in the script. </p>
+<p>If there is such a function then it is expected to be monadic; it will be executed automatically as part of the instantiating process of Dyalog APL.</p>
+<p>This can be used for many things like...</p>
+<ul>
+<li>making changes to the session</li>
+<li>specifying function keys </li>
+<li>loading stuff into <code>⎕SE</code></li>
+</ul>
+<p>In version 19.0 the <code>Run.aplf</code> function offers a better way to achieve that, rendering <code>setup.dyalog</code> superfluous.</p>
+<h3 id="there-is-no-such-script-yet">There is no such script yet</h3>
+<p>Create one that looks like this:</p>
+<div class="highlight"><pre><span></span><code>:Namespace SetItUp
+
+    ∇ {r}←Setup arg;⎕IO;⎕ML;dmx
+      r←⍬
+      ⎕IO←1 ⋄ ⎕ML←1
+      :If ~IfAtLeastVersion 19
+      :AndIf 0=≢⎕←AutoloadTatin ⎕SE.SALTUtils.DEBUG
+          {}⎕SE.SALTUtils.ResetUCMDcache -1
+      :EndIf
+    ∇
+
+    ∇ r←AutoloadTatin debug;wspath;path2Config
+      r←0 0⍴&#39;&#39;
+      :Trap debug/0
+          :If 0=⎕SE.⎕NC&#39;_Tatin&#39;  ⍝ In 19.0 it most likely will already be there!
+              :If ~IfAtLeastVersion 18
+                  r←&#39;Tatin not loaded: not compatible with this version of Dyalog&#39;
+              :ElseIf 80≠⎕DR&#39; &#39;              ⍝ Not in &quot;Classic&quot;
+                  r←&#39;Tatin not loaded: not compatible with Classic&#39;
+              :Else
+                  ⎕SE.⎕EX¨&#39;_Tatin&#39; &#39;Tatin&#39;
+                  wspath←1 GetProgramFilesFolder &#39;/SessionExtensions/CiderTatin/Tatin/Client.dws&#39;
+                  &#39;_Tatin&#39;⎕SE.⎕CY wspath
+                  path2Config←⊃⎕nparts ⎕SE._Tatin.Client.FindUserSettings ⎕AN
+                  &#39;Create!&#39;⎕SE._Tatin.Client.F.CheckPath path2Config
+                  &#39;Tatin&#39;⎕SE.⎕NS&#39;&#39;
+                  path2Config ⎕SE._Tatin.Admin.EstablishClientInQuadSE ⍬
+              :EndIf
+          :EndIf
+      :Else
+          r←&#39;Attempt to load Tatin failed with &#39;,⎕DMX.EM
+      :EndTrap
+    ∇
+
+      IfAtLeastVersion←{
+      ⍝ ⍵ is supposed to be a number like 15 or 17.1, representing a version of Dyalog APL.
+      ⍝ Returns a Boolean that is 1 only if the current version is at least as good.
+          ⍵≤{⊃(//)⎕VFI ⍵/⍨2&gt;+\&#39;.&#39;=⍵}2⊃# ⎕WG&#39;APLVersion&#39;
+      }
+
+    ∇ r←{versionAgnostic}GetProgramFilesFolder postFix;version;aplVersion;OS
+      ⍝ Returns the path to Dyalog&#39;s version-specific program files folder.\\
+      ⍝ Works on all platforms but returns different results.\\
+      ⍝ Under Windows typically:\\
+      ⍝ `C:\Users\&lt;⎕AN&gt;\Documents\Dyalog APL[-64] 19.0 Unicode Files&#39; ←→ GetMyUCMDsFolder
+      ⍝ ⍺ is optional and defaults to 0, meaning the version-agnostic folder is returned.
+      ⍝ If ⍺←1, the folder associated with the currently running version of Dyalog is returned.
+       versionAgnostic←{0&lt;⎕NC ⍵:⍎⍵ ⋄ 0}&#39;versionAgnostic&#39;
+       OS←3↑1⊃# ⎕WG&#39;APLVersion&#39;
+       postFix←{(((~&#39;/\&#39;∊⍨⊃⍵)∧0≠≢⍵)/&#39;/&#39;),⍵}postFix
+       aplVersion←# ⎕WG&#39;APLVersion&#39;
+       :If versionAgnostic
+           :If OS≡&#39;Win&#39;
+               version←((∨/&#39;-64&#39;⍷1⊃aplVersion)/&#39;-64&#39;),&#39; &#39;,({⍵/⍨2&gt;+\⍵=&#39;.&#39;}2⊃aplVersion),&#39; &#39;,(80=⎕DR&#39; &#39;)/&#39;Unicode&#39;
+               r←(2 ⎕NQ #&#39;GetEnvironment&#39; &#39;USERPROFILE&#39;),&#39;\Documents\Dyalog APL&#39;,version,&#39; Files&#39;,postFix
+           :Else
+               version←({&#39;.&#39;~⍨⍵/⍨2&gt;+\⍵=&#39;.&#39;}2⊃aplVersion),((80=⎕DR&#39; &#39;)/&#39;U&#39;),((1+∨/&#39;-64&#39;⍷1⊃aplVersion)⊃&#39;32&#39; &#39;64&#39;)
+               r←(⊃⎕SH&#39;echo $HOME&#39;),&#39;/dyalog.&#39;,version,&#39;.files&#39;,postFix
+           :EndIf
+       :Else
+           :If OS≡&#39;Win&#39;
+               r←(2 ⎕NQ #&#39;GetEnvironment&#39; &#39;USERPROFILE&#39;),&#39;\Documents\Dyalog APL Files&#39;,postFix
+           :Else
+               r←(⊃⎕SH&#39;echo $HOME&#39;),&#39;/dyalog.files&#39;,postFix
+           :EndIf
+       :EndIf
+   ∇
+
+:EndNamespace
+</code></pre></div>
+<h3 id="there-is-already-such-a-script">There is already such a script</h3>
+<p>Copy the functions <code>IfAtLeastVersion</code>, <code>GetProgramFilesFolder</code> and <code>AutoLoadTatin</code> from above into your own <code>setup.dyalog</code> script and then make sure that <code>AutoLoadTatin</code> is called from your <code>Setup</code> function. </p>
+<p>Also, call <code>{}⎕SE.SALTUtils.ResetUCMDcache -1</code> in case <code>AutoLoadTatin</code> returned an empty vector (read: was executed successfully) in order to make sure that the Tatin user commands are found.</p>
+<h2 id="updating-tatin">Updating Tatin</h2>
+<p>You've installed (18.2) or activated (later than 18.2) Tatin before and want to update it to the latest version.</p>
+<p>In that case you might need to perform some action, depending on how old your version of Tatin is.</p>
+<h3 id="tatin-versions-before-01050">Tatin versions before 0.105.0</h3>
+<p>Versions before 0.105.0 might have been installed into one of these folders:</p>
+<div class="highlight"><pre><span></span><code>C:\Users\&lt;user&gt;\Documents\MyUCMDs\     ⍝ Windows
+/users/&lt;user&gt;/MyUCMDs/                 ⍝ Mac-OS
+/home/&lt;user&gt;/MyUCMDs/                  ⍝ Linux
+</code></pre></div>
+<p>If that is the case then, in order to keep things simple, you are advised to remove the folder <code>Tatin</code> from the <code>MyUCMDs/</code> folder and install Tatin (and, if installed, Cider) from scratch rather than updating it.</p>
+<p>If have loaded Tatin into <code>⎕SE</code> with a script <code>setup.dyalog</code> you might need to make amendment to it.</p>
+<h3 id="tatin-version-01050-and-later">Tatin version 0.105.0 and later</h3>
+<p>Once you have Tatin 0.105.0 (or later) installed in the right place you can use <code>]Tatin.UpdateTatin</code> for updating Tatin to a later version.</p>
+<p>Just execute:</p>
+<p>```
+]Tatin.UpdateTatin
+````</p>
+<p>All necessary steps will be executed; eventually the new version number will be reported.</p>
+<p>Notes:</p>
+<ul>
+<li>
+<p>The command will put the release notes on display in your default browser</p>
+</li>
+<li>
+<p>Although Tatin is updated on disk, the workspace from which the update command was executed is not updated for technical reasons --- start a new instance of Dyalog to get the latest version</p>
+</li>
+<li>
+<p>19.0 and later only: Tatin's <code>Update</code> command overwrites the version in the installation directory in your home directory, not the version that came originally with Dyalog APL; that remains unchanged.</p>
+</li>
+</ul>
+<h3 id="when-updating-goes-wrong">When updating goes wrong</h3>
+<p>Debugging is the process of removing bugs from code, while programming is how you introduce them in the first place.</p>
+<p>There is always the possibility that the update process is itself buggy. Calling it again usually does not help, so you need an escape route.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">18.2 </label><label for="__tabbed_1_2">19.0 and later</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>The easiest way to recover it by uninstalling and then installing Tatin again.</p>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Execute <code>]DeActivate tatin</code> --- that removes Tatin</li>
+<li>Execute <code>]Activate tatin</code> --- that brings back the version of Tatin that your installation originally came with</li>
+<li>Execute <code>]Tatin.UpdateTatin</code> --- that will try to update to the latest version</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

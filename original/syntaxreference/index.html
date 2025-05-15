@@ -1,0 +1,2711 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tatin: Syntax Reference - Tatin User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Be+Vietnam+Pro:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Be Vietnam Pro";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style/main.css">
+    
+      <link rel="stylesheet" href="../../style/extra.css">
+    
+      <link rel="stylesheet" href="../../style/admonition-ucmdhelp.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tatin-syntax-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tatin User Guide" class="md-header__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tatin User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tatin: Syntax Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../get-started/" class="md-tabs__link">
+          
+  
+  
+  Use
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../publish/" class="md-tabs__link">
+          
+  
+  
+  Publish
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../host/" class="md-tabs__link">
+          
+  
+  
+  Host
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contribute/" class="md-tabs__link">
+          
+  
+  
+  Contribute
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tatin User Guide" class="md-nav__button md-logo" aria-label="Tatin User Guide" data-md-component="logo">
+      
+  <img src="../../img/tatin-logo.svg" alt="logo">
+
+    </a>
+    Tatin User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aplteam/Tatin" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    aplteam/Tatin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Tatin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../load-and-update-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Load and update strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tatin.dev/v1/documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Previous version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Use
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../get-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../older-versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Older versions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Publish
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Publish
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About publishing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publish-packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Publish packages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-publish/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../package-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Package configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../public-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Host
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Host
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About hosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secure-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-commands-host/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Develop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../create-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a new version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Github
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      The API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      BuildPackage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BuildPackage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencyfolder" class="md-nav__link">
+    <span class="md-ellipsis">
+      dependencyFolder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projectspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      projectSpace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projectpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      projectPath
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targetpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      targetPath
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionversion-parms" class="md-nav__link">
+    <span class="md-ellipsis">
+      version{#version-parms}
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="version{#version-parms}">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-starts-with-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      "version" starts with a "+"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-does-not-start-with-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      "version" does not start with a "+"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkforlaterversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      CheckForLaterVersion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClearCache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copyregistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      CopyRegistry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createapifromcfg" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateAPIfromCFG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateAPIfromCFG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typical-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typical scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Typical scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-single-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      A single namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-single-scripted-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      A single scripted namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-single-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      A single class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-single-function-or-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      A single function or operator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-mixture-of-several-apl-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      A mixture of several APL objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricting-whats-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricting what's "public"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createbuildparms" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateBuildParms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcopyregistryparms" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateCopyRegistryParms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createreinstallparms" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateReInstallParms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletepackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeletePackages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecatepackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeprecatePackage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finddependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      FindDependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdeletepolicy" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetDeletePolicy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdependencytree" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetDependencyTree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GetDependencyTree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-left-argument-append" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional left argument append
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getnocachingflag" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetNoCachingFlag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpathtopackagecache" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetPathToPackageCache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getuserhomefolder" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetUserHomeFolder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialisepackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      InitialisePackage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initpackageconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      InitPackageConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installpackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      InstallPackages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listdeprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListDeprecated
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListCache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listlicenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListLicenses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listpackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListPackages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ListPackages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#right-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Right argument
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Right argument">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Left argument
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Left argument">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packageid" class="md-nav__link">
+    <span class="md-ellipsis">
+      packageID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecated packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listregistries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListRegistries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listtags" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListTags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListVersions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loaddependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoadDependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LoadDependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#myucmds" class="md-nav__link">
+    <span class="md-ellipsis">
+      MyUCMDs/
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadpackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoadPackages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ping
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      PublishPackage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reinstalldependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReInstallDependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readpackageconfigfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReadPackageConfigFile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstallpackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnInstallPackages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tatin-syntax-reference">Tatin Syntax Reference</h1>
+<h2 id="user-commands">User Commands</h2>
+<p>Every user command comes with at least two levels of help, and a few even with a third level:</p>
+<ol>
+<li><code>-?</code> shows a brief description and the syntax</li>
+<li><code>-??</code> shows a detailed description of the command and its arguments and options</li>
+<li><code>-???</code> shows examples (only available for some commands)</li>
+</ol>
+<p>If the third level is available then <code>-??</code> shows this at the bottom:</p>
+<div class="highlight"><pre><span></span><code>]{user-command} -??? ⍝ Enter this for examples                                        
+</code></pre></div>
+<h2 id="the-api">The API</h2>
+<p>The API is established in <code>⎕SE.Tatin</code>. These are almost exclusively dfns that call a function in <code>⎕SE._Tatin</code>.</p>
+<p>While <code>⎕SE._Tatin</code> holds all packages loaded into <code>⎕SE</code>, among them those required by the Tatin client, <code>⎕SE.Tatin</code> holds the public interface of the Tatin client. A user is supposed to call functions in <code>Tatin</code> but not <code>_Tatin</code>.</p>
+<p>The API functions are listed alphabetically.</p>
+<h3 id="buildpackage">BuildPackage</h3>
+<div class="highlight"><pre><span></span><code>zipFilename←BuildPackage parameterSpace
+</code></pre></div>
+<p>ZIPs all files that are required for a package according to the specified parameters and creates a ZIP file containing these files in <code>parameterSpace.targetPath</code>.</p>
+<p>Requires a namespace with parameters as right argument, typically created by calling <code>CreateBuildParms</code> which requires a path to the project as right argument:</p>
+<div class="highlight"><pre><span></span><code>   parms←⎕SE.Cider.CreateBuildParms &#39;/path/2/project`
+   parms.⎕nl 2
+dependencyFolder
+namespace
+projectPath     
+targetPath   
+version         
+</code></pre></div>
+<h4 id="dependencyfolder">dependencyFolder</h4>
+<p>A folder with packages the project depends on. Might be empty, in case there are'nt any dependencies.</p>
+<h4 id="projectspace">projectSpace</h4>
+<p>This is optional. Set this to the namespace where the package project lives.</p>
+<p>Setting this makes sense under these conditions:</p>
+<ul>
+<li>The package project lives in the workspace</li>
+<li>You want the build number in <code>TatinVars.CONFIG</code> to be upated by <code>BuildPackage</code></li>
+</ul>
+<p><code>BuildPackage</code> bumps the build ID, but only on file. It cannot update it in the WS because it does not know where it lives, unless you tell it by setting <code>projectSpace</code> accordingly.</p>
+<p>If you do set <code>projectSpace</code>, then <code>BuildPackage</code> will scan that namespace recursively for <code>TatinVars</code> and update <code>TatinVars.CONFIG</code>.</p>
+<h4 id="projectpath">projectPath</h4>
+<p>The folder the package is going to be created from. To be specified as the right argument of <code>CreateBuildParms</code>.</p>
+<h4 id="targetpath">targetPath</h4>
+<p>The folder the ZIP file is created in.</p>
+<p>Defaults to <code>projectPath</code> in case <code>targetPath</code> is empty.</p>
+<h4 id="versionversion-parms">version{#version-parms}</h4>
+<p>Must be one of:</p>
+<ul>
+<li>A rule how to modify the version number in the package config file</li>
+<li>An empty character vector</li>
+<li>A character vector that replaces "version" in the package config file</li>
+</ul>
+<p>A&gt; ### The version number
+A&gt;
+A&gt; The problem with version numbers is that a package configuration file <strong>must</strong> contain a version number, but many programmers want to have the version number also available in their code. So which one rules?
+A&gt;
+A&gt; Clearly there is no right or wrong answer here: it depends on personal preferences, or the work flow.
+A&gt;
+A&gt; <code>BuildPackage</code> is part of Tatin, therefore it takes care of the <code>version</code> information in the package configuration file. Everything else is left to the user.</p>
+<h5 id="version-starts-with-a">"version" starts with a "+"</h5>
+<p>The "+" makes it a rule. It must come with three digits separated by dots. The digits may be just 0 or 1.</p>
+<p>The rules:</p>
+<ul>
+<li><code>+0.0.1</code> bumps the patch number</li>
+<li><code>+0.1.0</code> bumps the minor number and resets the patch number</li>
+<li><code>+1.0.0</code> bumps the major number and resets both the patch number and the minor number</li>
+</ul>
+<p><strong>--- Changed in 0.117.0 ---</strong></p>
+<p>Such a rule has no impact on the build number: </p>
+<ul>
+<li>If the package config file has a build number as part of <code>version</code>, that build number is bumped</li>
+<li>If the package config file has no build number nothing happens (starting with version 0.117.0)</li>
+</ul>
+<p>However, in such a case you might want to force a build number into the package config file. This can be achieved by adding a trailing <code>+</code>, for example <code>+1.0.0+</code>. (Of course, you can also edit the config file and add <code>+0</code> at the end of <code>version</code>)</p>
+<p>Either way you end up with a build number 1.</p>
+<p><strong>--- End of change ---</strong></p>
+<h5 id="version-does-not-start-with-a">"version" does not start with a "+"</h5>
+<p><strong>--- Changed in 0.117.0 ---</strong></p>
+<ul>
+<li>If <code>version</code> is empty, then just the build number in the config file is bumped, if there is one.</li>
+<li>If <code>version</code> is not empty but does not carry a build number, then it replaces the version information.</li>
+</ul>
+<p>If the config file carries a build number , it is bumped.
+* If <code>version</code> is not empty and includes a build number, then it replaces the version information including the build number. That build number is then bumped.</p>
+<p><strong>--- End of change ---</strong></p>
+<h4 id="dependencies">Dependencies</h4>
+<p>If <code>dependencyFolder</code> is empty <code>BuildPackage</code> tries to establish whether the package depends on other packages:</p>
+<ol>
+<li>It checks whether the package is managed by Cider (read: has a file <code>cider.config</code>). If that is the case it checks the property <code>[CIDER]dependencies:tatin</code> in that file. If it defines a folder then it is taken.</li>
+</ol>
+<p>Refer to the Cider documentation on <code>dependencies:tatin</code> for details.</p>
+<ol>
+<li>
+<p>If the package is not managed by Cider then Tatin assumes that package dependencies (if any) would be installed into a subfolder <code>packages/</code> (convention).</p>
+</li>
+<li>
+<p>If there is no subfolder <code>packages/</code>, or if it does not host a file <code>apl-dependencies.txt</code>, then Tatin looks for a file <code>apl-dependencies.txt</code> in the root of the package project.</p>
+</li>
+<li>
+<p>If the package is not managed by Cider and depends on packages that are installed in a different subfolder than <code>packages/</code>, then the name of the subfolder must be passed as <code>dependencyFolder</code> in the parameter space.</p>
+</li>
+</ol>
+<p>If no file <code>apl-dependencies.txt</code> can be detected then Tatin will assume that the package does not depend on other packages.</p>
+<h3 id="checkforlaterversion">CheckForLaterVersion</h3>
+<div class="highlight"><pre><span></span><code> r←{flags} CheckForLaterVersion path
+</code></pre></div>
+<p>Checks whether there are later versions available for the principal packages installed in <code>path</code>.</p>
+<p>The optional left argument must, if specified, be an integer that may carry flags as a single integer:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No flag set, same as no argument at all</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Major: should rather later major versions be listed? Defaults to 0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dependencies: should dependencies be checked as well? Defaults to 0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Both flags set</td>
+</tr>
+</tbody>
+</table>
+<p>By default, only minor and patch number are part of the check. By specifying 1 as <code>major</code> you may change this default behaviour and list any later major versions instead.</p>
+<p>Note that this function scans all known registries with a priority greater than zero.</p>
+<p>Returns a matrix with five columns:</p>
+<table>
+<thead>
+<tr>
+<th>Col</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[;1]</td>
+<td>Original package ID</td>
+</tr>
+<tr>
+<td>[;2]</td>
+<td>Latest package ID</td>
+</tr>
+<tr>
+<td>[;3]</td>
+<td>Original URL</td>
+</tr>
+<tr>
+<td>[;4]</td>
+<td>Flag; 1 means later version is available</td>
+</tr>
+<tr>
+<td>[;5]</td>
+<td>URL the latest version was found but empty in case it's identical with [;3]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="clearcache">ClearCache</h3>
+<div class="highlight"><pre><span></span><code>(rc report)←ClearCache url
+</code></pre></div>
+<p>Clears the cache, which is the folder <code>GetPathToPackageCache</code> points to.</p>
+<ul>
+<li>If <code>url</code> is empty all subdirectories but <code>temp\</code> are removed</li>
+<li>If <code>url</code> is not empty then only the given domain is removed from the cache</li>
+</ul>
+<h3 id="copyregistry">CopyRegistry</h3>
+<div class="highlight"><pre><span></span><code>list←CopyRegistry parms 
+</code></pre></div>
+<p>This command copies packages from a managed Tatin Registry (by default <code>[tatin]</code>) to a local folder.</p>
+<p>There might be a Tatin Server running on the local target folder, but this is not a requirement. In fact any running local server must be paused or stopped while <code>CopyRegistry</code> is running.</p>
+<p>By default all packages are copied, even deprecated ones.</p>
+<p>Packages that are already saved in the target folder are not requested again, but check the <code>-force</code> flag.</p>
+<p><code>CopyRegistry</code> was introduced with version 0.110.0, therefore you cannot use it on Tatin servers that run earlier versions than that.</p>
+<p>The function takes one mandatory argument: a parameter namespace typically created by calling <a href="#">CreateCopyRegistryParms</a>, and then amended.</p>
+<p>Note that you must set two of the parameters, <code>url</code> and <code>path</code>. The other parameters have default values.</p>
+<h3 id="createapifromcfg">CreateAPIfromCFG</h3>
+<div class="highlight"><pre><span></span><code>{noOf}←{names} CreateAPIfromCFG (refTosourceNS cfg)
+</code></pre></div>
+<p>This function creates cover functions in the API namespace for everything that is supposed to become the public interface of a package. </p>
+<p>These cover functions are one-line dfns that call thhe function with the same name one level above. Because they are one-liners the Tracer will ignore them: it is not possible to trace into a one-line dfn. Most of the time this is a blessing, but sometimes it is a curse.</p>
+<p>By default the contents of the package becomes the public interface: <code>⎕NL 2 3 4 9</code>. However, if there is a function <code>Public</code> available, then this is expected to return a list of simple text vectors defining the public interface. <code>CreateAPIfromCFG</code> will use the result of <code>Public</code> if it finds one in the root of the given namespace.</p>
+<p>Alternatively, you can pass a list of names as left argument to <code>CreateAPIfromCFG</code> - that would take precedence.</p>
+<p>It is possible to keep <code>names</code> very simple by specifying a single name, but it can also be complex and comprehend the names of functions, operators, variables, interfaces, classes and namespace, simple and scripted. It can also use dotted syntax to define names within namespaces, though only one level deep.</p>
+<p>!&gt; ### Tips and hints
+=&gt; You may call <code>CreateAPIfromCFG</code> when initialising a package after loading it (from a function that is executed by the package's <code>lx</code> parameter, see "Tatin's Package Configuration File" for details).
+=&gt; 
+=&gt; Alternatively, you may call it as part of the package creation process, making the API a permanent part of the package. </p>
+<h4 id="typical-scenarios">Typical scenarios</h4>
+<ol>
+<li>
+<p>The package consists of a single class or a single ordinary namespace</p>
+</li>
+<li>
+<p>The package consists of a single function or operator</p>
+</li>
+<li>
+<p>The package consists of several objects: a mixture of functions, operators, classes and/or namespaces</p>
+</li>
+</ol>
+<p>A&gt; ### Single functions 
+A&gt;
+A&gt; You <em>must not</em> specify the name of a function (or an operator) as the API in any of these cases.
+A&gt; 
+A&gt; This restriction helps to avoid confusion, but there is also a technical issue: Tatin needs to establish references to the API, and although in Dyalog one can establish references (kind of) to monadic, ambivalent, and dyadic functions, this is not possible for neither operators nor niladic functions.</p>
+<h5 id="a-single-namespace">A single namespace</h5>
+<ul>
+<li>If you don't specify <code>api</code> then the name of the namespace is the API. </li>
+</ul>
+<p>For example, if the package name is <code>pkgName</code> and the namespace's name (see the <code>source</code>  parameter) is <code>foo</code> and it has a function <code>Hello</code>, then you call <code>Hello</code> with:</p>
+<p><code>pkgName.foo.Hello</code></p>
+<ul>
+<li>If you do specify <code>api</code> by assigning an APL name to it, then it must be the name of the namespace. In that case, the <em>contents</em> of the namespace becomes the API.</li>
+</ul>
+<p>For example, if the package name is <code>pkgName</code> and the namespace's name is <code>foo</code> and it has a function <code>Hello</code>, then you specify <code>api</code> as <code>foo</code> and call <code>Hello</code> with:</p>
+<p><code>pkgName.Hello</code></p>
+<h5 id="a-single-scripted-namespace">A single scripted namespace</h5>
+<p>If a package consists of a single scripted namespace then you cannot use the services of Tatin's <code>CreateAPIfromCFG</code> function. The reason is that this function tries to establish a sub-namespace (with a name defined by the package config parameter <code>api</code>) inside the target, and that works only with ordinary namespaces, but not with scripted namespaces.</p>
+<p>You could still create an API yourself, however. For example, if a package <code>Foo</code> consists of a scripted namspace that carries (say) about 20 variables, functions and operators of which only two should be accessible by a user (say <code>Encode</code> and <code>Decode</code>), then you could create this namespaces structure:</p>
+<div class="highlight"><pre><span></span><code>#.Foo
+#.Foo.Core
+  ... ⍝ vars, fns and oprs
+#.Foo.API
+#.Foo.API.Encode
+#.Foo.API.Decode  
+</code></pre></div>
+<p>This is how <code>#.Foo.API.Decode</code> would look like:</p>
+<div class="highlight"><pre><span></span><code>Decode←{⍺ ##.JWTAPL.Decode ⍵}
+</code></pre></div>
+<p>And this is how <code>#.Foo.API.Encode</code> would look like:</p>
+<div class="highlight"><pre><span></span><code>Encode←{⍺ ##.JWTAPL.Encode ⍵}
+</code></pre></div>
+<p>You just need to establish these functions yourself.</p>
+<p>You don't need a function <code>Public</code> here because that function's only purpose is to be called by <code>CreateAPIfromCFG</code> in order to establish a list of public objects. Here the job is done by you, therefore there is no need for <code>Public</code>.</p>
+<h5 id="a-single-class">A single class</h5>
+<ul>
+<li>If you don't specify <code>api</code> then the name of the class is the API. </li>
+</ul>
+<p>For example, if the package name is <code>pkgName</code> and the class name is <code>foo</code> and it has a function <code>Hello</code>, then you call <code>Hello</code> with:</p>
+<p><code>pkgName.foo.Hello</code></p>
+<ul>
+<li>If you do specify <code>api</code> then it must be the name of the class. In that case, everything in the class with <code>:Access Public Shared</code> becomes the API.</li>
+</ul>
+<p>For example, if the package name is <code>pkgName</code> and the class name is <code>foo</code> and it has a publicly shared function <code>Hello</code>, then you call <code>Hello</code> with:</p>
+<p><code>pkgName.Hello</code></p>
+<h5 id="a-single-function-or-operator">A single function or operator</h5>
+<p>If the name of the package is <code>pkgName</code>, and the name of the function is <code>MyFns</code>, then it is called as <code>pkgName.MyFns</code>. The function may be niladic, monadic, ambivalent or dyadic.</p>
+<p>The same holds for an operator.</p>
+<p>In this particular case <code>api</code> <em>must not</em> be defined (remain empty).</p>
+<h5 id="a-mixture-of-several-apl-objects">A mixture of several APL objects</h5>
+<ul>
+<li>
+<p>If <code>api</code> is not set then all top-level objects of the package become the API: functions, operators, namespaces, classes, interfaces.</p>
+</li>
+<li>
+<p>If <code>api</code> is set then it must point to one of the namespaces or classes, or a sub-namespace (using dotted syntax), or a class in a sub-namespace. Then just the objects in what <code>api</code> is pointing to become the API.</p>
+</li>
+</ul>
+<h5 id="restricting-whats-public">Restricting what's "public"</h5>
+<p>The user might want to expose only a subset of functions/operators of a namespace (classes have such an interface anyway: <code>:Public Shared</code>), and in that case, the user must not only specify <code>api</code>, but also structure her code accordingly.</p>
+<p>If the name of the package is <code>pkgName</code>, and it is loaded into <code>#</code>, and you want to expose only the functions <code>Run</code> and <code>CreateParmSpace</code>, then the recommended way of doing this is to create a sub-namespace with the name (say) <code>MyAPI</code> and populate it with two functions:</p>
+<ul>
+<li><code>Run</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Run←{⍺←⊢ ⋄ ⍺ ##.Run ⍵}
+</code></pre></div>
+<p>(Assumes that <code>Run</code> takes an optional left argument)</p>
+<ul>
+<li><code>CreateParmSpace</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>CreateParmSpace←{##.CreateParmSpace ⍵}
+</code></pre></div>
+<p>(Assumes that <code>CreateParmSpace</code> does not accept a left argument)</p>
+<p>Finally, you need to specify <code>api: "MyAPI"</code> in the package config file.</p>
+<p>Calling the function <code>Run</code> (after loading the package) would then require:</p>
+<div class="highlight"><pre><span></span><code>      #.PkgName.Run
+</code></pre></div>
+<p>To the outside world, only two functions are visible:</p>
+<div class="highlight"><pre><span></span><code>      #.PkgName.⎕nl ⍳16
+#.Foo.Run
+#.Foo.CreateParmSpace
+</code></pre></div>
+<p>Similarly, if <code>PkgName</code> consists of the two namespaces <code>Boo</code> and <code>Goo</code>, and <code>Run</code> and <code>CreateParmSpace</code> live in <code>Boo</code>, then you could also have a sub-namespace <code>Boo.API</code> that hosts <code>Run</code> and <code>CreateParmSpace</code>, and <code>api</code> would be <code>Boo.API</code>, while calls are still <code>PkgName.Run</code> and <code>PkgName.CreateParmSpace</code>.</p>
+<h3 id="createbuildparms">CreateBuildParms</h3>
+<div class="highlight"><pre><span></span><code>r←CreateBuildParms path
+</code></pre></div>
+<p>Creates a namespace with parameters for the <code>BuildPackage</code> function.</p>
+<p>Contains these parameters:</p>
+<div class="highlight"><pre><span></span><code>dependencyFolder
+projectPath          ⍝ Set to `path`
+projectSpace
+targetPath
+version
+</code></pre></div>
+<h3 id="createcopyregistryparms">CreateCopyRegistryParms</h3>
+<div class="highlight"><pre><span></span><code>parms←CreateCopyRegistryParms y
+</code></pre></div>
+<p>Returns a namespace with parameters required by the <a href="#"><code>CopyRegistry</code></a> function.</p>
+<p><code>y</code> can either be a namespace with some or all of the parameters that might be defined in a parameter namespace for <code>CopyRegistry</code>.</p>
+<p>Of the parameters two MUST be specified: </p>
+<dl>
+<dt><code>path</code> </dt>
+<dd>
+<p>Defines a local folder where the packages are going to be saved.</p>
+</dd>
+<dt><code>url</code></dt>
+<dd>
+<p>The url of the Tatin Registry to be copied from.</p>
+</dd>
+</dl>
+<p>The folllowing parameters can be used to amend the behaviour of <code>CopyRegistry</code> according to your needs:</p>
+<ul>
+<li><code>force</code></li>
+<li><code>latest</code></li>
+<li><code>group</code></li>
+<li><code>list=</code></li>
+<li><code>dry</code></li>
+<li><code>verbose=</code></li>
+</ul>
+<p>All these flags and options are documented as part of the <code>]CopyRegistry</code> user command, for details see there.</p>
+<p>There is one exception: by specifying <code>noDeps←1</code> one can prevent dependencies from being copied, and the documentation of the user command <code>]CopyRegistry</code> does not talk about this option. The reason is that this is only useful for test cases.</p>
+<h3 id="createreinstallparms">CreateReInstallParms</h3>
+<div class="highlight"><pre><span></span><code>r←CreateReInstallParms
+</code></pre></div>
+<p>Creates a namespace with default parameters; it can be passed as (optional) left argument to the <a href="#ReInstallDependencies"><code>ReInstallDependencies</code></a> function, in particular, <code>noBetas</code>, <code>update</code> and <code>dry</code>.</p>
+<h3 id="deletepackages">DeletePackages</h3>
+<div class="highlight"><pre><span></span><code>(statusCode errMsg)←DeletePackages (regID packageIDs)
+</code></pre></div>
+<p>Deletes one or more packages, usually several versions of the same package.</p>
+<p>Whether deleting packages from a Tatin Registry is possible at all depends on the delete policy it operates, which is in turn determined by the server's INI setting <code>[CONFIG]DeletePackages</code>. See <a href="#GetDeletePolicy"><code>GetDeletePolicy</code></a>. The principal Tatin server operates a "None" policy, meaning that you cannot delete anything from it.</p>
+<p>!&gt; ### Why can't I delete a package from the Tatin server?
+=&gt; The main design objective was to make sure that a build that includes packages from the principal Tatin Registries can always be reproduced in precisely the same way. 
+=&gt;
+=&gt; If deleting a package is allowed --- even when it is a beta version --- then this cannot be guaranteed.
+=&gt;
+=&gt; If you happen to publish a package and realize seconds later that you made a formidable mistake? Well, you increase the patch number, fix the problem and publish a new version, that's the only way.</p>
+<p>In order to delete a package you must identify the package precisely:</p>
+<div class="highlight"><pre><span></span><code>&lt;group-name&gt;-&lt;package-name&gt;-&lt;precise_version_number&gt;
+</code></pre></div>
+<p>You may delete several packages in one go by specifying several complete package IDs as a nested vector. However, all packages will be deleted from the same Registry identified by <code>regID</code>. <code>regID</code> can be a URL or a Registry alias or a Registry ID.</p>
+<p>The function returns an HTTP status code and a message, which will be empty in case of success.</p>
+<h3 id="deprecatepackage">DeprecatePackage</h3>
+<div class="highlight"><pre><span></span><code>msg←DeprecatePackage y
+</code></pre></div>
+<p>Declares a package to be deprecated.</p>
+<p><code>y</code> must provide three pieces of information:</p>
+<ul>
+<li>A Registry URL or a Registry alias</li>
+<li>A comment like "See package xyz instead"</li>
+<li>A package ID that provides group name, package name and optionally a major version number</li>
+</ul>
+<p>If no major version number is provided, then the function acts on <em>all</em> major versions of that package.</p>
+<p>Note that because the Registry must be defined no scanning takes place with this function.</p>
+<h3 id="finddependencies">FindDependencies</h3>
+<div class="highlight"><pre><span></span><code>r←{depth} FindDependencies (target pkgList [verbose])
+</code></pre></div>
+<p><code>target</code> can be any of the following:</p>
+<ul>
+<li>A Registry alias</li>
+<li><code>[*]</code> for all defined Registries with a priority greater than 0</li>
+<li>A URL pointing to a Tatin server </li>
+<li>A folder</li>
+</ul>
+<p>The first three options will eventually become the folder where the packages of a Registry are stored.</p>
+<p>Scans <code>folder</code> recursively for a file "apl-dependencies.txt". Folders with such a file will be searched for packages defined in <code>pkgList</code>. Useful to find out where one or more packages are used.</p>
+<p><code>pkgList</code> must be a simple char vector with a list of packages separated by commas.</p>
+<p>The packages can be specified fully or partially specified. "Group" and "Version" can be omitted while "Name" is mandatory. You can specify a major version, but "minor" and "patch" are ignored if specified.</p>
+<p>Note that the search is <em>not</em> case-sensitive.</p>
+<p>Returns a fully qualified list of all matches. </p>
+<p>By default only the folder containing a file "apl-dependencies.txt" with at least one of the defined packages is returned.</p>
+<p>If a 1 is passed as <code>verbose</code> (optional, defaults to 0) the actual package folders will be returned instead of the hosting folder(s), revealing the precise version(s) installed.</p>
+<p>The optional left argument can be used to limit the number of levels to be searched recursively. A server sets this to 1 because it knows that it only needs to search the sub folders of the Registry folder, which greatly reduces the time spent on the task.</p>
+<p>The user can use it in the same way if she knows exactly what is stored where.</p>
+<h3 id="getdeletepolicy">GetDeletePolicy</h3>
+<div class="highlight"><pre><span></span><code>r←GetDeletePolicy url
+</code></pre></div>
+<p>Takes the alias or the URL of a server like https://tatin.dev or an alias and returns the delete policy operated by that server.</p>
+<p>Returns one of "None", "Any", "JustBetas":</p>
+<ul>
+<li>"None" means a package, once published, cannot be deleted                                </li>
+<li>"Any" means any package can be deleted                                                    </li>
+<li>"JustBetas" means that only beta versions can be deleted                                </li>
+</ul>
+<h3 id="getdependencytree">GetDependencyTree</h3>
+<div class="highlight"><pre><span></span><code>tree←{append} GetDependencyTree x
+</code></pre></div>
+<p>Takes <code>identifier</code> (<code>x</code>) and returns the dependencies as a matrix.</p>
+<p><code>identifier</code> must be one of:</p>
+<ul>
+<li>an HTTP request</li>
+<li>a folder holding a package (like file://C:\Temp{group}-{name}-{major.minor.patch}\)</li>
+<li>a path to a package in a registry (like C:\MyReg\{packageID})</li>
+<li>a package ID; Tatin will then attempt to find that package in the Registries defined in the Client's config file.</li>
+</ul>
+<p>Returns a dependency tree as a matrix:</p>
+<p>|[;1] | Flag that indicates whether it is a principal package (1) or a dependency (0)
+|[;2] | PackageID of what required that dependency
+|[;3] | Full package ID
+|[;4] | The full URL (either a local path (without protocol) or http(s)://...)</p>
+<p>This function requires the version number to be fully specified.</p>
+<p>Note that the function accepts an optional left argument, but this should not be specified by a user: it is only used internally.</p>
+<h4 id="optional-left-argument-append">Optional left argument <code>append</code></h4>
+<p>The optional left argument defaults to 0, meaning a saved dependency tree is replaced. By passing a 1 as the left argument one can add to the saved dependency tree.</p>
+<h3 id="getnocachingflag">GetNoCachingFlag</h3>
+<div class="highlight"><pre><span></span><code>flag←GetNoCachingFlag uri
+</code></pre></div>
+<p>Takes a URI or an alias and tries to find that URI in the <code>MyUserSettings</code> instance.
+If found the value of the <code>noCaching</code> property is returned. </p>
+<p>If URI is unknown a 0 is returned.</p>
+<h3 id="getpathtopackagecache">GetPathToPackageCache</h3>
+<div class="highlight"><pre><span></span><code>r←GetPathToPackageCache
+</code></pre></div>
+<p>The user settings rule:</p>
+<ul>
+<li>
+<p>If <code>MyUserSettings.path2cache</code> is not empty then that path is returned, otherwise:</p>
+</li>
+<li>
+<p>The function returns the standard path for caching which depends on the operating system</p>
+</li>
+</ul>
+<h3 id="getuserhomefolder">GetUserHomeFolder</h3>
+<div class="highlight"><pre><span></span><code>path←{aplVersion} GetUserHomeFolder append
+</code></pre></div>
+<p>Returns the standard path for any user-specific data.</p>
+<p>Works on all platforms but returns different results.</p>
+<p><code>⍵</code>, if not empty, is added to the resulting path.</p>
+<p>!&gt; ### On Windows 
+=&gt; It is typically:
+=&gt; <code>=&gt; `C:\Users\%USERPROFILE%\AppData\Roaming\Tatin'     ←→ GetUserHomeFolder ''
+=&gt; `C:\Users\%USERPROFILE%\AppData\Roaming\Tatin\foo' ←→ GetUserHomeFolder 'foo'
+=&gt;</code>
+!&gt; ### On Linux
+=&gt; <code>=&gt; '/home/{⎕AN}/Tatin'     ←→ GetUserHomeFolder ''
+=&gt; '/home/{⎕AN}/Tatin/foo' ←→ GetUserHomeFolder 'foo'
+=&gt;</code>
+!&gt; ### On Mac-OS
+=&gt; <code>=&gt; '/Users/{⎕AN}/Tatin'     ←→ GetUserHomeFolder ''
+=&gt; '/Users/{⎕AN}/Tatin/foo' ←→ GetUserHomeFolder 'foo'
+=&gt;</code></p>
+<p><code>⍺</code> is optional and only specified by test cases in order to simulate different versions of APL.</p>
+<h3 id="initialisepackage">InitialisePackage</h3>
+<div class="highlight"><pre><span></span><code>config←{configParms} InitialisePackage folder
+</code></pre></div>
+<p>Takes a folder (<code>⍵</code>) and initializes it so that it can be a package.</p>
+<p>This means in particular to create the folder (although it might already exist) and creating a package config file with default settings or what <code>⍺</code> specifies: one can pass a config namespace as <code>⍺</code>, typically created by a call to <a href="#InitPackageConfig"><code>InitPackageConfig</code></a>.</p>
+<p>There must be no config file yet, otherwise an error is thrown.</p>
+<h3 id="initpackageconfig">InitPackageConfig</h3>
+<div class="highlight"><pre><span></span><code>cfg←{projectPath}  InitPackageConfig y
+</code></pre></div>
+<p>Returns a namespace with default values useful for the function <a href="#InitialisePackage"><code>InitialisePackage</code></a>.</p>
+<p><code>⍵</code> might be empty; then it is ignored. Alternatively, it might be a namespace with variables. If it is then the variables in that namespace overwrite the defaults.</p>
+<p><code>projectPath</code> is optional. It is used only in case <code>source</code> is not specified, not even as a global default in the user settings.</p>
+<h3 id="installpackages">InstallPackages</h3>
+<div class="highlight"><pre><span></span><code>r←{noBetas} InstallPackages (identifiers targetFolder)
+</code></pre></div>
+<p>Installs one or more packages (<code>identifiers</code>) in <code>targetFolder</code>.</p>
+<p><code>identifiers</code> must be a simple character vector, specifying one or more comma-separated packages (items).</p>
+<p>Each item must be one of:</p>
+<ul>
+<li>an HTTP request for a package</li>
+<li>a ZIP file holding a package</li>
+<li>a folder holding a package (like <code>file://C:\Temp\group-name-version\</code>)</li>
+<li>a path to a package in a registry (like <code>[RegistryAlias]{group}-{name}-{major.minor.patch}</code> or <code>C:\MyReg\{group}-{name}-{major.minor.patch})</code></li>
+<li>a package ID; Tatin will then attempt to find that package in the Registries defined in the Client's config file</li>
+<li>The internal alias <code>[MyUCMDs]</code> (case independent); this will then be replaced by the actual path to the <code>MyUCMDs/</code> folder followed by the name specified or, if none was specified, the name of the package</li>
+</ul>
+<p>You may omit minor+patch or even major+minor+patch in order to install the latest version.</p>
+<p>By default beta versions are considered in case the package ID is incomplete, but you can suppress them by passing <code>1</code> as <code>⍺</code>.</p>
+<p><code>r</code> is a nested vector of character vectors with the full names of all principal packages installed. The length will match the number of packages specified as <code>identifiers</code>.</p>
+<p>Notes:</p>
+<ul>
+<li>The target folder will be created if it does not already exist</li>
+<li>The package ID(s) might use any case, meaning that if the package's name is <code>foo-Goo-1.2.3</code> then you might as well spell it <code>foo-GOO-1.2.3</code> or <code>FOO-goo-1.2.3</code>: it would not make a difference </li>
+</ul>
+<h3 id="listdeprecated">ListDeprecated</h3>
+<div class="highlight"><pre><span></span><code>r←{all} ListDeprecated uri
+</code></pre></div>
+<p>Lists all packages that are deprecated but only if they are the last published version of any given major version number.</p>
+<p>This default behaviour can be changed with the <code>-all</code> flag: then all versions of any major version that is marked as deprecated are listed. </p>
+<p><code>uri</code> must be one of:</p>
+<ul>
+<li>A path to an install folder, defined by the presence of a file <code>apl-buildlist.json</code></li>
+<li>A path to a Registry and optionally a (possibly incomplete) package ID</li>
+</ul>
+<h3 id="listcache">ListCache</h3>
+<div class="highlight"><pre><span></span><code>r←{fullpath} ListCache y
+</code></pre></div>
+<p>Lists the contents of the Tatin package cache. Refers to the <code>MyUserSettings</code> instance of the class <code>UserSettings</code>.</p>
+<p><code>y</code> must be one of:</p>
+<ul>
+<li>A character vector with a Registry domain name or a Registry alias or empty</li>
+<li>A nested vector of length 2: first item see above, second must be a Boolean that defaults to 0.</li>
+</ul>
+<p>This is interpreted as <code>principalFlag</code>.</p>
+<p>The optional left argument <code>fullpath</code> defaults to 0, when just domain names and package IDs are reported. If it is 1 then the full paths are reported instead.</p>
+<p>The result is a vector with as many items as there are domains represented in the cache with at least one package.
+Each item is a two-element vector:</p>
+<ul>
+<li>The first item holds the url of the domain</li>
+<li>The second item holds a vector of char vectors with the package names</li>
+</ul>
+<p>In case the cache is empty an empty vector is returned.</p>
+<h3 id="listlicenses">ListLicenses</h3>
+<div class="highlight"><pre><span></span><code>r←{verbose} GetNoCachingFlag url
+</code></pre></div>
+<p><code>verbose</code> defaults to 0 but might be 1.</p>
+<ul>
+<li>
+<p>With <code>verbose←0</code> a list with the names of all licenses tolerated by the given managed Tatin Registry is returned. Might be empty.</p>
+</li>
+<li>
+<p>With <code>verbose←1</code> a matrix with two columns and zero or more rows is returned:</p>
+</li>
+<li>
+<p><code>[;1]</code> Names of all licenses </p>
+</li>
+<li><code>[;2]</code> URLs of all licenses</li>
+</ul>
+<h3 id="listpackages">ListPackages</h3>
+<div class="highlight"><pre><span></span><code>mat←{parms} ListPackages uri
+</code></pre></div>
+<p>Lists all packages of a given Registry except when the last package of a major version number is marked as deprecated --- see <code>ListDeprecated</code> for listing those.</p>
+<p><code>uri</code> must be one of:</p>
+<ul>
+<li>A path to an install folder, defined by the presence of a file <code>apl-buildlist.json</code></li>
+<li>A path to a Registry and optionally a (possibly incomplete) package ID</li>
+</ul>
+<h4 id="right-argument">Right argument</h4>
+<h5 id="folder">Folder</h5>
+<p>In case a folder was specified a two-column matrix is returned:</p>
+<p>|[;1] |Carries the package ID
+|[;2] |Carries a star for principal packages</p>
+<h5 id="registry">Registry</h5>
+<p>In case a Registry was specified, by default all packages saved in that Registry are returned, aggregated by major versions, as a two-column matrix.</p>
+<p>You may specify a package ID without version number, or only part of the version number; then only matching packages are listed.</p>
+<p>You may even specify just a package name, without a group name. That would not make a difference in case the name is only used once, but if it is used in several groups then all of them will be listed.</p>
+<h4 id="left-argument">Left argument</h4>
+<p>Optionally <code>parms</code> can be specified. If specified this must be a namespace that must contain the variables <code>group</code>, <code>tags</code> and <code>aggregate</code>. It may contain <code>date</code>, <code>since</code>, <code>project_url</code> and/or <code>userCommand</code>.</p>
+<p>The following parameters allow the user to select certain packages:</p>
+<ul>
+<li>Use <code>group</code> to specify the group.</li>
+<li>Use <code>tags</code> to specify one or more tags (simple comma-separated text vector); is case-independent.</li>
+<li><code>userCommand</code>, if specified, must be a Boolean. If it is 1 only packages that are user commands are returned.</li>
+<li>Use <code>since</code> to specify a date; all packages published before that date will be ignored.</li>
+</ul>
+<p><code>since</code> can be one of:</p>
+<ul>
+<li>A character vector in the format <code>YYYY-MM-DD</code> or <code>YYYYMMDD</code> like <code>since←'2022-06-01'</code></li>
+<li>An integer in the format <code>YYYYMMDD</code> like <code>since←20220601</code></li>
+</ul>
+<p>The following parameters allow the user to influence what data is returned:</p>
+<ul>
+<li>If <code>date</code> is <code>1</code> an additional column is added to the result with the publishing date</li>
+<li>If <code>project_url</code> is <code>1</code> an additional column is added to the result with the <code>project_url</code>, if any</li>
+<li>If <code>aggregate</code> is <code>0</code> the data is not aggregated by minor and patch number; defaults to 1.</li>
+</ul>
+<h5 id="packageid">packageID</h5>
+<ul>
+<li><code>packageID</code> is empty and <code>aggregate</code> is 1 (the default):</li>
+</ul>
+<p>All packages are returned with the number of major versions in <code>[;2]</code></p>
+<ul>
+<li><code>packageID</code> is empty and <code>aggregate</code> is 0:</li>
+</ul>
+<p>All packages are returned; the second column carries <code>⍬</code></p>
+<ul>
+<li><code>packageID</code> specifies {name} and <code>aggregate</code> is 0:</li>
+</ul>
+<p>All packages that match <code>name</code> are returned; they might belong to different groups</p>
+<ul>
+<li><code>packageID</code> specifies {group}-{name} and <code>aggregate</code> is 0:</li>
+</ul>
+<p>All versions of that package are returned</p>
+<ul>
+<li><code>packageID</code> specifies {group}-{name} and <code>aggregate</code> is 1:</li>
+</ul>
+<p>All major versions of that package are returned</p>
+<p><code>[;2]</code> carries the number of versions of each major version</p>
+<ul>
+<li><code>packageID</code> specifies {group}-{name}-{major}; in this case <code>aggregate</code> is ignored:</li>
+</ul>
+<p>All versions (minor and patch) of that package are returned</p>
+<ul>
+<li><code>packageID</code> specifies {group}-{name}-{major}-{minor}; in this case <code>aggregate</code> is ignored:</li>
+</ul>
+<p>All patch versions of that package are returned</p>
+<h4 id="result">Result</h4>
+<p>Returns a matrix with at least two and up to four columns. These columns are always returned:</p>
+<p>|[;1] | Package name |
+|[;2] | Carries the number of major versions |</p>
+<ul>
+<li>In case <code>date</code> was specified a column is added carrying the publishing date</li>
+<li>In case <code>project_url</code> was specified a column is added carrying the project URL (if any)</li>
+</ul>
+<h4 id="deprecated-packages">Deprecated packages</h4>
+<p>In case the last published version of a package carries a flag <code>deprecated</code> in its config file and that is a 1, such a package and all its predecessors with the same major version number <em>are not listed</em>.</p>
+<p>To list just deprecated packages use <code>ListDepreciated</code>.</p>
+<h3 id="listregistries">ListRegistries</h3>
+<div class="highlight"><pre><span></span><code>r←ListRegistries type
+</code></pre></div>
+<p>Lists all registries defined in the Client's config file.</p>
+<p>Returns a matrix with these columns:</p>
+<p>|[;1] | Alias
+|[;2] | URL
+|[;3] | ID
+|[;4] | Port
+|[;5] | Priority
+|[;6] | No-caching flag
+|[;7] | Proxy
+|[;8] | API key</p>
+<p>"type" must be either 0 or 1 or empty:</p>
+<ul>
+<li>1 means all data is listed</li>
+<li>0 means the API key is not listed</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>The result of the API function and the user command differ</li>
+<li>When a Tatin Server is questioned by <code>ListRegistries</code> but does not respond, an error is thrown.</li>
+</ul>
+<h3 id="listtags">ListTags</h3>
+<div class="highlight"><pre><span></span><code>list←{parms} ListTags y
+</code></pre></div>
+<p>Lists all tags.</p>
+<p><code>y</code> might be the URL of a Tatin server or a Registry alias (embraced by <code>[]</code>).</p>
+<p>By default all tags of all packages are returned as a two-column matrix:</p>
+<ul>
+<li><code>[;1]</code> carries the name of the tags</li>
+<li><code>[;2]</code> carries the number of occurrences of that tag</li>
+</ul>
+<p>Optionally <code>⍺</code> can be specified. Must be a namespace that might contain a variable <code>tags</code> which may specify one or more tags (simple comma-separated text vector). If that is the case only the tags shared by the packages that carry all of the specified tags will be returned.</p>
+<h3 id="listversions">ListVersions</h3>
+<div class="highlight"><pre><span></span><code>mat←{dateFlag} ListVersions url
+</code></pre></div>
+<p>Lists all versions of a given package.</p>
+<p><code>url</code> must be one of:</p>
+<ul>
+<li>A package name</li>
+<li>A group name and a package name</li>
+<li>A URL pointing to a Registry together with a package name</li>
+<li>An alias pointing to a Registry together with a package name</li>
+<li>A (local) path to a Registry together with a package name</li>
+</ul>
+<p>A package name may be either just the name or the group and the name. Additionally, you may either specify a major version number, or a major and a minor version number.</p>
+<p>Specifying a patch number makes no sense. If it is specified anyway it is ignored.</p>
+<p>Therefore the following arguments are all valid:</p>
+<ol>
+<li><code>example-versions</code></li>
+<li><code>example-versions-1</code></li>
+<li><code>example-versions-1.0</code></li>
+<li><code>[tatin-test]versions</code></li>
+<li><code>[tatin-test]example-versions</code></li>
+<li><code>[tatin-test]example-versions-1</code></li>
+<li><code>[tatin-test]example-versions-1.0</code></li>
+<li><code>[tatin-test]example-versions-1.0.1 ⍝ Same as 7.</code></li>
+</ol>
+<p>In the first three cases all defined Registries with a priority greater than zero are scanned. A matrix with two columns is returned: URL and full package ID.</p>
+<p>If a URL or an alias was specified the given Registry is questioned. A matrix with one column with full package IDs is returned.</p>
+<p>You may omit the group name; that does not make a difference when the name is used only within one group anyway, but if it is used in more than one group, then all of them are listed.</p>
+<p>If version precedence cannot be established from the version numbers alone (often a problem
+with beta versions) then the publishing date is taken into account.                        </p>
+<p>By default, the publishing date is not included, but you may change this by passing a 1 as <code>⍺</code>. In that case, an additional column is added to the result.</p>
+<p>Note that the package ID might use any case, meaning that if the package's name is <code>foo-Goo</code> then you might as well spell it <code>foo-GOO</code> or <code>FOO-goo</code>: it would not make a difference </p>
+<h3 id="loaddependencies">LoadDependencies</h3>
+<div class="highlight"><pre><span></span><code>{r}←{flags} LoadDependencies y
+</code></pre></div>
+<p>Loads all packages according to a build list in a folder.</p>
+<p>Requires one mandatory right argument and accepts up to two:</p>
+<ul>
+<li>A source folder (a folder with a build list)</li>
+<li>A target namespace</li>
+</ul>
+<p>If the target namespace is not specified then it defaults to <code>#</code> except when <code>[MyUCMDs]</code> is specified as source folder: in that case it defaults to <code>⎕SE</code>.</p>
+<p>The optional left argument <code>flags</code> can be used to define two flags which default to 0:</p>
+<ul>
+<li><code>overwrite</code> enforces a load even if the package is already available in <code>#._tatin</code> or <code>⎕SE._tatin</code></li>
+<li><code>makeHomeRelative</code> influences the result of <code>HOME</code> and <code>GetFullPath2AssetsFolder</code>: rather than returning the full path only the folder holding the packages and its parent are returned, making it a relative path</li>
+</ul>
+<p>A&gt; ### Relative <code>HOME</code>
+A&gt;
+A&gt; In case Tatin packages become part of an application that is bundled with the Dyalog runtime you cannot use absolute paths for referring to assets for obvious reasons. 
+A&gt;
+A&gt; In that case the paths must be relative, and that's what the <code>makeHomeRelative</code> flag is for.</p>
+<p>Returns a vector with references to the loaded packages (principal packages only, not dependencies).</p>
+<h4 id="myucmds">MyUCMDs/</h4>
+<p>In case a Tatin package is a Dyalog user command it can be installed into the special folder <code>MyUCMDs/</code>. Where <code>MyUCMDs/</code> lives depends on the operating system.</p>
+<p>Notes:</p>
+<ul>
+<li><code>MyUCMDs</code> is case independent, so specifying <code>[MYUCMDS]</code> or <code>[myucmds]</code> does not make a difference</li>
+<li>In case no name is specified after <code>[MyUCMDs]</code> the name of the sub-folder is derived from the package name</li>
+<li>If you want to install multiple user command packages in one go you must not specify a name after <code>[MyUCMDs]</code>, otherwise an error is thrown</li>
+</ul>
+<h3 id="loadpackages">LoadPackages</h3>
+<div class="highlight"><pre><span></span><code>r←{noBetas} LoadPackages (identifiers targetSpace)
+</code></pre></div>
+<p>Loads packages dynamically into the workspace.</p>
+<p><code>identifiers</code> must be a simple character vector specifying one or more comma-separated packages (items).</p>
+<p>Every single item must be one of:</p>
+<ul>
+<li>An HTTP request for a package</li>
+<li>A ZIP file holding a package</li>
+<li>A folder holding a package (like <code>file://C:/Temp/group-name-version</code>)</li>
+<li>A path to a package in a registry (like <code>[RegistryAlias]{packageID}</code> or <code>C:\MyReg\{packageID}'</code>)</li>
+<li>A package ID; Tatin will then attempt to find that package in one of the Registries defined in the
+client's config file with a priority greater than 0.</li>
+</ul>
+<p>The first hit wins.</p>
+<p><code>targetSpace</code> must be a reference or a fully qualified name of an ordinary namespace, meaning the name must start with either <code>#</code> or <code>⎕SE</code>.</p>
+<p>It might already exist, but if it doesn't it will be created. If it exists but is not an ordinary namespace an error is thrown.</p>
+<p>Loads the package(s) into <code>(#|⎕SE)._tatin.{packageName}</code> and establishes a reference for every one of them in <code>targetSpace</code></p>
+<p>Loads all dependencies, if any, as well into <code>(#|⎕SE)._tatin</code> but does <em>not</em> create references for them in <code>targetSpace</code>.</p>
+<p>By default beta versions are considered in case the package ID is incomplete, but you can suppress them by passing <code>1</code> as <code>⍺</code>.</p>
+<p>Returns the number of principal packages loaded.</p>
+<p>Note that the package ID(s) might use any case, meaning that if the package's name is <code>foo-Goo-1.2.3</code> then you might as well spell it <code>foo-GOO-1.2.3</code> or <code>FOO-goo-1.2.3</code>: it would not make a difference </p>
+<h3 id="ping">Ping</h3>
+<div class="highlight"><pre><span></span><code>bool←Ping url
+</code></pre></div>
+<p>Establishes whether the host is up and running with very little overhead. If <code>url</code> (can also be an alias) points to a folder a 1 is returned if that folder exists, otherwise 0.</p>
+<h3 id="publishpackage">PublishPackage</h3>
+<div class="highlight"><pre><span></span><code>{(statusCode errMsg zipFilename)}←{dependencies} PublishPackage (source registry)
+</code></pre></div>
+<p>Publishes a package.</p>
+<ol>
+<li>Checks whether there is already such a package but with a different spelling in terms of case</li>
+<li>Creates a zip file for the package in a Temp folder if required</li>
+<li>Moves the zip file into the Registry, either via HTTP or directly.</li>
+<li>Updates the Registry index in case it's a local Registry</li>
+</ol>
+<p><code>⍵</code> must be a two-item vector:</p>
+<ol>
+<li><code>source</code> → folder to create the package from</li>
+<li><code>registry</code> → registry to publish the package to (alias or url)</li>
+</ol>
+<p>Note that if <code>⍵[1]</code> points already to a ZIP file only steps 3 and 4 are performed.</p>
+<p>In case a folder is specified rather than a ZIP file then <code>PublishPackage</code> tries to establish whether the package depends on other packages. This is done by the API function <code>BuildPackage</code>, which is called by <code>PublishPackage</code> internally. </p>
+<p>The optional left argument <code>dependencies</code> is, when specified, passed as left argument to <code>BuildPackage</code>; see there for details.</p>
+<p>The explicit result:</p>
+<ul>
+<li><code>statusCode</code> is an HTTP code no matter whether it is an HTTP call or not</li>
+<li><code>errMsg</code> is empty if <code>statusCode</code> is 200, otherwise it might carry additional information</li>
+<li><code>zipFilename</code> is empty in case <code>source</code> is a ZIP file, otherwise it is the name of the ZIP file created</li>
+</ul>
+<p>W&gt; Note that the API function will publish the package no matter what the delete policy operated by the server is. 
+W&gt;
+W&gt; That is different from the user command which will ask the user for confirmation in case the user attempts to publish a package that cannot be deleted once published.</p>
+<h3 id="reinstalldependencies">ReInstallDependencies</h3>
+<div class="highlight"><pre><span></span><code>{refs}←{parms} ReInstallDependencies (dependencies installFolder [Registry])
+</code></pre></div>
+<p>Re-installs all files in a given file <code>apl-dependencies.txt</code>.</p>
+<p>Takes a folder that hosts a file <code>apl-dependencies.txt</code> as mandatory argument.</p>
+<p>Optionally a second right argument might be specified: a Registry, either as a URL or an alias. Without this all known Registries with a priority greater than <code>0</code> will be scanned.</p>
+<p>The file <code>apl-buildlist.json</code> as well as all directories in that folder will be deleted.
+Then all packages listed in the file <code>apl-dependencies.txt</code> are re-installed from scratch. Lines in <code>apl-dependencies.txt</code> that start with a lamp character (<code>⍝</code>) are ignored.</p>
+<p>Note that packages with different major version numbers are considered as different packages.</p>
+<p>The left argument is optional and is, if specified, typically created by calling <a href="#CreateReInstallParms"><code>CreateReInstallParms</code></a>.</p>
+<p>It may carry three parameters:</p>
+<ul>
+<li><code>noBetas</code></li>
+</ul>
+<p>By default this is 0, meaning that beta versions are considered. Set this to 1 if you want betas to be ignored.</p>
+<ul>
+<li><code>update</code></li>
+</ul>
+<p>Defaults to 0, meaning that the same version is installed again even if a later version is available. Change this to 1 to force an update.</p>
+<ul>
+<li><code>dry</code></li>
+</ul>
+<p>Defaults to 0, meaning the function does business. Set this to 1 in order to get a report of what the function would do without actually doing it.</p>
+<p>Notes:</p>
+<ul>
+<li>For every dependency this function performs a Registry scan, even if a Registry was specified.</li>
+<li>Packages that were installed from ZIP files are just re-installed from their ZIP files without further ado.</li>
+</ul>
+<p>A&gt; ### Registry scans
+A&gt;
+A&gt; Under certain circumstances Tatin performs a Registry scan: Tatin questions every Registry with a priority greater than 0 (highest priority number first) for hosting a particular package. The first hit wins. 
+A&gt;
+A&gt; For example, when <code>ReInstallDependencies</code> is called for all dependencies a Registry scan is performed.
+A&gt;
+A&gt; Note that when you installed a package from a Tatin Registry https://MyTatin.com and then later remove that Registry from your user settings, or set its priority to 0, effectively telling Tatin not to scan that Registry anymore, then <code>ReInstallDependencies</code> will <strong>not</strong> scan https://MyTatin.com  anymore, despite Tatin knowing perfectly well where the package in question was originally loaded from.</p>
+<h3 id="readpackageconfigfile">ReadPackageConfigFile</h3>
+<div class="highlight"><pre><span></span><code>cfg←ReadPackageConfigFile path
+</code></pre></div>
+<p>Takes a path to a package and returns the config file for that package as a namespace populated with variables.</p>
+<p><code>path</code> may or may not carry the filename (<code>apl-package.json</code>).</p>
+<h3 id="uninstallpackages">UnInstallPackages</h3>
+<div class="highlight"><pre><span></span><code>(list msg)←UnInstallPackage (packageID folder)
+</code></pre></div>
+<p><code>UnInstallPackage</code> attempts to un-install the package <code>packageID</code> and all its dependencies, but the latter only in case they are neither principal packages nor required by other packages.</p>
+<p><code>folder</code> must host a Tatin dependency file. </p>
+<p><code>folder</code> must be either a path or the (case independent) symbolic name <code>[MyUCMDs]</code> </p>
+<p><code>[MyUCMDS]</code> would translate into <code>MyUCMDs/packages/</code>.</p>
+<p><code>packageID</code> might be a full package ID but also <code>&lt;group&gt;-&lt;name&gt;</code> or just <code>&lt;name&gt;</code>. However, in case more than one package qualifies an error is thrown.</p>
+<p>Note that if <code>packageID</code> is empty a clean-up attempt is made.</p>
+<p><code>folder</code> may be a subfolder of an open Cider project. Tatin works out the correct one; if there are multiple Cider projects open the user is questioned.</p>
+<p><code>packageID</code> must be fully qualified: group + name + version.</p>
+<p>If a package was installed with an alias you must un-install it by specifying the alias. </p>
+<p>If a package is installed twice, once with an alias and once without, running <code>]UnInstallPackage</code> on either of them does not uninstall the package but removes just the reference to it. Only when the other one is uninstalled as well is the package actually removed.</p>
+<p>To keep things simple Tatin performs the following steps:
+1. Checks whether the package ID is mentioned in the dependency file. If not an error is thrown
+3. Removes <code>packagedID</code> from the dependency file
+4. Re-compile the build list based on the new dependency file
+5. Removes all packages that are not mentioned in the build list anymore</p>
+<p>Returns a two-item vector:</p>
+<ol>
+<li>List with the fully qualified names of all removed packages. Note that they might carry an alias.</li>
+<li>Message, ideally empty. </li>
+</ol>
+<p>Note that removing the directories hosting the packages might fail for all sorts of reasons even
+though the package and any dependencies were already successfully removed from both the dependency
+file and the build list.</p>
+<h3 id="version">Version</h3>
+<div class="highlight"><pre><span></span><code>r←Version
+</code></pre></div>
+<p>Returns "name", "version" and "date".</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-15
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "navigation.instant", "navigation.path", "navigation.sections", "navigation.tabs", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
