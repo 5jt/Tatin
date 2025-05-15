@@ -50,7 +50,7 @@ No action required
 
 2024-12-30
 
-The API function BuildPackage does not process a property `tatinVars` anymore; if it is fed one anyway, it will throw an error.
+The API function `BuildPackage` does not process a property `tatinVars` anymore; if it is fed one anyway, it will throw an error.
 
 The function `CreateBuildParms` does not contain a variable `tatinVars` anymore but a variable `projectspace`, which is optional.
 You may set it to the namespace where the package project lives.
@@ -61,7 +61,7 @@ Accordingly the option `-tatinVars=` was removed from the `]BuildPackage` user c
 The user command `]ReInstallDependencies` now accepts a flag `-recursive`.
 This can be put to use with a folder that contains multiple independent packages, for example the folder `[MyUCMDs]`: all installed packages in that folder can be re-installed and (in this instance) updated without user interaction with the following statement.
 
-    ]ReInstallDependencies [MyUCMDs] -recursive -update -force Copy
+    ]ReInstallDependencies [MyUCMDs] -recursive -update -force
 
 ## Version 0.117.0
 
