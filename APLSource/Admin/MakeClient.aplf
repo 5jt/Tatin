@@ -1,4 +1,4 @@
- {r}←{bumpBuild}MakeClient batchFlag;msg;F;targetPath;targetFolder;ts1;ts2;path;reg;_userSettings;list;zipFilename;zipContent;fileList;b;rc;more;en;myZip;parms;dirList;success;log;APL
+ {r}←{bumpBuild}MakeClient batchFlag;msg;F;targetPath;targetFolder;ts1;ts2;path;reg;_userSettings;list;zipFilename;zipContent;fileList;b;rc;more;en;myZip;parms;dirList;success;log;APL;buff
 ⍝ This functions creates a new Tatin Client. It can be called from a developer's session (⍵←0) or
 ⍝ as part of an automated "Make" process with ⍵←1.\\
 ⍝ In case of a problem an error is thrown in case ⍵ is 0, and ⎕OFF 123 is executed in case ⍵ is 1.\\
@@ -69,6 +69,12 @@
          './APLSource/Tatin.dyalog'(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)targetFolder,'/Tatin/Tatin.dyalog'
      :EndIf
      (targetPath,'/Tatin/Maintenance/')(⎕NCOPY⍠('Wildcard' 1)('IfExists' 'Replace')F.ExecNfunction)'./Maintenance/Client/*'
+     parms←⎕NS''
+     parms.from←##.CiderConfig.HOME,'/packages'
+     parms.to←targetPath,'/Tatin/'
+     buff←CopyLicenseFiles parms
+     (3⊃buff)Assert=/2↑buff
+     parms.to ⎕NCOPY'LICENSE'
      (targetPath,'/Tatin')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./APLSource/Tatin.dyalog'
      'Create!'F.CheckPath targetPath,'/Tatin/Assets/Runtime'
      (targetPath,'/Tatin/Assets/Runtime/')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./Assets/Runtime/Rumba'

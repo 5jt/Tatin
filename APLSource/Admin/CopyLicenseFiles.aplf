@@ -1,0 +1,35 @@
+ (expected copied report)←{replace}CopyLicenseFiles parms;list;path;pkg;name;filename
+⍝ (Re)creates a folder Licenses/ and populates it with folders for each Tatin package the project depends on.
+⍝ Each such sub-folder contains the corresponding LICENSE file of that package if there is one.
+⍝ If there is none then a warning is printed to the session.
+⍝ Returns a three-item vector:
+⍝ 1. The number of LICENSE files expected
+⍝ 2. The number of files copied
+⍝ 3. Names of the packages that did not have a LICENSE file\\
+⍝ Needs a namespace with two variables: "from" and "to".
+⍝ You can prevent the "to"-folder from being re-created by passing a 0 as optional left argument.
+⍝ That means that licenses are added to the folder.
+ expected←copied←0
+ report←''
+ replace←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'replace'
+ 'Parameter is missing'Assert 2=+/0<parms.⎕NC↑'from' 'to'
+ '"from" is not a directory'Assert ##.FilesAndDirs.IsDir parms.from
+ :If 0<≢list←##.FilesAndDirs.ListDirs2 parms.from,'/'
+     path←parms.to,'/Licenses'
+     :If replace
+         {}##.FilesAndDirs.RmDirByForce path
+     :EndIf
+     Assert ##.FilesAndDirs.MkDir path
+     :For pkg :In list
+         expected+←1
+         name←⊃{⍺,'-',⍵}/2↑'-'(≠⊆⊢)⊃,/1↓⎕NPARTS pkg
+         filename←pkg,'/LICENSE'
+         :If ##.FilesAndDirs.IsFile filename
+             Assert ##.FilesAndDirs.MkDir path,'/',name
+             (path,'/',name)⎕NCOPY filename
+             copied+←1
+         :Else
+             report,←⊂name
+         :EndIf
+     :EndFor
+ :EndIf
