@@ -1,11 +1,15 @@
- r←CheckPackages flag;pkgs;latest;data;header;parms;allOnTatin;bool
-⍝ Checks whether there is a better version of the packages available in the packages/ folder.
-⍝ When `tatinServerOnly` is 0, all Registries with a priority greater than 0 are questioned.
-⍝ When `tatinServerOnly` is 1 only the Tatin registry is questioned
+ r←{development}CheckPackages flag;pkgs;latest;data;header;parms;allOnTatin;bool;path
+⍝ Checks whether there is a better version of the packages available in the packages/ folder
+⍝ but checkthe optional left argumennt `development`.
+⍝ Note that this function only checks [tatin] (the principal Tatin registry)
 ⍝ `flag` is an insurance against accidental calls.
+⍝ `development` default to 0, meaning that the folder packages/ is investigated.
+⍝ You can change that by passing a 1 as left argument; then packages_dev/ is investigated.
  r←⍬
  :If flag
-     :If 0<≢pkgs←##.FilesAndDirs.ListDirs ##.CiderConfig.HOME,'/packages'
+     development←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'development'
+     path←##.CiderConfig.HOME,(1+development)⊃'/packages' '/packages_dev'
+     :If 0<≢pkgs←##.FilesAndDirs.ListDirs path   ⍝ Value error? Run Initialize_Client!
          pkgs←{⊃,/1↓⎕NPARTS ⍵}¨pkgs
          parms←⎕NS''
          parms.latest←1

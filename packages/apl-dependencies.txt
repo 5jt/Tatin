@@ -1,6 +1,5 @@
 aplteam-ZipArchive-2.0.0
 aplteam-WindowsEventLog-4.0.0
-aplteam-Tester2-4.0.0
 aplteam-SMTP-2.1.0
 aplteam-OS-4.0.0
 aplteam-IniFiles-6.0.0
@@ -8,7 +7,6 @@ aplteam-HashPasswords-2.0.0
 aplteam-GitHubAPIv3-2.1.0
 aplteam-DotNetZip-3.0.1
 aplteam-CommTools-2.0.1
-aplteam-CodeCoverage-0.10.7
 aplteam-APLTreeUtils2-1.4.1
 aplteam-WindowsEventLog-3.0.1
 aplteam-HandleError-5.0.2
