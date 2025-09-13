@@ -89,6 +89,8 @@
  :EndIf
  :If F.IsFile parms.projectPath,'LICENSE'    ⍝ By convention...
      parms.projectPath zipObj.Add'LICENSE'   ⍝ ... we add a file "LICENSE" if there is one
+ :Else
+     ⎕←'WARNING: no LICENSE file found!'
  :EndIf
  :If 0<cfg.⎕NC'files'
  :AndIf 0<≢cfg.files

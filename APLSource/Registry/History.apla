@@ -1,6 +1,9 @@
 (
- '* 0.122.0 ⋄ 2025-09-12'
- '  * Addresses license issues for both Clint and Server'
+ '* 0.122.0 ⋄ 2025-09-13'
+ '  * Now proper LICENSE files are included when Tatin is built as a client, and as a server as well'
+ '  * `BuildPackage` now prints a warning to the session when no LICENSE file can be detected'
+ '  * Package dependencies updated'
+ '  * Plodder (and therefore implicitly also Rumba) updated  '
  '* 0.121.1 ⋄ 2025-08-08'
  '  * Dependencies updated: aplteam-APLProcess, MarkAPL, HttpCommand, Plodder, HandleError'
  '  * Bug fixes'

@@ -15,7 +15,7 @@
  isScalar←⍬≡⍴path
  :If 0≠≢path←,path
      expandFlag←{0<⎕NC ⍵:{0=1↑0⍴⍵:⍵ ⋄ 'expand'≡⎕C ⍵}w←⍎⍵ ⋄ 0}'expandFlag'
-     isWin←'Win'≡APLTreeUtils2.GetOperatingSystem ⍬
+     isWin←'Win'≡##.APLTreeUtils2.GetOperatingSystem ⍬
      path←(expandFlag isWin)NormalizePath_ path
      :If isScalar
      :AndIf 1=≢path
