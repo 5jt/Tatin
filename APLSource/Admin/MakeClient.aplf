@@ -72,7 +72,7 @@
      parms←⎕NS''
      parms.from←##.CiderConfig.HOME,'/packages'
      parms.to←targetPath,'/Tatin/'
-     buff←##.Client.CopyLicenseFiles parms
+     buff←##.Registry.CopyLicenseFiles parms
      (3⊃buff)Assert=/2↑buff
      parms.to ⎕NCOPY'LICENSE'
      (targetPath,'/Tatin')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./APLSource/Tatin.dyalog'

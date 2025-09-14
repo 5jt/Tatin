@@ -1,4 +1,4 @@
- zipFilename←BuildPackage parms;cfg;fileList;zipObj;tempFilename;deps;errMsg;cfg_;dependencies;hasBuildNo;ciderCfg;ref;res
+ zipFilename←BuildPackage parms;cfg;fileList;zipObj;tempFilename;deps;errMsg;cfg_;dependencies;hasBuildNo;ciderCfg;ref;res;parms2;report;copied;expected
 ⍝ Build a new version of a Tatin package.\\
 ⍝ The right argument must be a namespace with the required parameters, typically created by calling  `CreateBuildParms`.
 ⍝ These are the parameters:\\
@@ -57,6 +57,14 @@
      :EndIf
  :EndIf
  dependencies←parms.dependencyFolder EstablishPackageDependencies parms.projectPath
+ :If 0<≢dependencies
+ :AndIf 0<≢cfg.license
+     parms2←⎕NS''
+     parms2.from←parms.projectPath,{⍵↑⍨¯1+⍵⍳'='}dependencies
+     parms2.to←parms.targetPath
+     (expected copied report)←⎕SE._Tatin.Registry.CopyLicenseFiles parms2
+     ('No LICENSE file found:',⊃,/(⎕UCS 13),¨report)Assert expected=copied
+ :EndIf
  zipFilename←F.ExpandPath parms.targetPath,(GetPackageFilenameFromCfg cfg),'.zip'
  :If 0=F.Exists parms.targetPath
      F.MkDir parms.targetPath
@@ -91,6 +99,10 @@
      parms.projectPath zipObj.Add'LICENSE'   ⍝ ... we add a file "LICENSE" if there is one
  :Else
      ⎕←'WARNING: no LICENSE file found!'
+ :EndIf
+ :If 0<≢dependencies
+ :AndIf 0<≢cfg.license
+     parms2.to zipObj.Add'Licenses'  ⍝ We add the folder "Licenses"
  :EndIf
  :If 0<cfg.⎕NC'files'
  :AndIf 0<≢cfg.files

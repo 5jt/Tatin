@@ -1,4 +1,4 @@
- (expected copied report)←{replace}CopyLicenseFiles parms;list;path;pkg;name;filename
+ (expected copied report)←{replace}CopyLicenseFiles parms;list;path;pkg;name;filename;F
 ⍝ (Re)creates a folder Licenses/ and populates it with folders for each Tatin package the project depends on.
 ⍝ Each such sub-folder contains the corresponding LICENSE file of that package if there is one.
 ⍝ If there is none then a warning is printed to the session.
@@ -12,20 +12,22 @@
  expected←copied←0
  report←''
  replace←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'replace'
+ F←##.FilesAndDirs
  'Parameter is missing'Assert 2=+/0<parms.⎕NC↑'from' 'to'
- '"from" is not a directory'Assert ##.FilesAndDirs.IsDir parms.from
- :If 0<≢list←##.FilesAndDirs.ListDirs2 parms.from,'/'
+ '"from" is not a directory'Assert F.IsDir parms.from
+ :If 0<≢list←F.ListDirs2 parms.from,'/'
+     list←{⍵/⍨{(⍵⍳⍵)=⍳≢⍵}{⊃{⍺,'-',⍵}/2↑'-'(≠⊆⊢)⊃,/1↓⎕NPARTS ⍵}¨⍵}⌽list ⍝ Only the best survives
      path←parms.to,'/Licenses'
      :If replace
-         {}##.FilesAndDirs.RmDirByForce path
+         {}F.RmDirByForce path
      :EndIf
-     Assert ##.FilesAndDirs.MkDir path
+     Assert F.MkDir path
      :For pkg :In list
          expected+←1
          name←⊃{⍺,'-',⍵}/2↑'-'(≠⊆⊢)⊃,/1↓⎕NPARTS pkg
          filename←pkg,'/LICENSE'
-         :If ##.FilesAndDirs.IsFile filename
-             Assert ##.FilesAndDirs.MkDir path,'/',name
+         :If F.IsFile filename
+             Assert F.MkDir path,'/',name
              (path,'/',name)⎕NCOPY filename
              copied+←1
          :Else

@@ -62,7 +62,7 @@
      parms←⎕NS''
      parms.from←##.CiderConfig.HOME,'/packages'
      parms.to←targetPath,'/Server/'
-     buff←##.Client.CopyLicenseFiles parms
+     buff←##.Registry.CopyLicenseFiles parms
      (3⊃buff)Assert=/2↑buff
      Assert F.MkDir parms.to,'/Licenses/Plodder'
      (parms.to,'/Licenses/Plodder/')⎕NCOPY'Assets/Runtime/Plodder/LICENSE'
