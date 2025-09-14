@@ -72,7 +72,7 @@
       :EndIf
      
       :If 0≠≢Body
-          mime←(1+∨/'<html'⍷⎕C Body)⊃'plain' 'html'
+          mime←(1+∨/'<html'⍷⎕C ⊃Body)⊃'plain' 'html'
           mime←'text/',mime,'; charset="UTF-8"'
           text,←'Content-Type'addHeader mime
           text,←CRLF

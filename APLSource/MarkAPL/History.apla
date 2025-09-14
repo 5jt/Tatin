@@ -1,4 +1,7 @@
 (
+ '* 14.0.1 ⋄ 2025-08-24'
+ '  * Bug fix: `GetCommandLineParms` stumbled over empty settings like `RIDE_INIT=`'
+ '  * Packages updated'
  '* 14.0.1 ⋄ 2025-05-12'
  '  * Package `FilesAndDirs` updated'
  '* 14.0.0 ⋄ 2025-04-04'

@@ -1,0 +1,13 @@
+ r←CompareFolders(path_1 path_2);parms;list_2;list_1
+⍝ Checks whether the contents of two folders matches and returns 1 if so and 0 otherwise.
+ parms←⎕NS''
+ parms.recurse←2
+ (list_1 list_2)←parms{⊃⍺ F.Dir2 ⍵,'/'}¨path_1 path_2
+ :If ≠/≢¨list_1 list_2
+ :OrIf ((1+≢path_1)↓¨list_1){~(∧/⍺∊⍵)∧(∧/⍵∊⍺)}(1+≢path_2)↓¨list_2
+     r←0
+ :Else
+     list_1/⍨←F.IsFile list_1
+     list_2/⍨←F.IsFile list_2
+     r←∧/list_1{(⊃⎕NGET ⍺ 1)≡(⊃⎕NGET ⍵ 1)}¨list_2
+ :EndIf

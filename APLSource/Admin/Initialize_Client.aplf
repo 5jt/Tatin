@@ -12,7 +12,7 @@
  :Else
      ##.FilesAndDirs.PolishCurrentDir
  :EndIf
- CopyPlodderDependency 1
+ CopyDependencies
  ##.Client.CreateAllRefs_Client
  ##.RumbaLean.⎕EX'DRC'                                         ⍝ Paranoia; with DRC around Conga won't be initialised
  ##.RumbaLean.⎕EX'Conga'

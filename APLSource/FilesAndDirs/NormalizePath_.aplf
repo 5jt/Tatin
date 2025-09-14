@@ -8,10 +8,13 @@
          path←(⊂expandFlag isWin)NormalizePath_¨path
      :Else
          :If isWin
-         :AndIf '%'=1↑path
-             path←(2 ⎕NQ #'GetEnvironment'(1↓{⍵/⍨2>+\⍵='%'}path)),{⍵↓⍨1++/1=+\⍵='%'}path
-         :ElseIf '$'=1↑path
-             path←(⊃⎕SH'echo ',{⍵↑⍨⍵⍳'/'}path),{⍵↓⍨⍵⍳'/'}path
+             :If '%'∊path
+                 path←'%[_a-zA-Z][_0-9a-zA-Z]*%'⎕R{0=≢r←2 ⎕NQ #'GetEnvironment'(⍵.Match~'%'):⍵.Match ⋄ r}⊢path
+             :EndIf
+         :Else
+             :If '$'∊path
+                 path←'\$[_a-zA-Z][_0-9a-zA-Z]*'⎕R{0=≢r←2 ⎕NQ #'GetEnvironment'(1↓⍵.Match):⍵.Match ⋄ r}⊢path
+             :EndIf
          :EndIf
          UNCflag←(⊂2⍴path)∊'\\' '//'
          :If expandFlag

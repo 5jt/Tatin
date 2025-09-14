@@ -1,11 +1,1 @@
- SendEmailExample←{
-⍝ Use this to send a test email to `emailAddress`.
-⍝ Use with care: the email address used for logging on to the SMTP server is not suitable for
-⍝ anything remotely confidental; it's just for tests. Be aware that the hard-coded credentials
-⍝ might get changed in case somebody uabuses this.
-⍝ Note that the number of emails you may send is limited.
-⍝ ⍺ is optional and may be a char vector (filename) or a vector of char vectors (filesnames).
-⍝ If specified those are attached to the email. Relative filenames are expected in ./
-     ⍺←⊣
-     ⍺ ##.SendEmailExample ⍵
- }
+SendEmailExample←{⍺←⊢ ⋄ ⍺ ##.SendEmailExample ⍵}
