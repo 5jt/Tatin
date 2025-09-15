@@ -7,7 +7,7 @@
  registryPath←F.ExpandPath registryPath
  parms.date{⍺:⍺ ⋄ 0≢⊃⍵}←parms.since
  :If flag←0=⎕NC'list'
-     list←(parms.date)GetAllPackages registryPath
+     list←parms.date GetAllPackages registryPath
  :EndIf
  :If 0<≢parms.tags
  :AndIf ~(⊂parms.tags)∊0 1

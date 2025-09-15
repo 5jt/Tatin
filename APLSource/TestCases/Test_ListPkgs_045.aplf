@@ -1,0 +1,15 @@
+ r←Test_ListPkgs_045(stopFlag batchFlag);⎕TRAP;mat;parms
+⍝ List all packages of group "aplteam" without their publishing dates
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ parms←⎕NS''
+ parms.date←0
+ parms.group←'aplteam'
+ parms.tags←'process'
+ parms.aggregate←0
+ mat←parms TC.ListPackages'[tatin]'
+ →T.PassesIf ¯1=-/(,mat)⍳'aplteam-APLProcess-0.9.0' 'aplteam-APLProcess-0.10.0'  ⍝ check sort order (was once a bug)
+
+ r←T._OK
+⍝Done

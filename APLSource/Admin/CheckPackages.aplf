@@ -1,6 +1,6 @@
  r←{development}CheckPackages flag;pkgs;latest;data;header;parms;allOnTatin;bool;path
 ⍝ Checks whether there is a better version of the packages available in the packages/ folder,
-⍝ but check the optional left argumennt `development`.
+⍝ but check the optional left argument `development`.
 ⍝ Note that this function only checks [tatin] (the principal Tatin registry)
 ⍝ `flag` is an insurance against accidental calls.
 ⍝ `development` defaults to 0, meaning that the folder packages/ is investigated.
@@ -25,7 +25,8 @@
          :Else
              r←'All up-to-date'
          :EndIf
-         ⎕←'The given folder does not contain any sub-folders'
+     :Else
+         r←'The given folder does not contain any sub-folders'
      :EndIf
  :EndIf
 ⍝Done

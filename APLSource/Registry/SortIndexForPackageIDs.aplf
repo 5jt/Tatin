@@ -17,12 +17,16 @@
  :If 0<≢data
      Assert 0=∧/~'.'∊¨data
      :If 2=⍴⍴data
-         ind1←⍋data[;3]
-         data←data[ind1;]
-         buff←{⊃,/1↓⎕NPARTS ⍵}¨data[;1]
-         buff←RemoveBetaPart¨buff
-         ind2←SeparateUriAndPackageID_ buff
-         ind←ind1[ind2]
+         :If 3≤2⊃⍴data
+             ind1←⍋data[;3]
+             data←data[ind1;]
+             buff←{⊃,/1↓⎕NPARTS ⍵}¨data[;1]
+             buff←RemoveBetaPart¨buff
+             ind2←SeparateUriAndPackageID_ buff
+             ind←ind1[ind2]
+         :Else
+
+         :EndIf
      :Else
          ind←SeparateUriAndPackageID_ RemoveBetaPart{∨/'/\'∊⊃⍵:(≢⊃⎕NPARTS⊃⍵)↓¨⍵ ⋄ ⍵}data
      :EndIf
