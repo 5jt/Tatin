@@ -15,7 +15,9 @@
  F←##.FilesAndDirs
  'Parameter is missing'Assert 2=+/0<parms.⎕NC↑'from' 'to'
  '"from" is not a directory'Assert F.IsDir parms.from
- :If 0<≢list←F.ListDirs2 parms.from,'/'
+ list←F.ListDirs2 parms.from,'/'
+ list/⍨←'Licenses'∘≢¨2⊃¨⎕NPARTS¨list
+ :If 0<≢list
      list←{⍵/⍨{(⍵⍳⍵)=⍳≢⍵}{⊃{⍺,'-',⍵}/2↑'-'(≠⊆⊢)⊃,/1↓⎕NPARTS ⍵}¨⍵}⌽list ⍝ Only the best survives
      path←parms.to,'/Licenses'
      :If replace

@@ -62,6 +62,7 @@
      :EndTrap
      ⎕DL 0.01
      list←F.ListDirs tempFolder
+     list/⍨←'Licenses'∘≢¨2⊃¨⎕NPARTS¨list
      :If 0=≢list                                                ⍝ Anything? At all?!
          F.RmDir tempFolder                                     ⍝ No assets, so we can get rid of it
      :Else

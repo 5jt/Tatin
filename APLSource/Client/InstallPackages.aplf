@@ -91,7 +91,9 @@
          parms.from←targetFolder_
          parms.to←targetFolder_
          (expected copied report)←##.Registry.CopyLicenseFiles parms
-         ('No LICENSE file found:',⊃,/(⎕UCS 13),¨report)Assert expected=copied
+         :If expected≠copied
+             PrintToSession'  No LICENSE file found for ',⊃{⍺,',',⍵}/(⎕UCS 13),¨report
+         :EndIf
      :EndFor
      CloseConnections forceClose
  :Else

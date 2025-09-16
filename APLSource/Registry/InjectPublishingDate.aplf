@@ -1,4 +1,4 @@
- r←{path}InjectPublishingDate packageIDs;i;packageID;json
+  r←{path}InjectPublishingDate packageIDs;i;packageID;json;filename;ts;flag
 ⍝ Returns a matrix with three columns:
 ⍝ [;1] packageID (without any beta part)
 ⍝ [;2] the publishing date as a real (YYYYMMDD.hhmmss)
@@ -8,7 +8,19 @@
  r←((≢packageIDs),3)⍴''
  :For i :In ⍳≢packageIDs
      packageID←i⊃packageIDs
-     json←GetJsonFromFile(AddSlash path),packageID,'/',CFG_Name
+     filename←(AddSlash path),packageID,'/',CFG_Name
+     flag←0
+     :Repeat
+         json←GetJsonFromFile filename
+         :If 0=json.⎕NC'date'
+            ⍝ This should not happen, but it DID happen anyway (very rarely)
+            ⍝ The best we can do is to take the creation date insetad and inject it
+             ts←⊃('type' 10)F.Dir2 filename
+             ts SetPublishingDate filename
+         :Else
+             flag←1
+         :EndIf
+     :Until flag
      :If NotJustDigits{⍵↓⍨1++/2>+\'-'=⍵}{∨/'/\'∊⍵:⊃,/1↓⎕NPARTS ⍵ ⋄ ⍵}packageID
          r[i;]←packageID json.date json.date
      :Else
