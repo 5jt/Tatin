@@ -1,0 +1,18 @@
+ {r}←C HandleServerLicenses targetPath;ns;version;caption;NOTICE;report;from;to
+⍝ Establishes the version numbers for Rumba and Plodder, adds them to NOTICE and
+⍝ then adds the licenses for all packages the server depends on.
+ r←0
+ ns←⎕NS''
+ '#.Plodder.Version'ns.⎕CY'Assets/Runtime/Plodder/Plodder.dws'
+ version←{⍵↑⍨¯1+⍵⍳'+'}2⊃ns.Version
+ caption←'## Plodder ',version
+ NOTICE←('# Third-Party Licenses' ''caption'```'),(⊃⎕NGET'Assets/Runtime/Plodder/LICENSE' 1),'```' ''
+ '#.RumbaLean.Version'ns.⎕CY'Assets/Runtime/Plodder/Plodder.dws'
+ version←{⍵↑⍨¯1+⍵⍳'+'}2⊃ns.Version
+ caption←'## Rumba ',version
+ NOTICE,←(caption'```'),(⊃⎕NGET'Assets/Runtime/Rumba/LICENSE' 1),'```' ''
+ from←C.HOME,'/packages'
+ to←targetPath,'/Server/'
+ report←NOTICE ##.Registry.CreateNoticeFile from to
+ ('Not all dependencies have a LICENSE file:',(⎕UCS 13),¨report)Assert 0=≢report
+⍝Done

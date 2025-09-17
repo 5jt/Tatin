@@ -1,0 +1,8 @@
+ {r}←CopyServerStuff targetPath
+ (targetPath,'/Docker')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./Docker/'
+ (targetPath,'/Server')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./Assets/'
+ (targetPath,'/Server/')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./InstallAsWindowsService.dws'
+ (targetPath,'/Server/Maintenance/')(⎕NCOPY⍠('Wildcard' 1)('IfExists' 'Replace')F.ExecNfunction)'Maintenance/Server/*'
+ (targetPath,'/Server/server.ini')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./server.ini.RemoveMe'
+ (targetPath,'/Server/')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./tatin.sh'
+⍝Done

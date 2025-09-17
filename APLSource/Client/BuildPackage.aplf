@@ -60,7 +60,7 @@
  :If 0<≢dependencies
  :AndIf 0<≢cfg.license
      report←Reg.CreateNoticeFile(parms.projectPath,{⍵↑⍨¯1+⍵⍳'='}dependencies)parms.targetPath
-     ('No LICENSE file found:',⊃,/(⎕UCS 13),¨report)Assert 0<≢report
+     ('No LICENSE file found:',⊃,/(⎕UCS 13),¨report)Assert 0=≢report
  :EndIf
  zipFilename←F.ExpandPath parms.targetPath,(GetPackageFilenameFromCfg cfg),'.zip'
  :If 0=F.Exists parms.targetPath
@@ -99,8 +99,9 @@
      ⎕←'WARNING: no LICENSE file found!'
  :EndIf
  :If 0<≢dependencies
- :AndIf F.IsDir parms.projectPath,'Licenses'
-     parms.projectPath zipObj.Add'Licenses'  ⍝ We add the folder "Licenses"
+ :AndIf F.IsFile parms.targetPath,'NOTICE.md'
+     parms.targetPath zipObj.Add'NOTICE.md'
+     F.DeleteFile parms.targetPath,'NOTICE.md'
  :EndIf
  :If 0<cfg.⎕NC'files'
  :AndIf 0<≢cfg.files
@@ -112,4 +113,5 @@
  :ElseIf F.IsFile parms.projectPath,'apl-dependencies.txt'
      parms.projectPath zipObj.Add'apl-dependencies.txt'
  :EndIf
+
  zipObj.Dispose

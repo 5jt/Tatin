@@ -1,0 +1,28 @@
+ {r}←CreateServerDirectories targetPath
+ r←0
+ F.MkDir'Dist'
+
+ F.RmDir targetPath
+ ⎕DL 0.1
+ Assert F.MkDir targetPath
+
+ F.MkDir targetPath,'/Server/'
+ ⎕DL 0.1
+ Assert F.IsDir targetPath,'/Server'
+
+ F.MkDir targetPath,'/Server/Assets'
+ ⎕DL 0.1
+ Assert F.IsDir targetPath,'/Server/Assets'
+
+ F.MkDir targetPath,'/Server/Maintenance'
+ ⎕DL 0.1
+ Assert F.IsDir targetPath,'/Server/Maintenance'
+
+ F.MkDir targetPath,'/Registry/'
+ ⎕DL 0.1
+ Assert F.IsDir targetPath,'/Registry'
+
+ F.MkDir targetPath,'/Docker'
+ ⎕DL 0.1
+ Assert F.IsDir targetPath,'/Docker'
+⍝Done
