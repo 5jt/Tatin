@@ -1,0 +1,66 @@
+ report←{x}CreateNoticeFile y;list;pkg;name;filename;F;parms;NOTICE;license;else;replace
+⍝ Creates NOTICE.md with license information for all Tatin packages found in `from`
+⍝ as immediate sub-folders.
+⍝ For every package it contains:\\
+⍝ * The full name of the package, including the version number
+⍝ * The name of the license
+⍝ * The license text\\
+⍝ As right argument one of these must be provided:
+⍝ * A namespace with two variables: "from" and "to".
+⍝ * A nested two-element vector with the "from" path and the "to" path.\\
+⍝ Optional left argument must be one of:
+⍝ * Boolean: 0 = append to existing NOTICE.md if present; 1 (default) = create fresh
+⍝ * Vector of text vectors: written to NOTICE.md
+⍝ That results in licenses being added to an already existing document.
+⍝ Returns '' if all packages had a LICENSE file, otherwise a vector of text vectors with offending package names.
+ report←NOTICE←''
+ x←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'x'
+ NOTICE←''
+ :If (⊂x)∊0 1
+     replace←x
+ :Else
+     replace←1
+     'Invalid left argumemt'Assert 2=≡x
+     'Invalid left argumemt'Assert∧/{' '=⊃1↑0⍴⍵}¨x
+     NOTICE←x
+ :EndIf
+ F←##.FilesAndDirs
+ :If 9=⎕NC'y'
+     parms←y
+ :Else
+     parms←⎕NS''
+     parms.(from to)←y
+ :EndIf
+ 'Parameter is missing'Assert 2=+/0<parms.⎕NC↑'from' 'to'
+ :If F.IsDir parms.from
+     list←F.ListDirs2 parms.from,'/'
+ :AndIf 0<≢list
+     filename←parms.to,'/NOTICE.md'
+     :If F.IsFile filename
+         :If replace
+             {}F.DeleteFile filename
+         :Else
+             NOTICE,←(⊃⎕NGET filename 1),⊂''
+         :EndIf
+     :Else
+         :If 0=≢NOTICE
+             NOTICE←'# Third-Party Licenses' ''
+         :EndIf
+     :EndIf
+     :For pkg :In list
+     ⍝ Immediate sub-folders might be packages
+         :If F.IsFile pkg,'/apl-package.json'
+             name←⊃,/1↓⎕NPARTS pkg
+             :If F.IsFile pkg,'/LICENSE'
+                 license←⊃⎕NGET(pkg,'/LICENSE')1
+                 NOTICE,←('## ',name)('')
+                 NOTICE,←(⊂'```'),license,'```' ''
+             :Else
+                 report,←⊂name
+             :EndIf
+         :EndIf
+     :EndFor
+     :If 0<≢NOTICE
+         (⊂NOTICE)⎕NPUT filename 1
+     :EndIf
+ :EndIf

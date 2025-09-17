@@ -26,6 +26,7 @@
  TC.WritePackageConfigFile src cfg
 
  parms←TC.CreateBuildParms src
+ parms.licenseWarning←0
  parms.targetPath←dist
 
  zipfile←TC.BuildPackage parms

@@ -1,4 +1,4 @@
- {r}←{bumpBuild}MakeServer batchFlag;F;targetPath;zipFilename;list;msg;success;parms;buff
+ {r}←{bumpBuild}MakeServer batchFlag;F;targetPath;zipFilename;list;msg;success;buff;report;version;caption;ns
 ⍝ Creates a new server.\\
 ⍝ Call this after `MakeClient` has been called; see there for details.
 ⍝ It can be called from a developer's session (⍵←0) or as part of an automated "Make" process with ⍵←1.\\
@@ -59,14 +59,13 @@
      ⎕DL 0.1
      Assert F.IsDir targetPath,'/Docker'
 
-     parms←⎕NS''
-     parms.from←##.CiderConfig.HOME,'/packages'
-     parms.to←targetPath,'/Server/'
-     buff←##.Registry.CopyLicenseFiles parms
-     (3⊃buff)Assert=/2↑buff
-     Assert F.MkDir parms.to,'/Licenses/Plodder'
-     (parms.to,'/Licenses/Plodder/')⎕NCOPY'Assets/Runtime/Plodder/LICENSE'
-     parms.to ⎕NCOPY'LICENSE'
+     ns←⎕NS''
+     '#.Plodder.Version'ns.⎕CY'Assets/Runtime/Plodder/Plodder.dws'
+     version←{⍵↑⍨¯1+⍵⍳'+'}2⊃ns.Version
+     caption←'## Plodder ',version
+     buff←('# Third-Party Licenses' ''caption'```'),(⊃⎕NGET'Assets/Runtime/Plodder/LICENSE' 1),'```' ''
+     report←buff ##.Registry.CreateNoticeFile(##.CiderConfig.HOME,'/packages')(targetPath,'/Server/')
+     ('Not all dependencies have a LICENSE file:',(⎕UCS 13),¨report)Assert 0=≢report
 
      ⎕WSID←targetPath,'/Server/Server'
      #.⎕EX'Make_'

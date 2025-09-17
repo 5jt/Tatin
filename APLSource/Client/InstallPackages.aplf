@@ -1,4 +1,4 @@
- r←{noBetas}InstallPackages(identifiers targetFolder);forceClose;isUCMD;identifier_;alias;identifier;targetFolder_;packageID;cfg;ucScriptName;qdmx;registry;parms;expected;copied;report
+ r←{noBetas}InstallPackages(identifiers targetFolder);forceClose;isUCMD;identifier_;alias;identifier;targetFolder_;packageID;cfg;ucScriptName;qdmx;registry;report
 ⍝ Install package(s) `identifiers` in `targetFolder`.\\
 ⍝ `identifiers` must be a simple char vector holding the package IDs (possibly incomplete) for one or more packages.
 ⍝ Multiple packages must be separated by commas.
@@ -87,11 +87,8 @@
              ⍝ Move the user command script to the root of the install folder (usually something like [MyUCMDs])
              (targetFolder_,'/')(⎕NMOVE Reg.F.ExecNfunction)targetFolder_,'/',packageID,'/',ucScriptName
          :EndIf
-         parms←⎕NS''
-         parms.from←targetFolder_
-         parms.to←targetFolder_
-         (expected copied report)←##.Registry.CopyLicenseFiles parms
-         :If expected≠copied
+         report←##.Registry.CreateNoticeFile targetFolder_ targetFolder_
+         :If 0<≢report
              PrintToSession'  No LICENSE file found for ',⊃{⍺,',',⍵}/(⎕UCS 13),¨report
          :EndIf
      :EndFor

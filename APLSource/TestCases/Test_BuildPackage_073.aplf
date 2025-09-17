@@ -6,6 +6,7 @@
  tempPath←∆GetTempDir''
  path←∆TEMP_TEST_DATA,'/Build/NuGet4/'
  parms←TC.CreateBuildParms path
+ parms.licenseWarning←0
  parms.targetPath←tempPath
 
  :Trap 998

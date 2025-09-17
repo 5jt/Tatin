@@ -11,6 +11,7 @@
  parms←TC.CreateBuildParms path
  parms.targetPath←path
  parms.dependencyFolder←'dependencies'
+ parms.licenseWarning←0
  parms.version←'4.0.0+135'
  zipFileName←TC.BuildPackage parms
  list←TC.ZipArchive.ListZipContents zipFileName
