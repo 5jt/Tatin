@@ -11,7 +11,7 @@
  refs←TC.InstallPackages'[localhost]example-versions'dir
  →T.GoToTidyUp 1≠≢refs
 
- list2←(≢dir)↓¨⊃TC.F.Dir dir
+ list2←((≢dir)↓¨⊃TC.F.Dir dir)~⊂'NOTICE.md'
  →T.GoToTidyUp≢/1 0+≢¨list1 list2
  →T.GoToTidyUp~∧/list1∊list2
  →T.GoToTidyUp 1≠+/'-versions-'⍷∊list2

@@ -2,19 +2,20 @@
 ⍝ Create an instance with all the properties required for a connection to an SMTP server.
 ⍝ Pass an instance of this class as argument to `⎕NEW Connection`.
 
-    ∇ make
+    ∇ make;v
       :Implements Constructor
       :Access Public
-      _Server←''                    ⍝ server address
-      _Password←''                  ⍝ optional password (if server requires authentication)
-      _Userid←''                    ⍝ userid for authentication (defaults to `From`)
-      _Secure←1                     ⍝ 1=SSL/TLS, 0 = not secure
-      _Port←465                     ⍝ server port (465 for secure, 578 otherwise)
-      _Domain←''                    ⍝ fully qualified domain name for logging on with `Userid` and `Password`
-      _Org←''                       ⍝ optional organization
-      _ReplyTo←''                   ⍝ optional reply to email address
-      _XMailer←'APLTeam SMTP Client ',2⊃(⊃⊃⎕class ⎕this).##.Version  ⍝ client identifier
-      _TLSFlags←32                  ⍝ Default: accept server certificate without validating (see Conga User Guide Appendix C)
+      _Server←''                        ⍝ server address
+      _Password←''                      ⍝ optional password (if server requires authentication)
+      _Userid←''                        ⍝ userid for authentication (defaults to `From`)
+      _Secure←1                         ⍝ 1=SSL/TLS, 0 = not secure
+      _Port←465                         ⍝ server port (465 for secure, 578 otherwise)
+      _Domain←''                        ⍝ fully qualified domain name for logging on with `Userid` and `Password`
+      _Org←''                           ⍝ optional organization
+      _ReplyTo←''                       ⍝ optional reply to email address
+      v←{3 6::'' ⋄ ' ',2⊃(⊃⊃⎕CLASS ⍵).##.Version}⎕THIS
+      _XMailer←'APLTeam SMTP Client',v  ⍝ client identifier
+      _TLSFlags←32                      ⍝ Default: accept server certificate without validating (see Conga User Guide Appendix C)
     ∇
 
     :Property Server

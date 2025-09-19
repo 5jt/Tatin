@@ -1,0 +1,20 @@
+ {r}←{dry}ReinstallAndUpdateTatinPackages type;parms;path;buff
+⍝ Re-installes all packages in either packages/ (type=1) or packages_dev/ (type=2)
+⍝ and updated them in the process, including to new major version numbers (!)
+ r←0
+ dry←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'dry'
+ 'Right argument must be either 1 or 2'Assert(⊂type)∊1 2
+ path←type⊃'packages' 'packages_dev'
+ parms←⎕SE.Tatin.CreateReInstallParms
+ parms.dry←dry
+ parms.major←1
+ parms.update←1
+ buff←parms ⎕SE.Tatin.ReInstallDependencies ##.CiderConfig.HOME,'/',path
+ ⎕←(⎕PW-1)⍴'-'
+ ⎕←↑buff
+ :If type=1
+     ⎕←''
+     ⎕←'Use this function to copy packages from packages/ to APLSource/ :'
+     ⎕←'#.Tatin.Admin.CopyPackagesToAPLSource'
+ :EndIf
+⍝Done

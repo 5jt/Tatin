@@ -1,4 +1,4 @@
- r←{development}CheckPackages flag;pkgs;latest;data;header;parms;allOnTatin;bool;path
+ r←{development}CheckPackagesForBetterVersions flag;pkgs;latest;data;header;parms;allOnTatin;bool;path;report;msg
 ⍝ Checks whether there is a better version of the packages available in the packages/ folder,
 ⍝ but check the optional left argument `development`.
 ⍝ Note that this function only checks [tatin] (the principal Tatin registry)
@@ -7,26 +7,33 @@
 ⍝ You can change that by passing a 1 as left argument; then packages_dev/ is investigated instead.
  r←⍬
  :If flag
+     'Run #.Tatin.Admin.Initialize_Client before calling this function'Assert 9=##.FilesAndDirs.⎕NC'APLTreeUtils2'
      development←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'development'
      path←##.CiderConfig.HOME,(1+development)⊃'/packages' '/packages_dev'
-     :If 0<≢pkgs←##.FilesAndDirs.ListDirs path   ⍝ Value error? Run Initialize_Client!
+     :If 0<≢pkgs←##.FilesAndDirs.ListDirs path
          pkgs←{⊃,/1↓⎕NPARTS ⍵}¨pkgs
          parms←⎕NS''
          parms.latest←1
          allOnTatin←,parms ⎕SE.Tatin.ListPackages'[tatin]'
          bool←(##.Registry.RemoveMinorAndPatch¨allOnTatin)∊##.Registry.RemoveMinorAndPatch¨pkgs
          allOnTatin←bool/allOnTatin
-         r←⍪(~allOnTatin∊pkgs)/allOnTatin
-         r,←(~pkgs∊allOnTatin)/pkgs
-         :If 0<≢r
+         report←⍪(~allOnTatin∊pkgs)/allOnTatin
+         report,←(~pkgs∊allOnTatin)/pkgs
+         :If 0<≢report
              header←'Current' 'Latest'
-             r←(header,[0.5]' ')⍪r
-             r[2;]←(⌈/⍉≢¨r[;1 2])⍴¨'='
+             report←(header,[0.5]' ')⍪report
+             report[2;]←(⌈/⍉≢¨report[;1 2])⍴¨'='
+             report←⍕report
+             report,[1]←' '
+             msg←'=> Use the function ReinstallAndUpdateTatinPackages if udating is required'
+             report←((≢msg)⌈2⊃⍴report)↑[2]report
+             report,[1]←msg
+             ⎕←report
          :Else
-             r←'All up-to-date'
+             report←'All up-to-date'
          :EndIf
      :Else
-         r←'The given folder does not contain any sub-folders'
+         report←'The given folder does not contain any sub-folders'
      :EndIf
  :EndIf
 ⍝Done

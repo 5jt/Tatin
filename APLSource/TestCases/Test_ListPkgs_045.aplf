@@ -6,10 +6,11 @@
  parms←⎕NS''
  parms.date←0
  parms.group←'aplteam'
- parms.tags←'process'
+ parms.tags←'markdown'
  parms.aggregate←0
- mat←parms TC.ListPackages'[tatin]'
- →T.PassesIf ¯1=-/(,mat)⍳'aplteam-APLProcess-0.9.0' 'aplteam-APLProcess-0.10.0'  ⍝ check sort order (was once a bug)
+ mat←parms TC.ListPackages'[localhost]'
+ →T.PassesIf ¯1=-/(,mat)⍳'aplteam-MarkAPL-9.1.9' 'aplteam-MarkAPL-9.1.13'  ⍝ check sort order (was once a bug)
+ →T.PassesIf ¯1=-/(,mat)⍳'aplteam-MarkAPL-9.1.13' 'aplteam-MarkAPL-10.0.0'
 
  r←T._OK
 ⍝Done
