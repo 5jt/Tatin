@@ -328,6 +328,7 @@ r←##.TatinVars.GetFullPath2AssetsFolder</code></pre></li>
 <pre tabindex="0"><code>]TATIN.UserSettings -edit</code></pre>
 <p>At the bottom there are defaults defined for <code>license</code> and <code>source</code> and possibly other properties. The default will be injected when a new package is created.</p>
 <p>Both the user command <code>]Tatin.ListLicenses</code> and the API function <code>⎕SE.Tatin.ListLicenses</code> can be used to get a list of all licenses tolerated by a Tatin Registry.</p>
+<p>When a license is specified, you must provide a file <code>LICENSE</code> in the root of the package, otherwise <code>BuildPackage</code> will throw an error, though you can suppress this check by setting the <code>BuildPackage</code> parameter <code>checkLICENSEfile</code> (which defaults to 1) to 0.</p>
 <div class="h_tag">
 <a href="#lx" id="lx" class="autoheader_anchor">
 <h4 data-id="lx">2.3.11. lx</h4>

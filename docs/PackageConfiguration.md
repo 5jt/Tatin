@@ -262,6 +262,8 @@ At the bottom there are defaults defined for `license` and `source` and possibly
 
 Both the user command `]Tatin.ListLicenses` and the API function `⎕SE.Tatin.ListLicenses` can be used to get a list of all licenses tolerated by a Tatin Registry.
 
+When a license is specified, you must provide a file `LICENSE` in the root of the package, otherwise `BuildPackage` will throw an error, though you can suppress this check by setting the `BuildPackage` parameter `checkLICENSEfile` (which defaults to 1) to 0.
+
 
 #### lx
 
@@ -517,6 +519,7 @@ In case [`assets`](#assets) is not empty this function returns a simple char vec
 [^version]: A version is built from the major number, the minor number and the version number, optionally followed by a build number
 
 [^TatinVars]: The Tatin package variables are discussed in detail in the document `FirstStepsWithTatin.html`
+
 
 
 

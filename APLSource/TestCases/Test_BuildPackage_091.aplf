@@ -1,6 +1,6 @@
- r←Test_BuildPackage_003(stopFlag batchFlag);⎕TRAP;rc;msg;parms
- ;dir;src;dist;cfg;zipfile;ns;list;expected
-⍝ Build a package with multiple files into special source folder
+ r←Test_BuildPackage_091(stopFlag batchFlag);⎕TRAP;rc;msg;parms;qdmx
+ ;dir;src;dist;cfg;zipfile;ns
+⍝ Build a package that declares to not require a license but with checkLICENSEfile←0
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  r←T._Failed
 
@@ -10,13 +10,13 @@
  src,←'/v0.1.0'
  F.MkDir(src,'/APLSource')dist
 
- ('foo1←{1}')F.NPUT src,'/APLSource/foo1.apln'
- ('foo2←{2}')F.NPUT src,'/APLSource/foo2.apln'
+ ('foo←{1}')F.NPUT src,'/APLSource/foo1.apln'
  cfg←TC.InitPackageConfig ⍬
  cfg.group←'Example'
  cfg.name←'Package_B'
  cfg.version←'0.1.0'
  cfg.source←'APLSource'
+ cfg.license←'Not required'
  cfg.os_win←1
  TC.WritePackageConfigFile src cfg
  parms←TC.CreateBuildParms src
@@ -24,9 +24,6 @@
  parms.checkLICENSEfile←0
  zipfile←TC.BuildPackage parms
  →T.GoToTidyUp 0≥≢zipfile
- list←∆GetFileListFromZipArchive zipfile
- expected←'apl-package.json' 'APLSource/foo1.apln' 'APLSource/foo2.apln'
- →T.GoToTidyUp~expected ∆LazyMatchPaths list
 
  r←T._OK
 

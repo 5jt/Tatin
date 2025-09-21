@@ -134,11 +134,21 @@ html{-webkit-text-size-adjust:100%;}body{margin:0;}main{display:block;}h1{font-s
 </a>
 </div>
 <p>Although Tatin depends on a couple of Tatin packages, it cannot be used to load those packages; the common bootstrap problem.</p>
-<p>For that reason, the packages installed in the <code>packages/</code> folder a need to be brought into the <code>APLSource/</code> folder by other means:</p>
+<p>For that reason, the packages installed in the <code>packages/</code> folder need to be brought into the <code>APLSource/</code> folder by other means:</p>
 <ul>
 <li>All packages that are single class or namespace scripts can simply by copied over; an example is the <code>Tester2</code> class.</li>
 <li>Packages that consist of an ordinary namespace need to be copied over as a folder; an example is <code>CommTools</code>.</li>
 </ul>
+<p>However, all packages but <code>CommTools</code> can go into the root (read: the APLSource/ folder), while <code>CommTools</code> needs to go into APLSource/Client.</p>
+<p>Note that there are helpers available in the <code>Admin</code> namespace:</p>
+<dl>
+<dt><code>CheckPackagesForBetterVersions</code></dt>
+<dd><p>Prints it findings to the session</p></dd>
+<dt><code>ReinstallAndUpdateTatinPackages</code></dt>
+<dd><p>(Re-)installs all packages and updates to later versions, even later major versions.</p></dd>
+<dt><code>CopyPackagesToAPLSource</code></dt>
+<dd><p>Copies all packages into the right place, in particular <code>CommTools</code>.</p></dd>
+</dl>
 <div class="h_tag">
 <a href="#do-your-thing" id="do-your-thing" class="autoheader_anchor">
 <h2 data-id="Do-your-thing">7. Do your thing</h2>

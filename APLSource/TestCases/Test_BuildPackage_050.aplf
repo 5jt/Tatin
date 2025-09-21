@@ -10,7 +10,7 @@
  cfg←TC.GetPackageConfigFileAsNS tempPath,'apl-package.json'
  parms←TC.CreateBuildParms tempPath
  parms.targetPath←tempPath
- parms.licenseWarning←0
+ parms.checkLICENSEfile←0
  parms.version←'+0.0.1'
  zipFileName←TC.BuildPackage parms
  list←TC.ZipArchive.ListZipContents zipFileName

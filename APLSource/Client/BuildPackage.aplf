@@ -94,9 +94,13 @@
  :EndIf
  :If F.IsFile parms.projectPath,'LICENSE'    ⍝ By convention...
      parms.projectPath zipObj.Add'LICENSE'   ⍝ ... we add a file "LICENSE" if there is one
- :ElseIf 0=parms.⎕NC'licenseWarning'
- :OrIf parms.licenseWarning
-     ⎕←'WARNING: no LICENSE file found!'
+ :Else
+     :If 0<≢cfg.license
+     :AndIf 0≠parms.⎕NC'checkLICENSEfile'
+         :If parms.checkLICENSEfile
+             ('no file LICENSE found although the package is licensed: ',cfg.license)Assert 0
+         :EndIf
+     :EndIf
  :EndIf
  :If 0<≢dependencies
  :AndIf F.IsFile parms.targetPath,'NOTICE.md'

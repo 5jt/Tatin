@@ -9,7 +9,7 @@
 
  cfg←TC.GetPackageConfigFileAsNS path,'apl-package.json'
  parms←TC.CreateBuildParms path
- parms.licenseWarning←0
+ parms.checkLICENSEfile←0
  parms.targetPath←path
  parms.dependencyFolder←'dependencies'
  parms.version←'9.0.1'

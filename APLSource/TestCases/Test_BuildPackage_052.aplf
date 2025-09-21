@@ -6,7 +6,7 @@
  path←∆TEMP_TEST_DATA,'/Build/Special/'
  cfg←TC.GetPackageConfigFileAsNS path,'apl-package.json'
  parms←TC.CreateBuildParms path
- parms.licenseWarning←0
+ parms.checkLICENSEfile←0
  parms.targetPath←path
  parms.dependencyFolder←'dependencies'
  zipFileName←TC.BuildPackage parms

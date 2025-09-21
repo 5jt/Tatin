@@ -10,6 +10,8 @@
  comments,←'api' 'The public interface of the package'
  cfg.assets←''
  comments,←'assets' 'Empty or a single folder holding assets required by the package'
+ cfg.checkLICENSEfile←1
+ comments,←'checkLICENSEfile' 'Enforce or disable the check for a LICENSE file if "license" is not empty'
  cfg.description←''
  comments,←'description' 'Mandatory. Maximum length is 120 chars.'
  ⍝cfg.deprecated←0           ⍝ Injected only when a package...
