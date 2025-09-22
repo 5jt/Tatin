@@ -18,6 +18,7 @@
  cfg.source←'Test.apln'
  cfg.os_win←1
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
  TC.WritePackageConfigFile src cfg
 
  packageID←'test-Package_A-0.1.0'

@@ -115,12 +115,12 @@
      :EndIf
  :EndIf
  :If #.Tatin.Registry.Version≢⎕SE.Tatin.Version
+     ⎕SE.⎕EX¨'Tatin' '_Tatin'
      ⎕←'*** New version ',({(2⊃⍵),' from ',(3⊃⍵)}##.Registry.Version),' created, but version in ⎕SE is not up-to-date anymore, please restart Dyalog'
  :Else
      #.Tatin.Registry ⎕SE.Link.Fix⊃⎕NGET(CFG.HOME,'/APLSource/Registry/Version.aplf')1  ⍝ Because building the Client changes the build number
      0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'*** Done'
  :EndIf
- #.⎕EX'Tatin'
  :If commitFlag
      question←1↓⊃,/(⎕UCS 13),¨↓↑⎕SE.APLGit2.Status'#.Tatin'
      :If 1 CT.YesOrNo question,(⎕UCS 13),'---> Commit as "Make"?'

@@ -17,6 +17,7 @@
  cfg.version←'0.1.0'
  cfg.source←'Test.apln'
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
  cfg.os_win←1
  TC.WritePackageConfigFile src cfg
 

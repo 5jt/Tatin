@@ -27,7 +27,6 @@
  'Invalid URI specified: not a zip file'Assert'.zip'≡⎕C ¯4↑zipFilename
  :If Reg.IsHTTP uri
      PublishPackageToRemoteRegistry_ zipFilename registry
-     ⍝PublishPackageToRemoteRegistry_2 zipFilename registry
  :Else
      PrintToSession'  Read config file for ',source,'...'
      cfgFilename←1 F.NormalizePath({F.IsDir ⍵:⍵ ⋄ 1⊃⎕NPARTS ⍵,CFG_Name}source),'/',CFG_Name

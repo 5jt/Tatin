@@ -7,7 +7,7 @@
   files: "",
   group: "aplteam",
   io: 1,
-  license: "MIT",
+  license: "",
   lx: "",
   maintainer: "Kai Jaeger <kai@aplteam.com>",
   minimumAplVersion: "18.0",

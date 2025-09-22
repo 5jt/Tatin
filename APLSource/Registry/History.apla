@@ -1,10 +1,10 @@
 (
- '* 0.122.0 ⋄ 2025-09-18'
- '  * Now a proper NOTICE file is included when Tatin is built as a client, and as a server as well'
+ '* 0.122.0 ⋄ 2025-09-21'
+ '  * Now a proper NOTICE file is included with Tatin Client as well as Tatin Server'
  '  * `BuildPackage` now prints a warning to the session when no LICENSE file can be detected but should'
  '  * `BuildPackage` parameter `checkLICENSEfile` introduced'
  '  * `BuildPackage` creates a proper `NOTICE.md` in case there are dependencies'
- '  * `UnInstallPackages` (re-)creates a file `NOTICE.md` in case there was one to begin with '
+ '  * `ReInstallPackages` (re-)creates a file `NOTICE.md` in case there was one to begin with '
  '  * Package dependencies updated'
  '  * Plodder (and therefore implicitly also Rumba) updated'
  '  * Bug fixes'

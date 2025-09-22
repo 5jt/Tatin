@@ -15,6 +15,7 @@
  cfg.group←'SomeGroup'
  cfg.version←'1.0.0'
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
  json←TC.Reg.JSON cfg
  (⊂json)F.NPUT(tempDir,'/apl-package.json')1
 

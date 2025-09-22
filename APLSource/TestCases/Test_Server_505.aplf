@@ -21,6 +21,7 @@
  cfg.source←'Test.apln'
  cfg.os_win←1
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
  TC.WritePackageConfigFile src cfg
 
  (rc msg zipFilename)←TC.PublishPackage src(TC.ReplaceRegistryAlias'[localhost]')
