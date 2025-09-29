@@ -1,0 +1,47 @@
+ r←Test_Server_110(stopFlag batchFlag);⎕TRAP;zipFilename;rc;msg;response;request
+ ;serverPath;qdmx;zip;cfg;body;clientCfg;dir;src;res
+⍝ Publish a package without a LICENSE file when it must have one
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ #.⎕EX TC.GetTatinRootSpace'#'
+ dir←∆GetTempDir ⍬
+ (src zip)←(⊂dir,'/'),¨'src' 'zip'
+ F.MkDir src zip
+ serverPath←∆TEMP_SERVER_FOLDER
+
+ body←':Namespace Test' 'foo←{' '⍵' '}' ':EndNamespace'
+ (⊂body)F.NPUT src,'/Test.apln'
+ cfg←TC.InitPackageConfig ⍬
+ cfg.group←'Example'
+ cfg.name←'Package_A'
+ cfg.version←'0.1.0'
+ cfg.source←'Test.apln'
+ cfg.os_win←1
+ cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
+ TC.WritePackageConfigFile src cfg
+
+ request←R.NewRequest 0
+ request.RequestTarget←'/v1/setmusthavelicensefile'
+ response←TC.SendAndReceive(TC.ReplaceRegistryAlias'[localhost]')request
+ →T.PassesIf 200=response.StatusCode
+
+ :Trap ##.Registry.ErrorNo
+     TC.PublishPackage src(TC.ReplaceRegistryAlias'[localhost]')
+     →T.GoToTidyUp 1
+ :Else
+     qdmx←⎕DMX
+     →T.GoToTidyUp'Server: The package does not have a file LICENSE'≢qdmx.EM
+ :EndTrap
+
+ r←T._OK
+
+∆TidyUp:
+ request←R.NewRequest 0
+ request.RequestTarget←'/v1/unsetmusthavelicensefile'
+ response←TC.SendAndReceive(TC.ReplaceRegistryAlias'[localhost]')request
+ 'Something went wrong'Assert 200=response.StatusCode
+ Assert 0=⊃F.RmDir dir
+ Assert 0=⊃F.RmDir serverPath,'/Example-Package_A-0.1.0'
+⍝Done

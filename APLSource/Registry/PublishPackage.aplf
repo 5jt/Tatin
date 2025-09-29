@@ -63,7 +63,12 @@
              errMsg←'Publishing ',packageID,' failed due to a server error'
              packageDir RollbackPublishPackage errMsg
          :Else
-             (statusCode errMsg)←PublishPackage_ packageID packageDir tempDir zipFilename2 isHttpRequest
+             :If CheckLicenseFile tempDir
+                 (statusCode errMsg)←PublishPackage_ packageID packageDir tempDir zipFilename2 isHttpRequest
+             :Else
+                 statusCode←HttpCodes.BadRequest
+                 errMsg←'The package does not have a file LICENSE'
+             :EndIf
          :EndIf
      :EndIf
  :EndIf

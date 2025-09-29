@@ -309,6 +309,13 @@ window.matchMedia("print").addEventListener("change", evt => {
 </a>
 </div>
 <p>By convention a file named “LICENSE” when placed in the root of the project will be copied automatically to the root of a package when build by <code>BuildPackage</code>. This convention is independent from the INI file.</p>
+<div class="h_tag">
+<a href="#server-ini-entry-musthavelicensefile" id="server-ini-entry-musthavelicensefile" class="autoheader_anchor">
+<h4 data-id="Server-INI-entry-MustHaveLicenseFile">3.4.4. Server INI entry [CONFIG]MustHaveLicenseFile</h4>
+</a>
+</div>
+<p>Since version 0.122.0 a server may have the (optional) <code>[CONFIG]MustHaveLicenseFile</code> entry set to 1, as the principal Tatin Registry.</p>
+<p>That means that a package is only accepted by such a Registry if it has a file <code>LICENSE</code> in the root of the package.</p>
 
 <script>
 

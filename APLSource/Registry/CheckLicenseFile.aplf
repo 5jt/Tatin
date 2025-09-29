@@ -1,0 +1,11 @@
+ allow←CheckLicenseFile path
+⍝ If G is a variable rather than a namespace a 1 is returned (no INI file rules)
+⍝ If the INI file requires a check for a LICENSE file and such a file exists in the root of the project a 1 is returned.
+⍝ If the INI file does not require such a check a 1 is returned as well.
+⍝ Otherwise a 0 is returned.
+ allow←1
+ :If 9=⎕nc 'G'
+ :AndIf G.INI.Exist'CONFIG:MustHaveLicenseFile'
+ :AndIf G.INI.Get'CONFIG:MustHaveLicenseFile'
+     allow←F.IsFile path,'/LICENSE'
+ :EndIf

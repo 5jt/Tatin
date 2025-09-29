@@ -97,6 +97,8 @@ window.matchMedia("print").addEventListener("change", evt => {
 </div>
 <p>If you want to publish packages to the Principal Tatin server (<a href="https://tatin.dev" class="external_link">https://tatin.dev</a>) then your package <em>must carry</em> a property <code>license</code>, and its value must be one of the licenses listed on the web page. All licenses that will be accepted offer a great deal of freedom to a user of a package: there are almost no restrictions.</p>
 <p>Note that the same holds true for the test server (<a href="https://test.tatin.dev" class="external_link">https://test.tatin.dev</a>)</p>
+<p>Additionally, since version 0.122.0, a package must have a file “LICENSE” in the root in order to be accepted by the principal Tatin Registry. This is enforced by an (optional) INI setting:</p>
+<pre tabindex="0"><code>[CONFIG]MustHaveLicenseFile = 1</code></pre>
 <div class="h_tag">
 <a href="#your-own-server" id="your-own-server" class="autoheader_anchor">
 <h3 data-id="Your-own-server">1.2. Your own server</h3>
