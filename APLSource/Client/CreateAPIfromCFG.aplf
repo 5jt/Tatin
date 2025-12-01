@@ -55,6 +55,7 @@
      :EndIf
      :For name :In names
          name~←' '
+⍝         {⍵:.}'op8'≡name
          flag←1
          type←refTosourceNS.⎕NC⊂name
          backRef←'##.'
@@ -117,16 +118,32 @@
          :ElseIf 4=⌊type     ⍝ Operator
              :Select 1 3⊃refTosourceNS.⎕AT name  ⍝ Syntax
              :Case 1 ⍝ monadic operator
-                 :If '.'∊name
-                     Assert({⍵↓⍨⍵⍳'.'}name)≡∊backRef2 Tref2.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,') ⍵}'}{⍵↓⍨⍵⍳'.'}name
+                 :If ¯1≡10 refTosourceNS.⎕ATX name  ⍝ Shy? (only aavailable for trad-operators!)
+                     :If '.'∊name
+                         Assert({⍵↓⍨⍵⍳'.'}name)≡∊backRef2 Tref2.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,') ⍵}'}{⍵↓⍨⍵⍳'.'}name
+                     :Else
+                         Assert name≡∊backRef Tref.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,') ⍵}'}name
+                     :EndIf
                  :Else
-                     Assert name≡∊backRef Tref.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,') ⍵}'}name
+                     :If '.'∊name
+                         Assert({⍵↓⍨⍵⍳'.'}name)≡∊backRef2 Tref2.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ ⍺ (⍺⍺ ',⍺,⍵,') ⍵}'}{⍵↓⍨⍵⍳'.'}name
+                     :Else
+                         Assert name≡∊backRef Tref.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ ⍺ (⍺⍺ ',⍺,⍵,') ⍵}'}name
+                     :EndIf
                  :EndIf
              :Case 2 ⍝ dyadic operator
-                 :If '.'∊name
-                     Assert({⍵↓⍨⍵⍳'.'}name)≡∊backRef2 Tref2.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,' ⍵⍵) ⍵}'}{⍵↓⍨⍵⍳'.'}name
+                 :If ¯1≡10 refTosourceNS.⎕ATX name  ⍝ Shy? (only aavailable for trad-operators!)
+                     :If '.'∊name
+                         Assert({⍵↓⍨⍵⍳'.'}name)≡∊backRef2 Tref2.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,' ⍵⍵) ⍵}'}{⍵↓⍨⍵⍳'.'}name
+                     :Else
+                         Assert name≡∊backRef Tref.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,' ⍵⍵) ⍵}'}name
+                     :EndIf
                  :Else
-                     Assert name≡∊backRef Tref.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ 1:shy←⍺ (⍺⍺ ',⍺,⍵,' ⍵⍵) ⍵}'}name
+                     :If '.'∊name
+                         Assert({⍵↓⍨⍵⍳'.'}name)≡∊backRef2 Tref2.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ ⍺ (⍺⍺ ',⍺,⍵,' ⍵⍵) ⍵}'}{⍵↓⍨⍵⍳'.'}name
+                     :Else
+                         Assert name≡∊backRef Tref.{⎕SE.Link.Fix,⊂⍵,'←{⍺←⊢ ⋄ ⍺ (⍺⍺ ',⍺,⍵,' ⍵⍵) ⍵}'}name
+                     :EndIf
                  :EndIf
              :Else
                  'An operator that is neither monadic nor dyadic?!'⎕SIGNAL 11

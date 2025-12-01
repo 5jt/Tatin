@@ -32,11 +32,20 @@
  →T.PassesIf 9≡4 #.TEMP.dfn3 5
  →T.PassesIf 0<#.TEMP.My_API.⎕NC'interface1'
  →T.PassesIf'Galaxy'≡#.TEMP.My_API.ns1.Hello
- →T.PassesIf 4∧.=⊃∘#.TEMP.My_API.⎕NC¨'op1' 'op2' 'op3' 'op4'
- →T.PassesIf 6≡+/#.TEMP.op1⍳3
- →T.PassesIf 21≡+/#.TEMP.op2{⍵}2 3⍴⍳12
- →T.PassesIf ¯220≡10-#.TEMP.op3×22
- →T.PassesIf ¯6≡×/#.TEMP.op4+⍳3
+ →T.PassesIf 4∧.=⊃∘#.TEMP.My_API.⎕NC¨'op1' 'op2' 'op3' 'op4' 'op5' 'op6' 'op7'
+ →T.PassesIf 6≡+/#.TEMP.My_API.op1⍳3
+ →T.PassesIf 21≡+/#.TEMP.My_API.op2{⍵}2 3⍴⍳12
+ →T.PassesIf ¯220≡10-#.TEMP.My_API.op3×22
+ →T.PassesIf ¯6≡×/#.TEMP.My_API.op4+⍳3
+ →T.PassesIf ¯6≡+/#.TEMP.My_API.op5+⍳4
+ →T.PassesIf 10≡+/#.TEMP.My_API.op6⍳4
+ →T.PassesIf 10≡+/#.TEMP.My_API.op7⍳4
+ →T.PassesIf 15≡+/#.TEMP.My_API.op8⍳5
+ →T.PassesIf 1≡10 ⎕ATX'#.TEMP.My_API.op4'
+ →T.PassesIf 1=+/'1:shy←'⍷⎕VR'#.TEMP.My_API.op5'
+ →T.PassesIf 0=+/'1:shy←'⍷⎕VR'#.TEMP.My_API.op6'      ⍝ For dops we cannot establish...
+ →T.PassesIf 0=+/'1:shy←'⍷⎕VR'#.TEMP.My_API.op7'      ⍝ ... what it is, therefore it's never shy
+ →T.PassesIf 1=+/'1:shy←'⍷⎕VR'#.TEMP.My_API.op8'
  →T.PassesIf 0∧.≠#.TEMP.My_API.⎕NC↑'HelloVars' 'Hello'
  →T.PassesIf'World'≡#.TEMP.My_API.Hello
 

@@ -1,4 +1,8 @@
 (
+ '* 0.122.1 ⋄ 2025-12-01'
+ '  * Bug fixes'
+ '    * API covers for operators were always shy. Now for tops there actual behaviour is mimiked while for dops'
+ '      the covers are never shy because ⎕AT does not provide information on this for dops.'
  '* 0.122.0 ⋄ 2025-09-28'
  '  * Now a proper NOTICE file is included with Tatin Client as well as Tatin Server'
  '  * `BuildPackage` now prints a warning to the session when no LICENSE file can be detected but should'
