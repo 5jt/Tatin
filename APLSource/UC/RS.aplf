@@ -1,2 +1,0 @@
- r←RS
- r←'#._tatin' ⍝ target Root Space for packages

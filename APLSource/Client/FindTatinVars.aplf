@@ -1,5 +1,5 @@
  r←FindTatinVars ref;list;list2;this
-⍝ Finds `TatinVars` somwhere in the projectSpace `ref` is pointing to and returns a ref to it or ⎕NULL if no hit.
+⍝ Finds `TatinVars` somewhere in the projectSpace `ref` is pointing to and returns a ref to it or ⎕NULL if no hit.
  r←⎕NULL
  ref←⍎⍣(80 82∊⍨⎕DR ref)⊢ref
  :If 0<ref.⎕NC'TatinVars'

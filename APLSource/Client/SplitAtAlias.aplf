@@ -2,8 +2,11 @@
 ⍝ Splits "id" at the package (not Registry!) alias, if any'
 ⍝ ('M@' '[tatin]MarkAPL') ← SplitAtAlias 'M@[tatin]MarkAPL'
 ⍝ ('' '[tatin]MarkAPL') ← SplitAtAlias '[tatin]MarkAPL'
+⍝ BUT:
+⍝ ('' '/path/2/foo@') ← SplitAlias '/path/2/foo@'
  alias←''
- :If '@'∊id
+ :If 0=+/'/\'∊id
+ :AndIf '@'∊id
      (alias pkgID)←id{(⍵↑⍺)(⍵↓⍺)}id⍳'@'
      :If ∧/'[]'∊alias
          (regAlias alias)←{⍵{(⍵↑⍺)(⍵↓⍺)}⍵⍳']'}alias
