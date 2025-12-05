@@ -5,7 +5,7 @@
 ⍝ If no target namespace was specified then by default packages are loaded into `#` except when the folder
 ⍝ is `[MyUCMDs]` in which case they are loaded into `⎕SE.
 ⍝ Via the optional left argument you may specify 0, 1 or 2 flags which default to 0:
-⍝ * `overwrite` (1) enforces a load even if the package already exists in (#|⎕SE)._tatin
+⍝ * `overwrite` (1) enforces a load even if the package already exists in (#|⎕SE).{ROOT_PATH}_tatin
 ⍝ * `makeHomeRelative` (2) enforces the HOME path of the package to be relative: only the package folder
 ⍝   and the parent of that folder survice.
 ⍝ Specify a 3 as `⍺` in order to switch both flags on.\\

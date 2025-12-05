@@ -14,8 +14,8 @@
 ⍝ start with either `#.` or `⎕SE.`.\\
 ⍝ `targetSpace` might already exist, but if it doesn't it will be created. If it exists but is not an ordinary
 ⍝ namespace an error is thrown.\\
-⍝ Loads package(s) into `(#|⎕SE)._tatin.{packageName}` and establishes a reference pointing to it in `targetSpace`\\
-⍝ Loads all dependencies, if any, as well into (#|⎕SE)._tatin but _not_ into `targetSpace`.\\
+⍝ Loads package(s) into `(#|⎕SE).{ROOT_PATH}_tatin.{packageName}` and establishes a reference pointing to it in `targetSpace`\\
+⍝ Loads all dependencies, if any, as well into (#|⎕SE).{ROOT_PATH}_tatin but _not_ into `targetSpace`.\\
 ⍝ Leaves no trails in the file system unless a) caching is on (because then any package will be cached) or
 ⍝ b) a package (or one of its dependencies) relies on file assets in which case the temporary directory (which is
 ⍝ created in any case) will not be deleted.\\

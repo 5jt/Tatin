@@ -1,12 +1,15 @@
- (alias url)←SplitAtAlias id;pkgID;regAlias;buff
+ (alias url)←SplitAtAlias id;pkgID;regAlias;buff;f1;f2
 ⍝ Splits "id" at the package (not Registry!) alias, if any'
 ⍝ ('M@' '[tatin]MarkAPL') ← SplitAtAlias 'M@[tatin]MarkAPL'
+⍝ ('M@' 'file://path/2/MarkAPL') ← SplitAtAlias 'M@file://path/2/MarkAPL'
 ⍝ ('' '[tatin]MarkAPL') ← SplitAtAlias '[tatin]MarkAPL'
 ⍝ BUT:
 ⍝ ('' '/path/2/foo@') ← SplitAlias '/path/2/foo@'
  alias←''
- :If 0=+/'/\'∊id
- :AndIf '@'∊id
+ :If '@'∊id
+     f1←0=+/'/\'∊⍨{⍵↑⍨⍵⍳'@'}id
+     f2←IsHTTP id
+ :AndIf f1∨f2
      (alias pkgID)←id{(⍵↑⍺)(⍵↓⍺)}id⍳'@'
      :If ∧/'[]'∊alias
          (regAlias alias)←{⍵{(⍵↑⍺)(⍵↓⍺)}⍵⍳']'}alias
