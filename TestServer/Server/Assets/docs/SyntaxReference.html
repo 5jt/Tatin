@@ -1015,9 +1015,17 @@ version</code></pre>
 <li><code>makeHomeRelative</code> influences the result of <code>HOME</code> and <code>GetFullPath2AssetsFolder</code>: rather than returning the full path only the folder holding the packages and its parent are returned, making it a relative path</li>
 </ul>
 <div class="leanpub_A">
-<h3>Relative <code>HOME</code></h3>
+<h3>Make <code>HOME</code> relative</h3>
 <p>In case Tatin packages become part of an application that is bundled with the Dyalog runtime you cannot use absolute paths for referring to assets for obvious reasons.</p>
 <p>In that case the paths must be relative, and that's what the <code>makeHomeRelative</code> flag is for.</p>
+</div>
+
+<div class="leanpub_A">
+<h3>The global variable <code>ROOT_PATH</code></h3>
+<p>By default <code>LoadDependencies</code> puts packages into a namespace <code>_tatin</code> in either <code>#</code> or <code>⎕SE</code>.</p>
+<p>Under rare circumstances this is notv feasable. Imagine an application that comes with some packages, but it and its packages need to be copied into <code>⎕SE</code> by a user command before executing any code.</p>
+<p>In such a case you want the packages to become part of you application. If the name of that application is <code>MyApp</code>, then <code>MyApp._tatin</code> would be the right place. Or, just as an example, <code>MyApp.Foo._tatin</code>.</p>
+<p>In the latter case you would set <code>ROOT_PATH</code>—which is usually empty—in <code>⎕SE._Tatin.Client</code> to <code>MyApp.Foo</code>.</p>
 </div>
 
 <p>Returns a vector with references to the loaded packages (principal packages only, not dependencies).</p>
@@ -1052,7 +1060,7 @@ version</code></pre>
 </ul>
 <p><code>targetSpace</code> must be a reference or a fully qualified name of an ordinary namespace, meaning the name must start with either <code>#</code> or <code>⎕SE</code>.</p>
 <p>It might already exist, but if it doesn't it will be created. If it exists but is not an ordinary namespace an error is thrown.</p>
-<p>Loads the package(s) into <code>(#|⎕SE)._tatin.{packageName}</code> and establishes a reference for every one of them in <code>targetSpace</code></p>
+<p>Loads the package(s) into <code>(#|⎕SE)._tatin.{packageName}</code> and establishes a reference for every one of them in <code>targetSpace</code>. The location can be changed by setting the global variable <code>ROOT_PATH</code>, for details refer to <a href="#loaddependencies" class="bookmark_link">LoadDependencies</a>.</p>
 <p>Loads all dependencies, if any, as well into <code>(#|⎕SE)._tatin</code> but does <em>not</em> create references for them in <code>targetSpace</code>.</p>
 <p>By default beta versions are considered in case the package ID is incomplete, but you can suppress them by passing <code>1</code> as <code>⍺</code>.</p>
 <p>Returns the number of principal packages loaded.</p>

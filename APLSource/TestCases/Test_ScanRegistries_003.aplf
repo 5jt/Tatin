@@ -9,7 +9,7 @@
  (ind⊃TC.MyUserSettings.registries).priority←1+⌈/TC.MyUserSettings.registries.priority
 
  :Trap 345 347
-     path←1⊃TC.EstablishRegistry'[DoesNotExist]aplteam-APLProcess'
+     path←1⊃TC.EstablishRegistry'aplteam-APLProcess'
      →T.GoToTidyUp 1
  :Else
      qdmx←⎕DMX

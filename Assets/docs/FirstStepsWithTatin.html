@@ -456,6 +456,9 @@ _tatin</code></pre>
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="[title]" width="20px" height="20px" viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet"><title>Information</title><g transform="translate(0,20) scale(0.1,-0.1)" fill="#000000" stroke="none"><path d="M0 100 l0 -100 105 0 105 0 0 100 0 100 -105 0 -105 0 0 -100z m190 0 l0 -80 -85 0 -85 0 0 80 0 80 85 0 85 0 0 -80z"/><path d="M90 140 c0 -5 7 -10 15 -10 8 0 15 5 15 10 0 6 -7 10 -15 10 -8 0 -15 -4 -15 -10z"/> <path d="M90 80 c0 -20 5 -30 15 -30 10 0 15 10 15 30 0 20 -5 30 -15 30 -10 0 -15 -10 -15 -30z"/></g></svg>
 <div>
 <p>The name <code>_tatin</code> is hard-coded and <em>cannot</em> be changed.</p>
+<p>You <em>can</em> change the parent by setting the global <code>ROOT_PATH</code> which usually is empty For example, when <code>ROOT_PATH←'MyApp.Foo</code>, then packages are brought into <code>MyApp.Foo._tatin</code>. However, you should change <code>ROOT_PATH</code> only if you really have to.</p>
+<p>An example would be an application that uses Tatin packages but is copied into <code>⎕SE</code> by a user command. In that case you need a “private copy” of <code>_tatin</code> just for that application. For example, if the application's name is <code>Foo</code>, then you might set <code>ROOT_PATH←'Foo'</code>, forcing Tatin to deal with <code>Foo._tatin</code> rather than just <code>_tatin</code>.</p>
+<p>Once the packages are loaded and correct references are established, <code>ROOT_PATH</code> does not play a role anymore.</p>
 </div>
 </div>
 
