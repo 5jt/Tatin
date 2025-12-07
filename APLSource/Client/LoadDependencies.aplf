@@ -21,6 +21,7 @@
  :If isUC←'[myucmds]'{⍺≡⎕C(≢⍺)↑⍵}installFolder
      installFolder←GetMyUCMDsFolder(≢'[myucmds]')↓installFolder
  :EndIf
+ installFolder←{⍵↑⍨¯1+⍵⍳'='}installFolder
  ('Folder does not exist: ',⍕installFolder)Assert ⎕NEXISTS installFolder
  :If 0=≢targetSpace
      targetSpace←(1+isUC)⊃'#' '⎕SE'
