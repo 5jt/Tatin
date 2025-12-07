@@ -1,13 +1,12 @@
- r←Test_Load_092(stopFlag batchFlag);⎕TRAP;res
-⍝ Try to load a package somewhere different rather than #._tatin with ROOT_PATH
+ r←Test_Load_093(stopFlag batchFlag);⎕TRAP;res
+⍝ Try to load a package somewhere different rather than #._tatin via third argument
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  r←T._Failed
 
  #.⎕EX TC.GetTatinRootSpace'#'
  #.⎕SHADOW'MyAPP' ⋄ 'MyAPP'#.⎕NS'' ⋄ 'Foo'#.MyAPP.⎕NS''             ⍝ Used to load stuff into
 
- TC.ROOT_PATH←'MyAPP.Foo'
- res←TC.LoadPackages'[localhost]aplteam-APLTreeUtils2' '#.MyAPP'
+ res←TC.LoadPackages'[localhost]aplteam-APLTreeUtils2' '#.MyAPP' #.MyAPP.Foo
  →T.GoToTidyUp 1≠res
  →T.GoToTidyUp 0≠#.⎕NC'_tatin'
  →T.GoToTidyUp 1≠≢#.MyAPP.Foo._tatin.⎕NL⍳16
@@ -16,6 +15,5 @@
  r←T._OK
 
 ∆TidyUp:
- TC.ROOT_PATH←''
  #.⎕EX TC.GetTatinRootSpace'#'
 ⍝Done

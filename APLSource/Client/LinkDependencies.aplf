@@ -1,9 +1,10 @@
- {r}←LinkDependencies refs;ref;deps;root;destinations;bool;depName;destination;cfgs;cfg;list;dep;aliasOrName
+ {r}←{rootPath}LinkDependencies refs;ref;deps;root;destinations;bool;depName;destination;cfgs;cfg;list;dep;aliasOrName
 ⍝ Takes a list of refs, typically returned by `LoadDependencies`, and establishes any required references
 ⍝ to dependencies within those refs.
 ⍝ `api` rules, but if it's empty then `name` is taken instead.
  r←⍬
- root←{GetTatinRootSpace 1⊃⍵}⍣(0<≢refs)⊣refs
+ rootPath←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'rootPath'
+ root←rootPath{⍺ GetTatinRootSpace 1⊃⍵}⍣(0<≢refs)⊣refs
  :If 0<≢refs
      PrintToSession'  Establish references to dependencies...'
      :For ref :In refs

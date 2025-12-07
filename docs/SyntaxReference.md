@@ -936,10 +936,13 @@ Note that the package ID might use any case, meaning that if the package's name 
 
 Loads all packages according to a build list in a folder.
 
-Requires one mandatory right argument and accepts up to two:
+Requires one mandatory right argument and accepts up to three:
 
 * A source folder (a folder with a build list)
-* A target namespace
+* A target namespace  (optional)
+* A parent for the `_tatin` namespace used to load the actual packages into (optional)
+
+  If this must be specified the second argument becomes mandatory.
 
 If the target namespace is not specified then it defaults to `#` except when `[MyUCMDs]` is specified as source folder: in that case it defaults to `⎕SE`.
 
@@ -954,15 +957,15 @@ A> In case Tatin packages become part of an application that is bundled with the
 A>
 A> In that case the paths must be relative, and that's what the `makeHomeRelative` flag is for.
 
-A> ### The global variable `ROOT_PATH`
+A> ### The optional third argument (`rootPath`)
 A>
 A> By default `LoadDependencies` puts packages into a namespace `_tatin` in either `#` or `⎕SE`.
 A>
-A> Under rare circumstances this is notv feasable. Imagine an application that comes with some packages, but it and its packages need to be copied into `⎕SE` by a user command before executing any code.
+A> Under rare circumstances this is not feasable. Imagine an application that comes with some packages, but it and its packages need to be copied into `⎕SE` by a user command before executing any code.
 A>
-A> In such a case you want the packages to become part of you application. If the name of that application is `MyApp`, then `MyApp._tatin` would be the right place. Or, just as an example, `MyApp.Foo._tatin`.
+A> In such a case you want the packages to become part of you application. If the name of that application is `MyApp`, then `MyApp._tatin` would be the right place. Or, just as an example, `MyApp.WhatEver._tatin`.
 A>
-A> In the latter case you would set `ROOT_PATH`---which is usually empty---in `⎕SE._Tatin.Client` to `MyApp.Foo`.
+A> In the latter case you would specify `MyApp.WhatEver` as the third argument.
 
 Returns a vector with references to the loaded packages (principal packages only, not dependencies).
 
@@ -980,7 +983,7 @@ Notes:
 ### LoadPackages
 
 ```
-r←{noBetas} LoadPackages (identifiers targetSpace)
+r←{noBetas} LoadPackages (identifiers targetSpace [rootPath])
 ```
 
 Loads packages dynamically into the workspace.
@@ -1002,7 +1005,7 @@ client's config file with a priority greater than 0.
 
 It might already exist, but if it doesn't it will be created. If it exists but is not an ordinary namespace an error is thrown.
 
-Loads the package(s) into `(#|⎕SE)._tatin.{packageName}` and establishes a reference for every one of them in `targetSpace`. The location can be changed by setting the global variable `ROOT_PATH`, for details refer to [LoadDependencies](# "LoadDependencies").
+Loads the package(s) into `(#|⎕SE)._tatin.{packageName}` and establishes a reference for every one of them in `targetSpace`. The location can be changed by specifying a third argument; for details refer to [LoadDependencies](# "LoadDependencies").
 
 Loads all dependencies, if any, as well into `(#|⎕SE)._tatin` but does _not_ create references for them in `targetSpace`.
 
@@ -1160,6 +1163,7 @@ r←Version
 ```
 
 Returns "name", "version" and "date".
+
 
 
 

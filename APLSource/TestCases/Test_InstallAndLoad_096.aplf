@@ -1,5 +1,5 @@
- r←Test_InstallAndLoad_093(stopFlag batchFlag);⎕TRAP;targetDir;res;zipFilename;rc;msg;targetDir2
-⍝ Install and load a package from a ZIP file first as usual and then in MyApp._tatin with ROOT_PATH
+ r←Test_InstallAndLoad_096(stopFlag batchFlag);⎕TRAP;targetDir;res;zipFilename;rc;msg;targetDir2
+⍝ Install and load a package from a ZIP file first as usual and then in MyApp._tatin
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  r←T._Failed
 
@@ -20,9 +20,7 @@
  targetDir2←∆GetTempDir''
  res←TC.InstallPackages zipFilename targetDir2
  →T.GoToTidyUp'example-goo-2.1.0'≢∊res
- TC.ROOT_PATH←'MyApp'
- res←TC.LoadDependencies targetDir2 #.MyApp
- TC.ROOT_PATH←''
+ res←TC.LoadDependencies targetDir2 #.MyApp'#.MyApp'
  →T.GoToTidyUp 0=#.MyApp.⎕NC'_tatin'
  →T.GoToTidyUp 0=#.MyApp._tatin.⎕NC'example_goo_2_1_0'
  →T.GoToTidyUp'Universe'≢#.MyApp._tatin.example_goo_2_1_0.goo.Hello2
@@ -32,7 +30,6 @@
  r←T._OK
 
 ∆TidyUp:
- TC.ROOT_PATH←''
  (rc msg)←F.RmDirByForce targetDir
  msg Assert rc=0
  (rc msg)←F.RmDirByForce targetDir2

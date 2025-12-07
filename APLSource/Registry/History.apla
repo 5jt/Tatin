@@ -1,6 +1,7 @@
 (
  '* 0.123.0 ⋄ 2025-12-07'
- '  * Global `Client.ROOT_PATH` introduced which defaults to `` but may be something like `MyApp.Sub_NS`'
+ '  * Both `LoadPackages` and `LoadDependencies` acceept now an optional third argument that can be used to'
+ '    specify the parent for the `_tatin` namespace Tatin loads packages into'
  '  * Bug fixes'
  '    * API covers for operators were always shy. Now for tops there actual behaviour is mimiked while for dops'
  '      the covers are never shy because ⎕AT does not provide information on this for dops.'

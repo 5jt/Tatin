@@ -1003,10 +1003,12 @@ version</code></pre>
 </div>
 <pre tabindex="0"><code>{r}←{flags} LoadDependencies y</code></pre>
 <p>Loads all packages according to a build list in a folder.</p>
-<p>Requires one mandatory right argument and accepts up to two:</p>
+<p>Requires one mandatory right argument and accepts up to three:</p>
 <ul>
 <li>A source folder (a folder with a build list)</li>
-<li>A target namespace</li>
+<li>A target namespace  (optional)</li>
+<li>A parent for the <code>_tatin</code> namespace used to load the actual packages into (optional)
+<p>If this must be specified the second argument becomes mandatory.</p></li>
 </ul>
 <p>If the target namespace is not specified then it defaults to <code>#</code> except when <code>[MyUCMDs]</code> is specified as source folder: in that case it defaults to <code>⎕SE</code>.</p>
 <p>The optional left argument <code>flags</code> can be used to define two flags which default to 0:</p>
@@ -1021,11 +1023,11 @@ version</code></pre>
 </div>
 
 <div class="leanpub_A">
-<h3>The global variable <code>ROOT_PATH</code></h3>
+<h3>The optional third argument (<code>rootPath</code>)</h3>
 <p>By default <code>LoadDependencies</code> puts packages into a namespace <code>_tatin</code> in either <code>#</code> or <code>⎕SE</code>.</p>
-<p>Under rare circumstances this is notv feasable. Imagine an application that comes with some packages, but it and its packages need to be copied into <code>⎕SE</code> by a user command before executing any code.</p>
-<p>In such a case you want the packages to become part of you application. If the name of that application is <code>MyApp</code>, then <code>MyApp._tatin</code> would be the right place. Or, just as an example, <code>MyApp.Foo._tatin</code>.</p>
-<p>In the latter case you would set <code>ROOT_PATH</code>—which is usually empty—in <code>⎕SE._Tatin.Client</code> to <code>MyApp.Foo</code>.</p>
+<p>Under rare circumstances this is not feasable. Imagine an application that comes with some packages, but it and its packages need to be copied into <code>⎕SE</code> by a user command before executing any code.</p>
+<p>In such a case you want the packages to become part of you application. If the name of that application is <code>MyApp</code>, then <code>MyApp._tatin</code> would be the right place. Or, just as an example, <code>MyApp.WhatEver._tatin</code>.</p>
+<p>In the latter case you would specify <code>MyApp.WhatEver</code> as the third argument.</p>
 </div>
 
 <p>Returns a vector with references to the loaded packages (principal packages only, not dependencies).</p>
@@ -1046,7 +1048,7 @@ version</code></pre>
 <h3 data-id="LoadPackages">2.28. LoadPackages</h3>
 </a>
 </div>
-<pre tabindex="0"><code>r←{noBetas} LoadPackages (identifiers targetSpace)</code></pre>
+<pre tabindex="0"><code>r←{noBetas} LoadPackages (identifiers targetSpace [rootPath])</code></pre>
 <p>Loads packages dynamically into the workspace.</p>
 <p><code>identifiers</code> must be a simple character vector specifying one or more comma-separated packages (items).</p>
 <p>Every single item must be one of:</p>
@@ -1060,7 +1062,7 @@ version</code></pre>
 </ul>
 <p><code>targetSpace</code> must be a reference or a fully qualified name of an ordinary namespace, meaning the name must start with either <code>#</code> or <code>⎕SE</code>.</p>
 <p>It might already exist, but if it doesn't it will be created. If it exists but is not an ordinary namespace an error is thrown.</p>
-<p>Loads the package(s) into <code>(#|⎕SE)._tatin.{packageName}</code> and establishes a reference for every one of them in <code>targetSpace</code>. The location can be changed by setting the global variable <code>ROOT_PATH</code>, for details refer to <a href="#loaddependencies" class="bookmark_link">LoadDependencies</a>.</p>
+<p>Loads the package(s) into <code>(#|⎕SE)._tatin.{packageName}</code> and establishes a reference for every one of them in <code>targetSpace</code>. The location can be changed by specifying a third argument; for details refer to <a href="#loaddependencies" class="bookmark_link">LoadDependencies</a>.</p>
 <p>Loads all dependencies, if any, as well into <code>(#|⎕SE)._tatin</code> but does <em>not</em> create references for them in <code>targetSpace</code>.</p>
 <p>By default beta versions are considered in case the package ID is incomplete, but you can suppress them by passing <code>1</code> as <code>⍺</code>.</p>
 <p>Returns the number of principal packages loaded.</p>
