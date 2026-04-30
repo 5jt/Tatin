@@ -14,5 +14,5 @@ core.*
 /TestData/tatin-client.json
 
 **/.DS_Store
-docs/site
-docs/venv
+/docs/site/
+/.venv/
