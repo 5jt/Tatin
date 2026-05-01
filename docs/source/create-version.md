@@ -67,7 +67,6 @@ It contains the ZIPs to be released on GitHub;
 The ZIPs:
 
     Tatin-Client-{major}.{minor}.{patch}.zip
-    Tatin-Documentation-{major}.{minor}.{patch}.zip
     Tatin-Server-{major}.{minor}.{patch}.zip
 
 <!-- FIXME What to do with the ZIPs? -->
