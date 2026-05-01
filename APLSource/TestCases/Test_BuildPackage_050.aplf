@@ -7,14 +7,15 @@
  path←∆TEMP_TEST_DATA,'/Build/CiderProject/'
  tempPath ⎕NCOPY path
  tempPath,←'CiderProject/'
- cfg←TC.ReadPackageConfigFile tempPath,'apl-package.json'
+ cfg←TC.GetPackageConfigFileAsNS tempPath,'apl-package.json'
  parms←TC.CreateBuildParms tempPath
  parms.targetPath←tempPath
+ parms.checkLICENSEfile←0
  parms.version←'+0.0.1'
  zipFileName←TC.BuildPackage parms
  list←TC.ZipArchive.ListZipContents zipFileName
  →T.GoToTidyUp~(⊂F.EnforceSlash'apl-dependencies.txt')∊F.EnforceSlash¨list
- cfg2←TC.ReadPackageConfigFile tempPath,'apl-package.json'
+ cfg2←TC.GetPackageConfigFileAsNS tempPath,'apl-package.json'
  oldBuildNo←A.ToNum{⍵↓⍨⍵⍳'+'}cfg.version
  newBuildNo←A.ToNum{⍵↓⍨⍵⍳'+'}cfg2.version
  →T.GoToTidyUp newBuildNo≠1+oldBuildNo

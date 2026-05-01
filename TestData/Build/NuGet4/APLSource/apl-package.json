@@ -6,7 +6,7 @@
   files: "",
   group: "dyalog",
   io: 1,
-  license: "MIT",
+  license: "",
   lx: "",
   maintainer: "support@dyalog.com",
   minimumAplVersion: "19.0",

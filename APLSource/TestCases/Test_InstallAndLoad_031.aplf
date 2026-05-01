@@ -51,7 +51,7 @@
  →T.GoToTidyUp(∊res)≢'Example-MyMath-0.2.0'
 
  →T.GoToTidyUp 2≠≢F.ListDirs installFolder
- →T.GoToTidyUp 2≠≢F.ListFiles installFolder
+ →T.GoToTidyUp 2≠≢'NOTICE.md'{⍵/⍨⍺∘≢¨(-≢⍺)↑¨⍵}F.ListFiles installFolder
  →T.GoToTidyUp(,⊂'Example-MyMath-0.2.0')≢TC.Dependencies.Get installFolder
 
  {}TC.LoadDependencies installFolder #.TEMP

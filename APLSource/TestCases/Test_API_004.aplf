@@ -18,7 +18,6 @@
  cfg.name←'Package_A'
  cfg.version←'0.1.0'
  cfg.source←'Test.apln'
- cfg.license←'MIT'
  cfg.tags←'foo,boo'
  cfg.os_mac←1
  cfg←TC.WritePackageConfigFile src cfg
@@ -33,7 +32,6 @@
  cfg2.name←'Package_A'
  cfg2.version←'0.2.0'
  cfg2.source←'Test.apln'
- cfg2.license←'MIT'
  cfg2.tags←'foo,boo'
  cfg2.os_mac←1
  cfg2←TC.WritePackageConfigFile src2 cfg2

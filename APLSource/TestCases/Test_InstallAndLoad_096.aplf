@@ -1,0 +1,38 @@
+ r←Test_InstallAndLoad_096(stopFlag batchFlag);⎕TRAP;targetDir;res;zipFilename;rc;msg;targetDir2
+⍝ Install and load a package from a ZIP file first as usual and then in MyApp._tatin
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ #.⎕EX TC.GetTatinRootSpace'#'
+ #.⎕SHADOW'TEMP' ⋄ 'TEMP'#.⎕NS'' ⍝ Used to load stuff into
+ targetDir←∆GetTempDir''
+ zipFilename←∆TEMP_TEST_DATA,'/ZipWithDeps/aplteam-MyApp1-1.0.0.zip'
+
+ res←TC.InstallPackages zipFilename targetDir
+ →T.GoToTidyUp'aplteam-MyApp1-1.0.0'≢∊res
+ res←TC.LoadDependencies targetDir #.TEMP
+ →T.GoToTidyUp'#._tatin.aplteam_MyApp1_1_0_0'≢' '~⍨⍕res
+ →T.GoToTidyUp'Universe'≢#.TEMP.MyApp1.Zoo.Hello3
+ →T.GoToTidyUp 2≠≢#._tatin.⎕NL⍳16
+
+ #.⎕SHADOW'MyApp' ⋄ 'MyApp'#.⎕NS''
+ zipFilename←∆TEMP_TEST_DATA,'/CaseTest/example-goo-2.1.0.zip'
+ targetDir2←∆GetTempDir''
+ res←TC.InstallPackages zipFilename targetDir2
+ →T.GoToTidyUp'example-goo-2.1.0'≢∊res
+ res←TC.LoadDependencies targetDir2 #.MyApp'#.MyApp'
+ →T.GoToTidyUp 0=#.MyApp.⎕NC'_tatin'
+ →T.GoToTidyUp 0=#.MyApp._tatin.⎕NC'example_goo_2_1_0'
+ →T.GoToTidyUp'Universe'≢#.MyApp._tatin.example_goo_2_1_0.goo.Hello2
+ →T.GoToTidyUp 1≠≢#.MyApp._tatin.⎕NL⍳16
+ →T.GoToTidyUp 2≠≢#._tatin.⎕NL⍳16
+
+ r←T._OK
+
+∆TidyUp:
+ (rc msg)←F.RmDirByForce targetDir
+ msg Assert rc=0
+ (rc msg)←F.RmDirByForce targetDir2
+ msg Assert rc=0
+ #.⎕EX TC.GetTatinRootSpace'#'
+⍝Done

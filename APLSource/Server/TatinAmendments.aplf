@@ -1,6 +1,6 @@
  success←TatinAmendments G;congaPath
 ⍝ Called by Plodder's `Run` operator.
-⍝ In charge for making Tatin amendments.
+⍝ In charge for making the required amendments for running a Tatin server.
  ∆STARTED←60 ⎕DT⊂⎕TS
  ∆WS_HASH←GetWorkspaceHash
  CreateAllRefs
@@ -18,11 +18,7 @@
      #.ErrorParms.customFns←'SendCrashMail'
  :EndIf
  ExecuteMaintenanceCode G
- :If 'CLEAR WS'≡⎕WSID
-     congaPath←('expand'##.FilesAndDirs.NormalizePath G.RegistryPath,'..'),'/Server/Assets/Runtime/Conga'
- :Else
-     congaPath←P.GetAssetPath,'/Runtime/Conga'
- :EndIf
+ congaPath←(2 ⎕NQ #'GetEnvironment' 'DYALOG'),(~##.Registry.IsWindows)/'/lib'
  ##.Admin.InitConga congaPath
  success←1
 ⍝Done

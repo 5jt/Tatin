@@ -26,12 +26,13 @@
  TC.WritePackageConfigFile src cfg
 
  parms←TC.CreateBuildParms src
+ parms.checkLICENSEfile←0
  parms.targetPath←dist
 
  zipfile←TC.BuildPackage parms
  →T.GoToTidyUp 0≥≢zipfile
 
- cfg2←TC.ReadPackageConfigFile src
+ cfg2←TC.GetPackageConfigFileAsNS src
  →T.GoToTidyUp 124≠1↑A.ToNum{⍵↓⍨⍵⍳'+'}cfg2.version  ⍝ 1 more because it was bumped
  wsValue←1↑A.ToNum{⍵↓⍨⍵⍳'+'}(⎕JSON⍠('Dialect' 'JSON5')⊢1↓⊃,/(⎕UCS 13),¨#.TEMP.TatinVars.CONFIG).version
  →T.GoToTidyUp 123≠wsValue  ⍝ Because BuildPackage cannot know where to look.
@@ -39,7 +40,7 @@
  parms.projectSpace←#.TEMP ⍝ Now BuildPackage can work it out
  zipfile←TC.BuildPackage parms
  →T.GoToTidyUp 0≥≢zipfile
- cfg3←TC.ReadPackageConfigFile src
+ cfg3←TC.GetPackageConfigFileAsNS src
  →T.GoToTidyUp 125≠1↑A.ToNum{⍵↓⍨⍵⍳'+'}cfg3.version  ⍝ 2 more because it was bumped twice now
  wsValue←1↑A.ToNum{⍵↓⍨⍵⍳'+'}(⎕JSON⍠('Dialect' 'JSON5')⊢#.TEMP.TatinVars.CONFIG).version
  →T.GoToTidyUp 125≠wsValue  ⍝ Because BuildPackage has now updated the WS tx to setting parms.projectSpace

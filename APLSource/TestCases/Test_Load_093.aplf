@@ -1,0 +1,19 @@
+ r←Test_Load_093(stopFlag batchFlag);⎕TRAP;res
+⍝ Try to load a package somewhere different rather than #._tatin via third argument
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ #.⎕EX TC.GetTatinRootSpace'#'
+ #.⎕SHADOW'MyAPP' ⋄ 'MyAPP'#.⎕NS'' ⋄ 'Foo'#.MyAPP.⎕NS''             ⍝ Used to load stuff into
+
+ res←TC.LoadPackages'[localhost]aplteam-APLTreeUtils2' '#.MyAPP' #.MyAPP.Foo
+ →T.GoToTidyUp 1≠res
+ →T.GoToTidyUp 0≠#.⎕NC'_tatin'
+ →T.GoToTidyUp 1≠≢#.MyAPP.Foo._tatin.⎕NL⍳16
+ →T.GoToTidyUp'APLTreeUtils2'≢⊃#.MyAPP.Foo._tatin.aplteam_APLTreeUtils2_1_2_0.APLTreeUtils2.Version
+
+ r←T._OK
+
+∆TidyUp:
+ #.⎕EX TC.GetTatinRootSpace'#'
+⍝Done

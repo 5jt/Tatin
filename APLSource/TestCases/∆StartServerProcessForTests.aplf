@@ -1,39 +1,38 @@
- {r}←∆StartServerProcessForTests debugFlag;P;rc;parms
-⍝ This function starts a server that acts on ∆TEMP_SERVER_FOLDER
-⍝ It's the first version which uses aplteamm-APLProcess which works fine on Windows but not at all elsewhere
+ {r}←∆StartServerProcessForTests(debugFlag folder);P;rc;parms
+⍝ This function starts a server that acts on `folder` if not empty
  parms←##.APLProcess.CreateParms
  parms.Exe←##.Admin.GetAPLVersion ⍬
  :If 0  ⍝ Because "load" and "lx" do not work on Linux and Mac OS
      :If 0<#.Tatin.⎕NC'CiderConfig'
-         parms.CommandLineArgs,←' load="',#.Tatin.CiderConfig.HOME,'/APLSource/Admin/LoadTatinAndStartServer.aplf" '
+         parms.ConfigParms⍪←'load'(#.Tatin.CiderConfig.HOME,'/APLSource/Admin/LoadTatinAndStartServer.aplf')
      :Else
-         parms.CommandLineArgs,←' load="',F.PWD,'/APLSource/Admin/LoadTatinAndStartServer.aplf" '
+         parms.ConfigParms⍪←'load'(F.PWD,'/APLSource/Admin/LoadTatinAndStartServer.aplf')
      :EndIf
  :Else
      parms.WorkspaceName←#.Tatin.CiderConfig.HOME,'/LoadTestServer.dws'
      :If 0<#.Tatin.⎕NC'CiderConfig'
-         parms.CommandLineArgs,←' tatinHome="',#.Tatin.CiderConfig.HOME,'" '
+         parms.ConfigParms⍪←'tatinHome'#.Tatin.CiderConfig.HOME
      :Else
-         parms.CommandLineArgs,←' tatinHome="',F.PWD,'" '
+         parms.ConfigParms⍪←'tatinHome'F.PWD
      :EndIf
  :EndIf
- :If 0<⎕NC'∆TEMP_SERVER_FOLDER'
-     parms.CommandLineArgs,←'serverPath="',(F.ExpandPath ∆TEMP_SERVER_FOLDER,'..'),'" '
+ :If 0<≢folder
+     parms.ConfigParms⍪←'serverPath'(F.ExpandPath folder,'..')
  :EndIf
  :If 0 ⍝ Because "load" and "lx" do not work on Linux and Mac OS
-     parms.CommandLineArgs,←'lx="',(debugFlag/'1 '),'#.LoadTatinAndStartServer 1" '
+     parms.ConfigParms⍪←'lx'((debugFlag/'1 '),'#.LoadTatinAndStartServer 1')
  :EndIf
  :If 0  ⍝ Only for analyzing problems:
-     parms.CommandLineArgs,←' -exec_setup=0 '
-     parms.CommandLineArgs,←' -stop_in_setup=1 '
+     parms.ConfigParms⍪←'exec_setup' 0
+     parms.ConfigParms⍪←'stop_in_setup' 1
  :EndIf
  :If 0
-     parms.CommandLineArgs,←' -x '
+     parms.LX←0
  :Else
-     parms.CommandLineArgs,←'OFF2=1 '   ⍝ OFF=1 would work as well, but too early: Plodder would ⎕OFF rather than Tatin (No CodeCoverage then, for example)
+     parms.ConfigParms⍪←'OFF2' 1   ⍝ OFF=1 would work as well, but too early: Plodder would ⎕OFF rather than Tatin (No CodeCoverage then, for example)
  :EndIf
  parms.SessionFile←1
  parms.WindowsStyle←'Normal'
  parms.Wait←0
- r←⎕NEW ##.APLProcess(,⊂parms)
+ r←##.APLProcess.New parms
 ⍝Done

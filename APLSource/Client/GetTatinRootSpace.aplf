@@ -1,6 +1,13 @@
- path←GetTatinRootSpace targetSpace
+ path←{rootPath}GetTatinRootSpace targetSpace;root
 ⍝ `targetSpace` is where the link to a package it going to be created: `#` or `⎕SE`.\\
 ⍝ It may be just `#` or `⎕SE` but can also be '#.Nested.Hirarchy' or just `⎕THIS` depending on circumstances
-⍝ That rules whether we return `#._tatin` or `⎕SE._tatin`.
- path←'_tatin'Reg.CreateNamespace targetSpace
+⍝ That rules whether we return (`#.{ROOT_PATH}_tatin` or `⎕SE.{ROOT_PATH}._tatin`.
+⍝ root←{0=≢⍵:'_tatin' ⋄ ⍵,'._tatin'}ROOT_PATH   ⍝TODO⍝
+ :If 0<⎕NC'rootPath'
+ :AndIf 0<≢rootPath
+     root←{0=≢⍵:'_tatin' ⋄ ⍵,'._tatin'}rootPath
+ :Else
+     root←'_tatin'
+ :EndIf
+ path←root Reg.CreateNamespace targetSpace
 ⍝Done

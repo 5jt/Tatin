@@ -44,7 +44,7 @@
      :EndIf
      :If batch
          q←'Sure you want to install Tatin into:',(⎕UCS 13),'  ',installFolder,'/Tatin ?'
-     :OrIf ##.CommTools.YesOrNo q
+     :OrIf ##.Client.CommTools.YesOrNo q
          :If 0=##.FilesAndDirs.⎕NC'APLTreeUtils2'
              Initialize_Client
          :EndIf

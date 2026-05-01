@@ -428,7 +428,11 @@ _tatin
 
 That reference points to the namespace that holds the package as such, which is loaded into `_tatin`: this is the namespace Tatin uses to manage all packages.
 
-I> The name `_tatin` is hard-coded and _cannot_ be changed.
+I> The name `_tatin` is hard-coded and _cannot_ be changed. 
+I>
+I> You _can_ change the parent by specifying a third argument to `LoadDependencies`. For example, when `'MyApp.Foo` is specified, then packages are brought into `MyApp.Foo._tatin`. However, specify a third argument only when you really have to.
+I>
+I> An example would be an application that uses Tatin packages but is copied into `⎕SE` by a user command. In that case you need a "private copy" of `_tatin` just for that application. For example, if the application's name is `Foo`, then you can specify `'#.Foo'` as third argument, forcing Tatin to deal with `Foo._tatin` rather than `#._tatin`.
 
 The name of the namespace carries the version number:
 
@@ -623,6 +627,8 @@ Note that `LX` does not exist in case no such function is defined, or the functi
 ##### URI
 
 Character vector that holds the address of a Tatin server the package was loaded from, or the full name of a ZIP file.
+
+
 
 
 

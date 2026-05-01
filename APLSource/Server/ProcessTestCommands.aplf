@@ -1,4 +1,4 @@
- response←request ProcessTestCommands path;version;⎕TRAP
+ response←request ProcessTestCommands path
 ⍝ This function must only be called when G.TestFlag is true
  :If G.INI.Exist'CONFIG:SpecialCommands'
  :AndIf G.INI.Get'CONFIG:SpecialCommands'
@@ -35,6 +35,14 @@
              ∘∘∘
              ⎕OFF
          :EndIf
+     :Case GetVersion_REST'setmusthavelicensefile'
+         1 G.INI.Put'CONFIG:MustHaveLicenseFile'
+         response←request Respond 200
+         response.Content←'MustHaveLicenseFile=1'
+     :Case GetVersion_REST'unsetmusthavelicensefile'
+         0 G.INI.Put'CONFIG:MustHaveLicenseFile'
+         response←request Respond 200
+         response.Content←'MustHaveLicenseFile=0'
      :Else
          response←request RespondWithHTML 404 'Unknown REST command'
      :EndSelect

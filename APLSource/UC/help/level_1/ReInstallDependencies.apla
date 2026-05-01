@@ -28,7 +28,7 @@
  '-update     By default ReInstallDependencies does not install later versions.'
  '            You may change this by specifying this flag. '
  '-major      Even with -update specified, the command won''t update to later major versions,'
- '            but by setting this flag you can inforce that.'
+ '            but by setting this flag you can enforce that.'
  '            You may also specify -update but you don''t have to.'
  '-recursive  Use this to tell the user command that the given folder is not a package folder'
  '            but a folder with multiple installed packages, and that the user command should  '

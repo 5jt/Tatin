@@ -7,8 +7,9 @@
  tempDir ⎕NCOPY ∆TEMP_TEST_DATA,'/Build/Special'
  path←tempDir,'/Special/'
 
- cfg←TC.ReadPackageConfigFile path,'apl-package.json'
+ cfg←TC.GetPackageConfigFileAsNS path,'apl-package.json'
  parms←TC.CreateBuildParms path
+ parms.checkLICENSEfile←0
  parms.targetPath←path
  parms.dependencyFolder←'dependencies'
  parms.version←'9.0.1'
@@ -19,7 +20,7 @@
  zipFileName TC.ZipArchive.UnzipTo tempDir2
  deps←⊃F.NGET(tempDir2,'/apl-dependencies.txt')1
  →T.GoToTidyUp(,⊂'aplteam-FilesAndDirs-5.2.1')≢deps
- cfg2←TC.ReadPackageConfigFile path,'apl-package.json'
+ cfg2←TC.GetPackageConfigFileAsNS path,'apl-package.json'
  oldBuildNo←A.ToNum{⍵↓⍨⍵⍳'+'}cfg.version
  newBuildNo←A.ToNum{⍵↓⍨⍵⍳'+'}cfg2.version
  →T.GoToTidyUp newBuildNo≠oldBuildNo+1

@@ -1,0 +1,52 @@
+ r←Test_Misc_023(stopFlag batchFlag);⎕TRAP
+⍝ Exercise `SplitAtAlias`
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ →T.PassesIf'' 'group-foo-1.0.0'≡TC.SplitAtAlias'group-foo-1.0.0'
+ →T.PassesIf'alias@' 'group-foo-1.0.0'≡TC.SplitAtAlias'alias@group-foo-1.0.0'
+ →T.PassesIf'alias@' 'group-foo-1.0.0@legal'≡TC.SplitAtAlias'alias@group-foo-1.0.0@legal'
+ →T.PassesIf'' 'group-foo-1.0.0-@legal'≡TC.SplitAtAlias'group-foo-1.0.0-@legal'
+
+ →T.PassesIf'' '/path/2/pkgs/group-foo-1.0.0'≡TC.SplitAtAlias'/path/2/pkgs/group-foo-1.0.0'
+ →T.PassesIf'alias@' '/path/2/pkgs/group-foo-1.0.0'≡TC.SplitAtAlias'/path/2/pkgs/alias@group-foo-1.0.0'
+ →T.PassesIf'alias@' '/path/2/pkgs/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'/path/2/pkgs/alias@group-foo-1.0.0-@legal'
+ →T.PassesIf'' '/path/2/pkgs/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'/path/2/pkgs/group-foo-1.0.0-@legal'
+
+ →T.PassesIf'' 'file:///path/2/pkgs/group-foo-1.0.0'≡TC.SplitAtAlias'file:///path/2/pkgs/group-foo-1.0.0'
+ →T.PassesIf'alias@' 'file:///path/2/pkgs/group-foo-1.0.0'≡TC.SplitAtAlias'file:///path/2/pkgs/alias@group-foo-1.0.0'
+ →T.PassesIf'alias@' 'file:///path/2/pkgs/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'file:///path/2/pkgs/alias@group-foo-1.0.0-@legal'
+ →T.PassesIf'' 'file:///path/2/pkgs/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'file:///path/2/pkgs/group-foo-1.0.0-@legal'
+
+ →T.PassesIf'alias@' 'file:///path/2/pkgs/group-foo-1.0.0'≡TC.SplitAtAlias'alias@file:///path/2/pkgs/group-foo-1.0.0'
+ →T.PassesIf'alias@' 'file:///path/2/pkgs/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'alias@file:///path/2/pkgs/group-foo-1.0.0-@legal'
+ →T.PassesIf'alias@' 'file:///path/2/legal1@/pkgs/group-foo-1.0.0-@legal2'≡TC.SplitAtAlias'alias@file:///path/2/legal1@/pkgs/group-foo-1.0.0-@legal2'
+
+ →T.PassesIf'' 'https://tatin.dev/group-foo-1.0.0'≡TC.SplitAtAlias'https://tatin.dev/group-foo-1.0.0'
+ →T.PassesIf'alias@' 'https://tatin.dev/group-foo-1.0.0'≡TC.SplitAtAlias'https://tatin.dev/alias@group-foo-1.0.0'
+ →T.PassesIf'alias@' 'https://tatin.dev/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'https://tatin.dev/alias@group-foo-1.0.0-@legal'
+ →T.PassesIf'' 'https://tatin.dev/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'https://tatin.dev/group-foo-1.0.0-@legal'
+
+ →T.PassesIf'alias@' 'https://tatin.dev/group-foo-1.0.0'≡TC.SplitAtAlias'alias@https://tatin.dev/group-foo-1.0.0'
+ →T.PassesIf'alias@' 'https://tatin.dev/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'alias@https://tatin.dev/group-foo-1.0.0-@legal'
+
+ →T.PassesIf'' 'http://tatin.dev/group-foo-1.0.0'≡TC.SplitAtAlias'http://tatin.dev/group-foo-1.0.0'
+ →T.PassesIf'alias@' 'http://tatin.dev/group-foo-1.0.0'≡TC.SplitAtAlias'http://tatin.dev/alias@group-foo-1.0.0'
+ →T.PassesIf'alias@' 'http://tatin.dev/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'http://tatin.dev/alias@group-foo-1.0.0-@legal'
+ →T.PassesIf'' 'http://tatin.dev/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'http://tatin.dev/group-foo-1.0.0-@legal'
+
+ →T.PassesIf'' '[tatin]/group-foo-1.0.0'≡TC.SplitAtAlias'[tatin]/group-foo-1.0.0'
+ →T.PassesIf'alias@' '[tatin]/group-foo-1.0.0'≡TC.SplitAtAlias'[tatin]/alias@group-foo-1.0.0'
+ →T.PassesIf'' '[tatin]/group-foo-1.0.0-@legal'≡TC.SplitAtAlias'[tatin]/group-foo-1.0.0-@legal'
+
+ →T.PassesIf'' '[tatin]group-foo-1.0.0'≡TC.SplitAtAlias'[tatin]group-foo-1.0.0'
+ →T.PassesIf'alias@' '[tatin]group-foo-1.0.0'≡TC.SplitAtAlias'[tatin]alias@group-foo-1.0.0'
+ →T.PassesIf'alias@' '[tatin]group-foo-1.0.0-@legal'≡TC.SplitAtAlias'[tatin]alias@group-foo-1.0.0-@legal'
+ →T.PassesIf'' '[tatin]group-foo-1.0.0-@legal'≡TC.SplitAtAlias'[tatin]group-foo-1.0.0-@legal'
+
+ →T.PassesIf'alias@' '[tatin]group-foo-1.0.0'≡TC.SplitAtAlias'alias@[tatin]group-foo-1.0.0'
+ →T.PassesIf'alias@' '[tatin]group-foo-1.0.0-@legal'≡TC.SplitAtAlias'alias@[tatin]group-foo-1.0.0-@legal'
+ →T.PassesIf'' '[tatin]group-foo-1.0.0-@legal'≡TC.SplitAtAlias'[tatin]group-foo-1.0.0-@legal'
+
+ r←T._OK
+⍝Done

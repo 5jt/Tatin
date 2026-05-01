@@ -8,4 +8,5 @@
  ns.projectSpace←''         ⍝ Optional
  ns.targetPath←''
  ns.version←''
+ ns.checkLICENSEfile←1
 ⍝Done

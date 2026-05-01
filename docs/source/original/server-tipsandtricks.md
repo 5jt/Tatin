@@ -280,7 +280,8 @@ The text shown on the web page is defined in the document "Licensing.html" in th
 By convention a file named "LICENSE" when placed in the root of the project will be copied automatically to the root of a package when build by `BuildPackage`. This convention is independent from the INI file.
 
 
+#### Server INI entry [CONFIG]MustHaveLicenseFile
 
+Since version 0.122.0 a server may have the (optional) `[CONFIG]MustHaveLicenseFile` entry set to 1, as the principal Tatin Registry.
 
-
-
+That means that a package is only accepted by such a Registry if it has a file `LICENSE` in the root of the package.

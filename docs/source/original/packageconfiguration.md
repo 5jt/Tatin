@@ -228,8 +228,6 @@ That can be achieved by adding them to the "files" property. `files` can be one 
 * A single file
 * A comma-separated list of files
 
-Note that if it specifies a sub-folder, `BuildPackage` will copy the folder from that project-specific sub-folder to the root of the package.
-
 See also "[assets](#)".
 
 I> Note that a file `LICENSE` in the root of a project is by convention copied to the root of a package when a package is build.
@@ -262,6 +260,8 @@ Note that you can specify a default license in your user settings:
 At the bottom there are defaults defined for `license` and `source` and possibly other properties. The default will be injected when a new package is created.
 
 Both the user command `]Tatin.ListLicenses` and the API function `⎕SE.Tatin.ListLicenses` can be used to get a list of all licenses tolerated by a Tatin Registry.
+
+When a license is specified, you must provide a file `LICENSE` in the root of the package, otherwise `BuildPackage` will throw an error, though you can suppress this check by setting the `BuildPackage` parameter `checkLICENSEfile` (which defaults to 1) to 0.
 
 
 #### lx
@@ -518,6 +518,8 @@ In case [`assets`](#assets) is not empty this function returns a simple char vec
 [^version]: A version is built from the major number, the minor number and the version number, optionally followed by a build number
 
 [^TatinVars]: The Tatin package variables are discussed in detail in the document `FirstStepsWithTatin.html`
+
+
 
 
 

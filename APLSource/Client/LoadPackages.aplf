@@ -1,4 +1,4 @@
- r←{noBetas}LoadPackages(identifiers targetSpace);paths;tempFolder;loaded;qdmx;list
+ r←{noBetas}LoadPackages y;paths;tempFolder;loaded;qdmx;list;identifiers;targetSpace;rootPath
 ⍝ Load packages `identifiers` dynamically into the workspace,\\
 ⍝ `identifiers` must be a simple char vector identifying one or more packages.
 ⍝ Multiple packages (items) must be separated by commas.
@@ -10,12 +10,16 @@
 ⍝ * A package ID; Tatin will then attempt to find that package in one of the Registries defined in the
 ⍝   Client's config file.
 ⍝   The first hit wins.\\
+⍝ Optionally you may specify a third parameter with a path to where _tatin lives/will be created (root path)\\
+⍝ Usually the root path is either `#` (the default for non-user commands) or `⎕SE`, but you
+⍝ may specify a path into, say, an application like `#.MyApp`. In such a case the dependencies
+⍝ are loaded into `#.MyApp._tatin` rather then `#._tatin`.\\
 ⍝ `targetSpace` must be a reference or a fully qualified name of an ordinary namespace, meaning the name must
 ⍝ start with either `#.` or `⎕SE.`.\\
 ⍝ `targetSpace` might already exist, but if it doesn't it will be created. If it exists but is not an ordinary
 ⍝ namespace an error is thrown.\\
-⍝ Loads package(s) into `(#|⎕SE)._tatin.{packageName}` and establishes a reference pointing to it in `targetSpace`\\
-⍝ Loads all dependencies, if any, as well into (#|⎕SE)._tatin but _not_ into `targetSpace`.\\
+⍝ Loads package(s) into `(#|⎕SE).{ROOT_PATH}_tatin.{packageName}` and establishes a reference pointing to it in `targetSpace`\\
+⍝ Loads all dependencies, if any, as well into (#|⎕SE).{ROOT_PATH}_tatin but _not_ into `targetSpace`.\\
 ⍝ Leaves no trails in the file system unless a) caching is on (because then any package will be cached) or
 ⍝ b) a package (or one of its dependencies) relies on file assets in which case the temporary directory (which is
 ⍝ created in any case) will not be deleted.\\
@@ -23,6 +27,8 @@
 ⍝ Returns the total number of packages loaded, including dependencies.\\
 ⍝ Note that if a pckage fails to load, an error is thrown and no packages are loaded.
  r←0
+ 'Length error on right argument'Assert(≢⊆y)∊2 3
+ (identifiers targetSpace rootPath)←3↑(⊆y),'' ''
  noBetas←{0<⎕NC ⍵:⍎⍵ ⋄ Reg.GetNoBetasDefault}'noBetas'
  targetSpace←,⍕targetSpace
  'Target namespace must be fully qualified'Assert(⊂{1 ⎕C ⍵↑⍨¯1+⍵⍳'.'}targetSpace)∊,¨'#' '⎕SE'
@@ -52,7 +58,7 @@
      F.RmDir tempFolder                                             ⍝ Nothing was loaded, so we can get rid of it
  :Else
      :Trap ((⊂,##.Client.DEBUG)∊,¨'on' 1)↓Reg.ErrorNo
-         r←≢loaded←LoadDependencies tempFolder targetSpace
+         r←≢loaded←LoadDependencies tempFolder targetSpace rootPath
      :Else
          qdmx←⎕DMX
          ⎕DL 0.01
@@ -62,6 +68,7 @@
      :EndTrap
      ⎕DL 0.01
      list←F.ListDirs tempFolder
+     list/⍨←'Licenses'∘≢¨2⊃¨⎕NPARTS¨list
      :If 0=≢list                                                ⍝ Anything? At all?!
          F.RmDir tempFolder                                     ⍝ No assets, so we can get rid of it
      :Else

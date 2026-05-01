@@ -90,11 +90,26 @@ Check the folder `TestServer/Server/Assets/Runtime/Certificates`
 
 Although Tatin depends on a couple of Tatin packages, it cannot be used to load those packages; the common bootstrap problem.
 
-For that reason, the packages installed in the `packages/` folder a need to be brought into the `APLSource/` folder by other means:
+For that reason, the packages installed in the `packages/` folder need to be brought into the `APLSource/` folder by other means:
 
 * All packages that are single class or namespace scripts can simply by copied over; an example is the `Tester2` class.
 * Packages that consist of an ordinary namespace need to be copied over as a folder; an example is `CommTools`.
 
+However, all packages but `CommTools` can go into the root (read: the APLSource/ folder), while `CommTools` needs to go into APLSource/Client.
+
+Note that there are helpers available in the `Admin` namespace:
+
+`CheckPackagesForBetterVersions`
+
+: Prints it findings to the session
+
+`ReinstallAndUpdateTatinPackages`
+
+: (Re-)installs all packages and updates to later versions, even later major versions.
+
+`CopyPackagesToAPLSource`
+
+: Copies all packages into the right place, in particular `CommTools`.
 
 ## Do your thing
 
@@ -436,6 +451,7 @@ There is a function that creates a single HTML file from all the Tatin markdown 
 ```
 
 Now open that file with the word processor of your choice and use its spell-checking capabilities.
+
 
 
 

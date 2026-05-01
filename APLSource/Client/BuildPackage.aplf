@@ -1,4 +1,4 @@
- zipFilename←BuildPackage parms;cfg;fileList;zipObj;tempFilename;deps;errMsg;cfg_;dependencies;hasBuildNo;ciderCfg;ref;res
+ zipFilename←BuildPackage parms;cfg;fileList;zipObj;tempFilename;deps;errMsg;cfg_;dependencies;hasBuildNo;ciderCfg;ref;res;report
 ⍝ Build a new version of a Tatin package.\\
 ⍝ The right argument must be a namespace with the required parameters, typically created by calling  `CreateBuildParms`.
 ⍝ These are the parameters:\\
@@ -19,7 +19,7 @@
  'The parameter space MUST NOT contain "tatinVars" - check documentation on parameter "projectSpace"'Assert 0=parms.⎕NC'tatinVars'
  parms.projectPath←RemoveFileProtocol parms.projectPath
  parms.projectPath←⊃1 ⎕NPARTS ##.FilesAndDirs.AddTrailingSep parms.projectPath
- cfg_←ReadPackageConfigFile parms.projectPath
+ cfg_←GetPackageConfigFileAsNS parms.projectPath
  cfg←InitPackageConfig cfg_
  ValidateConfig cfg parms.projectPath
  :If 0=≢parms.targetPath
@@ -57,6 +57,11 @@
      :EndIf
  :EndIf
  dependencies←parms.dependencyFolder EstablishPackageDependencies parms.projectPath
+ :If 0<≢dependencies
+ :AndIf 0<≢cfg.license
+     report←Reg.CreateNoticeFile(parms.projectPath,{⍵↑⍨¯1+⍵⍳'='}dependencies)parms.targetPath
+     ('No LICENSE file found:',⊃,/(⎕UCS 13),¨report)Assert 0=≢report
+ :EndIf
  zipFilename←F.ExpandPath parms.targetPath,(GetPackageFilenameFromCfg cfg),'.zip'
  :If 0=F.Exists parms.targetPath
      F.MkDir parms.targetPath
@@ -89,6 +94,18 @@
  :EndIf
  :If F.IsFile parms.projectPath,'LICENSE'    ⍝ By convention...
      parms.projectPath zipObj.Add'LICENSE'   ⍝ ... we add a file "LICENSE" if there is one
+ :Else
+     :If 0<≢cfg.license
+     :AndIf 0≠parms.⎕NC'checkLICENSEfile'
+         :If parms.checkLICENSEfile
+             ('no file LICENSE found although the package is licensed: ',cfg.license)Assert 0
+         :EndIf
+     :EndIf
+ :EndIf
+ :If 0<≢dependencies
+ :AndIf F.IsFile parms.targetPath,'NOTICE.md'
+     parms.targetPath zipObj.Add'NOTICE.md'
+     F.DeleteFile parms.targetPath,'NOTICE.md'
  :EndIf
  :If 0<cfg.⎕NC'files'
  :AndIf 0<≢cfg.files
@@ -100,4 +117,5 @@
  :ElseIf F.IsFile parms.projectPath,'apl-dependencies.txt'
      parms.projectPath zipObj.Add'apl-dependencies.txt'
  :EndIf
+
  zipObj.Dispose

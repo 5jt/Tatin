@@ -26,6 +26,7 @@
  0 TC.WritePackageConfigFile src cfg
 
  parms←TC.CreateBuildParms src
+ parms.checkLICENSEfile←0
  parms.targetPath←dist
 
  :Trap 998

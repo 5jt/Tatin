@@ -6,7 +6,7 @@
   files: "",
   group: "example",
   io: 1,
-  license: "MIT",
+  license: "",
   lx: "",
   maintainer: "kai@aplteam.com",
   minimumAplVersion: "18.0",

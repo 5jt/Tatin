@@ -1,12 +1,10 @@
- r←Initial parms;isWindows;autoStart;ini;reg;json;ns;local;rc;msg;res;flag;isBatch
+ r←Initial parms;autoStart;ini;reg;json;ns;local;rc;msg;res;flag;isBatch
  #.⎕EX'_tatin'
  r←1
  RI←##.Client.RegistryIndices
  ##.Client.DEBUG←0
- isWindows←Reg.IsWindows
  isBatch←{(⊂⍵)∊''⍬:0 ⋄ ⍵.batchFlag}parms
- :If isWindows
- :AndIf autoStart←isBatch{⍺:1 ⋄ 1 ##.Client.YesOrNo ⍵}'Would you like to start the Tatin test server automatically?'
+ :If autoStart←1 ⍝ isBatch{⍺:1 ⋄ 1 ##.Client.YesOrNo ⍵}'Would you like to start the Tatin test server automatically?'
      ⍝ For an auto-start we must copy the test data into a temp folder first
      ∆TEMP_SERVER_FOLDER←F.GetTempSubDir'Tatin-Test-Server'
      ⎕←'Copying data for the test server...'
@@ -28,7 +26,7 @@
  ⎕←' Local test data copied!'
  ⍝ --------- Copy the test data to a temp folder
  ∆TEMP_TEST_DATA←F.GetTempSubDir'Tatin-Test-Data'
- ⎕←'Copying other test data for...'
+ ⎕←'Copying other test data...'
  ∆TEMP_TEST_DATA∘{(⍺,'/')⎕NCOPY⍠1⊣⍵}¨⊃F.Dir #.Tatin.CiderConfig.HOME,'/TestData/*'
  ⎕←' Other test data copied!'
  ⍝ --------- Now we need to copy the test data to a different (from the server) temp folder for pure local tests
@@ -50,7 +48,7 @@
  ∆TEST←1 ⍝ Used to add an HTTP header to any request. Influences only logging on the server side but implicitly also usage data
  flag←0
  :If autoStart
-     ∆P←∆StartServerProcessForTests 0
+     ∆P←∆StartServerProcessForTests 0 ∆TEMP_SERVER_FOLDER
      :Repeat
          :If 0=flag←1 TC.Ping'[localhost]'
          :EndIf

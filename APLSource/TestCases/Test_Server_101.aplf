@@ -19,6 +19,7 @@
  cfg.source←'Test.apln'
  cfg.os_win←1
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
  TC.WritePackageConfigFile src cfg
  (⊂'aplteam-APLTreeUtils-6.0.0')F.NPUT src,'/',Reg.DependenciesFilename
 

@@ -1,17 +1,17 @@
  list←{appendPublishingDate}GetAllPackages registryPath;list2;deprecated
 ⍝ Return names of all folders in `registryPath` that are valid package IDs INCLUDING deprecated packages
  appendPublishingDate←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'appendPublishingDate'
- list←F.ListDirs registryPath                           ⍝ All folder name
- list←{⊃,/1↓⎕NPARTS ⍵}¨list                             ⍝ Remove path: we only need the package IDs
- list←(2≤list+.=¨'-')/list                              ⍝ Package IDs carry at least two hyphens
- list←list[⍋⎕C list]                                    ⍝ Only Windows guarantees a sorted list, and Windows and Linux sort differently!
- :If appendPublishingDate
-     list2←registryPath InjectPublishingDate list       ⍝ Add publishing date where required
-     list←list,[1.5]list2[;2]
-     :If 0<≢list←list[SortIndexForPackageIDs list2;]
+ list←F.ListDirs registryPath                       ⍝ All folder name
+ list←{⊃,/1↓⎕NPARTS ⍵}¨list                         ⍝ Remove path: we only need the package IDs
+ list←(2≤list+.=¨'-')/list                          ⍝ Package IDs carry at least two hyphens
+ list←list[⍋⎕C list]                                ⍝ Only Windows guarantees a sorted list, and Windows and Linux sort differently!
+ list2←registryPath InjectPublishingDate list       ⍝ Add publishing date where required
+ list←list,[1.5]list2[;2]
+ :If 0<≢list←list[SortIndexForPackageIDs list2;]
+     :If appendPublishingDate
          list[;2]←FormatFloatDate¨list[;2]
+     :Else
+         list←list[;,1]
      :EndIf
- :Else
-     list←⍪list
  :EndIf
 ⍝Done

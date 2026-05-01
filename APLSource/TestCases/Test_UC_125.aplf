@@ -11,7 +11,7 @@
  (rc msg res)←∆UCMD'InstallPackages [localhost]versions ',tempDir
  →T.GoToTidyUp~(rc=0)∧0=≢msg
 
- list2←(≢tempDir)↓¨⊃TC.F.Dir tempDir
+ list2←((≢tempDir)↓¨(⊃TC.F.Dir tempDir))~⊂'NOTICE.md'
  →T.GoToTidyUp≢/1 0+≢¨list1 list2
  →T.GoToTidyUp~∧/list1∊list2
  →T.GoToTidyUp 1≠+/'-versions-'⍷∊list2

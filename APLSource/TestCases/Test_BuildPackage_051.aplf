@@ -4,13 +4,14 @@
  r←T._Failed
 
  path←∆TEMP_TEST_DATA,'/Build/Default/'
- cfg←TC.ReadPackageConfigFile path,'apl-package.json'
+ cfg←TC.GetPackageConfigFileAsNS path,'apl-package.json'
  parms←TC.CreateBuildParms path
+ parms.checkLICENSEfile←0
  parms.targetPath←path
  zipFileName←TC.BuildPackage parms
  list←TC.ZipArchive.ListZipContents zipFileName
  →T.GoToTidyUp~(⊂F.EnforceSlash'apl-dependencies.txt')∊F.EnforceSlash¨list
- cfg2←TC.ReadPackageConfigFile path,'apl-package.json'
+ cfg2←TC.GetPackageConfigFileAsNS path,'apl-package.json'
  oldBuildNo←A.ToNum{⍵↓⍨⍵⍳'+'}cfg.version
  newBuildNo←A.ToNum{⍵↓⍨⍵⍳'+'}cfg2.version
  →T.GoToTidyUp newBuildNo≠1+oldBuildNo

@@ -10,6 +10,8 @@
      r,←⊂'list-commands'
      r,←⊂'get-delete-policy'
      r,←⊂'off'
+     r,←⊂'setmusthavelicensefile'
+     r,←⊂'unsetmusthavelicensefile'
  :CaseList 'PUT' 'POST'
      r,←⊂'set-delete-policy'
  :Else

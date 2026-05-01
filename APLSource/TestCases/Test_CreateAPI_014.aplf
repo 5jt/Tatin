@@ -14,7 +14,7 @@
  cfg.api←'API'
  noOf←##.Client.CreateAPIfromCFG #.TEMP cfg
  →T.PassesIf noOf=≢#.TEMP.Public
- →T.PassesIf #.TEMP.Public ∆LazyMatch(⊂'Public')~⍨' '~⍨¨↓#.TEMP.⎕NL 3 4
+ →T.PassesIf #.TEMP.Public ∆LazyMatch(⊂'Public')~⍨' '~⍨¨↓#.TEMP.API.⎕NL 3 4
 
  R←T._OK
 ⍝Done

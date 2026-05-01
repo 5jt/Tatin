@@ -1,20 +1,21 @@
- {r}←{noQLX}Make batchFlag;P;parms;P_;list;F;C;CFG;path;file1;file2;ts1;ts2;versionOfAPL;q;buff;commitFlag;activateFilename
+ {r}←{noQLX}Make batchFlag;P;parms;P_;list;F;C;CFG;path;file1;file2;ts1;ts2;versionOfAPL;buff;commitFlag;activateFilename;CT;question
 ⍝ This function will start two APL sessions in succession in order to open the Tatin
-⍝ project and then execute first `MakeClient` (which bumps the build number) and then,
-⍝ in the second session, `MakeServer`, which does not bump the version number.
+⍝ project and then execute first `MakeClient` (which does bump the build number) and then,
+⍝ in the second session, `MakeServer`, which does *not* bump the build number.
 ⍝ It cannot be done in one go, and it cannot be done in batch mode from the current session.
-⍝ The right argument is expected to be a Boolean that tells whether this functions runs in batch
-⍝ mode or not. In batch mode no messages are printed, and no interaction with a user is
-⍝ attempted.
+⍝ The right argument is expected to be a Boolean that tells whether this functions runs in
+⍝ batch mode or not. In batch mode no messages are printed, and no interaction with a user
+⍝ is attempted.
 ⍝ Also, Tatin is not updated in "C:\Users\<⎕AN>\Documents\Dyalog APL-64 19.0 Unicode Files\" then.
-⍝ `noQLX` defaults to 0. By passing a 1 no function is called after instantiating Dyalog
+⍝ `noQLX` defaults to 0. By passing a 1 no function is called via ⎕LX after instantiating Dyalog
 ⍝ for the Client and the Server; useful for debugging.
  r←⍬
  Assert(⊂batchFlag)∊0 1
  'Currently we build on Windows only, sorry'Assert ##.Registry.IsWindows
  versionOfAPL←'18.2'
+ CT←##.Client.CommTools
  :If ~batchFlag
- :AndIf 0=1 ##.Client.CommTools.YesOrNo'Create Tatin with version ',versionOfAPL,' ?'
+ :AndIf 0=1 CT.YesOrNo'Create Tatin with version ',versionOfAPL,' ?'
      ⎕←'Cancelled by user' ⋄ →0
  :EndIf
  F←##.FilesAndDirs ⋄ C←##.Client ⋄ CFG←##.CiderConfig ⋄ F.APLTreeUtils2←##.APLTreeUtils2
@@ -22,13 +23,12 @@
  0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'   Current dir is now: ',CFG.HOME
  'Check current directory'Assert{'Tatin'≡⊃¯1↑(~⍵∊'/\')⊆⍵}1⊃1 ⎕NPARTS''
  noQLX←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'noQLX'
-
  commitFlag←0
  :If ~batchFlag
  :AndIf (⊂'#.Tatin')∊{⍵[;1]}⎕SE.Cider.ListOpenProjects 0
      buff←1 ⎕SE.APLGit2.Status'#.Tatin'
      :If 0<+/~({⊃,/1↓⎕NPARTS ⍵}¨buff[;2])∊,⊂'History.apla'
-     :AndIf 0=1 ##.Client.CommTools.YesOrNo'The working area is dirty - continue anyway?'
+     :AndIf 0=1 CT.YesOrNo'The working area is dirty - continue anyway?'
          ⎕←'Cancelled by user' ⋄ →0
      :EndIf
      ##.Registry.⎕ED⍠('EditName' 'Allow')⊢'Version'
@@ -60,38 +60,36 @@
  P←##.APLProcess
  parms←P.CreateParms
  parms.Exe←GetAPLVersion versionOfAPL
- parms.CommandLineArgs,←'load="',F.PWD,'\APLSource\Admin\Make_.aplc" '
- parms.CommandLineArgs,←{0=≢v←2 ⎕NQ #'GetEnvironment'⍵:v ⋄ ⍵,'="',v,'"'}'DYALOGSTARTUPSE'
- parms.CommandLineArgs,←' lx="1 #.Make_.Run 1"'
+ parms.ConfigParms⍪←'load'(F.PWD,'\APLSource\Admin\Make_.aplc')
+ parms.ConfigParms⍪←'DYALOGSTARTUPSE'({0=≢v←2 ⎕NQ #'GetEnvironment'⍵:v ⋄ ⍵,'="',v,'"'}'DYALOGSTARTUPSE')
+ parms.ConfigParms⍪←'lx' '1 #.Make_.Run 1'
  :If 0  ⍝ Only for analyzing problems:
-     parms.CommandLineArgs,←' -exec_setup=0 '
-     parms.CommandLineArgs,←' -stop_in_setup=1 '
+     parms.ConfigParms⍪←'exec_setup' 0
+     parms.ConfigParms⍪←'stop_in_setup' 1
  :EndIf
- :If noQLX
-     parms.CommandLineArgs,←' -x'
- :EndIf
+ parms.LX←~noQLX
  parms.SessionFile←1
  parms.WindowsStyle←'Normal'
+ parms.Wait←0
  0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'   Process started for "making" the Tatin Client...'
- P_←⎕NEW P(,⊂parms)
+ P_←P.New parms
  {⍵.HasExited:shy←0 ⋄ _←⎕DL 0.2 ⋄ ∇ ⍵}P_
  'The process exited with an error code'Assert 0=P_.Proc.ExitCode
  parms←P.CreateParms
- parms.CommandLineArgs←'load="APLSource/Admin/Make_.aplc" '
- parms.CommandLineArgs,←{0=≢v←2 ⎕NQ #'GetEnvironment'⍵:v ⋄ ⍵,'="',v,'"'}'DYALOGSTARTUPSE'
- parms.CommandLineArgs,←' lx="0 #.Make_.Run 2"'
+ parms.ConfigParms⍪←'load' 'APLSource/Admin/Make_.aplc'
+ parms.ConfigParms⍪←'DYALOGSTARTUPSE'({0=≢v←2 ⎕NQ #'GetEnvironment'⍵:v ⋄ ⍵,'="',v,'"'}'DYALOGSTARTUPSE')
+ parms.ConfigParms⍪←'lx' '0 #.Make_.Run 2'
  parms.Exe←GetAPLVersion versionOfAPL
  :If 0          ⍝ Only for analyzing problems:
-     parms.CommandLineArgs,←' -exec_setup=0'
-     parms.CommandLineArgs,←' -stop_in_setup=1 '
+     parms.ConfigParms⍪←'exec_setup' 0
+     parms.ConfigParms⍪←'stop_in_setup' 1
  :EndIf
- :If noQLX      ⍝ Only for analyzing problems:
-     parms.CommandLineArgs,←' -x'
- :EndIf
+ parms.LX←~noQLX
+ parms.Wait←0
  parms.SessionFile←1
  parms.WindowsStyle←'Normal'
  0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'   Process started for "making" the Tatin Server...'
- P_←⎕NEW P(,⊃parms)
+ P_←P.New parms
  {⍵.HasExited:shy←0 ⋄ _←⎕DL 0.2 ⋄ ∇ ⍵}P_
  'The process exited with an error code'Assert 0=P_.Proc.ExitCode
  0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'   The final steps, putting it all together...'
@@ -101,13 +99,13 @@
  UpdateTestServerAssets ⍬
  {}⎕SE.Link.Refresh'#.Tatin'
  :If ~batchFlag
-     :If 1 ##.Client.CommTools.YesOrNo'Would you like to install the freshly created new version?'
+     :If 1 CT.YesOrNo'Would you like to install the freshly created new version?'
          ⎕←1 #.Tatin.Admin.InstallTatin 1
      :EndIf
      activateFilename←##.Client.GetMyUCMDsFolder'/activate.dyalog'
      :If 0=⎕NEXISTS activateFilename
      :OrIf './Dist/activate.dyalog'F.YoungerThan activateFilename
-         :If 1 ##.Client.CommTools.YesOrNo'Install the ]activate user command?'
+         :If 1 CT.YesOrNo'Install the ]activate user command?'
              activateFilename ⎕NCOPY⍠('IfExists' 'Replace')⊢'./Dist/activate.dyalog'
          :EndIf
      :EndIf
@@ -120,8 +118,8 @@
      0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'*** Done'
  :EndIf
  :If commitFlag
-     q←1↓⊃,/(⎕UCS 13),¨↓↑⎕SE.APLGit2.Status'#.Tatin'
-     :If 1 ##.Client.CommTools.YesOrNo q,(⎕UCS 13),'---> Commit as "Make"?'
+     question←1↓⊃,/(⎕UCS 13),¨↓↑⎕SE.APLGit2.Status'#.Tatin'
+     :If 1 CT.YesOrNo question,(⎕UCS 13),'---> Commit as "Make"?'
          ⎕SE.APLGit2.Add'#.Tatin'
          buff←'<Make>'⎕SE.APLGit2.Commit'#.Tatin'
      :EndIf

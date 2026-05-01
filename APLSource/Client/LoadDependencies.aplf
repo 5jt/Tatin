@@ -1,9 +1,14 @@
- {r}←{flags}LoadDependencies y;path;tree;dep2;saveIn;cfg;msg;packageID;saveIn2;ref;url;principalFlag;refs;alias;installFolder;targetSpace;packageID2;qdmx;isUC;makeHomeRelative;overwrite
-⍝ Requires at least one argument but accepts up to two:
+ {r}←{flags}LoadDependencies y;path;tree;dep2;saveIn;cfg;msg;packageID;saveIn2;ref;url;principalFlag;refs;alias;installFolder;targetSpace;packageID2;qdmx;isUC;makeHomeRelative;overwrite;rootPath
+⍝ Requires at least one argument but accepts up to three:
 ⍝ * Folder with a build list (mandatory)
 ⍝ * Name of the target namespace\\
+⍝ * Path to where _tatin lives/will be created (root path)\\
+⍝   Usually the root path is either `#` (the default for non-user commands) or `⎕SE`, but you
+⍝   may specify a path into, say, an application like `#.MyApp`. In such a case the dependencies
+⍝   are loaded into `#.MyApp._tatin` rather then `#._tatin`.\\
+⍝   If you need to specify the root path then the target namespace is not optionaol but mandatory.
 ⍝ If no target namespace was specified then by default packages are loaded into `#` except when the folder
-⍝ is `[MyUCMDs]` in which case they are loaded into `⎕SE.
+⍝ is `[MyUCMDs]` in which case they are loaded into `⎕SE because it's a user command.
 ⍝ Via the optional left argument you may specify 0, 1 or 2 flags which default to 0:
 ⍝ * `overwrite` (1) enforces a load even if the package already exists in (#|⎕SE)._tatin
 ⍝ * `makeHomeRelative` (2) enforces the HOME path of the package to be relative: only the package folder
@@ -16,11 +21,13 @@
  :Else
      (overwrite makeHomeRelative)←2↑Reg.IntToBits flags
  :EndIf
- 'Length error on right argument'Assert(≢y)∊1 2
- (installFolder targetSpace)←2↑(⊆y),⊆''
+ 'Length error on right argument'Assert(≢y)∊1 2 3
+ (installFolder targetSpace rootPath)←3↑(⊆y),'' ''
+ rootPath←⍕rootPath
  :If isUC←'[myucmds]'{⍺≡⎕C(≢⍺)↑⍵}installFolder
      installFolder←GetMyUCMDsFolder(≢'[myucmds]')↓installFolder
  :EndIf
+ installFolder←{⍵↑⍨¯1+⍵⍳'='}installFolder
  ('Folder does not exist: ',⍕installFolder)Assert ⎕NEXISTS installFolder
  :If 0=≢targetSpace
      targetSpace←(1+isUC)⊃'#' '⎕SE'
@@ -39,8 +46,8 @@
          (alias packageID)←{~'@'∊⍵:''⍵ ⋄ '@'(≠⊆⊢)⍵}packageID
          path←installFolder,'/',packageID
          ('Cannot find package "',path,'"')Assert F.Exists path
-         saveIn←GetTatinRootSpace 3⍴targetSpace
-         cfg←ReadPackageConfigFile path
+         saveIn←rootPath GetTatinRootSpace 3⍴targetSpace
+         cfg←GetPackageConfigFileAsNS path
          packageID2←1 GetPackageIDFrom path
          saveIn,←'.',packageID2
          :If 0=⎕NC saveIn                       ⍝ If it already exists we don't do anything...
@@ -70,7 +77,7 @@
              :EndTrap
          :EndIf
      :EndFor
-     LinkDependencies refs
-     ExecutePackageLX installFolder targetSpace tree
+     rootPath LinkDependencies refs
+     rootPath ExecutePackageLX installFolder targetSpace tree
  :EndIf
 ⍝Done

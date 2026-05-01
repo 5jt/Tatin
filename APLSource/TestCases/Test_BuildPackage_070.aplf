@@ -6,6 +6,7 @@
  tempPath←∆GetTempDir''
  path←∆TEMP_TEST_DATA,'/Build/NuGet1/'
  parms←TC.CreateBuildParms path
+ parms.checkLICENSEfile←0
  parms.targetPath←tempPath
  zipFileName←TC.BuildPackage parms
  list←TC.ZipArchive.ListZipContents zipFileName

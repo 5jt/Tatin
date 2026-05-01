@@ -4,12 +4,12 @@
 
  r←T._Failed
 
- list←##.Client.FindDependencies'filesanddirs,Tester2,doesnotexist'##.CiderConfig.HOME
+ list←##.Client.FindDependencies'filesanddirs,HandleError,doesnotexist'##.CiderConfig.HOME
  →T.PassesIf 1=≢list                                            ⍝ Just one URL
  →T.PassesIf 2=≢1⊃list                                          ⍝ Hosts the "URL" and the list of hits
  →T.PassesIf≡/F.NormalizePath¨##.CiderConfig.HOME(1 1⊃list)     ⍝ Must match the right argument provided to FindDependencies
  →T.PassesIf 0<≢1 2⊃list                                        ⍝ Must not be empty, of course
  buff←{⎕C⊃,/1↓⎕NPARTS ⍵}¨F.ListDirs 1 2 1⊃list                  ⍝ Get the package IDs from the paths
- →T.PassesIf 1 1 0≡∨/¨∨/¨¨(⊂¨'filesanddirs' 'tester2' 'doesnotexist')⍷¨¨⊂buff  ⍝ They all must turn up except "doesnotexist"...
+ →T.PassesIf 1 1 0≡∨/¨∨/¨¨(⊂¨'filesanddirs' 'handleerror' 'doesnotexist')⍷¨¨⊂buff  ⍝ They all must turn up except "doesnotexist"...
 
  r←T._OK

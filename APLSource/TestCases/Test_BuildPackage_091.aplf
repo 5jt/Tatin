@@ -1,0 +1,34 @@
+ r←Test_BuildPackage_091(stopFlag batchFlag);⎕TRAP;rc;msg;parms;qdmx
+ ;dir;src;dist;cfg;zipfile;ns
+⍝ Build a package that declares to not require a license but with checkLICENSEfile←0
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ #.⎕EX TC.GetTatinRootSpace'#'
+ dir←∆GetTempDir ⍬
+ (src dist)←(⊂dir,'/'),¨'src' 'dist'
+ src,←'/v0.1.0'
+ F.MkDir(src,'/APLSource')dist
+
+ ('foo←{1}')F.NPUT src,'/APLSource/foo1.apln'
+ cfg←TC.InitPackageConfig ⍬
+ cfg.group←'Example'
+ cfg.name←'Package_B'
+ cfg.version←'0.1.0'
+ cfg.source←'APLSource'
+ cfg.license←'Not required'
+ cfg.os_win←1
+ TC.WritePackageConfigFile src cfg
+ parms←TC.CreateBuildParms src
+ parms.targetPath←dist
+ parms.checkLICENSEfile←0
+ zipfile←TC.BuildPackage parms
+ →T.GoToTidyUp 0≥≢zipfile
+
+ r←T._OK
+
+∆TidyUp:
+ (rc msg)←F.RmDirByForce dir
+ msg Assert rc=0
+ #.⎕EX TC.GetTatinRootSpace'#'
+⍝Done

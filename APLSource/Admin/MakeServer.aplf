@@ -1,4 +1,4 @@
- {r}←{bumpBuild}MakeServer batchFlag;F;targetPath;zipFilename;list;msg;success
+ {r}←{bumpBuild}MakeServer batchFlag;F;C;targetPath;zipFilename
 ⍝ Creates a new server.\\
 ⍝ Call this after `MakeClient` has been called; see there for details.
 ⍝ It can be called from a developer's session (⍵←0) or as part of an automated "Make" process with ⍵←1.\\
@@ -7,75 +7,35 @@
 ⍝ `bumpBuild` must be a Boolean; 1 (the default) means that the build number will be bumped.
 ⍝ Other values result in an error or ⎕OFF 123 respectively.
  r←⍬
- bumpBuild←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'bumpBuild'
+ bumpBuild←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'bumpBuild'
  :If batchFlag
      ⎕SHADOW'Assert'
      Assert←{(,1)≡,⍵:r←1 ⋄ ⎕OFF 123}
  :Else
-     ⎕←(⎕PW-1)⍴'-'
-     msg←''
-     msg,←⊂'This function will close all Cider projects, delete everything that is not needed in order to'
-     msg,←⊂'run a Tatin server, re-arrange stuff, set ⎕LX and finally save the workspace together'
-     msg,←⊂'with everything that is required by the server in Dist/Server.dws'
-     msg,←⊂''
-     msg,←⊂'Finally all that''s required is zipped into a file <Tatin-Server-{major}.{Minor}.{Patch}.zip'
-     msg,←⊂'That file is created within the Dist/ folder which is not managed by Git'
-     ⎕←⍪msg
-     ⎕←''
+     ⎕←⍪CreateServerMessage ⊂''
  :EndIf
  F←##.FilesAndDirs
  F.(APLTreeUtils2 OS)←##.(APLTreeUtils2 OS)
  :If batchFlag
  :OrIf 1 ##.Client.YesOrNo'Would you like to continue?'
+     C←##.CiderConfig
      UpdateVersionNumber bumpBuild
      {}⎕SE.Cider.CloseProject''
      #.Tatin.⎕EX¨'Client' 'Todo' 'TestCases' 'TestCasesServer' 'Simu' 'Tester2'
      ⎕EX¨'Initialize_Client' 'RunTestServer' 'CreateAllRefs_Client'
      ⎕LX←'#.Tatin.Server.Run 1'
-
-     F.MkDir'Dist'
      targetPath←'Dist/Server'
-     F.RmDir targetPath
-     ⎕DL 0.1
-     Assert F.MkDir targetPath
-
-     F.MkDir targetPath,'/Server/'
-     ⎕DL 0.1
-     Assert F.IsDir targetPath,'/Server'
-
-     F.MkDir targetPath,'/Server/Assets'
-     ⎕DL 0.1
-     Assert F.IsDir targetPath,'/Server/Assets'
-
-     F.MkDir targetPath,'/Server/Maintenance'
-     ⎕DL 0.1
-     Assert F.IsDir targetPath,'/Server/Maintenance'
-
-     F.MkDir targetPath,'/Registry/'
-     ⎕DL 0.1
-     Assert F.IsDir targetPath,'/Registry'
-
-     F.MkDir targetPath,'/Docker'
-     ⎕DL 0.1
-     Assert F.IsDir targetPath,'/Docker'
-
+     CreateServerDirectories targetPath
+     C HandleServerLicenses targetPath
      ⎕WSID←targetPath,'/Server/Server'
      #.⎕EX'Make_'
-     'Plodder' 'RumbaLean'#.Tatin.⎕CY ##.CiderConfig.HOME,'/Assets/Runtime/Plodder/Plodder'
+     'Plodder' 'RumbaLean'#.Tatin.⎕CY C.HOME,'/Assets/Runtime/Plodder/Plodder'
      0 ⎕SAVE ⎕WSID
-
-     (targetPath,'/Docker')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./Docker/'
-     (targetPath,'/Server')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./Assets/'
-     (targetPath,'/Server/')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./InstallAsWindowsService.dws'
-     (targetPath,'/Server/Maintenance/')(⎕NCOPY⍠('Wildcard' 1)('IfExists' 'Replace')F.ExecNfunction)'Maintenance/Server/*'
-     (targetPath,'/Server/server.ini')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./server.ini.RemoveMe'
-     (targetPath,'/Server/')(⎕NCOPY⍠('IfExists' 'Replace')F.ExecNfunction)'./tatin.sh'
+     CopyServerStuff targetPath
      {}F.RmDirByForce'Dist/Server/Assets/Runtime/Plodder'
-
      F.DeleteFile¨F.Dir'Dist/Tatin-Server-*.zip'
      zipFilename←'Dist/Tatin-Server-',({{⍵/⍨∧\⍵∊'.',⎕D}⍵/⍨3>+\'.'=⍵}(2⊃##.Server.Version)),'.zip'
      targetPath ##.ZipArchive.ZipFolder zipFilename
-
      :If batchFlag
          ⎕OFF
      :Else

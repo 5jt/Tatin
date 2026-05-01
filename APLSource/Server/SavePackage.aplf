@@ -1,4 +1,4 @@
-response←SavePackage request;packageID;target;tempFolder;filename;msg;statusCode;qdmx;exc;rc;list;list_lc;packageID2
+ response←SavePackage request;packageID;target;tempFolder;filename;msg;statusCode;qdmx;exc;rc;list;list_lc;packageID2
 ⍝ `packageID` is a valid package ID
 ⍝ This function saves the data in the appropriate folder which of course must not exist.
  packageID←request.RequestTarget

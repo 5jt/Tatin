@@ -19,6 +19,7 @@
  cfg.source←'Test.apln'
  cfg.os_win←1
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
  TC.WritePackageConfigFile src cfg
 
  packageID←'NeedsNoAPIkey-Package_M-0.1.0'

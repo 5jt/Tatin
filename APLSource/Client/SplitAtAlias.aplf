@@ -1,24 +1,31 @@
- (alias url)←SplitAtAlias id;pkgID;regAlias;buff
+ (alias url)←SplitAtAlias id;regAlias;pkgID;extension;path;part1
 ⍝ Splits "id" at the package (not Registry!) alias, if any'
-⍝ ('M@' '[tatin]MarkAPL') ← SplitAtAlias 'M@[tatin]MarkAPL'
-⍝ ('' '[tatin]MarkAPL') ← SplitAtAlias '[tatin]MarkAPL'
+⍝ For details see TestCases.Test_Misc_023
  alias←''
- :If '@'∊id
-     (alias pkgID)←id{(⍵↑⍺)(⍵↓⍺)}id⍳'@'
-     :If ∧/'[]'∊alias
-         (regAlias alias)←{⍵{(⍵↑⍺)(⍵↓⍺)}⍵⍳']'}alias
-         'Invalid package alias'Assert 1<≢alias
-         'Invalid package alias'Assert 0=(⎕NS'').⎕NC ¯1↓alias
-         url←regAlias,pkgID
-     :Else
-         :If ∨/'/\'∊alias
-             (alias buff)←{⍵{(⍵↑⍺)(⍵↓⍺)}1+-⌊/(⌽⍵)⍳'\/'}alias
-             url←buff,pkgID
-         :Else
-             url←pkgID
-         :EndIf
+ :If ∧/'[]'∊id
+     regAlias←{⍵/⍨b∨≠\b←⍵∊'[]'}id
+     id←('\[',(regAlias~'[]'),'\]')⎕R''⊢id
+ :Else
+     regAlias←''
+ :EndIf
+ :If ∨/'/\'∊id
+     (path pkgID extension)←⎕NPARTS id
+     :If '@'∊pkgID
+         (alias pkgID)←pkgID{(⍵↑⍺)(⍵↓⍺)}pkgID⍳'@'
+         id←path,pkgID,extension
+     :ElseIf '@'∊{⍵↑⍨⌊/⍵⍳'/\'}path
+         (alias path)←path{(⍵↑⍺)(⍵↓⍺)}path⍳'@'
+         id←path,pkgID,extension
      :EndIf
  :Else
-     url←id
+     part1←{⍵↑⍨¯1+⍵⍳'-'}id
+     :If '@'∊part1
+         alias←part1↑⍨part1⍳'@'
+         id←id↓⍨id⍳'@'
+     :EndIf
+ :EndIf
+ url←regAlias,id
+ :If 0<≢alias
+     'Invalid package alias'Assert 0=(⎕NS'').⎕NC ¯1↓alias
  :EndIf
 ⍝Done

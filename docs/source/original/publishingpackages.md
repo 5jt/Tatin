@@ -14,6 +14,12 @@ If you want to publish packages to the Principal Tatin server (<https://tatin.de
 
 Note that the same holds true for the test server (<https://test.tatin.dev>)
 
+Additionally, since version 0.122.0, a package must have a file "LICENSE" in the root in order to be accepted by the principal Tatin Registry. This is enforced by an (optional) INI setting:
+
+```
+[CONFIG]MustHaveLicenseFile = 1
+```
+
 ### Your own server
 
 If you want to run your own server then you can do whatever you like, of course. The document  "Server --- Tips and Tricks" offers details.
@@ -398,6 +404,8 @@ You can now develop a package `Foo` and publish it on `[my]`, probably several t
 You would then publish it on `[my-team]`. At the same time, you would either delete the package from `[my]` or, if you want the Registry `[my]` to be ignored altogether, set its priority to zero.
 
 When all is good the beta is promoted to an official release and published to the Tatin company server. At the same time, the package will most likely be deleted from the Team server.
+
+
 
 
 

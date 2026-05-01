@@ -14,8 +14,9 @@
  cfg.group←'Example'
  cfg.name←'Package_A'
  cfg.version←'1.0.0'
- cfg.source←'Test.apln'
  cfg.license←'MIT'
+ cfg.checkLICENSEfile←0
+ cfg.source←'Test.apln'
  cfg.os_win←1
  TC.WritePackageConfigFile src cfg
 

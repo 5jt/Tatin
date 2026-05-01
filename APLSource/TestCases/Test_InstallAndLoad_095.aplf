@@ -1,0 +1,36 @@
+ r←Test_InstallAndLoad_095(stopFlag batchFlag);⎕TRAP;targetDir;res;rc;msg;targetDir2
+⍝ Install and load a package from the local test server as usual and then in MyApp._tatin
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ #.⎕EX TC.GetTatinRootSpace'#'
+ #.⎕SHADOW'TEMP' ⋄ 'TEMP'#.⎕NS'' ⍝ Used to load stuff into
+ targetDir←∆GetTempDir''
+ res←TC.InstallPackages'[localhost]example-versions-1.0.12-zzz'targetDir
+ →T.GoToTidyUp'example-versions-1.0.12-zzz'≢∊res
+ res←TC.LoadDependencies targetDir #.TEMP
+ →T.GoToTidyUp'#._tatin.example_versions_1_0_12_zzz'≢' '~⍨⍕res
+ →T.GoToTidyUp'MyCode'≢⊃#.TEMP.versions.Version
+ →T.GoToTidyUp 1≠≢#._tatin.⎕NL⍳16
+
+ #.⎕SHADOW'MyApp' ⋄ 'MyApp'#.⎕NS''
+ targetDir2←∆GetTempDir''
+ res←TC.InstallPackages'[localhost]example-versions-1'targetDir2
+ →T.GoToTidyUp'example-versions-1.0.12-That-fix'≢∊res
+ res←TC.LoadDependencies targetDir2 #.MyApp #.MyApp
+ →T.GoToTidyUp 0=#.MyApp.⎕NC'_tatin'
+ →T.GoToTidyUp 0=#.MyApp._tatin.⎕NC'example-versions-1.0.12-That-fix'
+ →T.GoToTidyUp'MyCode'≢⊃#.MyApp._tatin.example_versions_1_0_12_That_fix.MyCode.Version
+ →T.GoToTidyUp 1≠≢#.MyApp._tatin.⎕NL⍳16
+ →T.GoToTidyUp 1≠≢#._tatin.⎕NL⍳16
+ →T.GoToTidyUp'MyCode'≢⊃#.MyApp.versions.Version
+
+ r←T._OK
+
+∆TidyUp:
+ (rc msg)←F.RmDirByForce targetDir
+ msg Assert rc=0
+ (rc msg)←F.RmDirByForce targetDir2
+ msg Assert rc=0
+ #.⎕EX TC.GetTatinRootSpace'#'
+⍝Done

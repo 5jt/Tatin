@@ -1,0 +1,16 @@
+ r←Test_ListPkgs_045(stopFlag batchFlag);⎕TRAP;mat;parms
+⍝ List all packages of group "aplteam" without their publishing dates
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ parms←⎕NS''
+ parms.date←0
+ parms.group←'aplteam'
+ parms.tags←'markdown'
+ parms.aggregate←0
+ mat←parms TC.ListPackages'[localhost]'
+ →T.PassesIf ¯1=-/(,mat)⍳'aplteam-MarkAPL-9.1.9' 'aplteam-MarkAPL-9.1.13'  ⍝ check sort order (was once a bug)
+ →T.PassesIf ¯1=-/(,mat)⍳'aplteam-MarkAPL-9.1.13' 'aplteam-MarkAPL-10.0.0'
+
+ r←T._OK
+⍝Done

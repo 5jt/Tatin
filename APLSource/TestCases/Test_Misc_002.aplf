@@ -1,6 +1,5 @@
- r←Test_Misc_002(stopFlag batchFlag);⎕TRAP;qdmx
- ;dir;noOfBytes;deps
-⍝ Create a dependency file, add and remove dependencies from it and finally delete it.
+ r←Test_Misc_002(stopFlag batchFlag);⎕TRAP;qdmx;dir;noOfBytes;deps
+⍝ Create a dependency file, add and remove dependencies from it, and finally delete it.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  r←T._Failed
 
@@ -16,7 +15,7 @@
  dir D.Add'[DYALOG]dyalog-Conga-3.2.0'
  deps←1 D.Get dir
  →T.GoToTidyUp deps≢((TC.MyUserSettings.GetRegistry¨'[tatin]' '[dyalog]').uri),¨'aplteam-APLTreeUtils-5.0.0' 'dyalog-Conga-3.2.0'
- dir D.Add'[tatin]aplteam-FilesAndDirs-3.4.9' ';[Foo]C:/Temp/MyGroup-MyPkg-0.1.0' '[tatin]aplteam-APLTreeUtils-4.9.0'
+ dir D.Add'[tatin]aplteam-FilesAndDirs-3.4.9' '[tatin]aplteam-APLTreeUtils-4.9.0'
  deps←1 D.Get dir
  →T.GoToTidyUp 4≠≢deps
  (⊂'[tatin]aplteam-OS-2.3.0')F.NPUT(dir,'/',D.DEP_NAME)2          ⍝ Make sure that the file contains an alias

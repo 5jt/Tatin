@@ -1,0 +1,10 @@
+ msg←CreateServerMessage append
+ msg←''
+ msg,←⊂(⎕PW-1)⍴'-'
+ msg,←⊂'This function will close all Cider projects, delete everything that is not needed in order to'
+ msg,←⊂'run a Tatin server, re-arrange stuff, set ⎕LX and finally save the workspace together'
+ msg,←⊂'with everything that is required by the server in Dist/Server.dws'
+ msg,←⊂''
+ msg,←⊂'Finally all that''s required is zipped into a file <Tatin-Server-{major}.{Minor}.{Patch}.zip'
+ msg,←⊂'That file is created within the Dist/ folder which is not managed by Git'
+ msg,←append

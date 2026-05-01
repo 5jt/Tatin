@@ -1,4 +1,4 @@
- (list msg)←UnInstallPackages(packageID folder);pkgDepFilename;toBeRemoved;rc;bool;principalPkgs;buildList_old;packages;noOf;noOfComponents;buff;cleanup;cfg;writeDependencyFile
+ (list msg)←UnInstallPackages(packageID folder);pkgDepFilename;toBeRemoved;rc;bool;principalPkgs;buildList_old;packages;noOf;noOfComponents;buff;cleanup;cfg;writeDependencyFile;hasNOTICEfile
  ;packageID_2;buildList_old;b;buildList_new;installedPkgs;newPrincipalPkgs
 ⍝ If `folder` carries a dependency file then this function attempts to un-install the package
 ⍝ `packageID` and all its dependencies but only in case those are neither top-level packages nor
@@ -79,14 +79,15 @@
          cleanup←0
      :EndIf
  :EndIf
+ hasNOTICEfile←F.IsFile folder,'NOTICE.md'
  :If 0=≢newPrincipalPkgs
-     cfg←ReadPackageConfigFile folder,RemoveAlias packageID_2
+     cfg←GetPackageConfigFileAsNS folder,RemoveAlias packageID_2
      :If 0<cfg.⎕NC'userCommandScript'
      :AndIf 0<≢cfg.userCommandScript ⍝ Is it a user command?!
          F.DeleteFile folder,⊃,/1↓⎕NPARTS cfg.userCommandScript
      :EndIf
      F.RmDir folder,RemoveAlias packageID_2
-     F.DeleteFile folder∘,¨'apl-buildlist.json' 'apl-dependencies.txt'
+     F.DeleteFile folder∘,¨'apl-buildlist.json' 'apl-dependencies.txt' 'NOTICE.md'
     ⍝ ↓ This may happen when the last user command package was un-installed, for example:
      :If 0=≢⊃F.Dir folder,'/*'
          (rc msg)←F.RmDirByForce folder
@@ -98,7 +99,7 @@
              msg←'Package is not installed'
              →cleanup←0
          :EndIf
-         cfg←ReadPackageConfigFile folder,RemoveAlias packageID_2
+         cfg←GetPackageConfigFileAsNS folder,RemoveAlias packageID_2
          :If 0<cfg.⎕NC'userCommandScript'
          :AndIf 0<≢cfg.userCommandScript ⍝ Is it a user command?!
              F.DeleteFile folder,⊃,/1↓⎕NPARTS cfg.userCommandScript
@@ -121,6 +122,7 @@
              :EndIf
          :EndIf
      :EndIf
+     {}Reg.CreateNoticeFile(⊃hasNOTICEfile)⊢folder folder   ⍝ If there was file NOTIC.md it's recreated
      :If writeDependencyFile
          (⊂newPrincipalPkgs)F.NPUT pkgDepFilename 1
      :EndIf

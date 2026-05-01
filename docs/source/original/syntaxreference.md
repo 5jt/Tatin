@@ -728,6 +728,10 @@ r←{verbose} GetNoCachingFlag url
 mat←{parms} ListPackages uri
 ```
 
+Lists all packages either for a given Registry or an install folder.
+
+#### ListPackages on a Registry
+
 Lists all packages of a given Registry except when the last package of a major version number is marked as deprecated --- see `ListDeprecated` for listing those.
 
 `uri` must be one of:
@@ -735,6 +739,11 @@ Lists all packages of a given Registry except when the last package of a major v
 * A path to an install folder, defined by the presence of a file `apl-buildlist.json`
 * A path to a Registry and optionally a (possibly incomplete) package ID
 
+#### ListPackages on a local path (an install folder)
+
+Such a folder must contain a file `apl-buildlist.json` - that makes a folder an install folder from Tatin's perspective.
+
+With such an argument the result is basically the contents of the build file plus an additional column with a Boolean that is 1 in case the package is actually installed and 0 otherwise.
 
 #### Right argument
 
@@ -926,10 +935,13 @@ Note that the package ID might use any case, meaning that if the package's name 
 
 Loads all packages according to a build list in a folder.
 
-Requires one mandatory right argument and accepts up to two:
+Requires one mandatory right argument and accepts up to three:
 
 * A source folder (a folder with a build list)
-* A target namespace
+* A target namespace  (optional)
+* A parent for the `_tatin` namespace used to load the actual packages into (optional)
+
+  If this must be specified the second argument becomes mandatory.
 
 If the target namespace is not specified then it defaults to `#` except when `[MyUCMDs]` is specified as source folder: in that case it defaults to `⎕SE`.
 
@@ -938,11 +950,21 @@ The optional left argument `flags` can be used to define two flags which default
 * `overwrite` enforces a load even if the package is already available in `#._tatin` or `⎕SE._tatin`
 * `makeHomeRelative` influences the result of `HOME` and `GetFullPath2AssetsFolder`: rather than returning the full path only the folder holding the packages and its parent are returned, making it a relative path
 
-A> ### Relative `HOME`
+A> ### Make `HOME` relative 
 A>
 A> In case Tatin packages become part of an application that is bundled with the Dyalog runtime you cannot use absolute paths for referring to assets for obvious reasons. 
 A>
 A> In that case the paths must be relative, and that's what the `makeHomeRelative` flag is for.
+
+A> ### The optional third argument (`rootPath`)
+A>
+A> By default `LoadDependencies` puts packages into a namespace `_tatin` in either `#` or `⎕SE`.
+A>
+A> Under rare circumstances this is not feasable. Imagine an application that comes with some packages, but it and its packages need to be copied into `⎕SE` by a user command before executing any code.
+A>
+A> In such a case you want the packages to become part of you application. If the name of that application is `MyApp`, then `MyApp._tatin` would be the right place. Or, just as an example, `MyApp.WhatEver._tatin`.
+A>
+A> In the latter case you would specify `MyApp.WhatEver` as the third argument.
 
 Returns a vector with references to the loaded packages (principal packages only, not dependencies).
 
@@ -960,7 +982,7 @@ Notes:
 ### LoadPackages
 
 ```
-r←{noBetas} LoadPackages (identifiers targetSpace)
+r←{noBetas} LoadPackages (identifiers targetSpace [rootPath])
 ```
 
 Loads packages dynamically into the workspace.
@@ -982,7 +1004,7 @@ client's config file with a priority greater than 0.
 
 It might already exist, but if it doesn't it will be created. If it exists but is not an ordinary namespace an error is thrown.
 
-Loads the package(s) into `(#|⎕SE)._tatin.{packageName}` and establishes a reference for every one of them in `targetSpace`
+Loads the package(s) into `(#|⎕SE)._tatin.{packageName}` and establishes a reference for every one of them in `targetSpace`. The location can be changed by specifying a third argument; for details refer to [LoadDependencies](# "LoadDependencies").
 
 Loads all dependencies, if any, as well into `(#|⎕SE)._tatin` but does _not_ create references for them in `targetSpace`.
 
@@ -1140,6 +1162,9 @@ r←Version
 ```
 
 Returns "name", "version" and "date".
+
+
+
 
 
 

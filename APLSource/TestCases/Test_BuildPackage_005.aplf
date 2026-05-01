@@ -24,6 +24,7 @@
 
  parms←TC.CreateBuildParms src
  parms.targetPath←dist
+ parms.checkLICENSEfile←0
  zipfile←TC.BuildPackage parms
  →T.GoToTidyUp 0≥≢zipfile
  list←∆GetFileListFromZipArchive zipfile

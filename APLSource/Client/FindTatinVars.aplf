@@ -1,5 +1,5 @@
- r←FindTatinVars ref;list;list2;this
-⍝ Finds `TatinVars` somwhere in the projectSpace `ref` is pointing to and returns a ref to it or ⎕NULL if no hit.
+ r←FindTatinVars ref;list;list2;this;rootPaths
+⍝ Finds `TatinVars` somewhere in the projectSpace `ref` is pointing to and returns a ref to it or ⎕NULL if no hit.
  r←⎕NULL
  ref←⍎⍣(80 82∊⍨⎕DR ref)⊢ref
  :If 0<ref.⎕NC'TatinVars'
@@ -7,7 +7,8 @@
  :Else
      :If 0<≢list←↓ref.⎕NL 9
          list2←ref.⍎¨list
-         list2←(~({⍵/⍨2>+\'.'=⍵}∘⍕¨list2)∊'#._tatin' '⎕SE._tatin')/list2   ⍝ Neither #._tatin nor ⎕SE._tatin of course
+         rootPaths←('#.',({0=≢⍵:⍵ ⋄ ⍵,'.'}ROOT_PATH),'_tatin')('⎕SE.',({0=≢⍵:⍵ ⋄ ⍵,'.'}ROOT_PATH),'_tatin')
+         list2←(~({⍵/⍨2>+\'.'=⍵}∘⍕¨list2)∊rootPaths)/list2   ⍝ Neither #._tatin nor ⎕SE._tatin (or whatever ROOT_PATH says) of course
          :For this :In list2
              :If ⎕NULL≢r←FindTatinVars this
                  :Return

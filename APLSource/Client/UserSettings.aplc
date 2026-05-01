@@ -329,19 +329,22 @@
       :EndIf
     ∇
 
-    ∇ r←GetRegistry idOrUriOrAlias;bool
+    ∇ r←{unique}GetRegistry idOrUriOrAlias;bool
     ⍝ Returns a Registry (as a namespace) or `⍬` in case the requested registry does not exist.
     ⍝ `⍵` can be either a name or an alias.\\
+    ⍝ By default `idOrUriOrAlias` must be unique, but this can be overwritten with ⍺←0
       :Access Public Instance
+      unique←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'unique'
       'No Registry defined in the user settings'Assert 0<≢_registries
       :If ~∨/bool←_registries.id≡¨⊂idOrUriOrAlias   ⍝ Is it a UUID?
       :AndIf 0=+/bool←EqualsAliasOrName idOrUriOrAlias
           ('Registry <',idOrUriOrAlias,'> not found in user settings')Assert∨/bool
       :EndIf
       'Unknown'Assert 0<+/bool
-      'Found more than two Registries'Assert 1=+/bool ⍝ idOrUriOrAlias might be found more than once but with different aliases and API keys
+      'Found more than two Registries'Assert(~unique)∨1=+/bool ⍝ idOrUriOrAlias might be found more than once but with different aliases and API keys
       r←(bool⍳1)⊃_registries
     ∇
+
 
     ∇ r←Delete flag;filename;buff
     ⍝ Call this in order to delete the currently instantiated user settings file.\\

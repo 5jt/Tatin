@@ -1,13 +1,19 @@
- PackIfFolder←{
-⍝ If `⍵` is a file `⍵` is returned: it's probably a ZIP file that was typically created by `BuildPackage`.\\
-⍝ If it's a folder it's packed into a temporay folder, and the name of that zipfile is returned.
-     ⍺←''
-     dependencies←⍺
-     path←⍵
-     F.IsFile path:path         ⍝ Exit if it's not a folder: then it must be a ZIP file already
+ path←{dependencies}PackIfFolder path;parms;cfgFilename;ns
+⍝ If `⍵` is a file, `⍵` is returned: it's probably a ZIP file that was typically created by `BuildPackage`.\\
+⍝ If it's a folder, it's zipped into a temporay folder, and the name of that ZIP file is returned.
+ dependencies←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'dependencies'
+ :If ~F.IsFile path          ⍝ Exit if it's not a folder: then it must be a ZIP file already
      parms←CreateBuildParms path
+     cfgFilename←path,'/apl-package.json'
+     :If 0<parms.⎕NC'checkLICENSEfile'
+     :AndIf ⎕NEXISTS cfgFilename
+         ns←Reg.GetJsonFromFile cfgFilename
+     :AndIf 0<ns.⎕NC'checkLICENSEfile'
+         parms.checkLICENSEfile←ns.checkLICENSEfile
+     :EndIf
      parms.dependencyFolder←dependencies
-     CheckWouldBePackage parms.projectPath:
+ :AndIf 0=CheckWouldBePackage parms.projectPath
      parms.targetPath←F.GetTempPath
-     BuildPackage parms
- }
+     path←BuildPackage parms
+ :EndIf
+⍝Done

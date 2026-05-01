@@ -1,4 +1,4 @@
-﻿:Class HttpCommand
+:Class HttpCommand
 ⍝ General HTTP Commmand utility
 ⍝ Documentation is found at https://dyalog.github.io/HttpCommand/
 
@@ -7,7 +7,7 @@
     ∇ r←Version
     ⍝ Return the current version
       :Access public shared
-      r←'HttpCommand' '5.9.1' '2025-03-08'
+      r←'HttpCommand' '5.9.3' '2025-08-10'
     ∇
 
 ⍝ Request-related fields
@@ -64,9 +64,14 @@
     :field origCert←¯1                             ⍝ used to check if Cert changed between calls
 
     ∇ UpdateCommandMethod arg
+    ⍝ keeps Command and its alias Method in sync
       :Implements Trigger Command,Method
       :If (Command Method)∨.≢⊂arg.NewValue
-          Command←Method←arg.NewValue
+          :If 'Command'≡arg.Name
+              Method←arg.NewValue
+          :Else
+              Command←arg.NewValue
+          :EndIf
       :EndIf
     ∇
 
@@ -182,9 +187,9 @@
       r←''
       :Trap Debug↓0
           :If 0∊⍴args
-              r←##.⎕NEW ⊃⎕CLASS ⎕THIS
+              r←##.⎕NEW⊃⊃⎕CLASS ⎕THIS
           :Else
-              r←##.⎕NEW (⊃⊃⎕CLASS ⎕THIS)(eis⍣(9.1≠nameClass⊃args)⊢args)
+              r←##.⎕NEW(⊃⊃⎕CLASS ⎕THIS)(eis⍣(9.1≠nameClass⊃args)⊢args)
           :EndIf
           r.RequestOnly←requestOnly
       :Else
@@ -924,7 +929,7 @@
                           t.(URL HttpVersion HttpStatus HttpMessage Headers Data)←r.(URL HttpVersion HttpStatus HttpMessage Headers Data)
                           {}LDRC.Close Client
                           cmd←(1+303=r.HttpStatus)⊃cmd'GET' ⍝ 303 (See Other) is always followed by a 'GET'. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/303
-                          →∆GET
+                          →∆GET⊣⎕DL 0.1 ⍝ add tiny delay to avoid 1119 (Socket closed whilst receiving data) on retry
                       :Else
                           r.msg←'Redirection detected, but no "location" header supplied.' ⍝ should never happen from a properly functioning server
                       :EndIf
