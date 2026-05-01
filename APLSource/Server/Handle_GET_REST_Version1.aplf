@@ -54,7 +54,7 @@
          :Case GetVersion_REST'tags'
              response←GetTagList request
          :Case GetVersion_REST'documentation'
-             response←request RedirectTo'https://aplteam.github.io/Tatin/'
+             response←CreateDocumentationIndex request
          :Case GetVersion_REST'version'
              response←GetServerVersion request
          :Case GetVersion_REST'minimum-version'

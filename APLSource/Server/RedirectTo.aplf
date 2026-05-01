@@ -1,8 +1,0 @@
- response←request RedirectTo url
-⍝ Returns a 302 response that redirects the client to `url`
- response←R.NewResponse request
- response.Headers,←⊂Reg.TatinVersionAsHttpHeader
- response.Headers,←⊂'Location'url
- response.StatusCode←302
- response.Close←1
-⍝Done
