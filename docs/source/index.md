@@ -100,7 +100,7 @@ You are very welcome to [contribute](contribute.md) to it.
 
 ## :dyalog-cider-logo: Cider and Tatin
 
-[Cider](https://5jt.github.io/Cider) is the project manager for Dyalog APL.
+[Cider](https://aplteam.github.io/Cider) is the project manager for Dyalog APL.
 
 Like Tatin, it works with APL source files created and managed by [Link](https://dyalog.github.io/link/4.0/). 
 
